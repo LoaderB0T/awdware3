@@ -68,9 +68,9 @@ export class ThemeService {
         colorBgHighlight: '(0, 1, 20)',
         colorBgHighlight_04: 'rgba(255, 255, 255, 0.6)',
         colorBgHighlight_10: 'rgba(255, 255, 255, 0.9)',
-        colorContent1: 'rgb(213, 214, 224)',
+        colorContent1: 'rgb(242, 239, 234)',
         colorContent2: 'rgb(#b2b3bf)',
-        colorAccent1: 'rgb(204, 0, 78)',
+        colorAccent1: 'rgb(255, 0, 82)',
         colorAccent2: 'rgb(255, 190, 48)',
         colorError: 'rgb(238, 31, 16)'
       }
