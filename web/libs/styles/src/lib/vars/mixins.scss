@@ -1,0 +1,10 @@
+@import './colors.scss';
+
+@mixin clickable {
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.2s ease-in-out;
+  &:hover {
+    opacity: 1;
+  }
+}
