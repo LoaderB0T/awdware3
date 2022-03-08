@@ -1,13 +1,17 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { initializeApp, environment } from 'ng-dynamic-mf';
 
-import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
-
-if (environment.production) {
-  enableProdMode();
-}
-
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch((err) => console.error(err));
+initializeApp()
+  .then(() => {
+    if (environment.production) {
+      enableProdMode();
+    }
+    return import('./app/app.module');
+  })
+  .then(x => x.AppModule)
+  .then(x => {
+    platformBrowserDynamic()
+      .bootstrapModule(x)
+      .catch(err => console.error(err));
+  });

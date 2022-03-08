@@ -31,7 +31,7 @@ module.exports = {
       name: 'home',
       filename: 'remoteEntry.js',
       exposes: {
-        './Module': 'apps/core/src/app/remote-entry/entry.module.ts'
+        './Module': 'apps/home/src/app/home-remote.module.ts'
       },
       shared: share({
         ...sharedPackages,

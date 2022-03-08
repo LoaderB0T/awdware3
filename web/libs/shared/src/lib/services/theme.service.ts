@@ -58,10 +58,6 @@ export class ThemeService {
     localStorage.setItem('theme', theme.name);
   }
 
-  public getColor(key: string): string {
-    return this.selectedTheme.props[key] ?? 'rgb(0,0,0)';
-  }
-
   private get darkTheme(): Theme {
     return {
       name: 'dark',
