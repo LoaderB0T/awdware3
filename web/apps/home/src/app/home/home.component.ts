@@ -10,6 +10,8 @@ import { Typing } from './typing';
 })
 export class HomeComponent implements OnInit {
   public readonly typing = new Typing();
+  public readonly typing2 = new Typing();
+  public readonly typing3 = new Typing();
   private readonly _translateService: TranslateService;
 
   constructor(translateService: TranslateService) {
@@ -24,6 +26,9 @@ export class HomeComponent implements OnInit {
     const hi = this._translateService.instant('home.typing.hi');
     const iam = this._translateService.instant('home.typing.iam');
     const ilike = this._translateService.instant('home.typing.ilike');
+    const click = this._translateService.instant('home.typing.click');
+    const here = this._translateService.instant('home.typing.here');
+    const toLearnMore = this._translateService.instant('home.typing.toLearnMore');
     await this.typing.start(hi);
     await wait(100);
     await this.typing.start('\n');
@@ -35,7 +40,8 @@ export class HomeComponent implements OnInit {
     await this.typing.start('\n');
     await wait(600);
     await this.typing.start(ilike + ' ');
-    const likes = ['Web Development', 'TypeScript', 'Angular', 'C# & .NET', 'Automation (CI/CD)'];
+    // const likes = ['Web Development', 'TypeScript', 'Angular', 'C# & .NET', 'Automation (CI/CD)'];
+    const likes = ['stuff'];
     for (const like of likes) {
       await wait(100);
       await this.typing.start(like);
@@ -43,5 +49,8 @@ export class HomeComponent implements OnInit {
       await this.typing.backspace(like.length, { minEraseDelay: 30, maxEraseDelay: 60 });
     }
     await this.typing.backspace(ilike.length + 1, { minEraseDelay: 30, maxEraseDelay: 60 });
+    await this.typing.start(`${click} `);
+    await this.typing2.start(here);
+    await this.typing3.start(` ${toLearnMore}`);
   }
 }

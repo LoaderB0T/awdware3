@@ -1,7 +1,11 @@
 <div class="content">
   <div id="homeBox">
-    <span id="typing"
+    <span class="typing"
           [innerHtml]="typing.text$ | async"></span>
+    <span class="typing link highlight"
+          [innerHtml]="typing2.text$ | async"></span>
+    <span class="typing"
+          [innerHtml]="typing3.text$ | async"></span>
     <span id="textCursor">_</span>
   </div>
 </div>

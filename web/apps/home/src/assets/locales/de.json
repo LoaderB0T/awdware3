@@ -3,7 +3,10 @@
     "typing": {
       "hi": "Hi!",
       "iam": "Ich bin",
-      "ilike": "Ich mag:"
+      "ilike": "Ich mag:",
+      "click": "Klicke",
+      "here": "hier",
+      "toLearnMore": "für mehr Informationen."
     }
   }
 }
