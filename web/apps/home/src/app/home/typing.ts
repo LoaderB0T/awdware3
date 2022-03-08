@@ -96,6 +96,14 @@ export class Typing {
     this._isRunning = false;
   }
 
+  public reset() {
+    if (this._isRunning) {
+      throw new Error('Typing is still running');
+    }
+    this.fastForward(false);
+    this._text.next('');
+  }
+
   private letterCanError(letter: string): boolean {
     return !(letter === ' ' || letter === '\n');
   }

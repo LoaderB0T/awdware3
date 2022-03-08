@@ -9,6 +9,7 @@
   justify-content: center;
 
   #homeBox {
+    position: relative;
     width: 1000px;
     max-width: 90%;
     height: 220px;
@@ -36,6 +37,13 @@
           opacity: 0;
         }
       }
+    }
+
+    .action-icon {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      @include clickable;
     }
   }
 }
