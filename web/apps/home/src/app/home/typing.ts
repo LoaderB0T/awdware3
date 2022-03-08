@@ -84,16 +84,20 @@ export class Typing {
     this._isRunning = false;
   }
 
+  private letterCanError(letter: string): boolean {
+    return !(letter === ' ' || letter === '\n');
+  }
+
   private async nextLetter(): Promise<void> {
     let letter = '';
 
     let probabilityForError = this.options.errorRate;
-    probabilityForError += (this._lettersSinceError - 5) * 0.05;
+    probabilityForError += (this._lettersSinceError - 10) * 0.01;
     if (this._errorCount === 1 && this._lettersSinceError === 0) {
-      probabilityForError += 2.7;
+      probabilityForError += 0.3;
     }
 
-    const isError = Math.random() < probabilityForError;
+    const isError = Math.random() < probabilityForError && this.letterCanError(this._letters[0]);
     if (isError) {
       letter = this.randomCharNear(this._letters[this._errorCount], usedLocale);
       this._lettersSinceError = -1;
@@ -107,9 +111,9 @@ export class Typing {
       }
     }
     if (!isError && this._errorCount > 0) {
-      this.backspace();
+      this.doSingleBackspace();
       this._errorCount--;
-      this._lettersSinceError++;
+      this._lettersSinceError = 1;
       await wait(randomInt(this.options.minEraseDelay, this.options.maxEraseDelay));
     } else {
       this.addLetter(letter);
@@ -131,7 +135,7 @@ export class Typing {
     }
   }
 
-  private backspace(): void {
+  private doSingleBackspace(): void {
     const oldValue = this._text.value;
     if (this._currentClassName) {
       const insertIndex = oldValue.lastIndexOf('</span>');
@@ -141,6 +145,23 @@ export class Typing {
     } else {
       this._text.next(oldValue.substring(0, oldValue.length - 1));
     }
+  }
+
+  public async backspace(count: number, options: Partial<TypingOptions> = {}): Promise<void> {
+    if (this._isRunning) {
+      throw new Error('Typing is already running');
+    }
+    this._isRunning = true;
+    this._overrideOptions = options;
+    const oldValue = this._text.value;
+    if (oldValue.length < count) {
+      throw new Error('Cannot backspace more than the current text length');
+    }
+    for (let i = 0; i < count; i++) {
+      await wait(randomInt(this.options.minEraseDelay, this.options.maxEraseDelay));
+      this.doSingleBackspace();
+    }
+    this._isRunning = false;
   }
 
   private randomCharNear(ch: string, locale: Locale): string {
