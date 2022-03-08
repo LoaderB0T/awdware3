@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'awd-root',
-  template: `<awd-base></awd-base>`
+  template: `<awd-base></awd-base>`,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {}
