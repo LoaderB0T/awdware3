@@ -29,6 +29,7 @@ export class AppModule {
     dynamicTranslationService: DynamicTranslationService
   ) {
     themeService.init();
+    translateService.setDefaultLang('en');
     dynamicTranslationService.setTranslateService(translateService);
   }
 }
