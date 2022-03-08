@@ -34,6 +34,14 @@ export class HomeComponent implements OnInit {
     await wait(100);
     await this.typing.start('\n');
     await wait(600);
-    await this.typing.start(ilike);
+    await this.typing.start(ilike + ' ');
+    const likes = ['Web Development', 'TypeScript', 'Angular', 'C# & .NET', 'Automation (CI/CD)'];
+    for (const like of likes) {
+      await wait(100);
+      await this.typing.start(like);
+      await wait(500);
+      await this.typing.backspace(like.length, { minEraseDelay: 30, maxEraseDelay: 60 });
+    }
+    await this.typing.backspace(ilike.length + 1, { minEraseDelay: 30, maxEraseDelay: 60 });
   }
 }
