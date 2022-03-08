@@ -1,16 +1,17 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, OnInit, HostListener, ChangeDetectionStrategy } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'awd-bg',
   templateUrl: './bg.component.html',
-  styleUrls: ['./bg.component.scss']
+  styleUrls: ['./bg.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BgComponent implements OnInit {
-  public key_a = false;
-  public key_w = false;
-  public key_d = false;
+  public key_a$ = new BehaviorSubject(false);
+  public key_w$ = new BehaviorSubject(false);
+  public key_d$ = new BehaviorSubject(false);
 
   private readonly $timer_a = new Subject<void>();
   private readonly $timer_w = new Subject<void>();
@@ -32,15 +33,15 @@ export class BgComponent implements OnInit {
     const key = event.key;
     switch (key) {
       case 'a':
-        this.key_a = true;
+        this.key_a$.next(true);
         this.$timer_a.next();
         break;
       case 'w':
-        this.key_w = true;
+        this.key_w$.next(true);
         this.$timer_w.next();
         break;
       case 'd':
-        this.key_d = true;
+        this.key_d$.next(true);
         this.$timer_d.next();
         break;
       default:
@@ -49,8 +50,8 @@ export class BgComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.timer_a.pipe(debounceTime(500)).subscribe(() => (this.key_a = false));
-    this.timer_w.pipe(debounceTime(500)).subscribe(() => (this.key_w = false));
-    this.timer_d.pipe(debounceTime(500)).subscribe(() => (this.key_d = false));
+    this.timer_a.pipe(debounceTime(500)).subscribe(() => this.key_a$.next(false));
+    this.timer_w.pipe(debounceTime(500)).subscribe(() => this.key_w$.next(false));
+    this.timer_d.pipe(debounceTime(500)).subscribe(() => this.key_d$.next(false));
   }
 }
