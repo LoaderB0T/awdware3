@@ -2,7 +2,7 @@
   "projectType": "library",
   "root": "libs/shared",
   "sourceRoot": "libs/shared/src",
-  "prefix": "awdware",
+  "prefix": "awd",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
@@ -15,10 +15,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/shared/src/**/*.ts",
-          "libs/shared/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/shared/src/**/*.ts", "libs/shared/src/**/*.html"]
       }
     }
   },

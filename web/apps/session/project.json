@@ -2,10 +2,10 @@
   "projectType": "application",
   "root": "apps/session",
   "sourceRoot": "apps/session/src",
-  "prefix": "awdware",
+  "prefix": "awd",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nrwl/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/session",
@@ -16,7 +16,11 @@
         "inlineStyleLanguage": "scss",
         "assets": ["apps/session/src/favicon.ico", "apps/session/src/assets"],
         "styles": ["apps/session/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/session/webpack.config.js"
+        },
+        "commonChunk": false
       },
       "configurations": {
         "production": {
@@ -38,7 +42,10 @@
               "with": "apps/session/src/environments/environment.prod.ts"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/session/webpack.prod.config.js"
+          }
         },
         "development": {
           "buildOptimizer": false,
@@ -52,7 +59,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nrwl/angular:webpack-server",
       "configurations": {
         "production": {
           "browserTarget": "session:build:production"
@@ -61,21 +68,23 @@
           "browserTarget": "session:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4202,
+        "publicHost": "http://localhost:4202"
+      }
     },
     "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "executor": "ngx-build-plus:extract-i18n",
       "options": {
-        "browserTarget": "session:build"
+        "browserTarget": "session:build",
+        "extraWebpackConfig": "apps/session/webpack.config.js"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "apps/session/src/**/*.ts",
-          "apps/session/src/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/session/src/**/*.ts", "apps/session/src/**/*.html"]
       }
     },
     "test": {

@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "controls": "libs/controls",
+    "home": "apps/home",
     "host": "apps/host",
     "session": "apps/session",
     "session-lib": "libs/session-lib",

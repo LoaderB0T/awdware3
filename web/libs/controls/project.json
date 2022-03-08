@@ -2,7 +2,7 @@
   "projectType": "library",
   "root": "libs/controls",
   "sourceRoot": "libs/controls/src",
-  "prefix": "awdware",
+  "prefix": "awd",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
@@ -15,10 +15,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/controls/src/**/*.ts",
-          "libs/controls/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/controls/src/**/*.ts", "libs/controls/src/**/*.html"]
       }
     }
   },
