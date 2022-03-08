@@ -1,3 +1,5 @@
+@import 'vars';
+
 .content {
   width: 100%;
   height: 100%;
@@ -14,10 +16,8 @@
     white-space: pre-wrap;
     word-break: break-all;
     font-size: min(40px, 8vw);
-    #textAnimation2,
-    #textAnimation5,
-    #textAnimation6 {
-      color: var(--colorHighlightColor1);
+    .highlight {
+      color: $colorAccent1;
     }
     #textAnimation6 {
       cursor: pointer;

@@ -17,6 +17,9 @@
         "assets": ["apps/home/src/favicon.ico", "apps/home/src/assets"],
         "styles": ["apps/home/src/styles.scss"],
         "scripts": [],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/styles/src/lib"]
+        },
         "customWebpackConfig": {
           "path": "apps/home/webpack.config.js"
         },

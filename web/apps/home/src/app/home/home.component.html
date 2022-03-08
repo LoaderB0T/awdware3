@@ -1,5 +1,7 @@
 <div class="content">
   <div id="homeBox">
-    <span id="textAnimation0">{{typing.text$ | async}}</span>
+    <span id="typing"
+          [innerHtml]="typing.text$ | async"></span>
+    <span id="textCursor">_</span>
   </div>
 </div>

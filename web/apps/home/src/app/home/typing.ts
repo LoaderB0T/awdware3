@@ -2,12 +2,12 @@ import { randomInt, wait } from '@awdware/shared';
 import { BehaviorSubject } from 'rxjs';
 
 export type TypingOptions = {
-  minDelay?: number;
-  maxDelay?: number;
-  minEraseDelay?: number;
-  maxEraseDelay?: number;
-  delay?: number;
-  errorRate?: number;
+  minDelay: number;
+  maxDelay: number;
+  minEraseDelay: number;
+  maxEraseDelay: number;
+  initialDelay: number;
+  errorRate: number;
 };
 
 type Locale = 'en' | 'de';
@@ -21,11 +21,11 @@ type Keyboard = {
 const keyboards: Keyboard = {
   en: {
     lower: ['1234567890-=', 'qwertyuiop[]', 'asdfghjkl;', 'zxcvbnm,./', ' '],
-    upper: ['!@#$%^&*()_+', 'QWERTYUIOP{}|', 'ASDFGHJKL:"', 'ZXCVBNM<>?', ' ']
+    upper: ['!@#$%^&*()_+', 'QWERTYUIOP{}|', 'ASDFGHJKL:"', 'ZXCVBNM?', ' ']
   },
   de: {
-    lower: ['1234567890ß', 'qwertzuiopü+', 'asdfghjklöä#', '<yxcvbnm,.->', ' '],
-    upper: ['!"§$%&/()=?', 'QWERTZUIOPÜ*', "ASDFGHJKLÖÄ'", '>YXCVBNM;:_', ' ']
+    lower: ['1234567890ß', 'qwertzuiopü+', 'asdfghjklöä#', 'yxcvbnm,.-', ' '],
+    upper: ['!"§$%&/()=?', 'QWERTZUIOPÜ*', "ASDFGHJKLÖÄ'", 'YXCVBNM;:_', ' ']
   }
 };
 
@@ -33,39 +33,61 @@ const keyboards: Keyboard = {
 const usedLocale = 'de';
 
 export class Typing {
-  private _minDelay: number;
-  private _maxDelay: number;
-  private _minEraseDelay: number;
-  private _maxEraseDelay: number;
-  private _delay: number;
-  private _errorRate: number;
+  private _options: Partial<TypingOptions>;
+  private _overrideOptions?: Partial<TypingOptions>;
+  private _isRunning = false;
   private _letters: string[] = [];
   private _errorCount = 0;
   private _lettersSinceError = 0;
   private _lastErrorDelta: { r: number; c: number } = { r: 0, c: 0 };
+  private _currentClassName: string | undefined = undefined;
 
   private readonly _text = new BehaviorSubject<string>('');
   public readonly text$ = this._text.asObservable();
 
-  constructor(options: TypingOptions = {}) {
-    this._minDelay = options.minDelay || 40;
-    this._maxDelay = options.maxDelay || 150;
-    this._minEraseDelay = options.minEraseDelay ?? this._minDelay ?? 150;
-    this._maxEraseDelay = options.maxEraseDelay ?? this._maxDelay ?? 250;
-    this._delay = options.delay || 0;
-    this._errorRate = options.errorRate || 0.1;
+  constructor(options: Partial<TypingOptions> = {}) {
+    this._options = options;
   }
 
-  public async start(sentance: string): Promise<void> {
+  private get options(): TypingOptions {
+    return {
+      ...{
+        minDelay: 40,
+        maxDelay: 150,
+        minEraseDelay: 150,
+        maxEraseDelay: 250,
+        initialDelay: 0,
+        errorRate: 0.1
+      },
+      ...this._options,
+      ...(this._overrideOptions ?? {})
+    };
+  }
+
+  public async start(sentance: string, options: Partial<TypingOptions> = {}, className?: string): Promise<void> {
+    if (this._isRunning) {
+      throw new Error('Typing is already running');
+    }
+    this._isRunning = true;
+    this._overrideOptions = options;
+    if (className !== this._currentClassName) {
+      this._currentClassName = className;
+      if (className) {
+        const oldValue = this._text.value;
+        this._text.next(oldValue + `<span class="${className}"></span>`);
+      }
+    }
     this._letters = sentance.split('');
-    await wait(this._delay);
+    await wait(this.options.initialDelay);
+    await wait(randomInt(this.options.minDelay, this.options.maxDelay));
     await this.nextLetter();
+    this._isRunning = false;
   }
 
   private async nextLetter(): Promise<void> {
     let letter = '';
 
-    let probabilityForError = this._errorRate;
+    let probabilityForError = this.options.errorRate;
     probabilityForError += (this._lettersSinceError - 5) * 0.05;
     if (this._errorCount === 1 && this._lettersSinceError === 0) {
       probabilityForError += 2.7;
@@ -88,23 +110,37 @@ export class Typing {
       this.backspace();
       this._errorCount--;
       this._lettersSinceError++;
-      await wait(randomInt(this._minEraseDelay, this._maxEraseDelay));
+      await wait(randomInt(this.options.minEraseDelay, this.options.maxEraseDelay));
     } else {
       this.addLetter(letter);
       this._lettersSinceError++;
-      await wait(randomInt(this._minDelay, this._maxDelay));
+      await wait(randomInt(this.options.minDelay, this.options.maxDelay));
     }
     return this.nextLetter();
   }
 
   private addLetter(letter: string): void {
     const oldValue = this._text.value;
-    this._text.next(oldValue + letter);
+    if (this._currentClassName) {
+      const insertIndex = oldValue.lastIndexOf('</span>');
+      const oldValuePrefix = oldValue.substring(0, insertIndex);
+      const oldValueSuffix = oldValue.substring(insertIndex);
+      this._text.next(oldValuePrefix + letter + oldValueSuffix);
+    } else {
+      this._text.next(oldValue + letter);
+    }
   }
 
   private backspace(): void {
     const oldValue = this._text.value;
-    this._text.next(oldValue.substring(0, oldValue.length - 1));
+    if (this._currentClassName) {
+      const insertIndex = oldValue.lastIndexOf('</span>');
+      const oldValuePrefix = oldValue.substring(0, insertIndex);
+      const oldValueSuffix = oldValue.substring(insertIndex);
+      this._text.next(oldValuePrefix.substring(0, oldValuePrefix.length - 1) + oldValueSuffix);
+    } else {
+      this._text.next(oldValue.substring(0, oldValue.length - 1));
+    }
   }
 
   private randomCharNear(ch: string, locale: Locale): string {
