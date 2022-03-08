@@ -1,0 +1,27 @@
+@import 'vars';
+
+.cls-1 {
+  fill: $colorBg2;
+}
+
+.cls-2 {
+  fill: $colorBg3;
+  transition: fill 0.15s ease-in-out;
+}
+
+.logo-container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  svg {
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    min-width: 1500px;
+    margin-top: 15vh;
+  }
+}
+
+.active {
+  fill: $colorAccent1;
+}

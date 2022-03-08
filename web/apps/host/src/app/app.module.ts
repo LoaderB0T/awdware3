@@ -4,9 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { ThemeService } from '@awdware/shared';
+import { BaseComponent } from './base/base.component';
+import { BgComponent } from './bg/bg.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, BaseComponent, BgComponent],
   imports: [BrowserModule, RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' })],
   providers: [],
   bootstrap: [AppComponent]

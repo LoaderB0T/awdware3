@@ -62,9 +62,9 @@ export class ThemeService {
     return {
       name: 'dark',
       props: {
-        colorBg1: 'rgb(28, 28, 33)',
-        colorBg2: 'rgb(44, 44, 48)',
-        colorBg3: 'rgb(57, 57, 64)',
+        colorBg1: 'rgb(18, 18, 18)',
+        colorBg2: 'rgb(25, 25, 25)',
+        colorBg3: 'rgb(35, 35, 35)',
         colorBgHighlight: '(0, 1, 20)',
         colorBgHighlight_04: 'rgba(255, 255, 255, 0.6)',
         colorBgHighlight_10: 'rgba(255, 255, 255, 0.9)',
