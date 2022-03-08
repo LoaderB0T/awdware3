@@ -1,5 +1,6 @@
 <div class="content">
-  <div id="homeBox">
+  <div id="homeBox"
+       (click)="skip()">
     <span class="typing"
           [innerHtml]="typing.text$ | async"></span>
     <span class="typing link highlight"

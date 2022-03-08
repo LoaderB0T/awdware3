@@ -44,12 +44,23 @@ export class Typing {
 
   private readonly _text = new BehaviorSubject<string>('');
   public readonly text$ = this._text.asObservable();
+  private _fastForward = false;
 
   constructor(options: Partial<TypingOptions> = {}) {
     this._options = options;
   }
 
   private get options(): TypingOptions {
+    const ff = this._fastForward
+      ? {
+          minDelay: 10,
+          maxDelay: 20,
+          minEraseDelay: 10,
+          maxEraseDelay: 20,
+          errorRate: 0
+        }
+      : {};
+
     return {
       ...{
         minDelay: 40,
@@ -60,7 +71,8 @@ export class Typing {
         errorRate: 0.1
       },
       ...this._options,
-      ...(this._overrideOptions ?? {})
+      ...(this._overrideOptions ?? {}),
+      ...ff
     };
   }
 
@@ -92,9 +104,11 @@ export class Typing {
     let letter = '';
 
     let probabilityForError = this.options.errorRate;
-    probabilityForError += (this._lettersSinceError - 10) * 0.01;
-    if (this._errorCount === 1 && this._lettersSinceError === 0) {
-      probabilityForError += 0.3;
+    if (probabilityForError > 0) {
+      probabilityForError += (this._lettersSinceError - 10) * 0.01;
+      if (this._errorCount === 1 && this._lettersSinceError === 0) {
+        probabilityForError += 0.3;
+      }
     }
 
     const isError = Math.random() < probabilityForError && this.letterCanError(this._letters[0]);
@@ -162,6 +176,10 @@ export class Typing {
       this.doSingleBackspace();
     }
     this._isRunning = false;
+  }
+
+  public fastForward(enabled = true) {
+    this._fastForward = enabled;
   }
 
   private randomCharNear(ch: string, locale: Locale): string {
