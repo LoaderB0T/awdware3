@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 // Required for TS to compile the "unused" RemoteEntryModule
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { RemoteEntryModule } from './home-remote.module';
+import { HomeModule } from './home.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, RouterModule.forRoot([])],
+  imports: [BrowserModule, HomeModule, RouterModule.forRoot([])],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
