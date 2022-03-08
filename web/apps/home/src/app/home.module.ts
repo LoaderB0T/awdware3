@@ -14,6 +14,4 @@ const routes: Routes = [
   declarations: [HomeComponent],
   imports: [CommonModule, RouterModule.forChild(routes)]
 })
-export class HomeModule {
-  constructor() {}
-}
+export class HomeModule {}

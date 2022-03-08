@@ -48,8 +48,6 @@ export class BgComponent implements OnInit {
     }
   }
 
-  constructor() {}
-
   ngOnInit() {
     this.timer_a.pipe(debounceTime(500)).subscribe(() => (this.key_a = false));
     this.timer_w.pipe(debounceTime(500)).subscribe(() => (this.key_w = false));

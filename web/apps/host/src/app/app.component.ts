@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'awdware-root',
+  selector: 'awd-root',
   template: `<awd-base></awd-base>`
 })
 export class AppComponent {}

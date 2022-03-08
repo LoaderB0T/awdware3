@@ -4,6 +4,4 @@ import { Component } from '@angular/core';
   selector: 'awd-root',
   template: '<router-outlet></router-outlet>'
 })
-export class AppComponent {
-  constructor() {}
-}
+export class AppComponent {}
