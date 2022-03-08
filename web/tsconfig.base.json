@@ -1,0 +1,26 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@awdware/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@awdware/controls": ["libs/controls/src/index.ts"],
+      "@awdware/session-lib": ["libs/session-lib/src/index.ts"],
+      "@awdware/shared": ["libs/shared/src/index.ts"],
+      "@awdware/styles": ["libs/styles/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

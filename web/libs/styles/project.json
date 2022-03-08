@@ -1,0 +1,18 @@
+{
+  "projectType": "library",
+  "root": "libs/styles",
+  "sourceRoot": "libs/styles/src",
+  "prefix": "awdware",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/styles/src/**/*.ts",
+          "libs/styles/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

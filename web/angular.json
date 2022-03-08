@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "projects": {
+    "controls": "libs/controls",
+    "host": "apps/host",
+    "session": "apps/session",
+    "session-lib": "libs/session-lib",
+    "shared": "libs/shared",
+    "styles": "libs/styles"
+  }
+}
