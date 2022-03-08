@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { wait } from '@awdware/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
@@ -11,15 +12,18 @@ import { Typing } from './typing';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
+  private readonly _translateService: TranslateService;
+  private readonly _router: Router;
+
   public readonly typing = new Typing();
   public readonly typing2 = new Typing();
   public readonly typing3 = new Typing();
   public skip = false;
   public done$ = new BehaviorSubject(false);
-  private readonly _translateService: TranslateService;
 
-  constructor(translateService: TranslateService) {
+  constructor(translateService: TranslateService, router: Router) {
     this._translateService = translateService;
+    this._router = router;
   }
 
   public ngOnInit(): void {
@@ -77,5 +81,9 @@ export class HomeComponent implements OnInit {
     this.typing.fastForward();
     this.typing2.fastForward();
     this.typing3.fastForward();
+  }
+
+  public learnMore() {
+    this._router.navigate(['home', 'about']);
   }
 }

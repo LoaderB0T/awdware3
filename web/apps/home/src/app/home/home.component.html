@@ -3,6 +3,7 @@
     <span class="typing"
           [innerHtml]="typing.text$ | async"></span>
     <span class="typing link highlight"
+          (click)="learnMore()"
           [innerHtml]="typing2.text$ | async"></span>
     <span class="typing"
           [innerHtml]="typing3.text$ | async"></span>

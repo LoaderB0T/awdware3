@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { SharedModule, ThemeService } from '@awdware/shared';
@@ -16,6 +17,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     BrowserModule,
     RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
     SharedModule,
+    BrowserAnimationsModule,
     TranslateModule.forRoot({}),
     loadedModules
   ],

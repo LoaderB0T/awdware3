@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from '@awdware/shared';
 import { TranslationResolver } from './services/translation.resolver';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   {
@@ -11,12 +12,27 @@ const routes: Routes = [
     resolve: {
       translations: TranslationResolver
     },
-    component: HomeComponent
+    children: [
+      {
+        path: '',
+        component: HomeComponent,
+        data: {
+          activePage: 'home'
+        }
+      },
+      {
+        path: 'about',
+        component: AboutComponent,
+        data: {
+          activePage: 'about'
+        }
+      }
+    ]
   }
 ];
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, AboutComponent],
   imports: [CommonModule, SharedModule, RouterModule.forChild(routes)]
 })
 export class HomeModule {}
