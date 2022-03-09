@@ -57,7 +57,10 @@ export class BaseComponent implements AfterViewInit {
   }
 
   public prepareRoute(outlet: RouterOutlet) {
-    const activePage = outlet?.activatedRouteData?.['activePage'];
+    const activePage = outlet?.activatedRouteData?.['activePage'] as string | undefined;
+    if (activePage) {
+      this._menuService.setActiveMenuItem(activePage);
+    }
     let dir = -1;
     if (activePage !== this._prevActiveRoute) {
       const prevIndex = this._menuService.menuItems$.value.find(x => x.id === this._prevActiveRoute)?.order ?? 0;
@@ -65,7 +68,7 @@ export class BaseComponent implements AfterViewInit {
       if (prevIndex < activeIndex) {
         dir = 1;
       }
-      this._prevActiveRoute = activePage;
+      this._prevActiveRoute = activePage ?? '';
     }
     if (!this._loaded) {
       return { value: 'initial' };

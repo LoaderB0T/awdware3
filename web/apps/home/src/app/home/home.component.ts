@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
     const click = this._translateService.instant('home.typing.click');
     const here = this._translateService.instant('home.typing.here');
     const toLearnMore = this._translateService.instant('home.typing.toLearnMore');
+    await wait(this.skip ? 0 : 1500);
     await this.typing.start(hi);
     await wait(this.skip ? 0 : 100);
     await this.typing.start('\n');

@@ -1,0 +1,12 @@
+<div class="main-container">
+  <div class="items">
+    <div class="item"
+         [id]="'menu-item-' + item.id"
+         *ngFor="let item of menuItems$ | async">
+      <i class="fa-light fa-{{item.icon}}"
+         (click)="clickedItem(item)"></i>
+    </div>
+    <div class="active-item"
+         [style.top.px]="activeMenuItemY$ | async"></div>
+  </div>
+</div>

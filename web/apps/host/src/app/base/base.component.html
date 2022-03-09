@@ -2,8 +2,11 @@
   <div class="bg">
     <awd-bg></awd-bg>
   </div>
-  <div class="content"
-       [@routeAnimations]="prepareRoute(outlet)">
-    <router-outlet #outlet="outlet"></router-outlet>
+  <div class="menu-content-container">
+    <awd-menu></awd-menu>
+    <div class="content"
+         [@routeAnimations]="prepareRoute(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
   </div>
 </div>

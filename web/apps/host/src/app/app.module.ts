@@ -10,9 +10,10 @@ import { BgComponent } from './bg/bg.component';
 import { routes } from './routes';
 import { DynamicTranslationService, loadedModules } from 'ng-dynamic-mf';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
-  declarations: [AppComponent, BaseComponent, BgComponent],
+  declarations: [AppComponent, BaseComponent, BgComponent, MenuComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),

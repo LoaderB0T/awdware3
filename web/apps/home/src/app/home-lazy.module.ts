@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { RouterEntryService } from 'ng-dynamic-mf';
+import { MenuItem, MenuService, randomInt } from '@awdware/shared';
 
 const routes: Routes = [
   {
@@ -16,7 +17,49 @@ const routes: Routes = [
   imports: [CommonModule, RouterModule]
 })
 export class HomeLazyModule {
-  constructor(routerEntryService: RouterEntryService) {
+  private _currentUserIcon = '';
+
+  constructor(routerEntryService: RouterEntryService, menuService: MenuService, router: Router) {
     routerEntryService.registerRoutes(routes);
+
+    const menuItems: MenuItem[] = [
+      {
+        id: 'home',
+        icon: 'home',
+        title: 'Home',
+        action: () => router.navigate(['home']),
+        order: 1
+      },
+      {
+        id: 'about',
+        icon: 'user',
+        title: 'About',
+        action: () => {
+          router.navigate(['home/about']);
+          menuService.editMenuItem('about', { icon: this.randomuserIcon() });
+        },
+        order: 2
+      }
+    ];
+    menuService.addMenuItems(...menuItems);
+  }
+
+  private randomuserIcon(): string {
+    const userIcons = [
+      'user-bounty-hunter',
+      'user-astronaut',
+      'user-ninja',
+      'user-alien',
+      'user-secret',
+      'user-robot',
+      'user-cowboy',
+      'user-tie'
+    ];
+    let newIcon = this._currentUserIcon;
+    while (newIcon === this._currentUserIcon) {
+      newIcon = userIcons[randomInt(0, userIcons.length - 1)];
+    }
+    this._currentUserIcon = newIcon;
+    return newIcon;
   }
 }

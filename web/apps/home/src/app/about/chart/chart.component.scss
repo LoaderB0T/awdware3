@@ -1,0 +1,19 @@
+@import 'vars';
+
+.main-container {
+  width: 400px;
+  display: grid;
+  grid-template-columns: min-content auto;
+  gap: 15px;
+  span {
+    justify-self: end;
+  }
+  .bar-bg {
+    height: 20px;
+    background-color: $colorBg3;
+    .bar {
+      background-color: $colorAccent2;
+      height: 100%;
+    }
+  }
+}

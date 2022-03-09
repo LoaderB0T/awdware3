@@ -1,29 +1,43 @@
+@import 'vars';
+
+$menuWidth: 75px;
+
 #app-main {
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
 
-  .content {
-    flex-grow: 1;
-    overflow-y: auto;
-    z-index: 1;
+  .menu-content-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    .content {
+      width: calc(100% - $menuWidth);
+      flex-grow: 1;
+      overflow-y: auto;
+      z-index: 2;
 
-    ::ng-deep > * {
-      position: fixed;
-      height: 100%;
-      width: 100%;
+      ::ng-deep > * {
+        position: fixed;
+        height: 100%;
+        width: calc(100% - $menuWidth);
+        z-index: 2;
+      }
+    }
+    awd-menu {
       z-index: 1;
+      height: 100%;
+      width: $menuWidth;
     }
   }
-
   .bg {
     width: 90%;
     height: 100%;
     position: absolute;
     top: 0;
     right: 0;
-    left: 0;
+    left: $menuWidth;
     bottom: 0;
     margin: auto;
     z-index: 0;

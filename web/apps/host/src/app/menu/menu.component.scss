@@ -1,0 +1,35 @@
+@import 'vars';
+
+$itemHeight: 48px;
+$borderWidth: 2px;
+$activeItemMarkerHeight: $itemHeight + 16px;
+
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  border-right: $borderWidth solid $colorAccent1;
+  position: relative;
+  .items {
+    height: $itemHeight;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    .item {
+      @include clickable;
+      font-size: 40px;
+    }
+  }
+  .active-item {
+    height: $activeItemMarkerHeight;
+    width: $borderWidth;
+    position: absolute;
+    background: $colorAccent2;
+    right: -$borderWidth;
+    transition: top 0.3s cubic-bezier(0, 0.77, 0.3, 1);
+  }
+}

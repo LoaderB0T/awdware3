@@ -1,7 +1,7 @@
 import { animate, group, query, style, transition, trigger } from '@angular/animations';
 
 const slideUpDown = [
-  query(':enter, :leave', style({ position: 'fixed', height: '100%', width: '100%' }), { optional: true }),
+  query(':enter, :leave', style({ position: 'fixed' }), { optional: true }),
   group([
     query(
       ':enter',
@@ -25,7 +25,7 @@ const slideUpDown = [
   ])
 ];
 const fadeIn = [
-  query(':enter, :leave', style({ position: 'fixed', height: '100%', width: '100%' }), { optional: true }),
+  query(':enter, :leave', style({ position: 'fixed' }), { optional: true }),
   group([
     query(
       ':enter',

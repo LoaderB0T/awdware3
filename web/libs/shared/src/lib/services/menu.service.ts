@@ -7,10 +7,20 @@ export class MenuService {
   public menuItems$ = new BehaviorSubject<MenuItem[]>([]);
   public activeMenuItem$ = new BehaviorSubject<string>('');
 
-  public addMenuItem(menuItem: MenuItem) {
+  public addMenuItems(...menuItems: MenuItem[]) {
+    const _menuItems = this.menuItems$.getValue();
+    _menuItems.push(...menuItems);
+    this.menuItems$.next(_menuItems);
+  }
+
+  public editMenuItem(id: string, changes: Partial<MenuItem>) {
     const menuItems = this.menuItems$.getValue();
-    menuItems.push(menuItem);
-    this.menuItems$.next(menuItems);
+    const menuItem = menuItems.find(x => x.id === id);
+    if (!menuItem) {
+      throw new Error(`Menu item with id ${id} does not exist`);
+    }
+    const newMenuItem = { ...menuItem, ...changes };
+    this.menuItems$.next(menuItems.map(x => (x.id === id ? newMenuItem : x)));
   }
 
   public setActiveMenuItem(id: string) {
