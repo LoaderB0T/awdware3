@@ -30,7 +30,7 @@ const fadeIn = [
     query(
       ':enter',
       [
-        style({ transform: 'translateX(-300px)', opacity: '0.5' }),
+        style({ transform: 'translateX(-300px)', opacity: '0.2' }),
         animate('300ms cubic-bezier(0,.33,0,1)', style({ transform: 'translateX(0)', opacity: '1' }))
       ],
       { optional: true }
