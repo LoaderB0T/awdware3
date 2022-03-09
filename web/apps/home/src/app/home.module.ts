@@ -6,6 +6,7 @@ import { SharedModule } from '@awdware/shared';
 import { TranslationResolver } from './services/translation.resolver';
 import { AboutComponent } from './about/about.component';
 import { ResourceMapModule } from 'ng-dynamic-mf';
+import { ChartComponent } from './about/chart/chart.component';
 
 const routes: Routes = [
   {
@@ -33,7 +34,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [HomeComponent, AboutComponent],
+  declarations: [HomeComponent, AboutComponent, ChartComponent],
   imports: [CommonModule, SharedModule, ResourceMapModule, RouterModule.forChild(routes)]
 })
 export class HomeModule {}
