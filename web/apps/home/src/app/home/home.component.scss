@@ -27,17 +27,6 @@
       text-decoration: underline;
       text-decoration-style: dotted;
     }
-    #textCursor {
-      animation: blinker 1060ms step-start infinite;
-      font-weight: bold;
-      display: inline-block;
-
-      @keyframes blinker {
-        50% {
-          opacity: 0;
-        }
-      }
-    }
 
     .action-icon {
       position: absolute;
