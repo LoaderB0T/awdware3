@@ -8,5 +8,9 @@
       "here": "here",
       "toLearnMore": "to learn more."
     }
+  },
+  "about": {
+    "thisIsMe": "<-- This is me!",
+    "overview": "Janik Schumacher\nSoftware Developer\n{{age}} years old\nBased in Germany near Cologne."
   }
 }

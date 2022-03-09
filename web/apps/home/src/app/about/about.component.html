@@ -1,3 +1,14 @@
-<div>
-  About me
+<div class="window-bg">
+  <div class="window">
+    <div class="me-details">
+      <img [src]="'assets/img/me.png' | resourceMap:'home'">
+      <div class="text-details"
+           *awdLet="headingDone$ | async as headingDone">
+        <h1>{{ typingHeading.text$ | async }}<span class="textCursor"
+                *ngIf="!headingDone">_</span></h1>
+        <p>{{ typingDetails.text$ | async}}<span class="textCursor"
+                *ngIf="headingDone">_</span></p>
+      </div>
+    </div>
+  </div>
 </div>

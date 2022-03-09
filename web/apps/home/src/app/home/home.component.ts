@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { wait } from '@awdware/shared';
+import { Typing, wait } from '@awdware/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
-import { Typing } from './typing';
 
 @Component({
   selector: 'awd-home',

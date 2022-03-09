@@ -7,7 +7,7 @@
           [innerHtml]="typing2.text$ | async"></span>
     <span class="typing"
           [innerHtml]="typing3.text$ | async"></span>
-    <span id="textCursor">_</span>
+    <span class="textCursor">_</span>
 
     <div *ngIf="!skip && (done$ | async) === false"
          class="action-icon">

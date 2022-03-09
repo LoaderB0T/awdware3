@@ -8,5 +8,9 @@
       "here": "hier",
       "toLearnMore": "für mehr Informationen."
     }
+  },
+  "about": {
+    "thisIsMe": "<-- Das bin ich!",
+    "overview": "Janik Schumacher\nSoftwareentwichkler\n{{age}} Jahre alt\nWohnhaft nahe Köln."
   }
 }
