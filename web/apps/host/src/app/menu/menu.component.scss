@@ -13,13 +13,18 @@ $activeItemMarkerHeight: $itemHeight + 16px;
   border-right: $borderWidth solid $colorAccent1;
   position: relative;
   .items {
-    height: $itemHeight;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
     gap: 25px;
     .item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: $itemHeight;
+      width: 100%;
       @include clickable;
       font-size: 40px;
     }
@@ -30,6 +35,6 @@ $activeItemMarkerHeight: $itemHeight + 16px;
     position: absolute;
     background: $colorAccent2;
     right: -$borderWidth;
-    transition: top 0.3s cubic-bezier(0, 0.77, 0.3, 1);
+    transition: top 300ms cubic-bezier(0.97, -0.08, 0.555, 1.16);
   }
 }
