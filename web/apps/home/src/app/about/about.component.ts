@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Typing } from '@awdware/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
+import { Typed } from 'rxjs-typed.ts';
 
 @Component({
   selector: 'awd-about',
@@ -14,8 +14,8 @@ export class AboutComponent implements OnInit {
   private readonly _headingDone = new BehaviorSubject<boolean>(false);
   public readonly headingDone$ = this._headingDone.asObservable();
 
-  public typingHeading = new Typing({ minDelay: 30, maxDelay: 70 });
-  public typingDetails = new Typing({ minDelay: 20, maxDelay: 40, minEraseDelay: 20, maxEraseDelay: 40 });
+  public typingHeading = new Typed({ minDelay: 30, maxDelay: 70 });
+  public typingDetails = new Typed({ minDelay: 20, maxDelay: 40, minEraseDelay: 20, maxEraseDelay: 40 });
 
   constructor(translateService: TranslateService) {
     this._translateService = translateService;

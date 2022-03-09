@@ -10,4 +10,3 @@ export * from './lib/services/menu.service';
 
 export * from './lib/util/random';
 export * from './lib/util/sleep';
-export * from './lib/util/typing';

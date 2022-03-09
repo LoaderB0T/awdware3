@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Typing, wait } from '@awdware/shared';
+import { wait } from '@awdware/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
+import { Typed } from 'rxjs-typed.ts';
 
 @Component({
   selector: 'awd-home',
@@ -14,9 +15,9 @@ export class HomeComponent implements OnInit {
   private readonly _translateService: TranslateService;
   private readonly _router: Router;
 
-  public readonly typing = new Typing();
-  public readonly typing2 = new Typing();
-  public readonly typing3 = new Typing();
+  public readonly typing = new Typed();
+  public readonly typing2 = new Typed();
+  public readonly typing3 = new Typed();
   public skip = false;
   public done$ = new BehaviorSubject(false);
 
