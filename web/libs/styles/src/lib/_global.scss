@@ -1,0 +1,52 @@
+@import 'vars';
+
+* {
+  font-family: $fontFamily;
+}
+
+body,
+html {
+  font-weight: $fontWeightNormal;
+  font-size: $fontSizeNormal;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  background-color: $colorBg1;
+  color: $colorContent1;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+body {
+  overflow: hidden;
+}
+
+:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+.window-bg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .window {
+    @include highlightable;
+  }
+}
+
+.textCursor {
+  animation: blinker 1060ms step-start infinite;
+  font-weight: bold;
+  display: inline-block;
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+}

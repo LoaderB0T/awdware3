@@ -1,4 +1,5 @@
 @import './colors.scss';
+@import './shadows.scss';
 
 @mixin clickable {
   cursor: pointer;
@@ -6,5 +7,15 @@
   transition: opacity 0.2s ease-in-out;
   &:hover {
     opacity: 1;
+  }
+}
+
+@mixin highlightable {
+  background: $colorBgHighlight_04;
+  transition: background-color 0.1s, box-shadow 0.1s;
+  box-shadow: $shadowWindow;
+  &:hover {
+    background: $colorBgHighlight_10;
+    box-shadow: $shadowWindowFocus;
   }
 }
