@@ -17,6 +17,7 @@
       }
     }
     img {
+      min-width: 200px; // Image smaller during load without this...
       width: 200px;
       height: 200px;
       transition: transform 0.2s;
