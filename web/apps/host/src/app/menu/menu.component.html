@@ -1,8 +1,9 @@
 <div class="main-container">
   <div class="items">
-    <div class="item"
-         [id]="'menu-item-' + item.id"
-         *ngFor="let item of menuItems$ | async">
+    <div *ngFor="let item of menuItems$ | async"
+         class="item"
+         [class.active]="item.id === (activeMenuItemId$ | async)"
+         [id]="'menu-item-' + item.id">
       <i class="fa-light fa-{{item.icon}}"
          (click)="clickedItem(item)"></i>
     </div>

@@ -11,6 +11,7 @@ export class MenuComponent {
   private readonly _menuService: MenuService;
   public menuItems$: Observable<MenuItem[]>;
   public activeMenuItemY$ = new BehaviorSubject<number>(-100);
+  public activeMenuItemId$ = new BehaviorSubject<string>('');
 
   constructor(menuService: MenuService) {
     this._menuService = menuService;
@@ -19,6 +20,7 @@ export class MenuComponent {
       const el = document.getElementById(`menu-item-${x}`);
       if (el) {
         this.activeMenuItemY$.next(el.offsetTop - 8); // 16px is the additional height of the line
+        this.activeMenuItemId$.next(x);
       }
     });
   }
