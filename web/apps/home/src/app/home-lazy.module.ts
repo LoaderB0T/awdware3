@@ -9,6 +9,11 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home.module').then(m => m.HomeModule),
     data: { activePage: 'home' }
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/home'
   }
 ];
 
