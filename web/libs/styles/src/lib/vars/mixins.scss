@@ -11,11 +11,9 @@
 }
 
 @mixin highlightable {
-  background: $colorBgHighlight_04;
+  background: $colorBgHighlight_03;
   transition: background-color 0.1s, box-shadow 0.1s;
-  box-shadow: $shadowWindow;
   &:hover {
-    background: $colorBgHighlight_10;
-    box-shadow: $shadowWindowFocus;
+    background: $colorBgHighlight_05;
   }
 }

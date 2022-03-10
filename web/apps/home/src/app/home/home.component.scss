@@ -16,7 +16,7 @@
     overflow: hidden;
     white-space: pre-wrap;
     word-break: break-all;
-    font-size: min(40px, 8vw);
+    font-size: min(40px, calc((100vw - 160px) * 0.08));
     ::ng-deep {
       .highlight {
         color: $colorAccent1;

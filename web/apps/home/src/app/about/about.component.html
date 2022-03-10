@@ -1,15 +1,26 @@
-<div class="window-bg">
-  <div class="window">
-    <div class="me-details">
-      <img [src]="'assets/img/me.png' | resourceMap:'home'">
-      <div class="text-details"
-           *awdLet="headingDone$ | async as headingDone">
-        <h1>{{ typingHeading.text$ | async }}<span class="textCursor"
-                *ngIf="!headingDone">_</span></h1>
-        <p>{{ typingDetails.text$ | async}}<span class="textCursor"
-                *ngIf="headingDone">_</span></p>
-      </div>
-    </div>
-    <awd-chart></awd-chart>
+<div class="me-details">
+  <img [src]="'assets/img/me.png' | resourceMap:'home'">
+  <div class="text-details"
+       *awdLet="headingDone$ | async as headingDone">
+    <h1>{{ typingHeading.text$ | async }}
+      <span class="textCursor"
+            *ngIf="!headingDone">_</span>
+    </h1>
+    <span class="details">
+      <span [innerHtml]="(typingDetails.text$ | async)">
+      </span>
+      <span class="textCursor"
+            *ngIf="headingDone">_</span>
+    </span>
+  </div>
+</div>
+<div class="skills-container">
+  <h2>Currently mainly working with</h2>
+  <div class="logos">
+    <a *ngFor="let skill of skills"
+       target="_blank"
+       [href]="skill.link">
+      <img [src]="'assets/img/logo_'+skill.image+'.svg' | resourceMap:'home'">
+    </a>
   </div>
 </div>

@@ -34,8 +34,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  .window-box {
+    min-width: min-content;
+    width: 100%;
+  }
   .window {
     @include highlightable;
+    overflow: auto;
   }
 }
 
@@ -49,4 +54,10 @@ body {
       opacity: 0;
     }
   }
+}
+
+.comment {
+  font-style: italic;
+  font-size: $fontSizeSmall;
+  color: $colorContent2;
 }
