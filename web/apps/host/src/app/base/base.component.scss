@@ -19,17 +19,22 @@ $menuWidth: 75px;
       z-index: 2;
 
       .content {
-        height: 100%;
-        width: 100%;
+        position: fixed;
+        height: 100vh;
+        width: calc(100vw - $menuWidth);
+        right: 0;
+        left: $menuWidth;
         z-index: 2;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        ::ng-deep > * {
-          max-height: 100%;
+        overflow: scroll;
+        ::ng-deep > *:not(router-outlet) {
           width: 100%;
-          overflow-y: scroll;
+          max-width: calc(100vw - $menuWidth - $scollbarWidth);
+          min-height: calc(100vh - $scollbarWidth);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          min-width: min-content;
         }
       }
     }

@@ -4,10 +4,9 @@
   display: flex;
   gap: 50px;
   flex-direction: column;
-  align-items: center;
   .me-details {
     display: flex;
-    width: 600px;
+    width: 800px;
     border-radius: 0 40px 40px 40px;
     @include highlightable;
     &:hover {
@@ -16,9 +15,9 @@
       }
     }
     img {
-      min-width: 200px; // Image smaller during load without this...
-      width: 200px;
-      height: 200px;
+      min-width: 300px; // Image smaller during load without this...
+      width: 300px;
+      height: 300px;
       transition: transform 0.2s;
       background-color: rgb(241 241 241);
       border-radius: 0 40px 0 40px;

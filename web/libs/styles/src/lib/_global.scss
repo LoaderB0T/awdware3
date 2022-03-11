@@ -62,18 +62,19 @@ body {
   color: $colorContent3;
 }
 
+/*
+  Scrollbar styles
+*/
 $scrollbarBg: $colorBg1;
 $scrollbarThumb: $colorContent2;
 $scollbarThumbHover: $colorContent1;
-
 * {
   scrollbar-width: auto;
   scrollbar-color: $scrollbarThumb $scrollbarBg;
 }
-
 *::-webkit-scrollbar {
-  width: 15px;
-  height: 15px;
+  width: $scollbarWidth;
+  height: $scollbarWidth;
 }
 *::-webkit-scrollbar-track {
   background-color: $scrollbarBg;
@@ -86,4 +87,7 @@ $scollbarThumbHover: $colorContent1;
   &:hover {
     background-color: $scollbarThumbHover;
   }
+}
+::-webkit-scrollbar-corner {
+  background: $scrollbarBg;
 }
