@@ -12,30 +12,24 @@ $menuWidth: 75px;
     display: flex;
     height: 100%;
     width: 100%;
-    .content-parent {
-      width: calc(100vw - $menuWidth);
-      height: 100vh;
-      flex-grow: 1;
-      z-index: 2;
 
-      .content {
-        position: fixed;
-        height: 100vh;
-        width: calc(100vw - $menuWidth);
-        right: 0;
-        left: $menuWidth;
-        z-index: 2;
-        overflow: scroll;
-        ::ng-deep > *:not(router-outlet) {
-          width: 100%;
-          max-width: calc(100vw - $menuWidth - $scollbarWidth);
-          min-height: calc(100vh - $scollbarWidth);
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          min-width: min-content;
-        }
+    .content {
+      position: fixed;
+      height: 100vh;
+      width: calc(100vw - $menuWidth);
+      right: 0;
+      left: $menuWidth;
+      z-index: 2;
+      overflow: scroll;
+      ::ng-deep > *:not(router-outlet) {
+        width: 100%;
+        max-width: calc(100vw - $menuWidth - $scollbarWidth);
+        min-height: calc(100vh - $scollbarWidth);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-width: min-content;
       }
     }
     awd-menu {

@@ -4,11 +4,9 @@
   </div>
   <div class="menu-content-container">
     <awd-menu></awd-menu>
-    <div class="content-parent"
+    <div class="content"
          [@routeAnimations]="prepareRoute(outlet)">
-      <div class="content">
-        <router-outlet #outlet="outlet"></router-outlet>
-      </div>
+      <router-outlet #outlet="outlet"></router-outlet>
     </div>
   </div>
 </div>
