@@ -59,5 +59,31 @@ body {
 .comment {
   font-style: italic;
   font-size: $fontSizeSmall;
-  color: $colorContent2;
+  color: $colorContent3;
+}
+
+$scrollbarBg: $colorBg1;
+$scrollbarThumb: $colorContent2;
+$scollbarThumbHover: $colorContent1;
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: $scrollbarThumb $scrollbarBg;
+}
+
+*::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+*::-webkit-scrollbar-track {
+  background-color: $scrollbarBg;
+  border-radius: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: $scrollbarThumb;
+  border-radius: 10px;
+  border: 4px $scrollbarBg solid;
+  &:hover {
+    background-color: $scollbarThumbHover;
+  }
 }

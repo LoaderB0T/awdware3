@@ -12,17 +12,25 @@ $menuWidth: 75px;
     display: flex;
     height: 100%;
     width: 100%;
-    .content {
-      width: calc(100% - $menuWidth);
+    .content-parent {
+      width: calc(100vw - $menuWidth);
+      height: 100vh;
       flex-grow: 1;
-      overflow-y: auto;
       z-index: 2;
 
-      ::ng-deep > * {
-        position: fixed;
+      .content {
         height: 100%;
-        width: calc(100% - $menuWidth);
+        width: 100%;
         z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        ::ng-deep > * {
+          max-height: 100%;
+          width: 100%;
+          overflow-y: scroll;
+        }
       }
     }
     awd-menu {
