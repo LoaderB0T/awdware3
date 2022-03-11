@@ -3,7 +3,9 @@ $fontFamily: 'Montserrat', sans-serif;
 $fontWeightNormal: 400;
 $fontWeightBold: 700;
 
-$fontSizeSmall: 14px;
-$fontSizeNormal: 16px;
-$fontSizeLarge: 18px;
-$fontSizeGiant: 24px;
+$fontSizeBase: 16px;
+
+$fontSizeSmall: 0.875 * $fontSizeBase;
+$fontSizeNormal: $fontSizeBase;
+$fontSizeLarge: 1.125 * $fontSizeBase;
+$fontSizeGiant: 1.5 * $fontSizeBase;
