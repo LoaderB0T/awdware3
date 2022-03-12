@@ -2,10 +2,10 @@
   <div class="items">
     <div *ngFor="let item of menuItems$ | async"
          class="item"
+         (click)="clickedItem(item)"
          [class.active]="item.id === (activeMenuItemId$ | async)"
          [id]="'menu-item-' + item.id">
-      <i class="fa-light fa-{{item.icon}}"
-         (click)="clickedItem(item)"></i>
+      <i class="fa-light fa-{{item.icon}}"></i>
     </div>
     <div class="active-item"
          [style.top.px]="activeMenuItemY$ | async"></div>

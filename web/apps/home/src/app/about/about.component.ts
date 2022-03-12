@@ -63,7 +63,7 @@ export class AboutComponent implements OnInit {
     }
     const thisIsMe = this._translateService.instant('about.thisIsMe');
     const overview = this._translateService.instant('about.overview', { age });
-    await this.typingHeading.start(thisIsMe);
+    await this.typingHeading.start(thisIsMe, { initialDelay: 750 });
     this._headingDone.next(true);
     await this.typingDetails.start('tl;dr:\n', {}, 'comment');
     await this.typingDetails.start(`\n${overview}`);
