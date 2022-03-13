@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
     await this.typing.start('\n');
     await wait(this.skip ? 0 : 600);
     if (!this.skip) {
-      await this.typing.start(ilike + ' ');
+      await this.typing.start(`${ilike} `);
       const likes = ['Web Development', 'TypeScript', 'Angular', 'C# & .NET', 'Automation (CI/CD)'];
       for (const like of likes) {
         if (this.skip) {
