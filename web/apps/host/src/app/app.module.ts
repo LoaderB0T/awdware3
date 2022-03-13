@@ -4,12 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { SharedModule, ThemeService } from '@awdware/shared';
+import { SharedModule, ThemeService, TranslationService } from '@awdware/shared';
 import { BaseComponent } from './base/base.component';
 import { BgComponent } from './bg/bg.component';
 import { routes } from './routes';
-import { DynamicTranslationService, loadedModules } from 'ng-dynamic-mf';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { loadedModules } from 'ng-dynamic-mf';
+import { TranslateModule } from '@ngx-translate/core';
 import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
@@ -26,13 +26,8 @@ import { MenuComponent } from './menu/menu.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(
-    themeService: ThemeService,
-    translateService: TranslateService,
-    dynamicTranslationService: DynamicTranslationService
-  ) {
+  constructor(themeService: ThemeService, translationService: TranslationService) {
     themeService.init();
-    translateService.setDefaultLang('en');
-    dynamicTranslationService.setTranslateService(translateService);
+    translationService.init();
   }
 }
