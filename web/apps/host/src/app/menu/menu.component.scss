@@ -1,6 +1,6 @@
 @import 'vars';
 
-$itemHeight: 48px;
+$itemHeight: 64px;
 $borderWidth: 2px;
 $activeItemMarkerHeight: $itemHeight + 16px;
 
@@ -27,7 +27,7 @@ $activeItemMarkerHeight: $itemHeight + 16px;
       width: 100%;
       @include clickable;
       @include hover-scale;
-      font-size: 40px;
+      font-size: 54px;
     }
   }
   .active-item {
