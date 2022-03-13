@@ -18,3 +18,11 @@
     background: $colorBgHighlight_05;
   }
 }
+
+@mixin hover-scale {
+  transform: scale(1);
+  transition: transform 0.2s;
+  &:hover {
+    transform: scale(1.1);
+  }
+}

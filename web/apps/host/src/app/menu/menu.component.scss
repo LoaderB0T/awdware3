@@ -26,6 +26,7 @@ $activeItemMarkerHeight: $itemHeight + 16px;
       height: $itemHeight;
       width: 100%;
       @include clickable;
+      @include hover-scale;
       font-size: 40px;
     }
   }
