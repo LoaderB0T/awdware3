@@ -2,6 +2,12 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DynamicTranslationService } from 'ng-dynamic-mf';
 
+const internalLenId = {
+  en: '',
+  de: ''
+};
+export declare type LenID = keyof typeof internalLenId;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -42,9 +48,3 @@ export class TranslationService {
     return Object.prototype.hasOwnProperty.call(internalLenId, len);
   }
 }
-
-export declare type LenID = keyof typeof internalLenId;
-const internalLenId = {
-  en: '',
-  de: ''
-};
