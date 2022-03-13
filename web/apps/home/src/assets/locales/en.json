@@ -11,6 +11,15 @@
   },
   "about": {
     "thisIsMe": "<-- This is me!",
-    "overview": "Janik Schumacher\nSoftware Developer\n{{age}} years old\nBased in Germany near Cologne."
+    "overview": "Janik Schumacher\nSoftware Developer\n{{age}} years old\nBased in Germany near Cologne.",
+    "workingWith": "Currently mainly working with",
+    "description": {
+      "title": "What do I do?",
+      "intro": "I am a fullstack software developer currently focussing on frontend development. I am very passionate about frontend architecture and building enterprise-level web applications. I always strive to learn new technologies and keep up with the latest trends.",
+      "bachelor": "I have a Bachelor of Science in ",
+      "bachelorLink": "https://www.fh-aachen.de/en/course-of-study/angewandte-mathematik-und-informatik-bsc",
+      "bachelorFrom": "(Applied Mathematics and Informatics) from the University of Applied Sciences",
+      "bachelorFromLink": "https://www.fh-aachen.de/en/"
+    }
   }
 }

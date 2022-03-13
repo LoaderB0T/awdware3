@@ -14,13 +14,33 @@
     </span>
   </div>
 </div>
+
+<div class="short-description-container">
+  <div class="header">
+    <h2>{{'about.description.title' | translate}}</h2>
+  </div>
+  <p>
+    {{'about.description.intro' | translate}}
+  </p>
+  <p>
+    {{'about.description.bachelor' | translate}}
+    <a [href]="'about.description.bachelorLink' | translate"
+       target="blank">
+      Scientific Programming</a>
+    {{'about.description.bachelorFrom' | translate}}
+    <a [href]="'about.description.bachelorFromLink' | translate"
+       target="blank">
+      FH Aachen</a>.
+  </p>
+</div>
+
 <div class="skills-container">
-  <h2>Currently mainly working with</h2>
+  <h2>{{ 'about.workingWith' | translate }}</h2>
   <div class="logos">
     <a *ngFor="let skill of skills"
        target="_blank"
        [href]="skill.link">
-      <img [src]="'assets/img/logo_'+skill.image+'.svg' | resourceMap:'home'">
+      <img [src]="'assets/img/logo_' + skill.image + '.svg' | resourceMap:'home'">
     </a>
   </div>
 </div>

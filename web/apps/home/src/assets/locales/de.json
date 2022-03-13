@@ -11,6 +11,15 @@
   },
   "about": {
     "thisIsMe": "<-- Das bin ich!",
-    "overview": "Janik Schumacher\nSoftwareentwichkler\n{{age}} Jahre alt\nWohnhaft nahe Köln."
+    "overview": "Janik Schumacher\nSoftwareentwichkler\n{{age}} Jahre alt\nWohnhaft nahe Köln.",
+    "workingWith": "Ich arbeite aktuell überwiegend mit",
+    "description": {
+      "title": "Was mache ich so?",
+      "intro": "Ich bin ein Fullstack Software Entwickler und fokussiere mich aktuell auf frontend Entwicklung. Ich begeistere mich für Frontend Architektur und das Bauen von Enterprise-Level Web Anwendungen. Ich strebe stets danach neue Technologien zu lernen und mit den neusten Trends mitzuhalten.",
+      "bachelor": "Ich habe einen Bachelor of Science in ",
+      "bachelorLink": "https://www.fh-aachen.de/studium/angewandte-mathematik-und-informatik-bsc",
+      "bachelorFrom": "(Angewandte Mathematik und Informatik) von der University of Applied Sciences",
+      "bachelorFromLink": "https://www.fh-aachen.de/"
+    }
   }
 }

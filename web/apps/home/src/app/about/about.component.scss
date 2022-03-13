@@ -57,4 +57,16 @@
       }
     }
   }
+  .short-description-container {
+    max-width: min(80%, 1000px);
+    .header {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    p {
+      text-align: justify;
+    }
+  }
 }
