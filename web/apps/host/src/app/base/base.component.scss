@@ -23,8 +23,8 @@ $menuWidth: 75px;
       overflow: scroll;
       ::ng-deep > *:not(router-outlet) {
         width: 100%;
-        max-width: calc(100vw - $menuWidth - $scollbarWidth);
-        min-height: calc(100vh - $scollbarWidth);
+        max-width: calc(100vw - $menuWidth - $saveScrollbarWidth);
+        min-height: calc(100vh - $saveScrollbarWidth);
         display: flex;
         flex-direction: column;
         justify-content: center;
