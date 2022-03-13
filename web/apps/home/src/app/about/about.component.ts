@@ -22,7 +22,7 @@ export class AboutComponent implements OnInit {
   public readonly headingDone$ = this._headingDone.asObservable();
 
   public typingHeading = new Typed({ minDelay: 30, maxDelay: 70 });
-  public typingDetails = new Typed({ minDelay: 20, maxDelay: 40, minEraseDelay: 20, maxEraseDelay: 40 });
+  public typingDetails = new Typed({ minDelay: 5, maxDelay: 20, minEraseDelay: 40, maxEraseDelay: 80 });
 
   public skills: Skill[] = [
     {
