@@ -33,7 +33,7 @@
       flex-direction: column;
       white-space: pre-wrap;
       .details {
-        span {
+        & > span {
           display: inline;
         }
         &::ng-deep {
@@ -43,6 +43,19 @@
           }
         }
       }
+    }
+  }
+  .short-description-container {
+    max-width: 1000px;
+    .header {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    p {
+      text-align: justify;
+      hyphens: auto;
     }
   }
   .skills-container {
@@ -56,18 +69,6 @@
         height: 60px;
         @include hover-scale;
       }
-    }
-  }
-  .short-description-container {
-    max-width: min(85%, 1000px);
-    .header {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    p {
-      text-align: justify;
     }
   }
 }

@@ -1,14 +1,15 @@
 <div class="main-container">
-  <div class="me-details">
+  <div class="me-details"
+       *awdLet="langChanged$ | async as langChanged">
     <img [src]="'assets/img/me.png' | resourceMap:'home'">
     <div class="text-details"
          *awdLet="headingDone$ | async as headingDone">
-      <h1>{{ typingHeading.text$ | async }}
-        <span class="textCursor"
+      <h1 *ngIf="!langChanged; else staticText1">{{ typingHeading.text$ | async }}<span class="textCursor"
               *ngIf="!headingDone">_</span>
       </h1>
       <span class="details">
-        <span [innerHtml]="(typingDetails.text$ | async)">
+        <span *ngIf="!langChanged; else staticText2"
+              [innerHtml]="(typingDetails.text$ | async)">
         </span>
         <span class="textCursor"
               *ngIf="headingDone">_</span>
@@ -46,3 +47,12 @@
     </div>
   </div>
 </div>
+
+
+<ng-template #staticText1>
+  <h1>{{'about.thisIsMe' | translate}}</h1>
+</ng-template>
+<ng-template #staticText2>
+  <span><span class="comment">tl;dr:</span>
+    <br>{{'about.overview' | translate: {age} }}</span>
+</ng-template>

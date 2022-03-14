@@ -1,11 +1,15 @@
 <div class="content">
-  <div id="homeBox">
+  <div id="homeBox"
+       *awdLet="langChanged$ | async as langChanged">
     <span class="typing"
-          [innerHtml]="typing.text$ | async"></span>
+          *ngIf="!langChanged; else staticText1"
+          [innerHtml]="typing1.text$ | async"></span>
     <span class="typing link highlight"
+          *ngIf="!langChanged; else staticText2"
           (click)="learnMore()"
           [innerHtml]="typing2.text$ | async"></span>
     <span class="typing"
+          *ngIf="!langChanged; else staticText3"
           [innerHtml]="typing3.text$ | async"></span>
     <span class="textCursor">_</span>
 
@@ -21,3 +25,17 @@
     </div>
   </div>
 </div>
+<ng-template #staticText1>
+  <span class="typing">{{'home.typing.hi' | translate}}
+    <br>{{'home.typing.iam' | translate}} <span class="highlight">Janik</span>.
+    <br>{{'home.typing.click' | translate}}
+  </span>
+</ng-template>
+
+<ng-template #staticText2>
+  <span class="typing link highlight">{{'home.typing.here' | translate}}</span>
+</ng-template>
+
+<ng-template #staticText3>
+  <span class="typing"> {{'home.typing.toLearnMore' | translate}}</span>
+</ng-template>

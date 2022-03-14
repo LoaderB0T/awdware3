@@ -1,4 +1,7 @@
 <div class="main-container">
+  <div>
+    <!-- empty for flexbox -->
+  </div>
   <div class="items">
     <div *ngFor="let item of menuItems$ | async"
          class="item"
@@ -9,5 +12,11 @@
     </div>
     <div class="active-item"
          [style.top.px]="activeMenuItemY$ | async"></div>
+  </div>
+  <div class="items end-items">
+    <div class="item"
+         (click)="switchLanguage()">
+      <i class="fa-light fa-language"></i>
+    </div>
   </div>
 </div>

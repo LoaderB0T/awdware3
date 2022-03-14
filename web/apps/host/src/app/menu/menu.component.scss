@@ -6,8 +6,9 @@ $activeItemMarkerHeight: $itemHeight + 16px;
 
 .main-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 100%;
   width: 100%;
   border-right: $borderWidth solid $colorAccent1;
@@ -19,6 +20,9 @@ $activeItemMarkerHeight: $itemHeight + 16px;
     align-items: center;
     width: 100%;
     gap: 25px;
+    &.end-items {
+      padding-bottom: 40px;
+    }
     .item {
       display: flex;
       align-items: center;
