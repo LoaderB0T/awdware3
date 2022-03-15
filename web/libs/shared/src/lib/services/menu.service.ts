@@ -6,7 +6,7 @@ import { MenuItem } from '../models/menu-item.model';
 export class MenuService {
   public menuItems$ = new BehaviorSubject<MenuItem[]>([]);
   public activeMenuItem$ = new BehaviorSubject<string>('');
-  public menuOpen$ = new BehaviorSubject<boolean>(true);
+  public menuOpen$ = new BehaviorSubject<boolean>(false);
 
   public addMenuItems(...menuItems: MenuItem[]) {
     const _menuItems = this.menuItems$.getValue();

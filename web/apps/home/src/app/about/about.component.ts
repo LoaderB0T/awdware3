@@ -51,7 +51,8 @@ export class AboutComponent implements OnInit {
   private async typeIntro(): Promise<void> {
     const thisIsMe = this._translateService.instant('about.thisIsMe');
     const overview = this._translateService.instant('about.overview', { age: this.age });
-    await this.typingHeading.start(thisIsMe, { initialDelay: 750 });
+    await this.typingHeading.start('<-- ', { initialDelay: 750 }, 'arrow');
+    await this.typingHeading.start(thisIsMe);
     this._headingDone.next(true);
     await this.typingDetails.start('tl;dr:\n', {}, 'comment');
     await this.typingDetails.start(`\n${overview}`);

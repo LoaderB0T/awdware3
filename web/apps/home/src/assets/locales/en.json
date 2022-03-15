@@ -10,7 +10,7 @@
     }
   },
   "about": {
-    "thisIsMe": "<-- This is me!",
+    "thisIsMe": "This is me!",
     "overview": "Janik Schumacher\nSoftware Developer\n{{age}} years old\nBased in Germany near Cologne.",
     "workingWith": "Currently mainly working with",
     "description": {

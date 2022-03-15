@@ -10,7 +10,7 @@
     }
   },
   "about": {
-    "thisIsMe": "<-- Das bin ich!",
+    "thisIsMe": "Das bin ich!",
     "overview": "Janik Schumacher\nSoftwareentwichkler\n{{age}} Jahre alt\nWohnhaft nahe Köln.",
     "workingWith": "Ich arbeite aktuell überwiegend mit",
     "description": {

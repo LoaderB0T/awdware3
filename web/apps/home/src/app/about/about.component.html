@@ -4,7 +4,8 @@
     <img [src]="'assets/img/me.png' | resourceMap:'home'">
     <div class="text-details"
          *awdLet="headingDone$ | async as headingDone">
-      <h1 *ngIf="!langChanged; else staticText1">{{ typingHeading.text$ | async }}<span class="textCursor"
+      <h1 *ngIf="!langChanged; else staticText1"
+          [innerHtml]="typingHeading.text$ | async"><span class="textCursor"
               *ngIf="!headingDone">_</span>
       </h1>
       <span class="details">

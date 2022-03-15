@@ -37,9 +37,12 @@ $phoneMenuButtonHeight: 60px;
         justify-content: center;
         align-items: center;
         min-width: min-content;
-        min-height: calc(100vh - $saveScrollbarWidth);
         @include not-phone {
+          min-height: calc(100vh - $saveScrollbarWidth);
           max-width: calc(100vw - $menuWidth - $saveScrollbarWidth);
+        }
+        @include phone {
+          min-height: calc(100vh - $saveScrollbarWidth - $phoneMenuButtonHeight);
         }
       }
     }

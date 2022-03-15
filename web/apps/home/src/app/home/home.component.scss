@@ -10,13 +10,22 @@
 
   #homeBox {
     position: relative;
-    width: 666px;
-    max-width: 90%;
-    height: 200px;
+    @include not-phone {
+      width: 666px;
+      height: 200px;
+      max-width: 90%;
+      font-size: min(40px, calc((100vw - 160px) * 0.08));
+    }
+    @include phone {
+      width: calc(100% - 20px);
+      height: 165px;
+      font-size: calc((100vw - 20px) * 0.06);
+      padding: 0 10px;
+    }
     overflow: hidden;
     white-space: pre-wrap;
     word-break: break-all;
-    font-size: min(40px, calc((100vw - 160px) * 0.08));
+
     ::ng-deep {
       .highlight {
         color: $colorAccent1;
@@ -31,7 +40,12 @@
     .action-icon {
       position: absolute;
       bottom: 0;
-      left: 0;
+      @include not-phone {
+        left: 0;
+      }
+      @include phone {
+        left: 10px;
+      }
       font-size: 28px;
       @include clickable;
     }
