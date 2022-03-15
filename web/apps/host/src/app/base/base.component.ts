@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
-import { MenuService, randomInt } from '@awdware/shared';
+import { PreloadService, MenuService, randomInt } from '@awdware/shared';
 import { slideInAnimation } from './router-animation';
 
 @Component({
@@ -13,11 +13,13 @@ import { slideInAnimation } from './router-animation';
 })
 export class BaseComponent implements AfterViewInit {
   private readonly _menuService: MenuService;
+  private readonly _preloadService: PreloadService;
   private _prevActiveRoute = '';
   private _loaded = false;
 
-  constructor(title: Title, menuService: MenuService) {
+  constructor(title: Title, menuService: MenuService, preloadService: PreloadService) {
     this._menuService = menuService;
+    this._preloadService = preloadService;
     const rndmTitleEmojis = [
       '*^____^*',
       'O(∩_∩)O',
@@ -52,8 +54,15 @@ export class BaseComponent implements AfterViewInit {
     title.setTitle(`awdware   ${rndmTitleEmoji}`);
   }
 
-  ngAfterViewInit(): void {
+  public ngAfterViewInit(): void {
     this._loaded = true;
+  }
+
+  public get preloadIcons$() {
+    return this._preloadService.icons$;
+  }
+  public get preloadImgs$() {
+    return this._preloadService.imgs$;
   }
 
   public prepareRoute(outlet: RouterOutlet) {

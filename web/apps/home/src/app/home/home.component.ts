@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslationService, wait } from '@awdware/shared';
+import { PreloadService, TranslationService, wait } from '@awdware/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 import { Typed } from 'rxjs-typed.ts';
@@ -24,10 +24,16 @@ export class HomeComponent implements OnInit {
   public skip = false;
   public done$ = new BehaviorSubject(false);
 
-  constructor(translateService: TranslateService, translationService: TranslationService, router: Router) {
+  constructor(
+    translateService: TranslateService,
+    translationService: TranslationService,
+    router: Router,
+    preloadService: PreloadService
+  ) {
     this._translateService = translateService;
     this._translationService = translationService;
     this._router = router;
+    preloadService.addIcons(['forward', 'rotate-right']);
   }
 
   public ngOnInit(): void {

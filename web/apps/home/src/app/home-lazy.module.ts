@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule, Routes } from '@angular/router';
-import { RouterEntryService } from 'ng-dynamic-mf';
-import { MenuItem, MenuService, randomInt } from '@awdware/shared';
+import { resourceMapper, RouterEntryService } from 'ng-dynamic-mf';
+import { PreloadService, MenuItem, MenuService, randomInt } from '@awdware/shared';
+import { contacts } from './about/contacts';
+import { skills } from './skills/skills';
 
 const routes: Routes = [
   {
@@ -17,6 +19,17 @@ const routes: Routes = [
   }
 ];
 
+const userIcons = [
+  'user-bounty-hunter',
+  'user-astronaut',
+  'user-ninja',
+  'user-alien',
+  'user-secret',
+  'user-robot',
+  'user-cowboy',
+  'user-tie'
+];
+
 @NgModule({
   declarations: [],
   imports: [CommonModule, RouterModule]
@@ -24,8 +37,12 @@ const routes: Routes = [
 export class HomeLazyModule {
   private _currentUserIcon = '';
 
-  constructor(routerEntryService: RouterEntryService, menuService: MenuService, router: Router) {
+  constructor(routerEntryService: RouterEntryService, menuService: MenuService, router: Router, preloadService: PreloadService) {
     routerEntryService.registerRoutes(routes);
+    preloadService.addIcons([...userIcons, 'house-blank', 'house-user', 'user', 'list', 'list-check']);
+    preloadService.addImages(contacts.map(c => resourceMapper('home', `assets/img/logo_${c.image}.svg`)));
+    preloadService.addImages(skills.map(s => resourceMapper('home', `assets/img/logo_${s.image}.svg`)));
+    preloadService.addImages([resourceMapper('home', `assets/img/me.png`)]);
 
     const menuItems: MenuItem[] = [
       {
@@ -59,16 +76,6 @@ export class HomeLazyModule {
   }
 
   private randomuserIcon(): string {
-    const userIcons = [
-      'user-bounty-hunter',
-      'user-astronaut',
-      'user-ninja',
-      'user-alien',
-      'user-secret',
-      'user-robot',
-      'user-cowboy',
-      'user-tie'
-    ];
     let newIcon = this._currentUserIcon;
     while (newIcon === this._currentUserIcon) {
       newIcon = userIcons[randomInt(0, userIcons.length - 1)];

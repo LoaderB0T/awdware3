@@ -5,6 +5,7 @@ export * from './lib/directives/awd-let.directive';
 export * from './lib/models/theme.model';
 export * from './lib/models/menu-item.model';
 
+export * from './lib/services/icon.service';
 export * from './lib/services/theme.service';
 export * from './lib/services/menu.service';
 export * from './lib/services/translation.service';

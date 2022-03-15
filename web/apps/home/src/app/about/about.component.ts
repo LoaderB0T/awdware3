@@ -3,12 +3,7 @@ import { TranslationService } from '@awdware/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 import { Typed } from 'rxjs-typed.ts';
-
-type Contact = {
-  name: string;
-  image: string;
-  link: string;
-};
+import { contacts } from './contacts';
 
 @Component({
   selector: 'awd-about',
@@ -29,28 +24,7 @@ export class AboutComponent implements OnInit {
   public typingDetails = new Typed({ minDelay: 5, maxDelay: 20, minEraseDelay: 40, maxEraseDelay: 80 });
   public readonly age: number;
 
-  public readonly contacts: Contact[] = [
-    {
-      image: 'github',
-      name: 'GitHub',
-      link: 'https://github.com/LoaderB0T/'
-    },
-    {
-      image: 'xing',
-      name: 'Xing',
-      link: 'https://www.xing.com/profile/Janik_Schumacher'
-    },
-    {
-      image: 'twitter',
-      name: 'Twitter',
-      link: 'https://twitter.com/LoaderB0T'
-    },
-    {
-      image: 'linkedin',
-      name: 'LinkedIn',
-      link: 'https://www.linkedin.com/in/janikschumacher/'
-    }
-  ];
+  public contacts = contacts;
 
   constructor(translateService: TranslateService, translationService: TranslationService) {
     this._translateService = translateService;

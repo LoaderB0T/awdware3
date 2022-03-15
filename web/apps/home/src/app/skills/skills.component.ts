@@ -1,10 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-
-type Skill = {
-  name: string;
-  image: string;
-  link: string;
-};
+import { skills } from './skills';
 
 @Component({
   selector: 'awd-skills',
@@ -13,23 +8,7 @@ type Skill = {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkillsComponent implements OnInit {
-  public skills: Skill[] = [
-    {
-      image: 'angular',
-      name: 'Angular',
-      link: 'https://angular.io/'
-    },
-    {
-      image: 'ts',
-      name: 'TypeScript',
-      link: 'https://www.typescriptlang.org/'
-    },
-    {
-      image: 'node',
-      name: 'Node.js',
-      link: 'https://nodejs.org/'
-    }
-  ];
+  public skills = skills;
 
   constructor() {}
 
