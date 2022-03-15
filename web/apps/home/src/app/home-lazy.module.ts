@@ -30,7 +30,8 @@ export class HomeLazyModule {
     const menuItems: MenuItem[] = [
       {
         id: 'home',
-        icon: 'home',
+        icon: 'house-blank',
+        iconActive: 'house-user',
         title: 'Home',
         action: () => router.navigate(['home']),
         order: 1
@@ -47,8 +48,8 @@ export class HomeLazyModule {
       },
       {
         id: 'skills',
-        icon: 'lightbulb',
-        iconActive: 'lightbulb-on',
+        icon: 'list',
+        iconActive: 'list-check',
         title: 'Skills',
         action: () => router.navigate(['home/skills']),
         order: 3
