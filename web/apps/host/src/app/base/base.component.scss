@@ -1,6 +1,7 @@
 @import 'vars';
 
 $menuWidth: 100px;
+$phoneMenuButtonHeight: 60px;
 
 #app-main {
   display: flex;
@@ -15,38 +16,71 @@ $menuWidth: 100px;
 
     .content {
       position: fixed;
-      height: 100vh;
-      width: calc(100vw - $menuWidth);
       right: 0;
-      left: $menuWidth;
       z-index: 2;
       overflow: scroll;
+      @include not-phone {
+        height: 100vh;
+        width: calc(100vw - $menuWidth);
+        left: $menuWidth;
+      }
+      @include phone {
+        height: calc(100vh - $phoneMenuButtonHeight);
+        top: $phoneMenuButtonHeight;
+        width: 100vw;
+        left: 0;
+      }
       ::ng-deep > *:not(router-outlet) {
         width: 100%;
-        max-width: calc(100vw - $menuWidth - $saveScrollbarWidth);
-        min-height: calc(100vh - $saveScrollbarWidth);
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         min-width: min-content;
+        min-height: calc(100vh - $saveScrollbarWidth);
+        @include not-phone {
+          max-width: calc(100vw - $menuWidth - $saveScrollbarWidth);
+        }
       }
     }
     awd-menu {
-      z-index: 1;
       height: 100%;
-      width: $menuWidth;
+      @include not-phone {
+        z-index: 1;
+        width: $menuWidth;
+      }
+      @include phone {
+        z-index: 3;
+        width: 100vw;
+        &:not(.open) {
+          height: $phoneMenuButtonHeight;
+        }
+      }
     }
   }
   .bg {
-    width: 90%;
     height: 100%;
     position: absolute;
     top: 0;
     right: 0;
-    left: $menuWidth;
     bottom: 0;
     margin: auto;
     z-index: 0;
+    @include not-phone {
+      width: 90%;
+      max-width: calc(100% - $menuWidth);
+      left: $menuWidth;
+    }
+    @include phone {
+      left: 20px;
+      width: calc(100% - 20px);
+      max-width: unset;
+    }
   }
+}
+
+.preload-container {
+  position: fixed;
+  top: 99999px;
+  left: 99999px;
 }

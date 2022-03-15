@@ -10,7 +10,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class MenuComponent {
   private readonly _menuService: MenuService;
   private readonly _translationService: TranslationService;
-  public menuItems$: Observable<MenuItem[]>;
+  public readonly menuItems$: Observable<MenuItem[]>;
+  public readonly menuOpen$: BehaviorSubject<boolean>;
   public activeMenuItemY$ = new BehaviorSubject<number>(-100);
   public activeMenuItemId$ = new BehaviorSubject<string>('');
 
@@ -18,6 +19,7 @@ export class MenuComponent {
     this._menuService = menuService;
     this._translationService = translationService;
     this.menuItems$ = this._menuService.menuItems$;
+    this.menuOpen$ = this._menuService.menuOpen$;
     this._menuService.activeMenuItem$.subscribe(x => {
       const el = document.getElementById(`menu-item-${x}`);
       if (el) {
@@ -29,6 +31,17 @@ export class MenuComponent {
 
   public clickedItem(menuItem: MenuItem) {
     menuItem.action();
+    if (this._menuService.menuOpen$.value) {
+      this.closeMenu();
+    }
+  }
+
+  public openMenu() {
+    this._menuService.menuOpen$.next(true);
+  }
+
+  public closeMenu() {
+    this._menuService.menuOpen$.next(false);
   }
 
   // @todo change to interactive ui

@@ -1,4 +1,5 @@
-<div class="main-container">
+<div class="main-container"
+     [class.open]="menuOpen$ | async">
   <div>
     <!-- empty for flexbox -->
   </div>
@@ -21,4 +22,10 @@
       <i class="fa-light fa-language"></i>
     </div>
   </div>
+</div>
+
+<div class="menu-button"
+     (click)="openMenu()"
+     *ngIf="(menuOpen$ | async) === false">
+  <i class="fa-light fa-bars"></i>
 </div>

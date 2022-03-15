@@ -3,7 +3,7 @@
     <awd-bg></awd-bg>
   </div>
   <div class="menu-content-container">
-    <awd-menu></awd-menu>
+    <awd-menu [class.open]="menuOpen$ | async"></awd-menu>
     <div class="content"
          [@routeAnimations]="prepareRoute(outlet)">
       <router-outlet #outlet="outlet"></router-outlet>

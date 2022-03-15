@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectionStrategy, Component } from '@angular/core
 import { Title } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
 import { PreloadService, MenuService, randomInt } from '@awdware/shared';
+import { Observable } from 'rxjs';
 import { slideInAnimation } from './router-animation';
 
 @Component({
@@ -16,10 +17,12 @@ export class BaseComponent implements AfterViewInit {
   private readonly _preloadService: PreloadService;
   private _prevActiveRoute = '';
   private _loaded = false;
+  public readonly menuOpen$: Observable<boolean>;
 
   constructor(title: Title, menuService: MenuService, preloadService: PreloadService) {
     this._menuService = menuService;
     this._preloadService = preloadService;
+    this.menuOpen$ = menuService.menuOpen$;
     const rndmTitleEmojis = [
       '*^____^*',
       'O(∩_∩)O',

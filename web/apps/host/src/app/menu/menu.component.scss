@@ -11,7 +11,20 @@ $activeItemMarkerHeight: $itemHeight + 16px;
   justify-content: space-between;
   height: 100%;
   width: 100%;
-  border-right: $borderWidth solid $colorAccent1;
+  @include not-phone {
+    border-right: $borderWidth solid $colorAccent1;
+  }
+  @include phone {
+    transition: opacity 0.2s ease-in-out;
+    &:not(.open) {
+      opacity: 0;
+      touch-action: none;
+      pointer-events: none;
+    }
+    opacity: 1;
+    position: fixed;
+    background: $colorBg1;
+  }
   position: relative;
   .items {
     display: flex;
@@ -41,5 +54,21 @@ $activeItemMarkerHeight: $itemHeight + 16px;
     background: $colorAccent2;
     right: -$borderWidth;
     transition: top 300ms cubic-bezier(0.97, -0.08, 0.555, 1.16);
+    @include phone {
+      display: none;
+    }
   }
+}
+
+.menu-button {
+  @include not-phone {
+    display: none;
+  }
+  i {
+    @include clickable;
+    font-size: 44px;
+  }
+  position: fixed;
+  left: 10px;
+  top: 10px;
 }
