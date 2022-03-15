@@ -4,7 +4,6 @@ type Skill = {
   name: string;
   image: string;
   link: string;
-  size: number;
 };
 
 @Component({
@@ -18,20 +17,17 @@ export class SkillsComponent implements OnInit {
     {
       image: 'angular',
       name: 'Angular',
-      link: 'https://angular.io/',
-      size: 40
+      link: 'https://angular.io/'
     },
     {
       image: 'ts',
       name: 'TypeScript',
-      link: 'https://www.typescriptlang.org/',
-      size: 40
+      link: 'https://www.typescriptlang.org/'
     },
     {
       image: 'node',
       name: 'Node.js',
-      link: 'https://nodejs.org/',
-      size: 40
+      link: 'https://nodejs.org/'
     }
   ];
 

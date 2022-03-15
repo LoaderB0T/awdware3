@@ -35,6 +35,19 @@
         FH Aachen</a>.
     </p>
   </div>
+  <div class="contact-container">
+    <div class="header">
+      <h2>{{'about.contactTitle' | translate}}</h2>
+    </div>
+    <div class="logos">
+      <a *ngFor="let contact of contacts"
+         target="_blank"
+         [href]="contact.link">
+        <img [alt]="contact.name"
+             [src]="'assets/img/logo_' + contact.image + '.svg' | resourceMap:'home'">
+      </a>
+    </div>
+  </div>
 </div>
 
 
