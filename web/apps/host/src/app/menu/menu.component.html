@@ -3,13 +3,15 @@
     <!-- empty for flexbox -->
   </div>
   <div class="items">
-    <div *ngFor="let item of menuItems$ | async"
-         class="item"
-         (click)="clickedItem(item)"
-         [class.active]="item.id === (activeMenuItemId$ | async)"
-         [id]="'menu-item-' + item.id">
-      <i class="fa-light fa-{{item.icon}}"></i>
-    </div>
+    <ng-container *ngFor="let item of menuItems$ | async">
+      <div *awdLet="item.id === (activeMenuItemId$ | async) as activeItem"
+           class="item"
+           (click)="clickedItem(item)"
+           [class.active]="activeItem"
+           [id]="'menu-item-' + item.id">
+        <i class="fa-light fa-{{activeItem ? (item.iconActive ?? item.icon) : item.icon}}"></i>
+      </div>
+    </ng-container>
     <div class="active-item"
          [style.top.px]="activeMenuItemY$ | async"></div>
   </div>
