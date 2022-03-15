@@ -1,0 +1,15 @@
+@import 'vars';
+
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .logos {
+    display: flex;
+    gap: 20px;
+    img {
+      height: 60px;
+      @include hover-scale;
+    }
+  }
+}

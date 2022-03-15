@@ -44,6 +44,14 @@ export class HomeLazyModule {
           menuService.editMenuItem('about', { icon: this.randomuserIcon() });
         },
         order: 2
+      },
+      {
+        id: 'skills',
+        icon: 'lightbulb',
+        iconActive: 'lightbulb-on',
+        title: 'Skills',
+        action: () => router.navigate(['home/skills']),
+        order: 3
       }
     ];
     menuService.addMenuItems(...menuItems);

@@ -4,13 +4,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 import { Typed } from 'rxjs-typed.ts';
 
-type Skill = {
-  name: string;
-  image: string;
-  link: string;
-  size: number;
-};
-
 @Component({
   selector: 'awd-about',
   templateUrl: 'about.component.html',
@@ -29,27 +22,6 @@ export class AboutComponent implements OnInit {
   public typingHeading = new Typed({ minDelay: 30, maxDelay: 70 });
   public typingDetails = new Typed({ minDelay: 5, maxDelay: 20, minEraseDelay: 40, maxEraseDelay: 80 });
   public readonly age: number;
-
-  public skills: Skill[] = [
-    {
-      image: 'angular',
-      name: 'Angular',
-      link: 'https://angular.io/',
-      size: 40
-    },
-    {
-      image: 'ts',
-      name: 'TypeScript',
-      link: 'https://www.typescriptlang.org/',
-      size: 40
-    },
-    {
-      image: 'node',
-      name: 'Node.js',
-      link: 'https://nodejs.org/',
-      size: 40
-    }
-  ];
 
   constructor(translateService: TranslateService, translationService: TranslationService) {
     this._translateService = translateService;

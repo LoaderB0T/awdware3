@@ -6,6 +6,7 @@ import { SharedModule } from '@awdware/shared';
 import { TranslationResolver } from './services/translation.resolver';
 import { AboutComponent } from './about/about.component';
 import { ResourceMapModule } from 'ng-dynamic-mf';
+import { SkillsComponent } from './skills/skills.component';
 
 const routes: Routes = [
   {
@@ -27,13 +28,20 @@ const routes: Routes = [
         data: {
           activePage: 'about'
         }
+      },
+      {
+        path: 'skills',
+        component: SkillsComponent,
+        data: {
+          activePage: 'skills'
+        }
       }
     ]
   }
 ];
 
 @NgModule({
-  declarations: [HomeComponent, AboutComponent],
+  declarations: [HomeComponent, AboutComponent, SkillsComponent],
   imports: [CommonModule, SharedModule, ResourceMapModule, RouterModule.forChild(routes)]
 })
 export class HomeModule {}

@@ -1,0 +1,10 @@
+<div class="skills-container">
+  <h2>{{ 'about.workingWith' | translate }}</h2>
+  <div class="logos">
+    <a *ngFor="let skill of skills"
+       target="_blank"
+       [href]="skill.link">
+      <img [src]="'assets/img/logo_' + skill.image + '.svg' | resourceMap:'home'">
+    </a>
+  </div>
+</div>
