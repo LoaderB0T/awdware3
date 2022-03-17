@@ -11,6 +11,8 @@
            [class.active]="activeItem"
            [id]="'menu-item-' + item.id">
         <i class="fa-light fa-{{activeItem ? (item.iconActive ?? item.icon) : item.icon}}"></i>
+        <span class="title">{{item.title}}</span>
+        <span class="spacing">{{item.title}}</span>
       </div>
     </ng-container>
     <div class="active-item"

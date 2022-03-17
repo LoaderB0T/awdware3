@@ -31,20 +31,35 @@ $activeItemMarkerHeight: $itemHeight + 16px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
     gap: 25px;
     &.end-items {
       padding-bottom: 40px;
+    }
+    @include phone {
+      align-items: flex-start;
     }
     .item {
       display: flex;
       align-items: center;
       justify-content: center;
       height: $itemHeight;
-      width: 100%;
       @include clickable;
       @include hover-scale;
       font-size: 54px;
+      span {
+        @include not-phone {
+          display: none;
+        }
+        @include phone {
+          left: 72px;
+          &.title {
+            position: absolute;
+          }
+          &.spacing {
+            opacity: 0;
+          }
+        }
+      }
     }
   }
   .active-item {

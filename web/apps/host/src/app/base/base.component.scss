@@ -42,6 +42,7 @@ $phoneMenuButtonHeight: 60px;
           max-width: calc(100vw - $menuWidth - $saveScrollbarWidth);
         }
         @include phone {
+          max-width: calc(100vw - $saveScrollbarWidth);
           min-height: calc(100vh - $saveScrollbarWidth - $phoneMenuButtonHeight);
         }
       }
