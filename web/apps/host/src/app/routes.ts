@@ -9,5 +9,9 @@ export const routes: Routes = [
         redirectTo: '/'
       }
     ]
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
