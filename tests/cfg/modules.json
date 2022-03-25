@@ -1,0 +1,7 @@
+[
+  {
+    "url": "http://localhost:4200/assets/modules/home/",
+    "name": "home",
+    "ngModuleName": "RemoteEntryModule"
+  }
+]
