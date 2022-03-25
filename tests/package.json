@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "clean": "yarn rimraf dist",
+    "install-app": "cd ../web && yarn",
     "build": "cd ../web && yarn nx run-many --target=build --projects=host,home",
     "prepare-dist": "yarn cpy ../web/dist/apps/host/** ./dist && yarn cpy ../web/dist/apps/home ./dist/assets/modules",
     "copy-cfg": "yarn cpy ./cfg/modules.json ./dist/modules --flat && yarn cpy ./cfg/environment.json ./dist/environments --flat",
-    "prepare-start": "yarn clean && yarn build && yarn prepare-dist && yarn copy-cfg",
+    "prepare-start": "yarn clean && yarn install-app && yarn build && yarn prepare-dist && yarn copy-cfg",
     "start": "yarn prepare-start && yarn http-server -p 4200 -c-1 dist",
     "test": "yarn playwright test"
   },
