@@ -33,8 +33,6 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
 
       - name: Install dependencies
         run: yarn
@@ -46,7 +44,8 @@ jobs:
         name: Upload Artifact
         with:
           name: dist
-          path: ./dist/**/*
+          path: ./dist
+          if-no-files-found: error
 
   test:
     defaults:
@@ -73,8 +72,6 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
 
       - name: Install dependencies
         run: yarn
