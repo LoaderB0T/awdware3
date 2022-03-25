@@ -44,7 +44,7 @@ jobs:
         name: Upload Artifact
         with:
           name: dist
-          path: /home/runner/work/awdware3/awdware3/web/dist
+          path: awdware3/web/dist
           if-no-files-found: error
 
   test:
@@ -80,7 +80,7 @@ jobs:
         name: Download Artifact
         with:
           name: dist
-          path: ../web/dist
+          path: web/dist
 
       - name: Copy build into tests/dist folder
         run: yarn run prepare-dist
