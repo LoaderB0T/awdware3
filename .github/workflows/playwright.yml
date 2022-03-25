@@ -21,16 +21,26 @@ jobs:
         run: yarn
       - name: Build apps
         run: yarn nx run-many --target=build --projects=host,home
+      - uses: actions/upload-artifact@master
+        name: Upload Artifact
+        with:
+          name: dist
+          path: dist
 
   test:
     defaults:
       run:
-        working-directory: web
+        working-directory: test
     needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Install dependencies
         run: yarn
+      - uses: actions/upload-artifact@master
+        name: Download Artifact
+        with:
+          name: dist
+          path: ../web/dist
       - name: Copy build into tests/dist folder
         run: yarn run prepare-dist
       - name: Copy test config files
