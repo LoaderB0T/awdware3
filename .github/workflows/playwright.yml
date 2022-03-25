@@ -44,7 +44,7 @@ jobs:
         name: Upload Artifact
         with:
           name: dist
-          path: /web/dist
+          path: dist
           if-no-files-found: error
 
   test:
