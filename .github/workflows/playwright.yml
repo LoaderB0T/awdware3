@@ -36,7 +36,7 @@ jobs:
     steps:
       - name: Install dependencies
         run: yarn
-      - uses: actions/upload-artifact@master
+      - uses: actions/download-artifact@master
         name: Download Artifact
         with:
           name: dist
