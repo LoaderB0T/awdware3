@@ -14,30 +14,39 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - uses: actions/setup-node@v2
         with:
           node-version: "14.x"
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
       - name: Cache node modules
         uses: actions/cache@v2
         env:
-          cache-name: cache-node-modules-web
+          cache-name: cache-yarn-web
         with:
           # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ~/.npm
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+
       - name: Install dependencies
         run: yarn
+
       - name: Build apps
         run: yarn nx run-many --target=build --projects=host,home
+
       - uses: actions/upload-artifact@master
         name: Upload Artifact
         with:
           name: dist
-          path: dist
+          path: ./dist/**/*
 
   test:
     defaults:
@@ -47,32 +56,44 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - uses: actions/setup-node@v2
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
       - name: Cache node modules
         uses: actions/cache@v2
         env:
-          cache-name: cache-node-modules-tests
+          cache-name: cache-yarn-tests
         with:
           # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ~/.npm
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+
       - name: Install dependencies
         run: yarn
+
       - uses: actions/download-artifact@master
         name: Download Artifact
         with:
           name: dist
           path: ../web/dist
+
       - name: Copy build into tests/dist folder
         run: yarn run prepare-dist
+
       - name: Copy test config files
         run: yarn run copy-cfg
+
       - name: Run Playwright tests
         run: yarn run test
+
       - uses: actions/upload-artifact@v2
         if: always()
         with:
