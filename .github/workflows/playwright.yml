@@ -27,6 +27,7 @@ jobs:
       run:
         working-directory: web
     needs: build
+    runs-on: ubuntu-latest
     steps:
       - name: Install dependencies
         run: yarn
