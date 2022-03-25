@@ -42,7 +42,7 @@ jobs:
   test:
     defaults:
       run:
-        working-directory: test
+        working-directory: tests
     needs: build
     runs-on: ubuntu-latest
     steps:
