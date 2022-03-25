@@ -83,7 +83,7 @@ jobs:
           path: web/dist
 
       - name: Copy build into tests/dist folder
-        run: cp ../web/dist/apps/host/** ./dist && cp ../web/dist/apps/home ./dist/assets/modules && ls -R ./dist
+        run: mkdir -p "dist" && cp ../web/dist/apps/host/** ./dist && cp ../web/dist/apps/home ./dist/assets/modules && ls -R ./dist
 
       - name: Copy test config files
         run: yarn run copy-cfg
