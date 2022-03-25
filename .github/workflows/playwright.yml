@@ -88,6 +88,9 @@ jobs:
       - name: Copy test config files
         run: yarn run copy-cfg
 
+      - name: Install playwright
+        run: yarn playwright install
+
       - name: Run Playwright tests
         run: yarn run test
 
