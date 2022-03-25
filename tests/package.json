@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "clean": "yarn rimraf dist",
-    "prepare-dist": "yarn cpy ../web/dist/apps/host/** ./dist && yarn cpy ../web/dist/apps/home ./dist/assets/modules",
+    "prepare-dist": "yarn cpy ../web/dist/apps/host/** ./dist && yarn cpy ../web/dist/apps/home ./dist/assets/modules && yarn debug-paths",
+    "debug-paths": "ls -R ./dist",
     "copy-cfg": "yarn cpy ./cfg/modules.json ./dist/modules --flat && yarn cpy ./cfg/environment.json ./dist/environments --flat",
     "start": "yarn http-server -p 4200 -c-1 ./dist",
     "test": "yarn playwright test"
