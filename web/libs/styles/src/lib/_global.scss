@@ -116,3 +116,27 @@ $scollbarThumbHover: $colorContent1;
 ::-webkit-scrollbar-corner {
   background: $scrollbarBg;
 }
+
+.appear {
+  $animationDuration: 0.5s;
+  animation: appear-slide $animationDuration cubic-bezier(0, 0, 0, 1), appear-fade $animationDuration linear;
+  animation-delay: var(--delay, 0.5s);
+  animation-fill-mode: both;
+}
+
+@keyframes appear-slide {
+  from {
+    transform: translateX(-100px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes appear-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
