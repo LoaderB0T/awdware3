@@ -9,9 +9,9 @@ import { devices } from "@playwright/test";
 
 const config: PlaywrightTestConfig = {
   testDir: "./tests",
-  timeout: process.env.CI ? 30 * 1000 : 600 * 1000,
+  timeout: 30 * 1000,
   expect: {
-    timeout: process.env.CI ? 5000 : 600 * 1000,
+    timeout: 5000,
   },
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
@@ -38,10 +38,12 @@ const config: PlaywrightTestConfig = {
     },
   ],
   outputDir: "test-results/",
-  webServer: {
-    command: "yarn run start",
-    port: 4200,
-  },
+  webServer: process.env.CI
+    ? {
+        command: "yarn run start",
+        port: 4200,
+      }
+    : undefined,
 };
 
 export default config;

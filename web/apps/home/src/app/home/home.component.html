@@ -14,12 +14,12 @@
     <span class="textCursor">_</span>
 
     <div *ngIf="!skip && (done$ | async) === false"
-         class="action-icon">
+         class="action-icon skip">
       <i (click)="fastForward()"
          class="fa-light fa-forward"></i>
     </div>
     <div *ngIf="(done$ | async)"
-         class="action-icon">
+         class="action-icon restart">
       <i (click)="restart()"
          class="fa-light fa-arrow-rotate-right"></i>
     </div>
