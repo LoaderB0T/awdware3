@@ -1,13 +1,13 @@
 {
   "folders": [
     {
+      "path": ".github"
+    },
+    {
       "path": "web"
     },
     {
       "path": "tests"
-    },
-    {
-      "path": "."
     }
   ],
   "settings": {}
