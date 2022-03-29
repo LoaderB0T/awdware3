@@ -5,6 +5,7 @@
   <div class="menu-content-container">
     <awd-menu [class.open]="menuOpen$ | async"></awd-menu>
     <div class="content"
+         [class.wiggle]="konamiActive$ | async"
          [@routeAnimations]="prepareRoute(outlet)">
       <router-outlet #outlet="outlet"></router-outlet>
     </div>

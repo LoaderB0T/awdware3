@@ -1,9 +1,22 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
 import { PreloadService, MenuService, randomInt } from '@awdware/shared';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { slideInAnimation } from './router-animation';
+
+const konamiCode = [
+  'ArrowUp',
+  'ArrowUp',
+  'ArrowDown',
+  'ArrowDown',
+  'ArrowLeft',
+  'ArrowRight',
+  'ArrowLeft',
+  'ArrowRight',
+  'b',
+  'a'
+];
 
 @Component({
   selector: 'awd-base',
@@ -18,6 +31,21 @@ export class BaseComponent implements AfterViewInit {
   private _prevActiveRoute = '';
   private _loaded = false;
   public readonly menuOpen$: Observable<boolean>;
+  private _currrentCode: string[] = [...konamiCode];
+  private readonly _konamiActive = new BehaviorSubject(false);
+  public readonly konamiActive$ = this._konamiActive.asObservable();
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    const focusedElem = document.activeElement;
+    if (focusedElem) {
+      if ((focusedElem as HTMLInputElement).type === 'password') {
+        return;
+      }
+    }
+    const key = event.key;
+    this.globalKeyPressed(key);
+  }
 
   constructor(title: Title, menuService: MenuService, preloadService: PreloadService) {
     this._menuService = menuService;
@@ -89,5 +117,21 @@ export class BaseComponent implements AfterViewInit {
       return { value: activePage, params: { dir } };
     }
     return undefined;
+  }
+
+  private globalKeyPressed(key: string) {
+    if (this._currrentCode[0] === key) {
+      this._currrentCode.shift();
+      if (this._currrentCode.length === 0) {
+        this._currrentCode = [...konamiCode];
+        this.konami();
+      }
+    } else {
+      this._currrentCode = [...konamiCode];
+    }
+  }
+
+  private konami() {
+    this._konamiActive.next(!this._konamiActive.value);
   }
 }
