@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { Page } from '@playwright/test';
 
 export class NavHelper {
   constructor(private page: Page, private baseUrl: string) {}

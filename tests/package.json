@@ -11,10 +11,12 @@
     "start": "yarn http-server -p 4200 -c-1 ./dist",
     "test": "yarn playwright test"
   },
+  "prettier": "@awdware/prettier-config",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@awdware/prettier-config": "^0.0.2",
     "@playwright/test": "^1.20.1",
     "cpy-cli": "^4.1.0",
     "http-server": "^14.1.0",
