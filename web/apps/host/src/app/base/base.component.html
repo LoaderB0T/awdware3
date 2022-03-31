@@ -14,6 +14,7 @@
 
 <div class="preload-container">
   <i *ngFor="let icon of preloadIcons$ | async"
+     aria-hidden="true"
      class="fa-light fa-{{icon}}">
   </i>
   <img *ngFor="let img of preloadImgs$ | async"

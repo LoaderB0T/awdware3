@@ -16,11 +16,13 @@
     <div *ngIf="!skip && (done$ | async) === false"
          class="action-icon skip">
       <i (click)="fastForward()"
+         aria-hidden="true"
          class="fa-light fa-forward"></i>
     </div>
     <div *ngIf="(done$ | async)"
          class="action-icon restart">
       <i (click)="restart()"
+         aria-hidden="true"
          class="fa-light fa-arrow-rotate-right"></i>
     </div>
   </div>
