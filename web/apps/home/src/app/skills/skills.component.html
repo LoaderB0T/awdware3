@@ -4,7 +4,8 @@
     <a *ngFor="let skill of skills"
        target="_blank"
        [href]="skill.link">
-      <img [src]="'assets/img/logo_' + skill.image + '.svg' | resourceMap:'home'">
+      <img [src]="'assets/img/logo_' + skill.image + '.svg' | resourceMap:'home'"
+           [alt]="'Logo of ' + skill.name">
     </a>
   </div>
 </div>

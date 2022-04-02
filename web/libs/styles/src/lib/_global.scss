@@ -92,7 +92,7 @@ p > a {
 $scrollbarBg: $colorBg1;
 $scrollbarThumb: $colorContent2;
 $scollbarThumbHover: $colorContent1;
-* {
+:root * {
   scrollbar-width: auto;
   scrollbar-color: $scrollbarThumb $scrollbarBg;
 }

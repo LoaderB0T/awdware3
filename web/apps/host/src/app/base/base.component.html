@@ -18,5 +18,7 @@
      class="fa-light fa-{{icon}}">
   </i>
   <img *ngFor="let img of preloadImgs$ | async"
+       alt=""
+       aria-hidden="true"
        [src]="img">
 </div>

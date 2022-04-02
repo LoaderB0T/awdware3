@@ -1,7 +1,8 @@
 <div class="main-container">
   <div class="me-details"
        *awdLet="langChanged$ | async as langChanged">
-    <img [src]="'assets/img/me.png' | resourceMap:'home'">
+    <img [src]="'assets/img/me.png' | resourceMap:'home'"
+         alt="A picture of myself!">
     <div class="text-details"
          *awdLet="headingDone$ | async as headingDone">
       <h1 *ngIf="!langChanged; else staticText1"

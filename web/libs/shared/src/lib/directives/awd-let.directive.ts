@@ -21,7 +21,7 @@ export class AwdLetDirective<T> {
   }
 
   static ngTemplateContextGuard<T>(
-    dir: AwdLetDirective<T>,
+    _dir: AwdLetDirective<T>,
     ctx: unknown
   ): ctx is AwdLetContext<Exclude<T, false | 0 | '' | null | undefined>> {
     return true;
