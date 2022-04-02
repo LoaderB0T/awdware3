@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { skills } from './skills';
 
 @Component({
@@ -7,10 +7,6 @@ import { skills } from './skills';
   styleUrls: ['skills.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SkillsComponent implements OnInit {
+export class SkillsComponent {
   public skills = skills;
-
-  constructor() {}
-
-  ngOnInit() {}
 }

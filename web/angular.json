@@ -4,8 +4,6 @@
     "controls": "libs/controls",
     "home": "apps/home",
     "host": "apps/host",
-    "session": "apps/session",
-    "session-lib": "libs/session-lib",
     "shared": "libs/shared",
     "styles": "libs/styles"
   }

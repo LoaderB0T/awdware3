@@ -47,7 +47,6 @@ export class HomeComponent implements OnInit {
     this.done$.next(false);
     const hi = this._translateService.instant('home.typing.hi');
     const iam = this._translateService.instant('home.typing.iam');
-    const ilike = this._translateService.instant('home.typing.ilike');
     const click = this._translateService.instant('home.typing.click');
     const here = this._translateService.instant('home.typing.here');
     const toLearnMore = this._translateService.instant('home.typing.toLearnMore');
@@ -62,6 +61,16 @@ export class HomeComponent implements OnInit {
     await wait(this.skip ? 0 : 100);
     await this.typing1.start('\n');
     await wait(this.skip ? 0 : 600);
+    await this.typeLikes();
+    await this.typing1.start(`${click} `);
+    await this.typing2.start(here);
+    await this.typing3.start(` ${toLearnMore}`);
+    this.done$.next(true);
+  }
+
+  private async typeLikes() {
+    const ilike = this._translateService.instant('home.typing.ilike');
+
     if (!this.skip) {
       await this.typing1.start(`${ilike} `);
       const likes = ['Web Development', 'TypeScript', 'Angular', 'C# & .NET', 'Automation (CI/CD)'];
@@ -76,10 +85,6 @@ export class HomeComponent implements OnInit {
       }
       await this.typing1.backspace(ilike.length + 1, { minEraseDelay: 30, maxEraseDelay: 60 });
     }
-    await this.typing1.start(`${click} `);
-    await this.typing2.start(here);
-    await this.typing3.start(` ${toLearnMore}`);
-    this.done$.next(true);
   }
 
   public restart() {
