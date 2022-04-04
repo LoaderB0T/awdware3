@@ -13,6 +13,9 @@
           [innerHtml]="typing3.text$ | async"></span>
     <span class="textCursor">_</span>
 
+    <div *ngFor="let a of fillerLines$ | async">
+      &nbsp;
+    </div>
     <div *ngIf="!skip && (done$ | async) === false"
          class="action-icon skip">
       <i (click)="fastForward()"

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PreloadService, TranslationService, wait } from '@awdware/shared';
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { Typed } from 'rxjs-typed.ts';
 
 @Component({
@@ -23,6 +23,11 @@ export class HomeComponent implements OnInit {
   public readonly typing3 = new Typed();
   public skip = false;
   public done$ = new BehaviorSubject(false);
+  public readonly fillerLines$ = this.typing1.text$.pipe(
+    map(t => {
+      return new Array(3 - t.split('\n').length);
+    })
+  );
 
   constructor(
     translateService: TranslateService,
