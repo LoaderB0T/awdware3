@@ -20,8 +20,8 @@ export class AboutComponent implements OnInit {
   private readonly _langChanged = new BehaviorSubject(false);
   public readonly langChanged$ = this._langChanged.asObservable();
 
-  public typingHeading = new Typed({ minDelay: 30, maxDelay: 70 });
-  public typingDetails = new Typed({ minDelay: 5, maxDelay: 20, minEraseDelay: 40, maxEraseDelay: 80 });
+  public typingHeading = new Typed({ perLetterDelay: { min: 30, max: 70 } });
+  public typingDetails = new Typed({ perLetterDelay: { min: 5, max: 20 }, eraseDelay: { min: 40, max: 80 } });
   public readonly age: number;
 
   public contacts = contacts;
@@ -51,10 +51,12 @@ export class AboutComponent implements OnInit {
   private async typeIntro(): Promise<void> {
     const thisIsMe = this._translateService.instant('about.thisIsMe');
     const overview = this._translateService.instant('about.overview', { age: this.age });
-    await this.typingHeading.start('<-- ', { initialDelay: 750 }, 'arrow');
-    await this.typingHeading.start(thisIsMe);
+    this.typingHeading.wait(750).type('<-- ', { className: 'arrow' });
+    this.typingHeading.type(thisIsMe);
+    await this.typingHeading.run();
     this._headingDone.next(true);
-    await this.typingDetails.start('tl;dr:\n', {}, 'comment');
-    await this.typingDetails.start(`\n${overview}`);
+    this.typingDetails.type('tl;dr:\n', { className: 'comment' });
+    this.typingDetails.type(`\n${overview}`);
+    await this.typingDetails.run();
   }
 }
