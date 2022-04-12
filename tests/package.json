@@ -1,8 +1,13 @@
 {
-  "name": "tests",
+  "name": "awdware-tests",
   "version": "1.0.0",
   "description": "",
+  "license": "MIT",
   "main": "index.js",
+  "author": {
+    "name": "Janik Schumacher (LoaderB0T)",
+    "url": "https://awdware.de"
+  },
   "scripts": {
     "clean": "yarn rimraf dist",
     "prepare-dist": "yarn cpy ../web/dist/apps/host/** ./dist && yarn cpy ../web/dist/apps/home ./dist/assets/modules && yarn debug-paths",
@@ -13,8 +18,6 @@
   },
   "prettier": "@awdware/prettier-config",
   "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@awdware/prettier-config": "^0.0.2",
     "@playwright/test": "^1.20.1",
