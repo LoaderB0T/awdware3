@@ -5,6 +5,7 @@ import { resourceMapper, RouterEntryService } from 'ng-dynamic-mf';
 import { PreloadService, MenuItem, MenuService, randomInt } from '@awdware/shared';
 import { contacts } from './about/contacts';
 import { skills } from './skills/skills';
+import { knowledge } from './skills/knowledge';
 
 const routes: Routes = [
   {
@@ -42,6 +43,7 @@ export class HomeLazyModule {
     preloadService.addIcons([...userIcons, 'house-blank', 'house-user', 'user', 'list', 'list-check']);
     preloadService.addImages(contacts.map(c => resourceMapper('home', `assets/img/logo_${c.image}.svg`)));
     preloadService.addImages(skills.map(s => resourceMapper('home', `assets/img/logo_${s.image}.svg`)));
+    preloadService.addImages(knowledge.map(s => resourceMapper('home', `assets/img/logo_${s.image}.svg`)));
     preloadService.addImages([resourceMapper('home', `assets/img/me.png`)]);
 
     const menuItems: MenuItem[] = [

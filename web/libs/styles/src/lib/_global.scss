@@ -17,6 +17,9 @@ html {
   background-color: $colorBg1;
   color: $colorContent1;
   transition: background-color 0.2s, color 0.2s;
+
+  --tooltipFontSize: 32px;
+  --tooltipPadding: 10px;
 }
 
 :focus {
@@ -150,5 +153,59 @@ $scollbarThumbHover: $colorContent1;
   }
   to {
     transform: rotateZ(5deg);
+  }
+}
+
+button {
+  all: unset;
+  &.button {
+    @include clickable;
+    @include hover-scale;
+    outline: 2px solid;
+    padding: 10px 15px;
+    border-radius: 10px;
+  }
+}
+
+$tooltipBorderSize: 5px;
+$tooltipBorder: $tooltipBorderSize white solid;
+
+.tooltip,
+.tooltip::before,
+.tooltip::after {
+  position: absolute;
+  background-color: $colorBg1;
+  font-size: var(--tooltipFontSize);
+  padding: var(--tooltipPadding);
+  border-top: $tooltipBorder;
+  border-bottom: $tooltipBorder;
+}
+
+.tooltip {
+  background-color: $colorBg1;
+  color: white;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 250ms;
+  z-index: 3;
+  &.visible {
+    opacity: 1;
+  }
+  &::before,
+  &::after {
+    content: '!';
+    color: $colorBg1;
+    top: -$tooltipBorderSize;
+    transform: skewX(-12deg) translateZ(-1px);
+    z-index: -1;
+  }
+  &::before {
+    left: -8px;
+    border-left: $tooltipBorder;
+  }
+  &::after {
+    right: -8px;
+    border-right: $tooltipBorder;
   }
 }

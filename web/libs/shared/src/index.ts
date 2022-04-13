@@ -1,6 +1,7 @@
 export * from './lib/shared.module';
 
 export * from './lib/directives/awd-let.directive';
+export * from './lib/directives/tooltip.directive';
 
 export * from './lib/models/theme.model';
 export * from './lib/models/menu-item.model';

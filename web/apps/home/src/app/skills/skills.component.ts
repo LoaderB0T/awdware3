@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { skills } from './skills';
+import { Knowledge, knowledge } from './knowledge';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'awd-skills',
@@ -9,4 +11,14 @@ import { skills } from './skills';
 })
 export class SkillsComponent {
   public skills = skills;
+  public readonly knowledge$ = new BehaviorSubject<Knowledge[]>([]);
+
+  constructor() {
+    this.getNextRandomKnowledge();
+  }
+
+  public getNextRandomKnowledge() {
+    knowledge.sort(() => 0.5 - Math.random());
+    this.knowledge$.next(knowledge.slice(0, 5));
+  }
 }

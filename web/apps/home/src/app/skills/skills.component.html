@@ -3,9 +3,25 @@
   <div class="logos">
     <a *ngFor="let skill of skills"
        target="_blank"
+       [tooltip]="skill.name"
        [href]="skill.link">
       <img [src]="'assets/img/logo_' + skill.image + '.svg' | resourceMap:'home'"
            [alt]="'Logo of ' + skill.name">
     </a>
   </div>
+  <h2>{{ 'about.alsoKnowledgeableIn' | translate }}</h2>
+  <div class="logos">
+    <a *ngFor="let knownThing of knowledge$ | async"
+       target="_blank"
+       [tooltip]="knownThing.name"
+       [href]="knownThing.link">
+      <img [src]="'assets/img/logo_' + knownThing.image + '.svg' | resourceMap:'home'"
+           [alt]="'Logo of ' + knownThing.name">
+    </a>
+  </div>
+  <button class="random-knowledge-button button"
+          (click)="getNextRandomKnowledge()">
+    {{'about.loadMore' | translate}} <i aria-hidden="true"
+       class="fa-light fa-arrow-rotate-right"></i>
+  </button>
 </div>
