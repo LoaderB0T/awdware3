@@ -29,11 +29,11 @@ export class ProjectsLazyModule {
         action: target => {
           router.navigate(['projects']);
           if (target) {
-            const thing = create(undefined as any, { useWorker: true, resize: true });
+            const confetti = create(undefined as any, { useWorker: true, resize: true });
             const pos = target.getClientRects()[0];
             const x = (pos.x + 0.5 * pos.width) / window.innerWidth;
             const y = (pos.y + 0.5 * pos.height) / window.innerHeight;
-            thing({
+            confetti({
               particleCount: 1,
               spread: 20,
               origin: { x, y },
@@ -45,7 +45,7 @@ export class ProjectsLazyModule {
             });
           }
         },
-        order: 2
+        order: 4
       }
     ];
     menuService.addMenuItems(...menuItems);
