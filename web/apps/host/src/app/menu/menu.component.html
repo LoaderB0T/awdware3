@@ -7,7 +7,7 @@
     <ng-container *ngFor="let item of menuItems$ | async">
       <div *awdLet="item.id === (activeMenuItemId$ | async) as activeItem"
            class="item"
-           (click)="clickedItem(item)"
+           (click)="clickedItem($event, item)"
            [class.active]="activeItem"
            [id]="'menu-item-' + item.id">
         <i class="fa-light fa-{{activeItem ? (item.iconActive ?? item.icon) : item.icon}}"

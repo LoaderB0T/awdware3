@@ -29,8 +29,8 @@ export class MenuComponent {
     });
   }
 
-  public clickedItem(menuItem: MenuItem) {
-    menuItem.action();
+  public clickedItem(event: MouseEvent | null, menuItem: MenuItem) {
+    menuItem.action(event ? (event.target as HTMLElement) : null);
     if (this._menuService.menuOpen$.value) {
       this.closeMenu();
     }

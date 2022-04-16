@@ -3,6 +3,6 @@ export interface MenuItem {
   title: string;
   icon: string;
   iconActive?: string;
-  action: () => void;
+  action: (element: HTMLElement | null) => void;
   order: number;
 }

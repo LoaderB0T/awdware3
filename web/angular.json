@@ -4,6 +4,7 @@
     "controls": "libs/controls",
     "home": "apps/home",
     "host": "apps/host",
+    "projects": "apps/projects",
     "shared": "libs/shared",
     "styles": "libs/styles"
   }
