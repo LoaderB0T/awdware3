@@ -11,6 +11,9 @@
       height: 60px;
       @include hover-scale;
     }
+    a {
+      width: 80px;
+    }
   }
 
   .random-knowledge-button {

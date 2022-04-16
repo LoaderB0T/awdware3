@@ -6,6 +6,7 @@
       "files": ["*.ts"],
       "extends": ["plugin:@nrwl/nx/angular", "plugin:@angular-eslint/template/process-inline-templates"],
       "rules": {
+        "@typescript-eslint/no-inferrable-types": "off",
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -21,8 +22,7 @@
             "prefix": "awd",
             "style": "kebab-case"
           }
-        ],
-        "@typescript-eslint/no-inferrable-types": "off"
+        ]
       }
     },
     {
