@@ -1,0 +1,67 @@
+@import 'vars';
+
+.project {
+  padding: 10px;
+  width: calc(100% - 20px);
+  height: 100%;
+  @include highlightable;
+  p {
+    margin: 0;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    h3 {
+      margin-top: 0;
+      &.title {
+        &:hover {
+          a {
+            color: $colorContent2;
+          }
+        }
+      }
+      &.star-icon {
+        border: $colorContent1 1px solid;
+        border-radius: 8px;
+        font-size: 20px;
+        margin: 0;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        $padding: 3px;
+        .star {
+          height: calc(100% - 2 * $padding);
+          padding-top: $padding;
+          padding-left: 10px;
+          padding-right: 6px;
+          .filled {
+            color: $colorAccent2;
+            position: fixed;
+            top: -99999px;
+          }
+          &:hover {
+            .filled {
+              position: unset;
+              top: unset;
+            }
+            .unfilled {
+              display: none;
+            }
+            color: $colorContent2;
+          }
+        }
+        .stars {
+          height: calc(100% - 2 * $padding);
+          padding-top: $padding;
+          padding-right: 10px;
+          padding-left: 6px;
+          border-left: 1px solid $colorContent1;
+          &:hover {
+            color: $colorContent2;
+          }
+        }
+      }
+    }
+  }
+}

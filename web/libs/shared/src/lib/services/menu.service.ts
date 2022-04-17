@@ -9,9 +9,10 @@ export class MenuService {
   public menuOpen$ = new BehaviorSubject<boolean>(false);
 
   public addMenuItems(...menuItems: MenuItem[]) {
-    const _menuItems = this.menuItems$.getValue();
-    _menuItems.push(...menuItems);
-    this.menuItems$.next(_menuItems);
+    const items = [...this.menuItems$.getValue()];
+    items.push(...menuItems);
+    items.sort((a, b) => a.order - b.order);
+    this.menuItems$.next(items);
   }
 
   public editMenuItem(id: string, changes: Partial<MenuItem>) {

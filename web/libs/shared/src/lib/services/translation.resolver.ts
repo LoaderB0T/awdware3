@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Resolve } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { DynamicTranslationService } from 'ng-dynamic-mf';
 import { Observable } from 'rxjs';
@@ -14,8 +14,12 @@ export class TranslationResolver implements Resolve<void> {
     this._dynamicTranslationService = dynamicTranslationService;
   }
 
-  resolve(): Observable<void> | Promise<void> | void {
+  public resolve(route: ActivatedRouteSnapshot): Observable<void> | Promise<void> | void {
+    const moduleName = route.data['module'];
+    if (!moduleName) {
+      throw new Error('Module name is not defined in rotue data');
+    }
     this._dynamicTranslationService.setTranslateService(this._translateService);
-    return this._dynamicTranslationService.registerTranslations(['de', 'en'], l => `assets/locales/${l}.json`, 'home');
+    return this._dynamicTranslationService.registerTranslations(['de', 'en'], l => `assets/locales/${l}.json`, moduleName);
   }
 }

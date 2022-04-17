@@ -3,5 +3,10 @@
     "url": "http://localhost:4201/",
     "name": "home",
     "ngModuleName": "RemoteEntryModule"
+  },
+  {
+    "url": "http://localhost:4202/",
+    "name": "projects",
+    "ngModuleName": "RemoteEntryModule"
   }
 ]

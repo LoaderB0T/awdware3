@@ -1,28 +1,28 @@
 {
   "projectType": "application",
-  "root": "apps/home",
-  "sourceRoot": "apps/home/src",
+  "root": "apps/projects",
+  "sourceRoot": "apps/projects/src",
   "prefix": "awd",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/home",
+        "outputPath": "dist/apps/projects",
         "preserveSymlinks": true,
-        "index": "apps/home/src/index.html",
-        "main": "apps/home/src/main.ts",
-        "polyfills": "apps/home/src/polyfills.ts",
-        "tsConfig": "apps/home/tsconfig.app.json",
+        "index": "apps/projects/src/index.html",
+        "main": "apps/projects/src/main.ts",
+        "polyfills": "apps/projects/src/polyfills.ts",
+        "tsConfig": "apps/projects/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/home/src/favicon.ico", "apps/home/src/assets"],
-        "styles": ["apps/home/src/styles.scss"],
+        "assets": ["apps/projects/src/favicon.ico", "apps/projects/src/assets"],
+        "styles": ["apps/projects/src/styles.scss"],
         "scripts": [],
         "stylePreprocessorOptions": {
           "includePaths": ["libs/styles/src/lib"]
         },
         "customWebpackConfig": {
-          "path": "apps/home/webpack.config.js"
+          "path": "apps/projects/webpack.config.js"
         },
         "commonChunk": false
       },
@@ -42,7 +42,7 @@
           ],
           "outputHashing": "all",
           "customWebpackConfig": {
-            "path": "apps/home/webpack.prod.config.js"
+            "path": "apps/projects/webpack.prod.config.js"
           }
         },
         "development": {
@@ -60,36 +60,36 @@
       "executor": "@nrwl/angular:webpack-server",
       "configurations": {
         "production": {
-          "browserTarget": "home:build:production"
+          "browserTarget": "projects:build:production"
         },
         "development": {
-          "browserTarget": "home:build:development"
+          "browserTarget": "projects:build:development"
         }
       },
       "defaultConfiguration": "development",
       "options": {
-        "port": 4201,
-        "publicHost": "http://localhost:4201"
+        "port": 4202,
+        "publicHost": "http://localhost:4202"
       }
     },
     "extract-i18n": {
       "executor": "ngx-build-plus:extract-i18n",
       "options": {
-        "browserTarget": "home:build",
-        "extraWebpackConfig": "apps/home/webpack.config.js"
+        "browserTarget": "projects:build",
+        "extraWebpackConfig": "apps/projects/webpack.config.js"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/home/src/**/*.ts", "apps/home/src/**/*.html"]
+        "lintFilePatterns": ["apps/projects/src/**/*.ts", "apps/projects/src/**/*.html"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/home"],
+      "outputs": ["coverage/apps/projects"],
       "options": {
-        "jestConfig": "apps/home/jest.config.js",
+        "jestConfig": "apps/projects/jest.config.js",
         "passWithNoTests": true
       }
     }

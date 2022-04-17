@@ -1,0 +1,26 @@
+<div class="project"
+     *ngIf="project">
+  <div class="header">
+    <h3 class="title"><a href="https://github.com/{{project.gitHubUser}}/{{project.name}}"
+         target="blank">{{project.name}}</a></h3>
+    <h3 class="star-icon">
+      <a class="star"
+         href="https://github.com/{{project.gitHubUser}}/{{project.name}}"
+         target="blank">
+        <i class="filled fa-solid fa-star"
+           aria-hidden="true"></i>
+        <i class="unfilled fa-light fa-star"
+           aria-hidden="true"></i>
+        Star
+      </a>
+      <a class="stars"
+         href="https://github.com/{{project.gitHubUser}}/{{project.name}}/stargazers"
+         target="blank">
+        {{stars$ | async}}
+      </a>
+    </h3>
+  </div>
+  <p *ngIf="lang$ | async as lang">
+    {{project.descriptions[lang]}}
+  </p>
+</div>

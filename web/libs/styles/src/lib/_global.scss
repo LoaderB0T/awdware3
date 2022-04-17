@@ -61,6 +61,11 @@ html {
   color: $colorContent3;
 }
 
+a {
+  text-decoration: none;
+  color: $colorContent1;
+}
+
 p > a {
   text-decoration: none;
   position: relative;

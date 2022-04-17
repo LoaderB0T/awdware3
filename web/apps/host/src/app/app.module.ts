@@ -9,8 +9,9 @@ import { BaseComponent } from './base/base.component';
 import { BgComponent } from './bg/bg.component';
 import { routes } from './routes';
 import { loadedModules } from 'ng-dynamic-mf';
-import { TranslateModule } from '@ngx-translate/core';
+import { MissingTranslationHandler, TranslateModule } from '@ngx-translate/core';
 import { MenuComponent } from './menu/menu.component';
+import { MyMissingTranslationHandler } from './services/my-missing-translation-handler';
 
 @NgModule({
   declarations: [AppComponent, BaseComponent, BgComponent, MenuComponent],
@@ -19,7 +20,12 @@ import { MenuComponent } from './menu/menu.component';
     RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
     SharedModule,
     BrowserAnimationsModule,
-    TranslateModule.forRoot({}),
+    TranslateModule.forRoot({
+      missingTranslationHandler: {
+        provide: MissingTranslationHandler,
+        useClass: MyMissingTranslationHandler
+      }
+    }),
     loadedModules
   ],
   providers: [],

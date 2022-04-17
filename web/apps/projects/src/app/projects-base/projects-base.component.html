@@ -1,0 +1,9 @@
+<div class="projects-main-container">
+  <h2>{{'myProjects' | translate}}</h2>
+
+  <div class="projects-list">
+    <awd-project *ngFor="let project of projects"
+                 [project]="project">
+    </awd-project>
+  </div>
+</div>

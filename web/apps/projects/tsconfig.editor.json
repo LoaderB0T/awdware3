@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["**/*.ts", "../../libs/shared/src/lib/services/translation.resolver.ts"],
+  "include": ["**/*.ts"],
   "compilerOptions": {
     "types": ["jest", "node"]
   }
