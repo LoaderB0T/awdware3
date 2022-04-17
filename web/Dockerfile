@@ -15,7 +15,7 @@ RUN yarn install
 
 COPY . .
 
-RUN yarn nx run-many --target=build --projects=host,home
+RUN yarn nx run-many --target=build --projects=host,home,projects
 
 # stage 2
 
@@ -27,5 +27,6 @@ COPY config/security-headers.conf /etc/nginx/security-headers.conf
 
 COPY --from=builder /app/dist/apps/host /usr/share/nginx/html
 COPY --from=builder /app/dist/apps/home /usr/share/nginx/html/assets/modules/home
+COPY --from=builder /app/dist/apps/projects /usr/share/nginx/html/assets/modules/projects
 
 EXPOSE 80
