@@ -20,7 +20,7 @@
       </a>
     </h3>
   </div>
-  <p>
-    {{project.description}}
+  <p *ngIf="lang$ | async as lang">
+    {{project.descriptions[lang]}}
   </p>
 </div>
