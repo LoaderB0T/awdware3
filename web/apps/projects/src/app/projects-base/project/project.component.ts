@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Project } from '../projects';
 import { StarsService } from '../../services/stars.service';
@@ -6,7 +6,8 @@ import { StarsService } from '../../services/stars.service';
 @Component({
   selector: 'awd-project',
   templateUrl: './project.component.html',
-  styleUrls: ['./project.component.scss']
+  styleUrls: ['./project.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProjectComponent implements OnInit {
   private readonly _starsService: StarsService;
