@@ -1,7 +1,4 @@
 # stage 1
-
-ARG skipBuild=false
-
 FROM node:alpine AS builder
 
 ENV YARN_CACHE_FOLDER=/tmp/yarn-cache
@@ -18,7 +15,6 @@ COPY . .
 RUN yarn nx run-many --target=build --projects=host,home,projects
 
 # stage 2
-
 FROM nginx:alpine
 
 COPY config/angular.conf /etc/nginx/angular.conf
