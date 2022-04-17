@@ -1,1 +1,14 @@
-<p>projects-base works!</p>
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async
+        defer
+        src="https://buttons.github.io/buttons.js"></script>
+
+<div class="projects-main-container">
+  <h2>My Projects</h2>
+
+  <div class="projects-list">
+    <awd-project *ngFor="let project of projects"
+                 [project]="project">
+    </awd-project>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+@import 'vars';
+
+.project {
+  padding: 10px;
+  width: calc(100% - 20px);
+  @include highlightable;
+  p {
+    margin: 0;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    h3 {
+      margin-top: 0;
+      &.star-icon {
+        color: $colorAccent2;
+        .filled {
+          display: none;
+        }
+        &:hover {
+          .filled {
+            display: unset;
+          }
+          .unfilled {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

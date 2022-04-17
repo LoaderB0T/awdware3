@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@awdware/shared';
 import { ResourceMapModule } from 'ng-dynamic-mf';
 import { ProjectsBaseComponent } from './projects-base/projects-base.component';
+import { ProjectComponent } from './projects-base/project/project.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [ProjectsBaseComponent, ProjectComponent],
   imports: [CommonModule, SharedModule, ResourceMapModule, RouterModule.forChild(routes)]
 })
 export class ProjectsModule {}

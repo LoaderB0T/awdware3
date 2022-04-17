@@ -1,0 +1,19 @@
+<div class="project"
+     *ngIf="project">
+  <div class="header">
+    <h3>{{project.name}}</h3>
+    <h3 class="star-icon">
+      <span class="star">
+        <i class="filled fa-solid fa-star"
+           aria-hidden="true"></i>
+        <i class="unfilled fa-light fa-star"
+           aria-hidden="true"></i>
+        Star
+      </span>
+      <span class="stars">{{stars$ | async}}</span>
+    </h3>
+  </div>
+  <p>
+    {{project.description}}
+  </p>
+</div>
