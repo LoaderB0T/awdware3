@@ -13,7 +13,7 @@ const routes: Routes = [
   }
 ];
 
-const confetti = create(undefined as any, { useWorker: true, resize: true });
+const confetti = create(undefined as any, { useWorker: false, resize: true });
 
 @NgModule({
   declarations: [],
