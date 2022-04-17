@@ -13,6 +13,8 @@ const routes: Routes = [
   }
 ];
 
+const confetti = create(undefined as any, { useWorker: true, resize: true });
+
 @NgModule({
   declarations: [],
   imports: [CommonModule, RouterModule]
@@ -29,7 +31,6 @@ export class ProjectsLazyModule {
         action: target => {
           router.navigate(['projects']);
           if (target) {
-            const confetti = create(undefined as any, { useWorker: true, resize: true });
             const pos = target.getClientRects()[0];
             const x = (pos.x + 0.5 * pos.width) / window.innerWidth;
             const y = (pos.y + 0.5 * pos.height) / window.innerHeight;
