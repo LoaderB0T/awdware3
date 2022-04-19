@@ -29,7 +29,7 @@ export class ProjectsLazyModule {
         iconActive: 'block-question',
         title: 'Projects',
         action: target => {
-          router.navigate(['projects']);
+          router.navigate(['projects'], { preserveFragment: true });
           if (target) {
             const pos = target.getClientRects()[0];
             const x = (pos.x + 0.5 * pos.width) / window.innerWidth;

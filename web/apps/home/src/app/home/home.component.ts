@@ -110,6 +110,6 @@ export class HomeComponent implements OnInit {
   }
 
   public learnMore() {
-    this._router.navigate(['home', 'about']);
+    this._router.navigate(['home', 'about'], { preserveFragment: true });
   }
 }

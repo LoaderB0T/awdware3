@@ -52,7 +52,7 @@ export class HomeLazyModule {
         icon: 'house-blank',
         iconActive: 'house-user',
         title: 'Home',
-        action: () => router.navigate(['home']),
+        action: () => router.navigate(['home'], { preserveFragment: true }),
         order: 1
       },
       {
@@ -60,7 +60,7 @@ export class HomeLazyModule {
         icon: 'user',
         title: 'About',
         action: () => {
-          router.navigate(['home/about']);
+          router.navigate(['home/about'], { preserveFragment: true });
           menuService.editMenuItem('about', { icon: this.randomuserIcon() });
         },
         order: 2
@@ -70,7 +70,7 @@ export class HomeLazyModule {
         icon: 'list',
         iconActive: 'list-check',
         title: 'Skills',
-        action: () => router.navigate(['home/skills']),
+        action: () => router.navigate(['home/skills'], { preserveFragment: true }),
         order: 3
       }
     ];
