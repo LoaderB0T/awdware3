@@ -38,12 +38,12 @@ $phoneMenuButtonHeight: 60px;
         align-items: center;
         min-width: min-content;
         @include not-phone {
-          min-height: calc(100vh - $saveScrollbarWidth);
-          max-width: calc(100vw - $menuWidth - $saveScrollbarWidth);
+          min-height: calc(100vh - $safeScrollbarWidth);
+          max-width: calc(100vw - $menuWidth - $safeScrollbarWidth);
         }
         @include phone {
-          max-width: calc(100vw - $saveScrollbarWidth);
-          min-height: calc(100vh - $saveScrollbarWidth - $phoneMenuButtonHeight);
+          max-width: calc(100vw - $safeScrollbarWidth);
+          min-height: calc(100vh - $safeScrollbarWidth - $phoneMenuButtonHeight);
         }
       }
     }
