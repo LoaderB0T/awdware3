@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { RouterEntryService } from 'ng-dynamic-mf';
-import { MenuItem, MenuService } from '@awdware/shared';
-import { create } from 'canvas-confetti';
+import { CanvasService, MenuItem, MenuService } from '@awdware/shared';
 
 const routes: Routes = [
   {
@@ -13,14 +12,12 @@ const routes: Routes = [
   }
 ];
 
-const confetti = create(undefined as any, { useWorker: false, resize: true });
-
 @NgModule({
   declarations: [],
   imports: [CommonModule, RouterModule]
 })
 export class ProjectsLazyModule {
-  constructor(routerEntryService: RouterEntryService, menuService: MenuService, router: Router) {
+  constructor(routerEntryService: RouterEntryService, menuService: MenuService, router: Router, canvasService: CanvasService) {
     routerEntryService.registerRoutes(routes);
     const menuItems: MenuItem[] = [
       {
@@ -34,16 +31,7 @@ export class ProjectsLazyModule {
             const pos = target.getClientRects()[0];
             const x = (pos.x + 0.5 * pos.width) / window.innerWidth;
             const y = (pos.y + 0.5 * pos.height) / window.innerHeight;
-            confetti({
-              particleCount: 1,
-              spread: 20,
-              origin: { x, y },
-              shapes: ['circle'],
-              colors: ['#fcd303'],
-              startVelocity: 50,
-              gravity: 6,
-              scalar: 2
-            });
+            canvasService.startDraw(x, y);
           }
         },
         order: 4
