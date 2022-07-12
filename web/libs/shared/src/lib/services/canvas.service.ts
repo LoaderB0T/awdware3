@@ -7,7 +7,7 @@ import { Particle } from '../models/particle.model';
 export class CanvasService {
   private _canvas?: HTMLCanvasElement;
   private _ctx?: CanvasRenderingContext2D;
-  private readonly _particles: Particle[] = [];
+  private _particles: Particle[] = [];
 
   private init() {
     if (!this._canvas) {
@@ -30,7 +30,7 @@ export class CanvasService {
 
   public startDraw(x: number, y: number) {
     this.init();
-    this._particles.push({ x, y, startTime: Date.now(), xDrift: Math.random() - 0.5 });
+    this._particles.push({ x, y, startTime: Date.now(), xDrift: Math.random() - 0.5, power: Math.random() });
   }
 
   private draw() {
@@ -40,16 +40,26 @@ export class CanvasService {
     const ctx = this._ctx;
 
     ctx.clearRect(0, 0, this._canvas.width, this._canvas.height); // clear canvas
+
+    const lifeTime = 2000;
+    this._particles = this._particles.filter(particle => particle.startTime + lifeTime > Date.now());
+
     this._particles.forEach(particle => {
       const timeDelta = Date.now() - particle.startTime;
 
-      const speed = 1;
+      const speedY = 60;
+      const speedX = 10;
+      const movement = timeDelta / speedY;
       const rotationScale = 100;
       const rotation = ((timeDelta / 4) % (rotationScale * 2)) - rotationScale;
       const rotationPercent = Math.abs(rotation / rotationScale);
 
-      const centerX = (timeDelta / (speed * 2)) * particle.xDrift + particle.x;
-      const centerY = timeDelta / speed + particle.y;
+      const centerX = (timeDelta / speedX) * particle.xDrift + particle.x;
+
+      const impulse = 3 + particle.power;
+      const multiplier = 7 + particle.power * 2;
+
+      const centerY = multiplier * Math.pow(movement - impulse, 2) + particle.y - multiplier * Math.pow(impulse, 2);
       const radius = 8;
 
       ctx.beginPath();

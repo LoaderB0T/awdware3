@@ -3,4 +3,5 @@ export type Particle = {
   y: number;
   startTime: number;
   xDrift: number;
+  power: number;
 };
