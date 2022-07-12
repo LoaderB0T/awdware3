@@ -6,6 +6,7 @@ export * from './lib/directives/tooltip.directive';
 export * from './lib/models/theme.model';
 export * from './lib/models/menu-item.model';
 
+export * from './lib/services/canvas.service';
 export * from './lib/services/preload.service';
 export * from './lib/services/theme.service';
 export * from './lib/services/menu.service';

@@ -2456,11 +2456,6 @@
   dependencies:
     "@types/node" "*"
 
-"@types/canvas-confetti@^1.4.2":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@types/canvas-confetti/-/canvas-confetti-1.4.2.tgz#35c99fc904492fdcc6515c742509e04f3527211c"
-  integrity sha512-t45KUDHlwrD9PJVRHc5z1SlXhO82BQEgMKUXGEV1KnWLFMPA6Y5LfUsLTHHzH9KcKDHZLEiYYH5nIDcjRKWNTg==
-
 "@types/connect-history-api-fallback@^1.3.5":
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/@types/connect-history-api-fallback/-/connect-history-api-fallback-1.3.5.tgz#d1f7a8a09d0ed5a57aee5ae9c18ab9b803205dae"
@@ -3701,11 +3696,6 @@ caniuse-lite@^1.0.30001335, caniuse-lite@^1.0.30001349:
   version "1.0.30001349"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001349.tgz#90740086a2eb2e825084944169d313c9793aeba4"
   integrity sha512-VFaWW3jeo6DLU5rwdiasosxhYSduJgSGil4cSyX3/85fbctlE58pXAkWyuRmVA0r2RxsOSVYUTZcySJ8WpbTxw==
-
-canvas-confetti@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/canvas-confetti/-/canvas-confetti-1.5.1.tgz#bf5b8622ef3bcd347378a972fc4194a89cfe0c9b"
-  integrity sha512-Ncz+oZJP6OvY7ti4E1slxVlyAV/3g7H7oQtcCDXgwGgARxPnwYY9PW5Oe+I8uvspYNtuHviAdgA0LfcKFWJfpg==
 
 chalk@4.1.0:
   version "4.1.0"
@@ -7332,10 +7322,10 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-ng-dynamic-mf@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/ng-dynamic-mf/-/ng-dynamic-mf-1.0.1.tgz#822da57405bf1dc8b47aabbbdb46954345817db7"
-  integrity sha512-xuCW8Nqt8msCVVNPamtDWYgmb50PK5xRBE9etnCFfnNaDubmUubTptpoliUREqmLn0CdBcKtwJ3LSMceUf+M4w==
+ng-dynamic-mf@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ng-dynamic-mf/-/ng-dynamic-mf-1.1.0.tgz#a1e5b1198eec771241b29fdc7ff8dc2ae55886ad"
+  integrity sha512-mxGbyVLB9tT4meFGfg+Gtt7MhXJyrXQ/J/rXiiYWvO7MwJvjaidSQtqSbiuuYjnJArvt5sNrz18HRe6PdS6o4A==
   dependencies:
     tslib "^2.3.0"
 
