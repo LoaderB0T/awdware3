@@ -37,13 +37,28 @@ export class CanvasService {
     if (!this._ctx || !this._canvas) {
       throw new Error('Context is not initialized');
     }
-    // this._ctx.globalCompositeOperation = 'destination-over';
-    this._ctx.clearRect(0, 0, this._canvas.width, this._canvas.height); // clear canvas
+    const ctx = this._ctx;
+
+    ctx.clearRect(0, 0, this._canvas.width, this._canvas.height); // clear canvas
     this._particles.forEach(particle => {
       const timeDelta = Date.now() - particle.startTime;
       const pos = timeDelta / 100;
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      this._ctx!.fillRect(pos + particle.x, pos + particle.y, 50, 50); // fill canvas with white
+
+      const rotationScale = 100;
+      const rotation = ((timeDelta / 4) % (rotationScale * 2)) - rotationScale;
+      const rotationPercent = Math.abs(rotation / rotationScale);
+
+      const centerX = pos + particle.x;
+      const centerY = pos + particle.y;
+      const radius = 8;
+
+      ctx.beginPath();
+      ctx.ellipse(centerX, centerY, radius * rotationPercent, radius, 0, 0, 2 * Math.PI);
+      ctx.fillStyle = '#ffc800';
+      ctx.fill();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#ffaa00';
+      ctx.stroke();
     });
     window.requestAnimationFrame(() => this.draw());
   }
