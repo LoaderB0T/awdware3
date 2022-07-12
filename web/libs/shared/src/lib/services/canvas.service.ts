@@ -30,7 +30,7 @@ export class CanvasService {
 
   public startDraw(x: number, y: number) {
     this.init();
-    this._particles.push({ x, y, startTime: Date.now() });
+    this._particles.push({ x, y, startTime: Date.now(), xDrift: Math.random() - 0.5 });
   }
 
   private draw() {
@@ -42,22 +42,22 @@ export class CanvasService {
     ctx.clearRect(0, 0, this._canvas.width, this._canvas.height); // clear canvas
     this._particles.forEach(particle => {
       const timeDelta = Date.now() - particle.startTime;
-      const pos = timeDelta / 100;
 
+      const speed = 1;
       const rotationScale = 100;
       const rotation = ((timeDelta / 4) % (rotationScale * 2)) - rotationScale;
       const rotationPercent = Math.abs(rotation / rotationScale);
 
-      const centerX = pos + particle.x;
-      const centerY = pos + particle.y;
+      const centerX = (timeDelta / (speed * 2)) * particle.xDrift + particle.x;
+      const centerY = timeDelta / speed + particle.y;
       const radius = 8;
 
       ctx.beginPath();
       ctx.ellipse(centerX, centerY, radius * rotationPercent, radius, 0, 0, 2 * Math.PI);
-      ctx.fillStyle = '#ffc800';
+      ctx.fillStyle = '#ffd500';
       ctx.fill();
       ctx.lineWidth = 2;
-      ctx.strokeStyle = '#ffaa00';
+      ctx.strokeStyle = '#d99400';
       ctx.stroke();
     });
     window.requestAnimationFrame(() => this.draw());

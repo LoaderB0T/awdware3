@@ -29,8 +29,8 @@ export class ProjectsLazyModule {
           router.navigate(['projects'], { preserveFragment: true });
           if (target) {
             const pos = target.getClientRects()[0];
-            const x = (pos.x + 0.5 * pos.width) / window.innerWidth;
-            const y = (pos.y + 0.5 * pos.height) / window.innerHeight;
+            const x = pos.x + 0.5 * pos.width;
+            const y = pos.y + 0.5 * pos.height;
             canvasService.startDraw(x, y);
           }
         },
