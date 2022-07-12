@@ -22,15 +22,22 @@ export class ProjectsLazyModule {
     const menuItems: MenuItem[] = [
       {
         id: 'projects',
-        icon: 'block',
-        iconActive: 'block-question',
+        icon: 'block-question',
+        iconActive: 'block',
         title: 'Projects',
         action: target => {
           router.navigate(['projects'], { preserveFragment: true });
           if (target) {
             const pos = target.getClientRects()[0];
+            if (target.classList.contains('animate-bounce1')) {
+              target.classList.remove('animate-bounce1');
+              target.classList.add('animate-bounce2');
+            } else {
+              target.classList.remove('animate-bounce2');
+              target.classList.add('animate-bounce1');
+            }
             const x = pos.x + 0.5 * pos.width;
-            const y = pos.y + 0.5 * pos.height;
+            const y = pos.y;
             canvasService.startDraw(x, y);
           }
         },

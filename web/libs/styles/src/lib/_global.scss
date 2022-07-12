@@ -214,3 +214,32 @@ $tooltipBorder: $tooltipBorderSize white solid;
     border-right: $tooltipBorder;
   }
 }
+
+.animate-bounce1 {
+  animation: bounce1 0.1s ease-in-out 1;
+}
+.animate-bounce2 {
+  animation: bounce2 0.1s ease-in-out 1;
+}
+@keyframes bounce1 {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes bounce2 {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
