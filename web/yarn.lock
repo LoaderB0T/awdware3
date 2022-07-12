@@ -7322,10 +7322,10 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-ng-dynamic-mf@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/ng-dynamic-mf/-/ng-dynamic-mf-1.0.1.tgz#822da57405bf1dc8b47aabbbdb46954345817db7"
-  integrity sha512-xuCW8Nqt8msCVVNPamtDWYgmb50PK5xRBE9etnCFfnNaDubmUubTptpoliUREqmLn0CdBcKtwJ3LSMceUf+M4w==
+ng-dynamic-mf@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ng-dynamic-mf/-/ng-dynamic-mf-1.1.0.tgz#a1e5b1198eec771241b29fdc7ff8dc2ae55886ad"
+  integrity sha512-mxGbyVLB9tT4meFGfg+Gtt7MhXJyrXQ/J/rXiiYWvO7MwJvjaidSQtqSbiuuYjnJArvt5sNrz18HRe6PdS6o4A==
   dependencies:
     tslib "^2.3.0"
 
