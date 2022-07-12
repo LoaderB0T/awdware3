@@ -34,7 +34,6 @@ export class BaseComponent implements AfterViewInit {
   private _currrentCode: string[] = [...konamiCode];
   private readonly _konamiActive = new BehaviorSubject(false);
   public readonly konamiActive$ = this._konamiActive.asObservable();
-  private _lastRandomEmoji: string = '';
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -70,10 +69,6 @@ export class BaseComponent implements AfterViewInit {
     const rndmTitleEmoji = rndmTitleEmojis[randomInt(0, rndmTitleEmojis.length - 1)];
     // eslint-disable-next-line no-irregular-whitespace
     title.setTitle(`awdware     ${rndmTitleEmoji}`);
-
-    setInterval(() => {
-      this.randomUrlEmoji();
-    }, 2000);
   }
 
   public ngAfterViewInit(): void {
@@ -124,15 +119,5 @@ export class BaseComponent implements AfterViewInit {
 
   private konami() {
     this._konamiActive.next(!this._konamiActive.value);
-  }
-
-  private randomUrlEmoji() {
-    const emojis = ['❤', '🧡', '💛', '💚', '💙', '💜', '🤎', '🖤', '🤍'] as const;
-    let randomEmoji = this._lastRandomEmoji;
-    while (randomEmoji === this._lastRandomEmoji) {
-      randomEmoji = emojis[randomInt(0, emojis.length - 1)];
-    }
-    this._lastRandomEmoji = randomEmoji;
-    location.hash = randomEmoji;
   }
 }
