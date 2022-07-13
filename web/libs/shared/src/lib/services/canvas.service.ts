@@ -25,6 +25,9 @@ export class CanvasService {
       this._ctx = this._canvas.getContext('2d')!;
 
       window.requestAnimationFrame(() => this.draw());
+    } else {
+      this._canvas.width = window.innerWidth;
+      this._canvas.height = window.innerHeight;
     }
   }
 
