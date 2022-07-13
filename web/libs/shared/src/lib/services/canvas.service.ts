@@ -8,6 +8,7 @@ export class CanvasService {
   private _canvas?: HTMLCanvasElement;
   private _ctx?: CanvasRenderingContext2D;
   private _particles: Particle[] = [];
+  private readonly _rndmColors = ['#eb4034', '#65eb34', '#34ebcd', '#1c61d9', '#7a1cd9', '#ed09d3', '#ed093e'];
 
   private init() {
     if (!this._canvas) {
@@ -31,9 +32,16 @@ export class CanvasService {
     }
   }
 
-  public startDraw(x: number, y: number) {
+  public startDraw(x: number, y: number, power: number, colorful: boolean) {
     this.init();
-    this._particles.push({ x, y, startTime: Date.now(), xDrift: Math.random() - 0.5, power: Math.random() });
+    this._particles.push({
+      x,
+      y,
+      startTime: Date.now(),
+      xDrift: Math.random() - 0.5,
+      power: Math.random() + Math.sqrt(power / 15),
+      color: colorful ? this._rndmColors[Math.floor(Math.random() * this._rndmColors.length)] : '#ffd500'
+    });
   }
 
   private draw() {
@@ -67,10 +75,10 @@ export class CanvasService {
 
       ctx.beginPath();
       ctx.ellipse(centerX, centerY, radius * rotationPercent, radius, 0, 0, 2 * Math.PI);
-      ctx.fillStyle = '#ffd500';
+      ctx.fillStyle = particle.color;
       ctx.fill();
       ctx.lineWidth = 2;
-      ctx.strokeStyle = '#d99400';
+      ctx.strokeStyle = particle.color === '#ffd500' ? '#d99400' : particle.color;
       ctx.stroke();
     });
     window.requestAnimationFrame(() => this.draw());
