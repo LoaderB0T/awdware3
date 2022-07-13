@@ -46,7 +46,7 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all",
+          "outputHashing": "none",
           "customWebpackConfig": {
             "path": "apps/projects/webpack.prod.config.js"
           }
