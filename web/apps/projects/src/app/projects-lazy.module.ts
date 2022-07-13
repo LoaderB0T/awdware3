@@ -17,6 +17,8 @@ const routes: Routes = [
   imports: [CommonModule, RouterModule]
 })
 export class ProjectsLazyModule {
+  private _lastIconTime: number = Date.now();
+  private _iconBoost: number = 0;
   constructor(routerEntryService: RouterEntryService, menuService: MenuService, router: Router, canvasService: CanvasService) {
     routerEntryService.registerRoutes(routes);
     const menuItems: MenuItem[] = [
@@ -38,7 +40,27 @@ export class ProjectsLazyModule {
             }
             const x = pos.x + 0.5 * pos.width;
             const y = pos.y;
-            canvasService.startDraw(x, y);
+            const timeDelta = Date.now() - this._lastIconTime;
+            if (timeDelta < 500) {
+              this._iconBoost += 1 - timeDelta / 500;
+              if (this._iconBoost > 75) {
+                this._iconBoost = 75;
+              }
+            } else {
+              this._iconBoost -= timeDelta / 50;
+              if (this._iconBoost < 0) {
+                this._iconBoost = 0;
+              }
+            }
+            this._lastIconTime = Date.now();
+            if (this._iconBoost === 75) {
+              for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                  canvasService.startDraw(x, y, this._iconBoost, true);
+                }, i * 20);
+              }
+            }
+            canvasService.startDraw(x, y, this._iconBoost, false);
           }
         },
         order: 4
