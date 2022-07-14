@@ -128,6 +128,7 @@ export class BaseComponent implements AfterViewInit {
     const rndmColors = ['#eb4034', '#65eb34', '#34ebcd', '#1c61d9', '#7a1cd9', '#ed09d3', '#ed093e'];
     if (this._confettiInterval) {
       clearInterval(this._confettiInterval);
+      this._confettiInterval = null;
     } else {
       this._confettiInterval = setInterval(() => {
         for (let i = 0; i < 10; i++) {
