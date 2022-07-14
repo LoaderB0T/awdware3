@@ -2,7 +2,8 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, HostListener } from 
 import { Title } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
 import { PreloadService, MenuService, randomInt } from '@awdware/shared';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { CircleParticle } from 'confetti.ts';
+import { Observable } from 'rxjs';
 import { slideInAnimation } from './router-animation';
 
 const konamiCode = [
@@ -32,8 +33,9 @@ export class BaseComponent implements AfterViewInit {
   private _loaded = false;
   public readonly menuOpen$: Observable<boolean>;
   private _currrentCode: string[] = [...konamiCode];
-  private readonly _konamiActive = new BehaviorSubject(false);
-  public readonly konamiActive$ = this._konamiActive.asObservable();
+  private _confettiInterval: any = null;
+  private _mouseX: number = 0;
+  private _mouseY: number = 0;
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -117,7 +119,32 @@ export class BaseComponent implements AfterViewInit {
     }
   }
 
+  public setMouseCoords(event: MouseEvent) {
+    this._mouseX = event.clientX;
+    this._mouseY = event.clientY;
+  }
+
   private konami() {
-    this._konamiActive.next(!this._konamiActive.value);
+    const rndmColors = ['#eb4034', '#65eb34', '#34ebcd', '#1c61d9', '#7a1cd9', '#ed09d3', '#ed093e'];
+    if (this._confettiInterval) {
+      clearInterval(this._confettiInterval);
+    } else {
+      this._confettiInterval = setInterval(() => {
+        for (let i = 0; i < 10; i++) {
+          CircleParticle.draw({
+            x: this._mouseX,
+            y: this._mouseY,
+            movement: 'angle',
+            angle: randomInt(0, 360),
+            color: rndmColors[randomInt(0, rndmColors.length - 1)],
+            radius: randomInt(3, 10),
+            velocity: randomInt(4, 8),
+            acceleration: -0.2,
+            minVelocity: 0,
+            lifeTime: randomInt(3000, 6000)
+          });
+        }
+      }, 300);
+    }
   }
 }

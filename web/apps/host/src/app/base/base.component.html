@@ -1,11 +1,11 @@
-<div id="app-main">
+<div id="app-main"
+     (mousemove)="setMouseCoords($event)">
   <div class="bg">
     <awd-bg></awd-bg>
   </div>
   <div class="menu-content-container">
     <awd-menu [class.open]="menuOpen$ | async"></awd-menu>
     <div class="content"
-         [class.wiggle]="konamiActive$ | async"
          [@routeAnimations]="prepareRoute(outlet)">
       <router-outlet #outlet="outlet"></router-outlet>
     </div>

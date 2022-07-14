@@ -149,18 +149,6 @@ $scollbarThumbHover: $colorContent1;
   }
 }
 
-.wiggle div {
-  animation: wiggle 0.25s ease-in-out infinite alternate;
-}
-@keyframes wiggle {
-  from {
-    transform: rotateZ(-5deg);
-  }
-  to {
-    transform: rotateZ(5deg);
-  }
-}
-
 button {
   all: unset;
   &.button {
