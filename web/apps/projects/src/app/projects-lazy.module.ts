@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { RouterEntryService } from 'ng-dynamic-mf';
-import { CanvasService, MenuItem, MenuService } from '@awdware/shared';
+import { MenuItem, MenuService } from '@awdware/shared';
+import { CircleParticle } from 'confetti.ts';
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
 export class ProjectsLazyModule {
   private _lastIconTime: number = Date.now();
   private _iconBoost: number = 0;
-  constructor(routerEntryService: RouterEntryService, menuService: MenuService, router: Router, canvasService: CanvasService) {
+  private readonly _rndmColors = ['#eb4034', '#65eb34', '#34ebcd', '#1c61d9', '#7a1cd9', '#ed09d3', '#ed093e'];
+  constructor(routerEntryService: RouterEntryService, menuService: MenuService, router: Router) {
     routerEntryService.registerRoutes(routes);
     const menuItems: MenuItem[] = [
       {
@@ -56,16 +58,32 @@ export class ProjectsLazyModule {
             if (this._iconBoost === 75) {
               for (let i = 0; i < 10; i++) {
                 setTimeout(() => {
-                  canvasService.startDraw(x, y, this._iconBoost, true);
+                  this.drawParticle(x, y, this._iconBoost, true);
                 }, i * 20);
               }
             }
-            canvasService.startDraw(x, y, this._iconBoost, false);
+            this.drawParticle(x, y, this._iconBoost, false);
           }
         },
         order: 4
       }
     ];
     menuService.addMenuItems(...menuItems);
+  }
+
+  private drawParticle(x: number, y: number, power: number, colorful: boolean) {
+    const color = colorful ? this._rndmColors[Math.floor(Math.random() * this._rndmColors.length)] : '#ffd500';
+    CircleParticle.draw({
+      x,
+      y,
+      movement: 'xy',
+      color,
+      rotationY: 4 + Math.random() * 2,
+      radius: 8,
+      gravity: 0.2,
+      velocityY: -5 - (power / 75) * 6,
+      velocityX: Math.random() - 0.5,
+      borderColor: color === '#ffd500' ? '#d99400' : color
+    });
   }
 }

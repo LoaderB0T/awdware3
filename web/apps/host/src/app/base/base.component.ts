@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, HostListener } from 
 import { Title } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
 import { PreloadService, MenuService, randomInt } from '@awdware/shared';
-import { CircleParticle } from 'confetti.ts';
+import { CircleParticle, RectParticle } from 'confetti.ts';
 import { Observable } from 'rxjs';
 import { slideInAnimation } from './router-animation';
 
@@ -132,13 +132,14 @@ export class BaseComponent implements AfterViewInit {
     } else {
       this._confettiInterval = setInterval(() => {
         for (let i = 0; i < 10; i++) {
-          CircleParticle.draw({
+          RectParticle.draw({
             x: this._mouseX,
             y: this._mouseY,
             movement: 'angle',
             angle: randomInt(0, 360),
             color: rndmColors[randomInt(0, rndmColors.length - 1)],
-            radius: randomInt(3, 10),
+            width: 8 + Math.random() * 4,
+            height: 3 + Math.random() * 2,
             velocity: randomInt(4, 8),
             acceleration: -0.2,
             minVelocity: 0,
