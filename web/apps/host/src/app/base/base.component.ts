@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, HostListener } from 
 import { Title } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
 import { PreloadService, MenuService, randomInt } from '@awdware/shared';
-import { CircleParticle, RectParticle } from 'confetti.ts';
+import { RectParticle } from 'confetti.ts';
 import { Observable } from 'rxjs';
 import { slideInAnimation } from './router-animation';
 
