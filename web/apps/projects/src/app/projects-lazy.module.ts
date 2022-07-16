@@ -76,13 +76,18 @@ export class ProjectsLazyModule {
     CircleParticle.draw({
       x,
       y,
-      movement: 'xy',
+      movementXY: {
+        velocityY: -5 - (power / 75) * 6,
+        velocityX: Math.random() - 0.5,
+        gravity: 0.2
+      },
       color,
-      rotationY: 4 + Math.random() * 2,
+      rotation: {
+        velocity: {
+          y: 4 + Math.random() * 2
+        }
+      },
       radius: 8,
-      gravity: 0.2,
-      velocityY: -5 - (power / 75) * 6,
-      velocityX: Math.random() - 0.5,
       borderColor: color === '#ffd500' ? '#d99400' : color
     });
   }

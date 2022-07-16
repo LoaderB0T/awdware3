@@ -3898,10 +3898,10 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==
 
-confetti.ts@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/confetti.ts/-/confetti.ts-0.2.1.tgz#badafd60ead5a8c0d83d078b1243ac6568f17f1c"
-  integrity sha512-o9WUMuewYCfJZzLiSh4bfHZm2/b9ASlK+6gqDzwhXlK8swtoPRJDha6+Md6s1B5efr6ot4MuneZ0I2BWejS/UA==
+confetti.ts@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/confetti.ts/-/confetti.ts-0.3.0.tgz#388163b40ab25ac6a3ead73e129717a544172148"
+  integrity sha512-LyANP8dIIn02fn5WYtZ7jsB6ghQOr23OBXG67kSrPGb16W1hJRcUFWTc5BXdUMWgQYQMZ9cIhipront0oCum7w==
 
 confusing-browser-globals@^1.0.9:
   version "1.0.11"

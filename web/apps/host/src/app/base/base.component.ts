@@ -135,14 +135,21 @@ export class BaseComponent implements AfterViewInit {
           RectParticle.draw({
             x: this._mouseX,
             y: this._mouseY,
-            movement: 'angle',
-            angle: randomInt(0, 360),
+            movementAngle: {
+              angle: Math.random() * 360,
+              velocity: 5 + Math.random() * 5,
+              acceleration: -0.2,
+              minVelocity: 0
+            },
+            rotation: {
+              value: { x: Math.random() * 360, z: Math.random() * 360 },
+              velocity: { x: Math.random() * 4, z: Math.random() * 4, min: 0 },
+              acceleration: { x: -0.05 - Math.random() * 0.05, z: -0.05 - Math.random() * 0.05 },
+              switchDirection: Math.random() > 0.5
+            },
             color: rndmColors[randomInt(0, rndmColors.length - 1)],
-            width: 8 + Math.random() * 4,
-            height: 3 + Math.random() * 2,
-            velocity: randomInt(4, 8),
-            acceleration: -0.2,
-            minVelocity: 0,
+            width: 10 + Math.random() * 4,
+            height: 5 + Math.random() * 2,
             lifeTime: randomInt(3000, 6000)
           });
         }
