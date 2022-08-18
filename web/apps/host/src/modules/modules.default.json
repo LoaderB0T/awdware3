@@ -1,0 +1,13 @@
+[
+  {
+    "url": "/assets/modules/home/",
+    "name": "home",
+    "ngModuleName": "RemoteEntryModule"
+  },
+  {
+    "url": "/assets/modules/projects/",
+    "name": "projects",
+    "ngModuleName": "RemoteEntryModule",
+    "hasGlobalStyles": true
+  }
+]

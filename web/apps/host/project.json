@@ -72,13 +72,6 @@
         "publicHost": "http://localhost:4200"
       }
     },
-    "extract-i18n": {
-      "executor": "ngx-build-plus:extract-i18n",
-      "options": {
-        "browserTarget": "host:build",
-        "extraWebpackConfig": "apps/host/webpack.config.js"
-      }
-    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
@@ -91,6 +84,12 @@
       "options": {
         "jestConfig": "apps/host/jest.config.js",
         "passWithNoTests": true
+      }
+    },
+    "construct": {
+      "executor": "./tools/executors/construct:construct",
+      "options": {
+        "modulesFolder": "src/modules"
       }
     }
   },
