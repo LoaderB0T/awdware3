@@ -1,6 +1,5 @@
 {
   "projectType": "application",
-  "root": "apps/projects",
   "sourceRoot": "apps/projects/src",
   "prefix": "awd",
   "targets": {
@@ -95,7 +94,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/projects"],
       "options": {
-        "jestConfig": "apps/projects/jest.config.js",
+        "jestConfig": "apps/projects/jest.config.ts",
         "passWithNoTests": true
       }
     }

@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/shared",
   "sourceRoot": "libs/shared/src",
   "prefix": "awd",
   "targets": {
@@ -8,7 +7,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/shared"],
       "options": {
-        "jestConfig": "libs/shared/jest.config.js",
+        "jestConfig": "libs/shared/jest.config.ts",
         "passWithNoTests": true
       }
     },
