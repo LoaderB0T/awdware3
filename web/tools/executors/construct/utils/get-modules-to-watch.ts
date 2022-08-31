@@ -4,11 +4,13 @@ export const getModulesToWatch = (watch: undefined | boolean | string | string[]
   if (!watch) {
     return;
   }
+
   const moduleNamesToWatch: string[] = [];
   const modulesToBuild = modules.filter(m => m.constructType === 'build');
   if (watch === true) {
     moduleNamesToWatch.push(...modulesToBuild.map(m => m.name));
   }
+
   if (typeof watch === 'string') {
     if (watch.includes(',')) {
       moduleNamesToWatch.push(...watch.split(','));
