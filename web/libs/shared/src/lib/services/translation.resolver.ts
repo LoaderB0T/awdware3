@@ -16,7 +16,7 @@ export class TranslationResolver implements Resolve<void> {
   public resolve(route: ActivatedRouteSnapshot): Promise<void> {
     const moduleName = route.data['module'];
     if (!moduleName) {
-      throw new Error('Module name is not defined in rotue data');
+      throw new Error('Module name is not defined in route data');
     }
     this._dynamicTranslationService.setTranslateService(this._translateService);
     return this._dynamicTranslationService.registerTranslations(['de', 'en'], l => `assets/locales/${l}.json`, moduleName);
