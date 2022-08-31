@@ -86,7 +86,7 @@
       }
     },
     "construct": {
-      "executor": "./tools/executors/construct:construct",
+      "executor": "nx-dynamic-mf:construct",
       "options": {
         "modulesFolder": "src/modules"
       }
