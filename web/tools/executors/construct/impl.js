@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -39,14 +50,15 @@ exports.__esModule = true;
 var child_process_1 = require("child_process");
 var fs_1 = require("fs");
 var fse = require("fs-extra");
-function echoExecutor(options, context) {
+var get_construct_type_from_url_1 = require("./utils/get-construct-type-from-url");
+var get_modules_to_watch_1 = require("./utils/get-modules-to-watch");
+function constructExecutor(options, context) {
     var _a, _b;
     return __awaiter(this, void 0, void 0, function () {
-        var callerName, projConfig, projRoot, modulesJsonName, modulesFilePath, modulesFile, modulesToLoad, servings, builds, error_1;
+        var callerName, projConfig, projRoot, modulesJsonName, modulesFilePath, modulesFile, modulesToLoad, servings, builds, moduleCfgs, error_1;
         return __generator(this, function (_c) {
             switch (_c.label) {
                 case 0:
-                    console.info("Executing \"echo\"...");
                     callerName = context.projectName;
                     projConfig = context.workspace.projects[callerName];
                     projRoot = projConfig.root;
@@ -57,13 +69,17 @@ function echoExecutor(options, context) {
                     modulesToLoad = JSON.parse(modulesFile);
                     servings = [];
                     builds = [];
-                    modulesToLoad.forEach(function (moduleToLoad) {
+                    moduleCfgs = modulesToLoad.map(function (m) {
+                        var moduleDef = __assign(__assign({}, m), { constructType: (0, get_construct_type_from_url_1.getConstructTypeFromUrl)(m.url) });
+                        return moduleDef;
+                    });
+                    (0, get_modules_to_watch_1.getModulesToWatch)(options.watch, moduleCfgs);
+                    moduleCfgs.forEach(function (moduleToLoad) {
                         var moduleConfig = context.workspace.projects[moduleToLoad.name];
-                        if (moduleToLoad.url.startsWith('http://') || moduleToLoad.url.startsWith('https://')) {
-                            if (!moduleToLoad.url.startsWith('http://localhost') || moduleToLoad.url.startsWith('https://localhost')) {
-                                // Skipping because external URL
-                                return;
-                            }
+                        if (moduleToLoad.constructType === 'none') {
+                            return;
+                        }
+                        if (moduleToLoad.constructType === 'serve') {
                             var port = /localhost:(\d+)/.exec(moduleToLoad.url)[1];
                             if (!port || Number.isNaN(Number.parseInt(port))) {
                                 throw new Error("Invalid port in module ".concat(moduleToLoad.name));
@@ -76,10 +92,11 @@ function echoExecutor(options, context) {
                                 child.on('exit', function (code) { return (code === 0 ? resolve() : reject(code)); });
                             }));
                         }
-                        else {
-                            console.log("Building ".concat(moduleToLoad.name, " to ").concat(moduleToLoad.url));
+                        if (moduleToLoad.constructType === 'build' || moduleToLoad.constructType === 'buildAndWatch') {
+                            var watch_1 = moduleToLoad.constructType === 'buildAndWatch';
+                            console.log("Building ".concat(moduleToLoad.name, " to ").concat(moduleToLoad.url).concat(watch_1 ? ' (watching)' : ''));
                             builds.push(new Promise(function (resolve, reject) {
-                                var child = (0, child_process_1.exec)("nx build ".concat(moduleToLoad.name));
+                                var child = (0, child_process_1.exec)("nx build ".concat(moduleToLoad.name).concat(watch_1 ? ' --watch' : ''));
                                 child.stdout.pipe(process.stdout);
                                 child.on('exit', function (code) { return (code === 0 ? resolve() : reject(code)); });
                             }).then(function () {
@@ -112,5 +129,5 @@ function echoExecutor(options, context) {
         });
     });
 }
-exports["default"] = echoExecutor;
+exports["default"] = constructExecutor;
 //# sourceMappingURL=impl.js.map
