@@ -42,3 +42,4 @@ Thumbs.db
 
 apps/host/src/modules/modules.json
 apps/host/src/environments/environment.json
+tools/**/*.js.map

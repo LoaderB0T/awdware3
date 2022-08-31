@@ -47,7 +47,6 @@ function echoExecutor(options, context) {
             switch (_c.label) {
                 case 0:
                     console.info("Executing \"echo\"...");
-                    console.info("Options: ".concat(JSON.stringify(options, null, 2)));
                     callerName = context.projectName;
                     projConfig = context.workspace.projects[callerName];
                     projRoot = projConfig.root;
