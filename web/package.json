@@ -11,9 +11,7 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start": "nx serve",
     "build": "nx build",
-    "build:tools": "yarn tsc tools/index.ts --sourceMap",
     "test": "nx test",
-    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
     "docker-build": "docker build -t awdware .",
     "docker-run": "docker run -it --rm -p 9000:80 awdware"
   },
