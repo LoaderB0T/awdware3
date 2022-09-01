@@ -8190,10 +8190,10 @@ nwsapi@^2.2.0:
   resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.2.0.tgz#204879a9e3d068ff2a55139c2c772780681a38b7"
   integrity sha512-h2AatdwYH+JHiZpv7pt/gSX1XoRGb7L/qSIeuqA6GwYoF9w1vP1cw42TO0aI2pNyshRK5893hNSl+1//vHK7hQ==
 
-nx-dynamic-mf@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/nx-dynamic-mf/-/nx-dynamic-mf-0.0.5.tgz#3ec9105131b86218bea8a7854a065047e5d82006"
-  integrity sha512-rJJwYYDT7idvM4zoDcez9kOB2UrPMVNiKg0zi2VvLM40cXJyluOu4OtsZ+Ylc+++ToEtHA/Mli8Av3PRFYvNcg==
+nx-dynamic-mf@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/nx-dynamic-mf/-/nx-dynamic-mf-1.0.2.tgz#7c337baf6fc70a7c7fd982324b17d00aefc41b94"
+  integrity sha512-hdZHgQAlX6glM1REvuT1Dr0XjxtxWGPG7QT2NVv4hTt9RidZDFItmJhE/CXCfEUCMAJ4ksjCPFY8V4nq20SnVg==
 
 nx@14.6.1, nx@^14.5.9:
   version "14.6.1"
