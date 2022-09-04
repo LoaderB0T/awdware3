@@ -20,12 +20,12 @@ $phoneMenuButtonHeight: 60px;
       z-index: 2;
       overflow: scroll;
       @include not-phone {
-        height: 100vh;
+        height: 100%;
         width: calc(100vw - $menuWidth);
         left: $menuWidth;
       }
       @include phone {
-        height: calc(100vh - $phoneMenuButtonHeight);
+        height: calc(100% - $phoneMenuButtonHeight);
         top: $phoneMenuButtonHeight;
         width: 100vw;
         left: 0;
@@ -38,12 +38,12 @@ $phoneMenuButtonHeight: 60px;
         align-items: center;
         min-width: min-content;
         @include not-phone {
-          min-height: calc(100vh - $safeScrollbarWidth);
+          min-height: calc(100% - $safeScrollbarWidth);
           max-width: calc(100vw - $menuWidth - $safeScrollbarWidth);
         }
         @include phone {
           max-width: calc(100vw - $safeScrollbarWidth);
-          min-height: calc(100vh - $safeScrollbarWidth - $phoneMenuButtonHeight);
+          min-height: calc(100% - $safeScrollbarWidth - $phoneMenuButtonHeight);
         }
       }
     }

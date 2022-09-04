@@ -41,6 +41,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
     this._subMgr.unsubscribeAll();
   }
 
+  // https://devicon.dev/
   public toLanguageIcon(language: string): string {
     if (!language) {
       return '';
