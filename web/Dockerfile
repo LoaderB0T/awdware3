@@ -12,7 +12,7 @@ RUN yarn install
 
 COPY . .
 
-RUN yarn nx construct -m build
+RUN yarn nx construct --build -m build
 RUN yarn nx hash
 
 # stage 2
