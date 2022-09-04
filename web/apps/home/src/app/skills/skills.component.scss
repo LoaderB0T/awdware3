@@ -6,17 +6,25 @@
   align-items: center;
   .logos {
     display: flex;
+    justify-content: center;
     gap: 20px;
     img {
       height: 60px;
       @include hover-scale;
     }
-    a {
-      width: 80px;
-    }
-  }
+    &.more {
+      max-width: 70%;
+      flex-wrap: wrap;
 
-  .random-knowledge-button {
-    margin-top: 20px;
+      a {
+        padding: 10px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        @include highlightable;
+        @include hover-scale;
+      }
+    }
   }
 }

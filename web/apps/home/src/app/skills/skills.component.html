@@ -10,18 +10,13 @@
     </a>
   </div>
   <h2>{{ 'about.alsoKnowledgeableIn' | translate }}</h2>
-  <div class="logos">
-    <a *ngFor="let knownThing of knowledge$ | async"
+  <div class="logos more">
+    <a *ngFor="let knownThing of knowledge"
        target="_blank"
-       [tooltip]="knownThing.name"
        [href]="knownThing.link">
       <img [src]="'assets/img/logo_' + knownThing.image + '.svg' | resourceMap:'home'"
            [alt]="'Logo of ' + knownThing.name">
+      {{knownThing.name}}
     </a>
   </div>
-  <button class="random-knowledge-button button"
-          (click)="startRandomKnowledgeInterval()">
-    {{'about.loadMore' | translate}} <i aria-hidden="true"
-       class="fa-light fa-arrow-rotate-right"></i>
-  </button>
 </div>
