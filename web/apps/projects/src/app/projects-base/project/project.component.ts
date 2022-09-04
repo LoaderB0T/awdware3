@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Project } from '../projects';
-import { StarsService } from '../../services/stars.service';
 import { TranslateService } from '@ngx-translate/core';
 import { SubscriptionManager } from '@awdware/shared';
+import { RepoInfoService } from '../../services/repo-info.service';
+import { RepoInfo } from '../../models/compact-repo-info.model';
 
 @Component({
   selector: 'awd-project',
@@ -12,16 +13,16 @@ import { SubscriptionManager } from '@awdware/shared';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProjectComponent implements OnInit, OnDestroy {
-  private readonly _starsService: StarsService;
+  private readonly _repoInfoService: RepoInfoService;
   private readonly _translateService: TranslateService;
-  public readonly stars$ = new BehaviorSubject<number>(0);
+  public readonly repoInfo$ = new BehaviorSubject<RepoInfo | null>(null);
   public readonly lang$: BehaviorSubject<string | null>;
   private readonly _subMgr = new SubscriptionManager();
 
   @Input() project?: Project;
 
-  constructor(starsService: StarsService, translateService: TranslateService) {
-    this._starsService = starsService;
+  constructor(starsService: RepoInfoService, translateService: TranslateService) {
+    this._repoInfoService = starsService;
     this._translateService = translateService;
     this.lang$ = new BehaviorSubject<string | null>(this._translateService.currentLang);
     const sub = this._translateService.onLangChange.subscribe(({ lang }) => this.lang$.next(lang));
@@ -32,8 +33,8 @@ export class ProjectComponent implements OnInit, OnDestroy {
     if (!this.project) {
       throw new Error('ProjectComponent: project is not defined');
     }
-    const stars = await this._starsService.getStars(this.project.gitHubUser, this.project.name);
-    this.stars$.next(stars);
+    const repoInfo = await this._repoInfoService.getRepoInfo(this.project.gitHubUser, this.project.name);
+    this.repoInfo$.next(repoInfo);
   }
 
   public ngOnDestroy(): void {
