@@ -21,6 +21,8 @@ And it is live: [awdware.de](https://awdware.de)!
 
 ✅ [ng-dynamic-mf](https://github.com/LoaderB0T/ng-dynamic-mf) for fully dynamic modules
 
+✅ [nx-dynamic-mf](https://github.com/LoaderB0T/nx-dynamic-mf) helper for ng-dynamic-mf & Nx
+
 ## Contributing 🧑🏻‍💻
 
 As this is my personal portfolio, I don't expect nor accept any PRs. Feedback is very welcome of course!
