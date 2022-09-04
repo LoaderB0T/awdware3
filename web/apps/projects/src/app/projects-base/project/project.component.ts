@@ -40,4 +40,18 @@ export class ProjectComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this._subMgr.unsubscribeAll();
   }
+
+  public toLanguageIcon(language: string): string {
+    if (!language) {
+      return '';
+    }
+    switch (language.toLowerCase()) {
+      case 'c++':
+        return 'cplusplus-plain';
+      case 'typescript':
+        return 'typescript-original';
+      default:
+        return '';
+    }
+  }
 }

@@ -32,6 +32,11 @@
   .info {
     display: flex;
     gap: 16px;
+    .icon-language {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
     .stars {
       .filled {
         color: $colorAccent2;

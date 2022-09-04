@@ -11,8 +11,6 @@ export class RepoInfoService {
 
   constructor(gitHubService: GitHubService) {
     this._gitHubService = gitHubService;
-
-    this._gitHubService.getRepoInfo('LoaderB0T', 'ng-dynamic-mf').then(r => console.log(r));
   }
 
   private getSavedRepos(): InfoStorage {

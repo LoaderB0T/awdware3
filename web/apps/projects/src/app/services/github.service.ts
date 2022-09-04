@@ -12,10 +12,6 @@ export class GitHubService {
     this._http = http;
   }
 
-  public getStargazers(username: string, reponame: string): Promise<any> {
-    return firstValueFrom(this._http.get(`https://api.github.com/repos/${username}/${reponame}/stargazers`));
-  }
-
   public async getRepoInfo(username: string, reponame: string): Promise<FullRepository> {
     return firstValueFrom(this._http.get<FullRepository>(`https://api.github.com/repos/${username}/${reponame}`));
   }

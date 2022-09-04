@@ -70,5 +70,23 @@ export const projects: Project[] = [
         'It is lightweight, has a simple API and is extensible with custom particle types.'
     },
     gitHubUser: 'LoaderB0T'
+  },
+  {
+    name: 'node-terminal-simulator',
+    descriptions: {
+      en:
+        'node-terminal-simulator simulates the bahavior of the terminal, including many ANSI escape codes. ' +
+        "It's primary use case is to test CLI applications that rely on ANSI escapes to do terminal magic."
+    },
+    gitHubUser: 'LoaderB0T'
+  },
+  {
+    name: 'Bl3-EchoCom',
+    descriptions: {
+      en:
+        'This repo contains all required resources to 3D print and build your own Echo Device from the Borderlands franchise. ' +
+        'You can find the STL files for 3D printing, the KiCad project for the custom PCB and some example code.'
+    },
+    gitHubUser: 'LoaderB0T'
   }
 ];
