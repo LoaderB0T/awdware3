@@ -67,6 +67,9 @@ export class HomeComponent implements OnInit {
     this.typeIntro();
     this._translationService.languageChanged$.subscribe(() => {
       this._langChanged.next(true);
+      if (!this.skip) {
+        this.fastForward();
+      }
     });
   }
 
