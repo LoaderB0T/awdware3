@@ -12,7 +12,8 @@ RUN yarn install
 
 COPY . .
 
-RUN yarn nx run-many --target=build --projects=host,home,projects
+RUN yarn nx construct -m build
+RUN yarn nx hash
 
 # stage 2
 FROM nginx:alpine

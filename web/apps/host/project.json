@@ -90,6 +90,12 @@
       "options": {
         "modulesFolder": "src/modules"
       }
+    },
+    "hash": {
+      "executor": "nx-dynamic-mf:hash",
+      "options": {
+        "modulesFolder": "src/modules"
+      }
     }
   },
   "tags": []
