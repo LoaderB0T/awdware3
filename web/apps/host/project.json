@@ -94,7 +94,7 @@
     "hash": {
       "executor": "nx-dynamic-mf:hash",
       "options": {
-        "modulesFolder": "src/modules"
+        "modulesFolder": "modules"
       }
     }
   },
