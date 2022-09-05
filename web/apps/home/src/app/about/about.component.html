@@ -46,7 +46,7 @@
          target="_blank"
          [href]="contact.link">
         <img [alt]="contact.name"
-             [src]="'assets/img/logo_' + contact.image + '.svg' | resourceMap:'home'">
+             [src]="'assets/img/' + ((logoService.getIconName$(contact) | async) ?? '') + '.svg' | resourceMap:'home'">
       </a>
     </div>
   </div>

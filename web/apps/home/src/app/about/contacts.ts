@@ -2,13 +2,15 @@ type Contact = {
   name: string;
   image: string;
   link: string;
+  darkLightIcon?: boolean;
 };
 
 export const contacts: Contact[] = [
   {
     image: 'github',
     name: 'GitHub',
-    link: 'https://github.com/LoaderB0T/'
+    link: 'https://github.com/LoaderB0T/',
+    darkLightIcon: true
   },
   {
     image: 'xing',

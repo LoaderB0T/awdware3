@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Theme } from '../models/theme.model';
 
 @Injectable({
@@ -9,6 +10,7 @@ export class ThemeService {
 
   private readonly themes: Theme[] = [this.darkTheme, this.lightTheme];
   public selectedTheme: Theme = this.themes[0];
+  public selectedTheme$ = new BehaviorSubject<Theme>(this.selectedTheme);
 
   public init() {
     if (this._globalStyleSheet) {
@@ -56,6 +58,7 @@ export class ThemeService {
     this._globalStyleSheet.insertRule(this.getRuleString(theme), 0);
     this.selectedTheme = theme;
     localStorage.setItem('theme', theme.name);
+    this.selectedTheme$.next(theme);
   }
 
   private get darkTheme(): Theme {
@@ -65,7 +68,7 @@ export class ThemeService {
         colorBg1: 'rgb(18, 18, 18)',
         colorBg2: 'rgb(25, 25, 25)',
         colorBg3: 'rgb(35, 35, 35)',
-        colorBgHighlight: '(0, 1, 20)',
+        colorBgHighlight: 'rgb(0, 1, 20)',
         colorBgHighlight_03: 'rgba(0, 0, 0, 0.35)',
         colorBgHighlight_05: 'rgba(0, 0, 0, 0.5)',
         colorContent1: 'rgb(242, 239, 234)',
@@ -73,7 +76,8 @@ export class ThemeService {
         colorContent3: 'rgb(120, 120, 130)',
         colorAccent1: 'rgb(255, 0, 82)',
         colorAccent2: 'rgb(255, 190, 48)',
-        colorError: 'rgb(238, 31, 16)'
+        colorError: 'rgb(238, 31, 16)',
+        opacityInactive: '0.4'
       }
     };
   }
@@ -82,17 +86,19 @@ export class ThemeService {
     return {
       name: 'light',
       props: {
-        colorBg1: 'rgb(28, 28, 33)',
-        colorBg2: 'rgb(44, 44, 48)',
-        colorBg3: 'rgb(57, 57, 64)',
-        colorBgHighlight: '(0, 1, 20)',
-        colorBgHighlight_03: 'rgba(255, 255, 255, 0.6)',
-        colorBgHighlight_05: 'rgba(255, 255, 255, 0.9)',
-        colorContent1: 'rgb(213, 214, 224)',
-        colorContent2: 'rgb(#b2b3bf)',
-        colorAccent1: 'rgb(204, 0, 78)',
+        colorBg1: 'rgb(230, 232, 240)',
+        colorBg2: 'rgb(215, 218, 222)',
+        colorBg3: 'rgb(200, 205, 210)',
+        colorBgHighlight: 'rgb(255 255 255)',
+        colorBgHighlight_03: 'rgba(255, 255, 255, 0.5)',
+        colorBgHighlight_05: 'rgba(255, 255, 255, 0.75)',
+        colorContent1: 'rgb(13, 13, 18)',
+        colorContent2: 'rgb(34, 34, 48)',
+        colorContent3: 'rgb(67, 67, 108)',
+        colorAccent1: 'rgb(255, 0, 82)',
         colorAccent2: 'rgb(255, 190, 48)',
-        colorError: 'rgb(238, 31, 16)'
+        colorError: 'rgb(238, 31, 16)',
+        opacityInactive: '0.6'
       }
     };
   }

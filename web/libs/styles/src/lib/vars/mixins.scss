@@ -3,7 +3,7 @@
 
 @mixin clickable {
   cursor: pointer;
-  opacity: 0.4;
+  opacity: $opacityInactive;
   transition: opacity 0.2s ease-in-out;
   &:hover,
   &.active {
@@ -15,10 +15,10 @@
 }
 
 @mixin highlightable {
-  background: $colorBgHighlight_03;
+  background-color: $colorBgHighlight_03;
   transition: background-color 0.1s, box-shadow 0.1s;
   &:hover {
-    background: $colorBgHighlight_05;
+    background-color: $colorBgHighlight_05;
   }
 }
 
@@ -28,4 +28,10 @@
   &:hover {
     transform: scale(1.1);
   }
+}
+
+@mixin highlightable-scale {
+  @include highlightable;
+  @include hover-scale;
+  transition: background-color 0.1s, box-shadow 0.1s, transform 0.2s;
 }

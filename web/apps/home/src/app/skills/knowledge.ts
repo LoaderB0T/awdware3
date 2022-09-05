@@ -2,6 +2,7 @@ export type Knowledge = {
   name: string;
   image: string;
   link: string;
+  darkLightIcon?: boolean;
 };
 export const knowledge: Knowledge[] = [
   {
@@ -32,7 +33,8 @@ export const knowledge: Knowledge[] = [
   {
     image: 'github',
     name: 'GitHub',
-    link: 'https://github.com/LoaderB0T'
+    link: 'https://github.com/LoaderB0T',
+    darkLightIcon: true
   },
   {
     image: 'scrum',
@@ -92,11 +94,13 @@ export const knowledge: Knowledge[] = [
   {
     image: 'websockets',
     name: 'WebSockets',
-    link: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API'
+    link: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API',
+    darkLightIcon: true
   },
   {
     image: 'nx',
     name: 'Nx',
-    link: 'https://nx.dev/'
+    link: 'https://nx.dev/',
+    darkLightIcon: true
   }
 ];

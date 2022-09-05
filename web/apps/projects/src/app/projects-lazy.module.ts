@@ -44,7 +44,7 @@ export class ProjectsLazyModule {
             const y = pos.y;
             const timeDelta = Date.now() - this._lastIconTime;
             if (timeDelta < 500) {
-              this._iconBoost += 1 - timeDelta / 500;
+              this._iconBoost += 4 - timeDelta / 500;
               if (this._iconBoost > 75) {
                 this._iconBoost = 75;
               }

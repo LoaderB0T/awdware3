@@ -167,7 +167,7 @@ hr {
 }
 
 $tooltipBorderSize: 5px;
-$tooltipBorder: $tooltipBorderSize white solid;
+$tooltipBorder: $tooltipBorderSize $colorContent1 solid;
 
 .tooltip,
 .tooltip::before,
@@ -182,7 +182,7 @@ $tooltipBorder: $tooltipBorderSize white solid;
 
 .tooltip {
   background-color: $colorBg1;
-  color: white;
+  color: $colorContent1;
   opacity: 0;
   pointer-events: none;
   user-select: none;

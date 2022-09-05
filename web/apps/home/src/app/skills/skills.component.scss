@@ -37,8 +37,7 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        @include highlightable;
-        @include hover-scale;
+        @include highlightable-scale;
         @include phone {
           font-size: 14px;
           gap: 5px;

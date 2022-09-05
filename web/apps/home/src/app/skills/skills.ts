@@ -2,6 +2,7 @@ type Skill = {
   name: string;
   image: string;
   link: string;
+  darkLightIcon?: boolean;
 };
 export const skills: Skill[] = [
   {
@@ -17,6 +18,7 @@ export const skills: Skill[] = [
   {
     image: 'node',
     name: 'Node.js',
-    link: 'https://nodejs.org/'
+    link: 'https://nodejs.org/',
+    darkLightIcon: true
   }
 ];

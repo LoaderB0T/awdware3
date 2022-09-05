@@ -3,6 +3,7 @@ import { TranslationService } from '@awdware/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 import { Typed } from 'rxjs-typed.ts';
+import { LogoService } from '../services/logo.service';
 import { contacts } from './contacts';
 
 @Component({
@@ -14,6 +15,7 @@ import { contacts } from './contacts';
 export class AboutComponent implements OnInit {
   private readonly _translateService: TranslateService;
   private readonly _translationService: TranslationService;
+  public readonly logoService: LogoService;
 
   private readonly _headingDone = new BehaviorSubject(false);
   public readonly headingDone$ = this._headingDone.asObservable();
@@ -26,9 +28,10 @@ export class AboutComponent implements OnInit {
 
   public contacts = contacts;
 
-  constructor(translateService: TranslateService, translationService: TranslationService) {
+  constructor(translateService: TranslateService, translationService: TranslationService, logoService: LogoService) {
     this._translateService = translateService;
     this._translationService = translationService;
+    this.logoService = logoService;
 
     const today = new Date();
     const birthday = new Date('1999-06-09');

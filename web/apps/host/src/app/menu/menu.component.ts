@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MenuItem, MenuService, TranslationService } from '@awdware/shared';
+import { MenuItem, MenuService, ThemeService, TranslationService } from '@awdware/shared';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
@@ -10,14 +10,18 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class MenuComponent {
   private readonly _menuService: MenuService;
   private readonly _translationService: TranslationService;
+  private readonly _themeService: ThemeService;
+
   public readonly menuItems$: Observable<MenuItem[]>;
   public readonly menuOpen$: BehaviorSubject<boolean>;
   public activeMenuItemY$ = new BehaviorSubject<number>(-100);
   public activeMenuItemId$ = new BehaviorSubject<string>('');
 
-  constructor(menuService: MenuService, translationService: TranslationService) {
+  constructor(menuService: MenuService, translationService: TranslationService, themeService: ThemeService) {
     this._menuService = menuService;
     this._translationService = translationService;
+    this._themeService = themeService;
+
     this.menuItems$ = this._menuService.menuItems$;
     this.menuOpen$ = this._menuService.menuOpen$;
     this._menuService.activeMenuItem$.subscribe(x => {
@@ -48,5 +52,10 @@ export class MenuComponent {
   public switchLanguage() {
     const lid = this._translationService.lenID;
     this._translationService.setLanguage(lid === 'en' ? 'de' : 'en');
+  }
+
+  public switchTheme() {
+    const theme = this._themeService.selectedTheme.name;
+    this._themeService.changeTheme(theme === 'light' ? 'dark' : 'light');
   }
 }
