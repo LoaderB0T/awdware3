@@ -4,8 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SharedModule, TranslationResolver } from '@awdware/shared';
 import { AboutComponent } from './about/about.component';
-import { ResourceMapModule } from 'ng-dynamic-mf';
+import { HtmlHeadService, ResourceMapModule } from 'ng-dynamic-mf';
 import { SkillsComponent } from './skills/skills.component';
+import { fontawesome, font_montserrat } from '@awdware/externals';
 
 const routes: Routes = [
   {
@@ -47,4 +48,9 @@ const routes: Routes = [
   declarations: [HomeComponent, AboutComponent, SkillsComponent],
   imports: [CommonModule, SharedModule, ResourceMapModule, RouterModule.forChild(routes)]
 })
-export class HomeModule {}
+export class HomeModule {
+  constructor(htmlHeadService: HtmlHeadService) {
+    htmlHeadService.addElement(font_montserrat);
+    htmlHeadService.addElement(fontawesome);
+  }
+}

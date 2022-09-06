@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "controls": "libs/controls",
+    "externals": "libs/externals",
     "home": "apps/home",
     "host": "apps/host",
     "projects": "apps/projects",

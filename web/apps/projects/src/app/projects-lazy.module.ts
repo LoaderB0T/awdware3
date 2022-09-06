@@ -32,43 +32,51 @@ export class ProjectsLazyModule {
         action: target => {
           router.navigate(['projects'], { preserveFragment: true });
           if (target) {
-            const pos = target.getClientRects()[0];
-            if (target.classList.contains('animate-bounce1')) {
-              target.classList.remove('animate-bounce1');
-              target.classList.add('animate-bounce2');
-            } else {
-              target.classList.remove('animate-bounce2');
-              target.classList.add('animate-bounce1');
-            }
-            const x = pos.x + 0.5 * pos.width;
-            const y = pos.y;
-            const timeDelta = Date.now() - this._lastIconTime;
-            if (timeDelta < 500) {
-              this._iconBoost += 4 - timeDelta / 500;
-              if (this._iconBoost > 75) {
-                this._iconBoost = 75;
-              }
-            } else {
-              this._iconBoost -= timeDelta / 50;
-              if (this._iconBoost < 0) {
-                this._iconBoost = 0;
-              }
-            }
-            this._lastIconTime = Date.now();
-            if (this._iconBoost === 75) {
-              for (let i = 0; i < 10; i++) {
-                setTimeout(() => {
-                  this.drawParticle(x, y, this._iconBoost, true);
-                }, i * 20);
-              }
-            }
-            this.drawParticle(x, y, this._iconBoost, false);
+            this.doCoinAnimation(target);
           }
         },
         order: 4
       }
     ];
     menuService.addMenuItems(...menuItems);
+  }
+
+  private doCoinAnimation(target: HTMLElement) {
+    const pos = target.getClientRects()[0];
+    this.toggleCssClassesForBounce(target);
+    const x = pos.x + 0.5 * pos.width;
+    const y = pos.y;
+    const timeDelta = Date.now() - this._lastIconTime;
+    if (timeDelta < 500) {
+      this._iconBoost += 4 - timeDelta / 500;
+      if (this._iconBoost > 75) {
+        this._iconBoost = 75;
+      }
+    } else {
+      this._iconBoost -= timeDelta / 50;
+      if (this._iconBoost < 0) {
+        this._iconBoost = 0;
+      }
+    }
+    this._lastIconTime = Date.now();
+    if (this._iconBoost === 75) {
+      for (let i = 0; i < 10; i++) {
+        setTimeout(() => {
+          this.drawParticle(x, y, this._iconBoost, true);
+        }, i * 20);
+      }
+    }
+    this.drawParticle(x, y, this._iconBoost, false);
+  }
+
+  private toggleCssClassesForBounce(target: HTMLElement) {
+    if (target.classList.contains('animate-bounce1')) {
+      target.classList.remove('animate-bounce1');
+      target.classList.add('animate-bounce2');
+    } else {
+      target.classList.remove('animate-bounce2');
+      target.classList.add('animate-bounce1');
+    }
   }
 
   private drawParticle(x: number, y: number, power: number, colorful: boolean) {

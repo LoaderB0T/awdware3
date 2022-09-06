@@ -8,7 +8,7 @@ import { SharedModule, ThemeService, TranslationService } from '@awdware/shared'
 import { BaseComponent } from './base/base.component';
 import { BgComponent } from './bg/bg.component';
 import { routes } from './routes';
-import { loadedModules } from 'ng-dynamic-mf';
+import { HtmlHeadService, loadedModules } from 'ng-dynamic-mf';
 import { MissingTranslationHandler, TranslateModule } from '@ngx-translate/core';
 import { MenuComponent } from './menu/menu.component';
 import { MyMissingTranslationHandler } from './services/my-missing-translation-handler';
@@ -32,8 +32,19 @@ import { MyMissingTranslationHandler } from './services/my-missing-translation-h
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(themeService: ThemeService, translationService: TranslationService) {
+  constructor(themeService: ThemeService, translationService: TranslationService, htmlHeadService: HtmlHeadService) {
     themeService.init();
     translationService.init();
+
+    htmlHeadService.addElement({
+      type: 'link',
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css?family=Montserrat:400,700'
+    });
+    htmlHeadService.addElement({
+      type: 'script',
+      src: 'https://kit.fontawesome.com/8552b95824.js',
+      crossorigin: 'anonymous'
+    });
   }
 }

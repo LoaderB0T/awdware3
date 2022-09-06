@@ -17,6 +17,7 @@
     "paths": {
       "@awdware/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@awdware/controls": ["libs/controls/src/index.ts"],
+      "@awdware/externals": ["libs/externals/src/index.ts"],
       "@awdware/shared": ["libs/shared/src/index.ts"],
       "@awdware/styles": ["libs/styles/src/index.ts"]
     }
