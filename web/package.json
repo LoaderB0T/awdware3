@@ -13,6 +13,9 @@
     "build": "nx build",
     "test": "nx test",
     "docker-build": "docker build -t awdware .",
+    "docker-build-dev": "docker build -t awdware . -f dev.Dockerfile",
+    "docker-build-dev-prepare": "nx construct -m build --build",
+    "local-docker": "yarn docker-build-dev-prepare && yarn docker-build-dev && yarn docker-run",
     "docker-run": "docker run -it --rm -p 9000:80 awdware",
     "construct": "yarn nx construct -m jasc",
     "construct-mobile": "yarn nx construct -m host --host --watch"
@@ -67,7 +70,7 @@
     "jest-environment-jsdom": "28.1.1",
     "jest-preset-angular": "12.2.2",
     "ngx-build-plus": "^14.0.0",
-    "nx-dynamic-mf": "^2.2.0",
+    "nx-dynamic-mf": "^2.3.0",
     "prettier": "^2.7.1",
     "ts-jest": "28.0.8",
     "ts-node": "10.9.1",
