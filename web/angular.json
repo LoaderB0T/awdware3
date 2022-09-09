@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "analytics": "libs/analytics",
     "controls": "libs/controls",
     "externals": "libs/externals",
     "home": "apps/home",

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PreloadService, TranslationService } from '@awdware/shared';
+import { analytics } from '@awdware/analytics';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { Typed } from 'rxjs-typed.ts';
@@ -99,6 +100,7 @@ export class HomeComponent implements OnInit {
   }
 
   public async restart() {
+    analytics.trackEvent('home.restart');
     this.skip = false;
     await Promise.all([this.typing1.reset(), this.typing2.reset(), this.typing3.reset()]);
     this._langChanged.next(false);
@@ -106,6 +108,7 @@ export class HomeComponent implements OnInit {
   }
 
   public fastForward() {
+    analytics.trackEvent('home.fastForward');
     this.skip = true;
     this.typing1.fastForward();
     this.typing2.fastForward();
@@ -113,6 +116,7 @@ export class HomeComponent implements OnInit {
   }
 
   public learnMore() {
+    analytics.trackEvent('home.learnMore');
     this._router.navigate(['home', 'about'], { preserveFragment: true });
   }
 }

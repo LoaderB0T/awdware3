@@ -1,0 +1,14 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/analytics/src",
+  "prefix": "awdware",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/analytics/**/*.ts", "libs/analytics/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

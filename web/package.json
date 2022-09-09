@@ -34,7 +34,7 @@
     "@ngx-translate/core": "^14.0.0",
     "@nrwl/angular": "14.6.1",
     "confetti.ts": "^0.3.0",
-    "ng-dynamic-mf": "^1.7.0",
+    "ng-dynamic-mf": "^1.7.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "7.5.6",
     "rxjs-typed.ts": "^2.1.0",

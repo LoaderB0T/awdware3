@@ -44,6 +44,7 @@
     <div class="logos">
       <a *ngFor="let contact of contacts"
          target="_blank"
+         class="umami--click--social-{{contact.name}}"
          [href]="contact.link">
         <img [alt]="contact.name"
              [src]="'assets/img/' + ((logoService.getIconName$(contact) | async) ?? '') + '.svg' | resourceMap:'home'">
