@@ -23,5 +23,5 @@ export const analytics: AddHtmlHeadElementType = {
   data: {
     'website-id': 'ff9a0459-36d1-4e80-a323-5f7f2ce1db5f'
   },
-  src: 'https://https://analytics.awdtest.de/umami.js'
+  src: 'https://analytics.awdtest.de/umami.js'
 };
