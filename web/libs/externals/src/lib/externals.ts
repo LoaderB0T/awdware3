@@ -23,5 +23,5 @@ export const analytics: AddHtmlHeadElementType = {
   data: {
     'website-id': environment['analyticsId']
   },
-  src: 'https://analytics.awdtest.de/umami.js'
+  src: `https://analytics.${environment['appUrl']}/umami.js`
 };
