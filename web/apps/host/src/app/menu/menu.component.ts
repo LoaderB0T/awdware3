@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuItem, MenuService, ThemeService, TranslationService } from '@awdware/shared';
+import { analytics } from '@awdware/analytics';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
@@ -34,6 +35,9 @@ export class MenuComponent {
   }
 
   public clickedItem(event: MouseEvent | null, menuItem: MenuItem) {
+    analytics.trackEvent(`menu.itemClicked.${menuItem.id}`, {
+      from: window.location.pathname
+    });
     menuItem.action(event ? (event.target as HTMLElement) : null);
     if (this._menuService.menuOpen$.value) {
       this.closeMenu();
@@ -52,10 +56,12 @@ export class MenuComponent {
   public switchLanguage() {
     const lid = this._translationService.lenID;
     this._translationService.setLanguage(lid === 'en' ? 'de' : 'en');
+    analytics.trackEvent('menu.switchLanguage', { from: lid, to: this._translationService.lenID });
   }
 
   public switchTheme() {
     const theme = this._themeService.selectedTheme.name;
     this._themeService.changeTheme(theme === 'light' ? 'dark' : 'light');
+    analytics.trackEvent('menu.switchTheme', { from: theme, to: this._themeService.selectedTheme.name });
   }
 }
