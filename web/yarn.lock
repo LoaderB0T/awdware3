@@ -7990,10 +7990,10 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-ng-dynamic-mf@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/ng-dynamic-mf/-/ng-dynamic-mf-1.5.0.tgz#f93c27c383910915304f7ffbc9f5af08318e62ab"
-  integrity sha512-amjrbUTYwJ/FY7tQsLfXHIWe+7kCiSgGvuB0ed520yMOEMD093wtzRHOO19e9orRv5j5EwbnHdAoME6mbaSGwQ==
+ng-dynamic-mf@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/ng-dynamic-mf/-/ng-dynamic-mf-1.7.0.tgz#ff9032594a63aca90b46422d2fe14e403e845370"
+  integrity sha512-As5qAF4VxOHC9/xcIJPFTn7Qc3XIWIX3UzoJ2F8YGb/ZEjOTZntN8HdqJ4IcwEzbtbPEnJqV/AG0AP+0WjZSAQ==
   dependencies:
     tslib "^2.3.0"
 
@@ -8190,10 +8190,10 @@ nwsapi@^2.2.0:
   resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.2.0.tgz#204879a9e3d068ff2a55139c2c772780681a38b7"
   integrity sha512-h2AatdwYH+JHiZpv7pt/gSX1XoRGb7L/qSIeuqA6GwYoF9w1vP1cw42TO0aI2pNyshRK5893hNSl+1//vHK7hQ==
 
-nx-dynamic-mf@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/nx-dynamic-mf/-/nx-dynamic-mf-2.3.0.tgz#058bcc25ab267f6ece1948a28d94d57721de3185"
-  integrity sha512-Uo5HUDzAsylcMgxGSxpSS8tbCPq3u68o6HfcShI3VHkCnPuxLv53CRR8F4wFqs1rb3xH6U4VQmIRI/Z1ZwHc5A==
+nx-dynamic-mf@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/nx-dynamic-mf/-/nx-dynamic-mf-2.4.0.tgz#53f2610aeafdfcfd9332f59b0525d4c56e11c43e"
+  integrity sha512-4sWRWf4j5PngOCGIPClv6rWnQ19yrFF5C9IE8xpXEEH0hd5FdhlQuj9isHk63FRYIdaMkojPn7kgv0f152VxEQ==
 
 nx@14.6.1, nx@^14.5.9:
   version "14.6.1"

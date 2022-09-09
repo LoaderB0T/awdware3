@@ -1,4 +1,4 @@
-import { AddHtmlHeadElementType } from 'ng-dynamic-mf';
+import { AddHtmlHeadElementType, environment } from 'ng-dynamic-mf';
 
 export const font_montserrat: AddHtmlHeadElementType = {
   type: 'link',
@@ -16,4 +16,12 @@ export const devicons: AddHtmlHeadElementType = {
   type: 'link',
   rel: 'stylesheet',
   href: 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css'
+};
+
+export const analytics: AddHtmlHeadElementType = {
+  type: 'script',
+  src: `https://analytics.${environment['appUrl']}/js/plausible.js`,
+  data: {
+    domain: environment['appUrl']
+  }
 };
