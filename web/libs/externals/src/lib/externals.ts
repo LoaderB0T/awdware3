@@ -21,7 +21,7 @@ export const devicons: AddHtmlHeadElementType = {
 export const analytics: AddHtmlHeadElementType = {
   type: 'script',
   data: {
-    'website-id': 'ff9a0459-36d1-4e80-a323-5f7f2ce1db5f'
+    'website-id': environment.analyticsId
   },
   src: 'https://analytics.awdtest.de/umami.js'
 };
