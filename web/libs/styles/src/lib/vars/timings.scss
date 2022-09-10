@@ -1,0 +1,9 @@
+$tranFastLinear: 0.1s linear;
+$tranNormalLinear: 0.2s linear;
+
+$tranFastEased: 0.1s ease-in-out;
+$tranNormalEased: 0.2s ease-in-out;
+
+$tranBezierMinimalOvershoot: 300ms cubic-bezier(0.97, -0.08, 0.555, 1.16);
+$tranBezierMediumOvershoot: 300ms cubic-bezier(0.5, 0, 0.2, 1.5);
+$tranBezierMassiveOvershoot: 350ms cubic-bezier(0.25, 0.1, 0, 2.05);

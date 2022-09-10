@@ -5,6 +5,7 @@ import { SharedModule, TranslationResolver } from '@awdware/shared';
 import { HtmlHeadService, ResourceMapModule } from 'ng-dynamic-mf';
 import { devicons, fontawesome, font_montserrat } from '@awdware/externals';
 import { TimelineBaseComponent } from './timeline-base/timeline-base.component';
+import { TimelineComponent } from './timeline-base/timeline/timeline.component';
 
 const routes: Routes = [
   {
@@ -28,7 +29,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [TimelineBaseComponent, TimelineComponent],
   imports: [CommonModule, SharedModule, ResourceMapModule, RouterModule.forChild(routes)]
 })
 export class TimelineModule {

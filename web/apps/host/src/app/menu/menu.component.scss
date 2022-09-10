@@ -15,7 +15,7 @@ $activeItemMarkerHeight: $itemHeight + 16px;
     border-right: $borderWidth solid $colorAccent1;
   }
   @include phone {
-    transition: opacity 0.2s ease-in-out;
+    transition: opacity $tranNormalEased;
     &:not(.open) {
       opacity: 0;
       touch-action: none;
@@ -74,7 +74,7 @@ $activeItemMarkerHeight: $itemHeight + 16px;
     position: absolute;
     background: $colorAccent2;
     right: -$borderWidth;
-    transition: top 300ms cubic-bezier(0.97, -0.08, 0.555, 1.16);
+    transition: top $tranBezierMinimalOvershoot;
     @include phone {
       display: none;
     }

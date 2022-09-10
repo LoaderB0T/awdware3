@@ -1,0 +1,68 @@
+@import 'vars';
+
+:host {
+  height: 100%;
+  width: 210px;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent 15%, black, transparent 85%);
+}
+
+$sectionHeight: 220px;
+
+.timeline-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: calc(100% / 2 - $sectionHeight / 2 - $sectionHeight * var(--selected-section-index));
+  transition: top $tranBezierMediumOvershoot;
+  user-select: none;
+  .section-wrapper {
+    height: $sectionHeight;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .dots {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      height: 100%;
+      width: 40px;
+      i {
+        transition: font-size $tranNormalLinear, color $tranNormalLinear;
+        font-size: 14px;
+        &.lvl3 {
+          font-size: 28px;
+        }
+      }
+      &.selected {
+        i.lvl1 {
+          font-size: 18px;
+        }
+        i.lvl2 {
+          font-size: 26px;
+        }
+        i.lvl3 {
+          font-size: 34px;
+          color: $colorAccent2;
+        }
+      }
+    }
+    .section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: font-size $tranBezierMediumOvershoot;
+      padding: 20px;
+      cursor: pointer;
+      .year-string {
+        font-size: $fontSizeGiant;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
