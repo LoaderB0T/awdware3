@@ -1,3 +1,5 @@
+import { environment } from 'ng-dynamic-mf';
+
 type Umami = {
   trackEvent: (name: string, data?: object) => void;
   trackView: (name: string) => void;
@@ -5,7 +7,7 @@ type Umami = {
 
 const umamiWindow = window as typeof window & { umami?: Umami };
 
-export const disableAnalytics = localStorage.getItem('disableAnalytics') === 'true';
+export const disableAnalytics = localStorage.getItem('disableAnalytics') === 'true' || environment['appUrl'] === 'localhost';
 
 export const analytics: Umami = {
   trackEvent: (name: string, data?: object) => {

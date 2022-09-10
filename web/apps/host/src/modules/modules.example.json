@@ -9,5 +9,10 @@
     "name": "projects",
     "ngModuleName": "RemoteEntryModule",
     "hasGlobalStyles": true
+  },
+  {
+    "url": "http://localhost:4203/",
+    "name": "timeline",
+    "ngModuleName": "RemoteEntryModule"
   }
 ]

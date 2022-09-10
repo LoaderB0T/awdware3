@@ -46,7 +46,7 @@
         min-width: min(300px, 100%); // Image smaller during load without this...
         width: min(300px, 100%);
       }
-      transition: transform 0.2s;
+      transition: $tranNormalLinear;
       background-color: rgb(241 241 241);
       border-radius: 0 40px 0 40px;
     }

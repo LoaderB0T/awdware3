@@ -1,0 +1,32 @@
+<ng-container *ngIf="refinedTimeline$ | async as refinedTimeline">
+  <div *awdLet="selectedSectionIndex$ | async as selectedSectionIndex"
+       [style.--selected-section-index]="selectedSectionIndex"
+       class="timeline-container">
+    <div *ngFor="let section of refinedTimeline.sections; let i = index"
+         class="section-wrapper"
+         (click)="selectSection(i)"
+         [class.selected]="selectedSectionIndex === i">
+      <div class="dots"
+           [class.selected]="selectedSectionIndex === i">
+        <i aria-hidden="true"
+           class="fa-light fa-circle lvl1"></i>
+        <i aria-hidden="true"
+           class="fa-light fa-circle lvl2"></i>
+        <i aria-hidden="true"
+           class="fa-light fa-circle-star lvl3"></i>
+        <i aria-hidden="true"
+           class="fa-light fa-circle lvl2"></i>
+        <i aria-hidden="true"
+           class="fa-light fa-circle lvl1"></i>
+      </div>
+      <div class="section">
+        <div class="year-string">
+          <span class="year year-from">{{ section.from }}</span>
+          <i aria-hidden="true"
+             class="fa-light fa-ellipsis"></i>
+          <span class="year year-to">{{ section.to }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

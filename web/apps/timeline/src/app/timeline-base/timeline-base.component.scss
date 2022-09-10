@@ -1,0 +1,49 @@
+@import 'vars';
+
+.timeline-base-container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  @include not-phone {
+    max-width: 80%;
+  }
+  .timeline-base {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    min-height: 0;
+    @include phone {
+      width: calc(100vw - $scollbarWidth);
+      flex-direction: column;
+    }
+    .timeline,
+    .timeline-content {
+      display: flex;
+      align-items: center;
+    }
+    .timeline {
+      @include not-phone {
+        width: 200px;
+        height: 100%;
+        position: fixed;
+      }
+      @include phone {
+        width: 100%;
+      }
+    }
+    .timeline-spacer {
+      @include not-phone {
+        width: 200px;
+      }
+    }
+    .timeline-content {
+      width: 100%;
+      @include highlightable;
+      @include not-phone {
+        padding: 20px;
+        width: calc(100% - 200px);
+      }
+    }
+  }
+}
