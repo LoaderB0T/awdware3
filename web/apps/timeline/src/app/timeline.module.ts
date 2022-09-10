@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SharedModule, TranslationResolver } from '@awdware/shared';
 import { HtmlHeadService, ResourceMapModule } from 'ng-dynamic-mf';
 import { devicons, fontawesome, font_montserrat } from '@awdware/externals';
+import { TimelineBaseComponent } from './timeline-base/timeline-base.component';
 
 const routes: Routes = [
   {
@@ -15,13 +16,13 @@ const routes: Routes = [
       translations: TranslationResolver
     },
     children: [
-      // {
-      //   path: '',
-      //   component: ProjectsBaseComponent,
-      //   data: {
-      //     activePage: 'timeline'
-      //   }
-      // }
+      {
+        path: '',
+        component: TimelineBaseComponent,
+        data: {
+          activePage: 'timeline'
+        }
+      }
     ]
   }
 ];
