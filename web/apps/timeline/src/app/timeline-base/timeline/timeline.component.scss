@@ -22,6 +22,10 @@ $sectionHeight: 220px;
     display: flex;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
+    &.selected {
+      cursor: unset;
+    }
     .dots {
       display: flex;
       flex-direction: column;
@@ -55,7 +59,6 @@ $sectionHeight: 220px;
       gap: 10px;
       transition: font-size $tranBezierMediumOvershoot;
       padding: 20px;
-      cursor: pointer;
       .year-string {
         font-size: $fontSizeGiant;
         display: flex;

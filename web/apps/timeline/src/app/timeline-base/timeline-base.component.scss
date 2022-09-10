@@ -1,3 +1,5 @@
+@import 'vars';
+
 :host {
   height: 100%;
 }
@@ -7,6 +9,9 @@
   gap: 40px;
   max-height: 100;
   height: 100%;
+  @include phone {
+    flex-direction: column;
+  }
   .timeline,
   .timeline-content {
     width: 100%;

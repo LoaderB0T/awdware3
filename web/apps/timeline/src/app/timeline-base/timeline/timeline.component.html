@@ -3,7 +3,9 @@
        [style.--selected-section-index]="selectedSectionIndex"
        class="timeline-container">
     <div *ngFor="let section of refinedTimeline.sections; let i = index"
-         class="section-wrapper">
+         class="section-wrapper"
+         (click)="selectSection(i)"
+         [class.selected]="selectedSectionIndex === i">
       <div class="dots"
            [class.selected]="selectedSectionIndex === i">
         <i aria-hidden="true"
@@ -17,9 +19,7 @@
         <i aria-hidden="true"
            class="fa-light fa-circle lvl1"></i>
       </div>
-      <div class="section"
-           [class.selected]="selectedSectionIndex === i"
-           (click)="selectSection(i)">
+      <div class="section">
         <div class="year-string">
           <span class="year year-from">{{ section.from }}</span>
           <i aria-hidden="true"
