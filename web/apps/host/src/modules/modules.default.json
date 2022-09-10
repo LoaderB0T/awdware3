@@ -9,5 +9,10 @@
     "name": "projects",
     "ngModuleName": "RemoteEntryModule",
     "hasGlobalStyles": true
+  },
+  {
+    "url": "/assets/modules/timeline/",
+    "name": "timeline",
+    "ngModuleName": "RemoteEntryModule"
   }
 ]

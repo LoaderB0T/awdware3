@@ -4,10 +4,11 @@
   "prefix": "awdware",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nrwl/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/timeline",
+        "preserveSymlinks": true,
         "index": "apps/timeline/src/index.html",
         "main": "apps/timeline/src/main.ts",
         "polyfills": "apps/timeline/src/polyfills.ts",
@@ -15,7 +16,14 @@
         "inlineStyleLanguage": "scss",
         "assets": ["apps/timeline/src/favicon.ico", "apps/timeline/src/assets"],
         "styles": ["apps/timeline/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/styles/src/lib"]
+        },
+        "customWebpackConfig": {
+          "path": "apps/timeline/webpack.config.js"
+        },
+        "commonChunk": false
       },
       "configurations": {
         "production": {
@@ -31,13 +39,10 @@
               "maximumError": "4kb"
             }
           ],
-          "fileReplacements": [
-            {
-              "replace": "apps/timeline/src/environments/environment.ts",
-              "with": "apps/timeline/src/environments/environment.prod.ts"
-            }
-          ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/timeline/webpack.prod.config.js"
+          }
         },
         "development": {
           "buildOptimizer": false,
@@ -51,7 +56,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nrwl/angular:webpack-server",
       "configurations": {
         "production": {
           "browserTarget": "timeline:build:production"
@@ -60,12 +65,10 @@
           "browserTarget": "timeline:build:development"
         }
       },
-      "defaultConfiguration": "development"
-    },
-    "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "defaultConfiguration": "development",
       "options": {
-        "browserTarget": "timeline:build"
+        "port": 4203,
+        "publicHost": "http://localhost:4203"
       }
     },
     "lint": {

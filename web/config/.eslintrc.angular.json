@@ -10,7 +10,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "swProcesses",
+            "prefix": "awd",
             "style": "camelCase"
           }
         ],
@@ -18,11 +18,12 @@
           "error",
           {
             "type": "element",
-            "prefix": "sw-processes",
+            "prefix": "awd",
             "style": "kebab-case"
           }
         ],
-        "@typescript-eslint/no-inferrable-types": "off"
+        "@typescript-eslint/no-inferrable-types": "off",
+        "no-restricted-syntax": "off"
       }
     },
     {
