@@ -7,6 +7,7 @@ import { AboutComponent } from './about/about.component';
 import { HtmlHeadService, ResourceMapModule } from 'ng-dynamic-mf';
 import { SkillsComponent } from './skills/skills.component';
 import { analytics, fontawesome, font_montserrat } from '@awdware/externals';
+import { disableAnalytics } from '@awdware/analytics';
 
 const routes: Routes = [
   {
@@ -52,6 +53,8 @@ export class HomeModule {
   constructor(htmlHeadService: HtmlHeadService) {
     htmlHeadService.addElement(font_montserrat);
     htmlHeadService.addElement(fontawesome);
-    htmlHeadService.addElement(analytics);
+    if (!disableAnalytics) {
+      htmlHeadService.addElement(analytics);
+    }
   }
 }
