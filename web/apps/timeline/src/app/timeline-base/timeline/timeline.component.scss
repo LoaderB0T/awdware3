@@ -1,24 +1,50 @@
 @import 'vars';
 
 :host {
-  height: 100%;
+  @include not-phone {
+    top: 0;
+    position: fixed;
+  }
+  height: 100vh;
   width: 210px;
   overflow: hidden;
   mask-image: linear-gradient(to bottom, transparent 15%, black, transparent 85%);
+  @include phone {
+    width: 100%;
+    height: 200px;
+    mask-image: linear-gradient(to right, transparent 0%, black, transparent 100%);
+  }
 }
 
-$sectionHeight: 220px;
+$sectionSize: 220px;
 
 .timeline-container {
   width: 100%;
   display: flex;
-  flex-direction: column;
   position: relative;
-  top: calc(100% / 2 - $sectionHeight / 2 - $sectionHeight * var(--selected-section-index));
-  transition: top $tranBezierMediumOvershoot;
+  @include phone {
+    height: 100%;
+    flex-direction: row;
+    left: calc(100% / 2 - $sectionSize / 2 - $sectionSize * var(--selected-section-index));
+    transition: left $tranBezierMediumOvershoot;
+  }
+  @include not-phone {
+    height: 100vh;
+    flex-direction: column;
+    top: calc(50vh - $sectionSize / 2 - $sectionSize * var(--selected-section-index));
+    transition: top $tranBezierMediumOvershoot;
+    position: fixed;
+  }
   user-select: none;
   .section-wrapper {
-    height: $sectionHeight;
+    @include phone {
+      width: $sectionSize;
+      flex-direction: column;
+    }
+    @include not-phone {
+      height: $sectionSize;
+    }
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -28,11 +54,18 @@ $sectionHeight: 220px;
     }
     .dots {
       display: flex;
-      flex-direction: column;
+      @include phone {
+        flex-direction: row;
+        width: 100%;
+        height: 40px;
+      }
+      @include not-phone {
+        flex-direction: column;
+        height: 100%;
+        width: 40px;
+      }
       align-items: center;
       justify-content: space-around;
-      height: 100%;
-      width: 40px;
       i {
         transition: font-size $tranSlowLinear, color $tranSlowLinear;
         font-size: 14px;
