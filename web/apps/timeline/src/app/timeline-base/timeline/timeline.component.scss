@@ -30,7 +30,7 @@ $sectionHeight: 220px;
       height: 100%;
       width: 40px;
       i {
-        transition: font-size $tranNormalLinear, color $tranNormalLinear;
+        transition: font-size $tranSlowLinear, color $tranSlowLinear;
         font-size: 14px;
         &.lvl3 {
           font-size: 28px;
