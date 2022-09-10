@@ -8,6 +8,7 @@
     "host": "apps/host",
     "projects": "apps/projects",
     "shared": "libs/shared",
-    "styles": "libs/styles"
+    "styles": "libs/styles",
+    "timeline": "apps/timeline"
   }
 }
