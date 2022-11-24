@@ -1,4 +1,5 @@
 {
+  "name": "host",
   "projectType": "application",
   "sourceRoot": "apps/host/src",
   "prefix": "awd",
@@ -56,7 +57,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@nrwl/angular:webpack-server",
+      "executor": "@nrwl/angular:webpack-dev-server",
       "configurations": {
         "production": {
           "browserTarget": "host:build:production"
@@ -79,7 +80,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/host"],
+      "outputs": ["{workspaceRoot}/coverage/apps/host"],
       "options": {
         "jestConfig": "apps/host/jest.config.ts",
         "passWithNoTests": true

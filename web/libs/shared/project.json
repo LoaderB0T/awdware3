@@ -1,11 +1,12 @@
 {
+  "name": "shared",
   "projectType": "library",
   "sourceRoot": "libs/shared/src",
   "prefix": "awd",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/shared"],
+      "outputs": ["{workspaceRoot}/coverage/libs/shared"],
       "options": {
         "jestConfig": "libs/shared/jest.config.ts",
         "passWithNoTests": true

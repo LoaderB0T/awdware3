@@ -1,11 +1,3 @@
-const { withModuleFederationPlugin, shareAll } = require('@angular-architects/module-federation/webpack');
+const getWebpackConfig = require('../../config/getWebpackConfig');
 
-module.exports = withModuleFederationPlugin({
-  name: 'home',
-  shared: {
-    ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' })
-  },
-  exposes: {
-    './Module': 'apps/home/src/app/home-remote.module.ts'
-  }
-});
+module.exports = getWebpackConfig('home');

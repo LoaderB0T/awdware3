@@ -1,11 +1,3 @@
-const { withModuleFederationPlugin, shareAll } = require('@angular-architects/module-federation/webpack');
+const getWebpackConfig = require('../../config/getWebpackConfig');
 
-module.exports = withModuleFederationPlugin({
-  name: 'timeline',
-  shared: {
-    ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' })
-  },
-  exposes: {
-    './Module': 'apps/timeline/src/app/timeline-remote.module.ts'
-  }
-});
+module.exports = getWebpackConfig('timeline');

@@ -1,4 +1,5 @@
 {
+  "name": "analytics",
   "projectType": "library",
   "sourceRoot": "libs/analytics/src",
   "prefix": "awdware",

@@ -1,4 +1,5 @@
 {
+  "name": "externals",
   "projectType": "library",
   "sourceRoot": "libs/externals/src",
   "prefix": "awdware",
