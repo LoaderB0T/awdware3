@@ -12,9 +12,10 @@ import { LogoService } from '../services/logo.service';
 export class SkillsComponent {
   public readonly logoService: LogoService;
   public skills = skills;
-  public knowledge = knowledge.sort(() => Math.random() - 0.5);
+  public knowledge = knowledge;
 
   constructor(logoService: LogoService) {
     this.logoService = logoService;
+    this.knowledge.sort(() => Math.random() - 0.5);
   }
 }

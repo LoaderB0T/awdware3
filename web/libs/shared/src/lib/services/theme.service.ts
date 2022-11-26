@@ -19,7 +19,10 @@ export class ThemeService {
     const styleSheet = document.createElement('style');
     styleSheet.id = 'global-stylesheet';
     document.head.appendChild(styleSheet);
-    this._globalStyleSheet = styleSheet.sheet as CSSStyleSheet;
+    if (!styleSheet.sheet) {
+      throw new Error('Could not create global stylesheet');
+    }
+    this._globalStyleSheet = styleSheet.sheet;
 
     const savedThemeName = localStorage.getItem('theme');
     if (savedThemeName) {
