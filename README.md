@@ -1,4 +1,4 @@
-[![Build Status](https://img.shields.io/github/workflow/status/loaderb0t/awdware3/Playwright%20Tests/main?style=for-the-badge)](https://github.com/LoaderB0T/awdware3/actions/workflows/playwright.yml)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/LoaderB0T/awdware3/playwright.yml?branch=main&style=for-the-badge)](https://github.com/LoaderB0T/awdware3/actions/workflows/playwright.yml)
 [![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/LoaderB0T_awdware3?server=https%3A%2F%2Fsonarcloud.io&style=for-the-badge)](https://sonarcloud.io/summary/new_code?id=LoaderB0T_awdware3)
 
 # awdware3
