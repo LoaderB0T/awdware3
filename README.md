@@ -13,7 +13,7 @@ And it is live: [awdware.de](https://awdware.de)!
 
 ## Tech-Stack 🔥
 
-✅ Angular 13
+✅ Angular 15
 
 ✅ Nx Monorepo
 
