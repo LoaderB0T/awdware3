@@ -54,6 +54,9 @@ jobs:
 
       - uses: actions/setup-node@v2
 
+      - name: Install pnpm
+        run: npm install -g pnpm
+
       - name: Cache node modules
         uses: actions/cache@v2
         env:
