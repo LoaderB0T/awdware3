@@ -1,19 +1,17 @@
 # stage 1
 FROM node:alpine AS builder
 
-ENV YARN_CACHE_FOLDER=/tmp/yarn-cache
-
 WORKDIR /app
 
 COPY package.json .
-COPY yarn.lock .
+COPY pnpm-lock.yaml .
 COPY decorate-angular-cli.js .
-RUN yarn install
+RUN pnpm install
 
 COPY . .
 
-RUN yarn nx construct --build -m build
-RUN yarn nx hash
+RUN pnpm nx construct --build -m build
+RUN pnpm nx hash
 
 # stage 2
 FROM nginx:alpine

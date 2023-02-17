@@ -19,26 +19,22 @@ jobs:
         with:
           node-version: "14.x"
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
       - name: Cache node modules
         uses: actions/cache@v2
         env:
-          cache-name: cache-yarn-web
+          cache-name: cache-pnpm-web
         with:
-          # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          # pnpm cache files are stored in `~/.pnpm-store` on Linux/macOS
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
 
       - name: Install dependencies
-        run: yarn
+        run: pnpm install
 
       - name: Build apps
-        run: yarn nx run-many --target=build --projects=host,home
+        run: pnpm nx run-many --target=build --projects=host,home
 
       - uses: actions/upload-artifact@v2
         name: Upload Artifact
@@ -58,23 +54,19 @@ jobs:
 
       - uses: actions/setup-node@v2
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
       - name: Cache node modules
         uses: actions/cache@v2
         env:
-          cache-name: cache-yarn-tests
+          cache-name: cache-pnpm-tests
         with:
           # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
 
       - name: Install dependencies
-        run: yarn
+        run: pnpm
 
       - uses: actions/download-artifact@master
         name: Download Artifact
@@ -86,13 +78,13 @@ jobs:
         run: mkdir -p dist && cp -r ../web/dist/apps/host/** ./dist && mkdir -p dist/assets/modules && cp -r ../web/dist/apps/home ./dist/assets/modules && ls -R ./dist
 
       - name: Copy test config files
-        run: yarn run copy-cfg
+        run: pnpm run copy-cfg
 
       - name: Install playwright
-        run: yarn playwright install
+        run: pnpm playwright install
 
       - name: Run Playwright tests
-        run: yarn run test
+        run: pnpm run test
 
       - uses: actions/upload-artifact@v2
         if: always()

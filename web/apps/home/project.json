@@ -9,7 +9,6 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/home",
-        "preserveSymlinks": true,
         "index": "apps/home/src/index.html",
         "main": "apps/home/src/main.ts",
         "polyfills": "apps/home/src/polyfills.ts",
