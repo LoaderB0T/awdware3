@@ -34,7 +34,7 @@ const config: PlaywrightTestConfig = {
   outputDir: 'test-results/',
   webServer: process.env.CI
     ? {
-        command: 'yarn run start',
+        command: 'pnpm run start',
         port: 4200
       }
     : undefined

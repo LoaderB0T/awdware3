@@ -9,7 +9,6 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/timeline",
-        "preserveSymlinks": true,
         "index": "apps/timeline/src/index.html",
         "main": "apps/timeline/src/main.ts",
         "polyfills": "apps/timeline/src/polyfills.ts",
