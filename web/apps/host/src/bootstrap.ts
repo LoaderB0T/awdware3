@@ -2,16 +2,17 @@ import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { initializeApp, environment } from 'ng-dynamic-mf';
 
-initializeApp()
-  .then(() => {
-    if (environment.production) {
-      enableProdMode();
-    }
-    return import('./app/app.module');
-  })
-  .then(x => x.AppModule)
-  .then(x => {
-    platformBrowserDynamic()
-      .bootstrapModule(x)
-      .catch(err => console.error(err));
-  });
+(async () => {
+  await initializeApp();
+  if (environment.production) {
+    enableProdMode();
+  } else {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    await import('zone.js/plugins/zone-error');
+  }
+  const { AppModule } = await import('./app/app.module');
+  platformBrowserDynamic()
+    .bootstrapModule(AppModule)
+    .catch(err => console.error(err));
+})();

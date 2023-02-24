@@ -50,5 +50,3 @@ import 'zone.js'; // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
-// TODO: Find solution for dynamic zone-error import (ng-dynamic-mf?)
-// import 'zone.js/plugins/zone-error';
