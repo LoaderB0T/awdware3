@@ -27,7 +27,6 @@ export const getConfig = (moduleName: string, options?: Partial<ConfigOptions>) 
         stringifyContentPathRegex: '\\.(html|svg)$'
       }
     },
-    coverageDirectory: `${options.pathToRoot}coverage/libs/${moduleName}`,
     transform: {
       '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular'
     },
