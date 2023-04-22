@@ -1,6 +1,8 @@
 # stage 1
 FROM node:alpine AS builder
 
+RUN npm install -g pnpm
+
 WORKDIR /app
 
 COPY package.json .
