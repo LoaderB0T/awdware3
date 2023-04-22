@@ -12,7 +12,7 @@ RUN pnpm install
 
 COPY . .
 
-RUN pnpm nx construct --build -m build
+RUN pnpm nx construct host --build -m build
 RUN pnpm nx hash
 
 # stage 2
