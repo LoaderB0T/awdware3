@@ -100,7 +100,7 @@ export class HomeComponent implements OnInit {
   }
 
   public async restart() {
-    analytics.trackEvent('home.restart');
+    analytics.track('home.restart');
     this.skip = false;
     await Promise.all([this.typing1.reset(), this.typing2.reset(), this.typing3.reset()]);
     this._langChanged.next(false);
@@ -108,7 +108,7 @@ export class HomeComponent implements OnInit {
   }
 
   public fastForward() {
-    analytics.trackEvent('home.fastForward');
+    analytics.track('home.fastForward');
     this.skip = true;
     this.typing1.fastForward();
     this.typing2.fastForward();
@@ -116,7 +116,7 @@ export class HomeComponent implements OnInit {
   }
 
   public learnMore() {
-    analytics.trackEvent('home.learnMore');
+    analytics.track('home.learnMore');
     this._router.navigate(['home', 'about'], { preserveFragment: true });
   }
 }

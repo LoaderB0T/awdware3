@@ -35,7 +35,7 @@ export class MenuComponent {
   }
 
   public clickedItem(event: MouseEvent | null, menuItem: MenuItem) {
-    analytics.trackEvent(`menu.itemClicked.${menuItem.id}`, {
+    analytics.track(`menu.itemClicked.${menuItem.id}`, {
       from: window.location.pathname
     });
     menuItem.action(event ? (event.target as HTMLElement) : null);
@@ -56,12 +56,12 @@ export class MenuComponent {
   public switchLanguage() {
     const lid = this._translationService.lenID;
     this._translationService.setLanguage(lid === 'en' ? 'de' : 'en');
-    analytics.trackEvent('menu.switchLanguage', { from: lid, to: this._translationService.lenID });
+    analytics.track('menu.switchLanguage', { from: lid, to: this._translationService.lenID });
   }
 
   public switchTheme() {
     const theme = this._themeService.selectedTheme.name;
     this._themeService.changeTheme(theme === 'light' ? 'dark' : 'light');
-    analytics.trackEvent('menu.switchTheme', { from: theme, to: this._themeService.selectedTheme.name });
+    analytics.track('menu.switchTheme', { from: theme, to: this._themeService.selectedTheme.name });
   }
 }

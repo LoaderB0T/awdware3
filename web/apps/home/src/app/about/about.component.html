@@ -34,7 +34,8 @@
         Scientific Programming</a>
       {{'about.description.bachelorFrom' | translate}}
       <a [href]="'about.description.bachelorFromLink' | translate"
-         class="umami--click--external-link-fh-aachen"
+         data-umami-event="external-link-skills"
+         data-umami-event-thing="fh-aachen"
          target="blank">
         FH Aachen</a>.
     </p>
@@ -47,6 +48,8 @@
       <a *ngFor="let contact of contacts"
          target="_blank"
          class="umami--click--external-link-social-{{contact.name}}"
+         data-umami-event="external-link-social"
+         [attr.data-umami-event-social]="contact.name"
          [href]="contact.link">
         <img [alt]="contact.name"
              [src]="'assets/img/' + ((logoService.getIconName$(contact) | async) ?? '') + '.svg' | resourceMap:'home'">

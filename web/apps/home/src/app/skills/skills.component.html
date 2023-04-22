@@ -2,7 +2,8 @@
   <h2>{{ 'about.workingWith' | translate }}</h2>
   <div class="logos">
     <a *ngFor="let skill of skills"
-       class="umami--click--external-link-skills-{{skill.name}}"
+       data-umami-event="external-link-skills"
+       [attr.data-umami-event-thing]="skill.name"
        target="_blank"
        [tooltip]="skill.name"
        [href]="skill.link">
@@ -14,6 +15,8 @@
   <div class="logos more">
     <a *ngFor="let knownThing of knowledge"
        class="umami--click--external-link-skills-{{knownThing.name}}"
+       data-umami-event="external-link-skills"
+       [attr.data-umami-event-thing]="knownThing.name"
        target="_blank"
        [href]="knownThing.link">
       <img [src]="'assets/img/' + ((logoService.getIconName$(knownThing) | async) ?? '') + '.svg' | resourceMap:'home'"
