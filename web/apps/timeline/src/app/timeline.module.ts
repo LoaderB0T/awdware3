@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule, TranslationResolver } from '@awdware/shared';
+import { SharedModule, translationResolver } from '@awdware/shared';
 import { HtmlHeadService, ResourceMapModule } from 'ng-dynamic-mf';
 import { devicons, fontawesome, font_montserrat } from '@awdware/externals';
 import { TimelineBaseComponent } from './timeline-base/timeline-base.component';
@@ -14,7 +14,7 @@ const routes: Routes = [
       module: 'timeline'
     },
     resolve: {
-      translations: TranslationResolver
+      translations: translationResolver
     },
     children: [
       {
