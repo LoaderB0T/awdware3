@@ -1,19 +1,18 @@
 <div class="content">
-  <div id="homeBox"
-       *awdLet="langChanged$ | async as langChanged">
+  <div id="homeBox">
     <span class="typing"
-          *ngIf="!langChanged; else staticText1"
-          [innerHtml]="typing1.text$ | async"></span>
+          *ngIf="!langChanged(); else staticText1"
+          [innerHtml]="typing1()"></span>
     <span class="typing link highlight"
-          *ngIf="!langChanged; else staticText2"
+          *ngIf="!langChanged(); else staticText2"
           (click)="learnMore()"
-          [innerHtml]="typing2.text$ | async"></span>
+          [innerHtml]="typing2()"></span>
     <span class="typing"
-          *ngIf="!langChanged; else staticText3"
-          [innerHtml]="typing3.text$ | async"></span>
+          *ngIf="!langChanged(); else staticText3"
+          [innerHtml]="typing3()"></span>
     <span class="textCursor">_</span>
 
-    <ng-container *ngIf="!langChanged">
+    <ng-container *ngIf="!langChanged()">
       <div *ngFor="let a of fillerLines$ | async">
         &nbsp;
       </div>
