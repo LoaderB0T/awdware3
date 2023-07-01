@@ -82,12 +82,18 @@ export class ProjectsLazyModule {
   private drawParticle(x: number, y: number, power: number, colorful: boolean) {
     const color = colorful ? this._rndmColors[Math.floor(Math.random() * this._rndmColors.length)] : '#ffd500';
     CircleParticle.draw({
-      x,
-      y,
+      position: {
+        x,
+        y
+      },
       movementXY: {
-        velocityY: -5 - (power / 75) * 6,
-        velocityX: Math.random() - 0.5,
-        gravity: 0.2
+        velocity: {
+          x: Math.random() - 0.5,
+          y: -8 - (power / 75) * 6
+        },
+        acceleration: {
+          y: 0.35
+        }
       },
       color,
       rotation: {
