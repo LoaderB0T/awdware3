@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule, TranslationResolver } from '@awdware/shared';
+import { SharedModule, translationResolver } from '@awdware/shared';
 import { HtmlHeadService, ResourceMapModule } from 'ng-dynamic-mf';
 import { ProjectsBaseComponent } from './projects-base/projects-base.component';
 import { ProjectComponent } from './projects-base/project/project.component';
@@ -14,7 +14,7 @@ const routes: Routes = [
       module: 'projects'
     },
     resolve: {
-      translations: TranslationResolver
+      translations: translationResolver
     },
     children: [
       {
