@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
 import { TranslationService } from '@awdware/shared';
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject } from 'rxjs';
 import { Typed } from 'rxjs-typed.ts';
 import { LogoService } from '../services/logo.service';
 import { contacts } from './contacts';
@@ -17,10 +16,8 @@ export class AboutComponent implements OnInit {
   private readonly _translationService: TranslationService;
   public readonly logoService: LogoService;
 
-  private readonly _headingDone = new BehaviorSubject(false);
-  public readonly headingDone$ = this._headingDone.asObservable();
-  private readonly _langChanged = new BehaviorSubject(false);
-  public readonly langChanged$ = this._langChanged.asObservable();
+  public readonly headingDone = signal(false);
+  public readonly langChanged = signal(false);
 
   public typingHeading = new Typed({ perLetterDelay: { min: 30, max: 70 } });
   public typingDetails = new Typed({ perLetterDelay: { min: 5, max: 20 }, eraseDelay: { min: 40, max: 80 } });
@@ -46,18 +43,18 @@ export class AboutComponent implements OnInit {
   public ngOnInit() {
     this.typeIntro();
     this._translationService.languageChanged$.subscribe(() => {
-      this._langChanged.next(true);
-      this._headingDone.next(true);
+      this.langChanged.set(true);
+      this.headingDone.set(true);
     });
   }
 
   private async typeIntro(): Promise<void> {
     const thisIsMe = this._translateService.instant('about.thisIsMe');
     const overview = this._translateService.instant('about.overview', { age: this.age });
-    this.typingHeading.wait(750).type('<-- ', { className: 'arrow' });
+    this.typingHeading.wait(750).type('<-- ', { className: 'arrow' }); // arrow class is used in mobile view to hide the arrow
     this.typingHeading.type(thisIsMe);
     await this.typingHeading.run();
-    this._headingDone.next(true);
+    this.headingDone.set(true);
     this.typingDetails.type('tl;dr:\n', { className: 'comment' });
     this.typingDetails.type(`\n${overview}`);
     await this.typingDetails.run();

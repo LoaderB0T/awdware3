@@ -1,11 +1,12 @@
 {
   "name": "externals",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/externals/src",
   "prefix": "awdware",
   "targets": {
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": ["libs/externals/**/*.ts", "libs/externals/**/*.html"]
       }

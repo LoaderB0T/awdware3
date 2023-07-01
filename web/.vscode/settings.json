@@ -1,3 +1,7 @@
 {
-  "explorer.fileNesting.enabled": true
+  "explorer.fileNesting.enabled": true,
+  "sonarlint.connectedMode.project": {
+    "connectionId": "loaderb0t1",
+    "projectKey": "LoaderB0T_awdware3"
+  }
 }

@@ -133,13 +133,17 @@ export class BaseComponent implements AfterViewInit {
       this._confettiInterval = setInterval(() => {
         for (let i = 0; i < 10; i++) {
           RectParticle.draw({
-            x: this._mouseX,
-            y: this._mouseY,
+            position: {
+              x: this._mouseX,
+              y: this._mouseY
+            },
             movementAngle: {
               angle: Math.random() * 360,
-              velocity: 5 + Math.random() * 5,
-              acceleration: -0.2,
-              minVelocity: 0
+              velocity: {
+                min: 0,
+                x: 5 + Math.random() * 5
+              },
+              acceleration: -0.2
             },
             rotation: {
               value: { x: Math.random() * 360, z: Math.random() * 360 },

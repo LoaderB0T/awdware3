@@ -1,20 +1,18 @@
 <div class="main-container">
-  <div class="me-details"
-       *awdLet="langChanged$ | async as langChanged">
+  <div class="me-details">
     <img [src]="'assets/img/me.png' | resourceMap:'home'"
          alt="A picture of myself!">
-    <div class="text-details"
-         *awdLet="headingDone$ | async as headingDone">
-      <h1 *ngIf="!langChanged; else staticText1"
-          [innerHtml]="typingHeading.text$ | async"><span class="textCursor"
-              *ngIf="!headingDone">_</span>
+    <div class="text-details">
+      <h1 *ngIf="!langChanged(); else staticText1">
+        <span [innerHtml]="typingHeading.text$ | async"></span><span class="textCursor"
+              *ngIf="!headingDone()">_</span>
       </h1>
       <span class="details">
-        <span *ngIf="!langChanged; else staticText2"
+        <span *ngIf="!langChanged(); else staticText2"
               [innerHtml]="(typingDetails.text$ | async)">
         </span>
         <span class="textCursor"
-              *ngIf="headingDone">_</span>
+              *ngIf="headingDone()">_</span>
       </span>
     </div>
   </div>
