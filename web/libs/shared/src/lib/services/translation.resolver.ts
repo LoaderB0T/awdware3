@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
+import { ActivatedRouteSnapshot } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { DynamicTranslationService } from 'ng-dynamic-mf';
 
 @Injectable({ providedIn: 'root' })
-export class TranslationResolver implements Resolve<void> {
+export class TranslationResolver {
   private readonly _translateService: TranslateService;
   private readonly _dynamicTranslationService: DynamicTranslationService;
 
