@@ -7,7 +7,6 @@ WORKDIR /app
 
 COPY package.json .
 COPY pnpm-lock.yaml .
-COPY decorate-angular-cli.js .
 RUN pnpm install
 
 COPY . .
