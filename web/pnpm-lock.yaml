@@ -57,8 +57,8 @@ dependencies:
     specifier: ^2.5.0
     version: 2.5.0
   typed.ts:
-    specifier: 3.0.0-pre1
-    version: 3.0.0-pre1
+    specifier: 3.0.0
+    version: 3.0.0
   zone.js:
     specifier: 0.13.1
     version: 0.13.1
@@ -10083,8 +10083,8 @@ packages:
   /typed-assert@1.0.9:
     resolution: {integrity: sha512-KNNZtayBCtmnNmbo5mG47p1XsCyrx6iVqomjcZnec/1Y5GGARaxPs6r49RnSPeUP3YjNYiU9sQHAtY4BBvnZwg==}
 
-  /typed.ts@3.0.0-pre1:
-    resolution: {integrity: sha512-NmfhVmMvOA7pjMA5UHW04HI38JNKMzy0weLNEMh6hCsaJJkKjWQjF+dzo/hf6NAVEwIc4AmZIq/ca4uwENjWqg==}
+  /typed.ts@3.0.0:
+    resolution: {integrity: sha512-bshlUw+0Z+Qmtj5tMDdO5UbJniN3tWwzIPJ+ytKzpZNFNiBEQRkO5t4wYHgjUwf3nYWCEeXGrL2aNQ4JBqDnZw==}
     requiresBuild: true
     dev: false
 
