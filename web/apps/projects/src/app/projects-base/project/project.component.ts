@@ -1,8 +1,15 @@
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+  Signal,
+  computed,
+  signal,
+} from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { Project } from '../projects';
 import { TranslateService } from '@ngx-translate/core';
-import { SubscriptionManager } from '@awdware/shared';
 import { RepoInfoService } from '../../services/repo-info.service';
 import { RepoInfo } from '../../models/compact-repo-info.model';
 
@@ -10,35 +17,34 @@ import { RepoInfo } from '../../models/compact-repo-info.model';
   selector: 'awd-project',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectComponent implements OnInit, OnDestroy {
+export class ProjectComponent implements OnInit {
   private readonly _repoInfoService: RepoInfoService;
   private readonly _translateService: TranslateService;
-  public readonly repoInfo$ = new BehaviorSubject<RepoInfo | null>(null);
-  public readonly lang$: BehaviorSubject<string | null>;
-  private readonly _subMgr = new SubscriptionManager();
+  public readonly repoInfo = signal<RepoInfo | null>(null);
+  public readonly lang: Signal<string | null>;
 
   @Input() project?: Project;
 
   constructor(starsService: RepoInfoService, translateService: TranslateService) {
     this._repoInfoService = starsService;
     this._translateService = translateService;
-    this.lang$ = new BehaviorSubject<string | null>(this._translateService.currentLang);
-    const sub = this._translateService.onLangChange.subscribe(({ lang }) => this.lang$.next(lang));
-    this._subMgr.add(sub);
+    const langChange = toSignal(this._translateService.onLangChange);
+    this.lang = computed<string | null>(
+      () => langChange()?.lang ?? this._translateService.currentLang
+    );
   }
 
   public async ngOnInit() {
     if (!this.project) {
       throw new Error('ProjectComponent: project is not defined');
     }
-    const repoInfo = await this._repoInfoService.getRepoInfo(this.project.gitHubUser, this.project.name);
-    this.repoInfo$.next(repoInfo);
-  }
-
-  public ngOnDestroy(): void {
-    this._subMgr.unsubscribeAll();
+    const repoInfo = await this._repoInfoService.getRepoInfo(
+      this.project.gitHubUser,
+      this.project.name
+    );
+    this.repoInfo.set(repoInfo);
   }
 
   // https://devicon.dev/

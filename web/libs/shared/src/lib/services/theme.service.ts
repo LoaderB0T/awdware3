@@ -1,16 +1,14 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
 import { Theme } from '../models/theme.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ThemeService {
   private _globalStyleSheet?: CSSStyleSheet;
 
   private readonly themes: Theme[] = [this.darkTheme, this.lightTheme];
-  public selectedTheme: Theme = this.themes[0];
-  public selectedTheme$ = new BehaviorSubject<Theme>(this.selectedTheme);
+  public selectedTheme = signal<Theme>(this.themes[0]);
 
   public init() {
     if (this._globalStyleSheet) {
@@ -52,16 +50,17 @@ export class ThemeService {
 
   private setTheme(theme: Theme) {
     if (!this._globalStyleSheet) {
-      throw new Error("Theme service has not been initialized. Call 'init' method before setting the theme");
+      throw new Error(
+        "Theme service has not been initialized. Call 'init' method before setting the theme"
+      );
     }
 
     if (this._globalStyleSheet.cssRules.length > 0) {
       this._globalStyleSheet.deleteRule(0);
     }
     this._globalStyleSheet.insertRule(this.getRuleString(theme), 0);
-    this.selectedTheme = theme;
     localStorage.setItem('theme', theme.name);
-    this.selectedTheme$.next(theme);
+    this.selectedTheme.set(theme);
   }
 
   private get darkTheme(): Theme {
@@ -80,8 +79,8 @@ export class ThemeService {
         colorAccent1: 'rgb(255, 0, 82)',
         colorAccent2: 'rgb(255, 190, 48)',
         colorError: 'rgb(238, 31, 16)',
-        opacityInactive: '0.4'
-      }
+        opacityInactive: '0.4',
+      },
     };
   }
 
@@ -101,8 +100,8 @@ export class ThemeService {
         colorAccent1: 'rgb(255, 0, 82)',
         colorAccent2: 'rgb(255, 190, 48)',
         colorError: 'rgb(238, 31, 16)',
-        opacityInactive: '0.6'
-      }
+        opacityInactive: '0.6',
+      },
     };
   }
 }
