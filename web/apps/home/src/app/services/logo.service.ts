@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Signal, computed } from '@angular/core';
 import { ThemeService } from '@awdware/shared';
-import { BehaviorSubject, map, Observable } from 'rxjs';
 
 type IconMetadata = {
   image: string;
@@ -9,19 +8,15 @@ type IconMetadata = {
 
 @Injectable({ providedIn: 'root' })
 export class LogoService {
-  private readonly _isLightTheme = new BehaviorSubject<boolean>(false);
+  private readonly _isLightTheme: Signal<boolean>;
 
   constructor(themeService: ThemeService) {
-    themeService.selectedTheme$.subscribe(theme => {
-      this._isLightTheme.next(theme.name === 'light');
-    });
+    this._isLightTheme = computed(() => themeService.selectedTheme().name === 'light');
   }
 
-  public getIconName$(icon: IconMetadata): Observable<string> {
-    return this._isLightTheme.pipe(
-      map(isLightTheme => {
-        return icon.darkLightIcon && isLightTheme ? `logo_${icon.image}_light` : `logo_${icon.image}`;
-      })
+  public getIconName(icon: IconMetadata): Signal<string> {
+    return computed(() =>
+      icon.darkLightIcon && this._isLightTheme() ? `logo_${icon.image}_light` : `logo_${icon.image}`
     );
   }
 }

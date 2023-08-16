@@ -1,18 +1,20 @@
-import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { ChangeDetectionStrategy, Component, OnInit, computed, signal } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { PreloadService, TranslationService } from '@awdware/shared';
 import { analytics } from '@awdware/analytics';
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject, map } from 'rxjs';
-import { Typed } from 'rxjs-typed.ts';
+import { Typed } from 'typed.ts';
 
+const typedFac = Typed.factory({
+  setUp: () => signal(''),
+  update: (signal, text) => signal.set(text),
+});
 @Component({
   selector: 'awd-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
   private readonly _translateService: TranslateService;
@@ -20,21 +22,17 @@ export class HomeComponent implements OnInit {
   private readonly _router: Router;
   public readonly langChanged = signal(false);
 
-  private readonly _typing1 = new Typed({ noSpecialCharErrors: true });
-  private readonly _typing2 = new Typed({ noSpecialCharErrors: true });
-  private readonly _typing3 = new Typed({ noSpecialCharErrors: true });
+  private readonly _typing1 = typedFac({ noSpecialCharErrors: true });
+  private readonly _typing2 = typedFac({ noSpecialCharErrors: true });
+  private readonly _typing3 = typedFac({ noSpecialCharErrors: true });
 
-  public readonly typing1 = toSignal(this._typing1.text$);
-  public readonly typing2 = toSignal(this._typing2.text$);
-  public readonly typing3 = toSignal(this._typing3.text$);
+  public readonly typing1 = this._typing1.text;
+  public readonly typing2 = this._typing2.text;
+  public readonly typing3 = this._typing3.text;
 
   public skip = false;
-  public done$ = new BehaviorSubject(false);
-  public readonly fillerLines$ = this._typing1.text$.pipe(
-    map(t => {
-      return new Array(3 - t.split('\n').length);
-    })
-  );
+  public done = signal(false);
+  public readonly fillerLines = computed(() => new Array(3 - this.typing1().split('\n').length));
 
   constructor(
     translateService: TranslateService,
@@ -81,11 +79,11 @@ export class HomeComponent implements OnInit {
   }
 
   private async typeIntro(): Promise<void> {
-    this.done$.next(false);
+    this.done.set(false);
     await this._typing1.run();
     await this._typing2.run();
     await this._typing3.run();
-    this.done$.next(true);
+    this.done.set(true);
   }
 
   private async typeLikes() {

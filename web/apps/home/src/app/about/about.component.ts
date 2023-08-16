@@ -1,15 +1,19 @@
 import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
 import { TranslationService } from '@awdware/shared';
 import { TranslateService } from '@ngx-translate/core';
-import { Typed } from 'rxjs-typed.ts';
+import { Typed } from 'typed.ts';
 import { LogoService } from '../services/logo.service';
 import { contacts } from './contacts';
 
+const typedFac = Typed.factory({
+  setUp: () => signal(''),
+  update: (signal, text) => signal.set(text),
+});
 @Component({
   selector: 'awd-about',
   templateUrl: 'about.component.html',
   styleUrls: ['about.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AboutComponent implements OnInit {
   private readonly _translateService: TranslateService;
@@ -19,13 +23,20 @@ export class AboutComponent implements OnInit {
   public readonly headingDone = signal(false);
   public readonly langChanged = signal(false);
 
-  public typingHeading = new Typed({ perLetterDelay: { min: 30, max: 70 } });
-  public typingDetails = new Typed({ perLetterDelay: { min: 5, max: 20 }, eraseDelay: { min: 40, max: 80 } });
+  public typingHeading = typedFac({ perLetterDelay: { min: 30, max: 70 } });
+  public typingDetails = typedFac({
+    perLetterDelay: { min: 5, max: 20 },
+    eraseDelay: { min: 40, max: 80 },
+  });
   public readonly age: number;
 
   public contacts = contacts;
 
-  constructor(translateService: TranslateService, translationService: TranslationService, logoService: LogoService) {
+  constructor(
+    translateService: TranslateService,
+    translationService: TranslationService,
+    logoService: LogoService
+  ) {
     this._translateService = translateService;
     this._translationService = translationService;
     this.logoService = logoService;

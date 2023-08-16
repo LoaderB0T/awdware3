@@ -4,12 +4,12 @@
          alt="A picture of myself!">
     <div class="text-details">
       <h1 *ngIf="!langChanged(); else staticText1">
-        <span [innerHtml]="typingHeading.text$ | async"></span><span class="textCursor"
+        <span [innerHtml]="typingHeading.text()"></span><span class="textCursor"
               *ngIf="!headingDone()">_</span>
       </h1>
       <span class="details">
         <span *ngIf="!langChanged(); else staticText2"
-              [innerHtml]="(typingDetails.text$ | async)">
+              [innerHtml]="(typingDetails.text())">
         </span>
         <span class="textCursor"
               *ngIf="headingDone()">_</span>
@@ -50,7 +50,7 @@
          [attr.data-umami-event-social]="contact.name"
          [href]="contact.link">
         <img [alt]="contact.name"
-             [src]="'assets/img/' + ((logoService.getIconName$(contact) | async) ?? '') + '.svg' | resourceMap:'home'">
+             [src]="'assets/img/' + logoService.getIconName(contact)() + '.svg' | resourceMap:'home'">
       </a>
     </div>
   </div>

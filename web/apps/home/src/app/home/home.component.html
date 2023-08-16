@@ -13,17 +13,17 @@
     <span class="textCursor">_</span>
 
     <ng-container *ngIf="!langChanged()">
-      <div *ngFor="let a of fillerLines$ | async">
+      <div *ngFor="let a of fillerLines()">
         &nbsp;
       </div>
     </ng-container>
-    <div *ngIf="!skip && (done$ | async) === false"
+    <div *ngIf="!skip && !done()"
          class="action-icon skip">
       <i (click)="fastForward()"
          aria-hidden="true"
          class="fa-light fa-forward"></i>
     </div>
-    <div *ngIf="(done$ | async)"
+    <div *ngIf="done()"
          class="action-icon restart">
       <i (click)="restart()"
          aria-hidden="true"

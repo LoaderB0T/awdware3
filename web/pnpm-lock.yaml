@@ -53,12 +53,12 @@ dependencies:
   rxjs:
     specifier: 7.8.1
     version: 7.8.1
-  rxjs-typed.ts:
-    specifier: ^2.1.1
-    version: 2.1.1(rxjs@7.8.1)
   tslib:
     specifier: ^2.5.0
     version: 2.5.0
+  typed.ts:
+    specifier: 3.0.0
+    version: 3.0.0
   zone.js:
     specifier: 0.13.1
     version: 0.13.1
@@ -9180,15 +9180,6 @@ packages:
     dependencies:
       queue-microtask: 1.2.3
 
-  /rxjs-typed.ts@2.1.1(rxjs@7.8.1):
-    resolution: {integrity: sha512-7Vs3NQR/OCcdIgv0Dce1nAAL5iVdup8iixu2D+yTgWsA56yImTzYyuOH79/WVdHubZ1G7+73aZnrh84Vo7a4Bw==}
-    peerDependencies:
-      rxjs: '>= 5.0.0'
-    dependencies:
-      rxjs: 7.8.1
-      typed.ts: 2.1.1
-    dev: false
-
   /rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
     dependencies:
@@ -10092,8 +10083,9 @@ packages:
   /typed-assert@1.0.9:
     resolution: {integrity: sha512-KNNZtayBCtmnNmbo5mG47p1XsCyrx6iVqomjcZnec/1Y5GGARaxPs6r49RnSPeUP3YjNYiU9sQHAtY4BBvnZwg==}
 
-  /typed.ts@2.1.1:
-    resolution: {integrity: sha512-/NTdpjQXjrfk+MOEBsG4mRm6GNMAtdRu8PMBmEUDIA7osowqP9cf5YYWG7d9eKqPsKaNvIGw+Ugll4QGIuuKug==}
+  /typed.ts@3.0.0:
+    resolution: {integrity: sha512-bshlUw+0Z+Qmtj5tMDdO5UbJniN3tWwzIPJ+ytKzpZNFNiBEQRkO5t4wYHgjUwf3nYWCEeXGrL2aNQ4JBqDnZw==}
+    requiresBuild: true
     dev: false
 
   /typescript@5.1.6:

@@ -1,55 +1,62 @@
-import { Component } from '@angular/core';
+import { Component, Signal, effect, signal } from '@angular/core';
 import { MenuItem, MenuService, ThemeService, TranslationService } from '@awdware/shared';
 import { analytics } from '@awdware/analytics';
-import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'awd-menu',
   templateUrl: 'menu.component.html',
-  styleUrls: ['menu.component.scss']
+  styleUrls: ['menu.component.scss'],
 })
 export class MenuComponent {
   private readonly _menuService: MenuService;
   private readonly _translationService: TranslationService;
   private readonly _themeService: ThemeService;
 
-  public readonly menuItems$: Observable<MenuItem[]>;
-  public readonly menuOpen$: BehaviorSubject<boolean>;
-  public activeMenuItemY$ = new BehaviorSubject<number>(-100);
-  public activeMenuItemId$ = new BehaviorSubject<string>('');
+  public readonly menuItems: Signal<MenuItem[]>;
+  public readonly menuOpen: Signal<boolean>;
+  public activeMenuItemY = signal(-100);
+  public activeMenuItemId = signal('');
 
-  constructor(menuService: MenuService, translationService: TranslationService, themeService: ThemeService) {
+  constructor(
+    menuService: MenuService,
+    translationService: TranslationService,
+    themeService: ThemeService
+  ) {
     this._menuService = menuService;
     this._translationService = translationService;
     this._themeService = themeService;
 
-    this.menuItems$ = this._menuService.menuItems$;
-    this.menuOpen$ = this._menuService.menuOpen$;
-    this._menuService.activeMenuItem$.subscribe(x => {
-      const el = document.getElementById(`menu-item-${x}`);
-      if (el) {
-        this.activeMenuItemY$.next(el.offsetTop - 8); // 16px is the additional height of the line
-        this.activeMenuItemId$.next(x);
-      }
-    });
+    this.menuItems = this._menuService.menuItems;
+    this.menuOpen = this._menuService.menuOpen;
+    effect(
+      () => {
+        const activeItem = this._menuService.activeMenuItem();
+        const el = document.getElementById(`menu-item-${activeItem}`);
+        if (el) {
+          this.activeMenuItemY.set(el.offsetTop - 8); // 16px is the additional height of the line
+          this.activeMenuItemId.set(activeItem);
+        }
+      },
+      { allowSignalWrites: true }
+    );
   }
 
   public clickedItem(event: MouseEvent | null, menuItem: MenuItem) {
     analytics.track(`menu.itemClicked.${menuItem.id}`, {
-      from: window.location.pathname
+      from: window.location.pathname,
     });
     menuItem.action(event ? (event.target as HTMLElement) : null);
-    if (this._menuService.menuOpen$.value) {
+    if (this._menuService.menuOpen()) {
       this.closeMenu();
     }
   }
 
   public openMenu() {
-    this._menuService.menuOpen$.next(true);
+    this._menuService.menuOpen.set(true);
   }
 
   public closeMenu() {
-    this._menuService.menuOpen$.next(false);
+    this._menuService.menuOpen.set(false);
   }
 
   // @todo change to interactive ui
@@ -60,8 +67,11 @@ export class MenuComponent {
   }
 
   public switchTheme() {
-    const theme = this._themeService.selectedTheme.name;
+    const theme = this._themeService.selectedTheme().name;
     this._themeService.changeTheme(theme === 'light' ? 'dark' : 'light');
-    analytics.track('menu.switchTheme', { from: theme, to: this._themeService.selectedTheme.name });
+    analytics.track('menu.switchTheme', {
+      from: theme,
+      to: this._themeService.selectedTheme().name,
+    });
   }
 }
