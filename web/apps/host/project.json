@@ -18,8 +18,8 @@
         "assets": [
           "apps/host/src/favicon.ico",
           "apps/host/src/assets",
-          "apps/host/src/modules",
-          "apps/host/src/environments"
+          "apps/host/src/environment.json",
+          "apps/host/src/modules.json"
         ],
         "styles": ["apps/host/src/styles.scss"],
         "scripts": [],
@@ -78,7 +78,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "lintFilePatterns": ["apps/host/src/**/*.ts", "apps/host/src/**/*.html"]
       }

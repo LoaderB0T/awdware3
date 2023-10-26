@@ -1,0 +1,5 @@
+{
+  "apiUrl": "http://localhost:5555",
+  "appUrl": "localhost",
+  "production": false
+}

@@ -73,7 +73,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "lintFilePatterns": ["apps/timeline/**/*.ts", "apps/timeline/**/*.html"]
       }
