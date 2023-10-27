@@ -6,6 +6,21 @@
   "prefix": "awd",
   "targets": {
     "build": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "target": "home:build-ng:production"
+      }
+    },
+    "serve": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "target": "home:build-ng:development",
+        "rebuildDelay": 0,
+        "dev": true,
+        "port": 4201
+      }
+    },
+    "build-ng": {
       "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
@@ -20,9 +35,6 @@
         "scripts": [],
         "stylePreprocessorOptions": {
           "includePaths": ["libs/styles/src/lib"]
-        },
-        "customWebpackConfig": {
-          "path": "apps/home/webpack.config.js"
         },
         "commonChunk": false
       },
@@ -55,22 +67,6 @@
         }
       },
       "defaultConfiguration": "production"
-    },
-    "serve": {
-      "executor": "@nx/angular:webpack-dev-server",
-      "configurations": {
-        "production": {
-          "browserTarget": "home:build:production"
-        },
-        "development": {
-          "browserTarget": "home:build:development"
-        }
-      },
-      "defaultConfiguration": "development",
-      "options": {
-        "port": 4201,
-        "publicHost": "http://localhost:4201"
-      }
     },
     "lint": {
       "executor": "@nx/eslint:lint",

@@ -17,14 +17,14 @@ import { TranslateModule } from '@ngx-translate/core';
     RouterModule.forRoot([
       {
         path: 'home',
-        loadChildren: () => import('./home.module').then(m => m.HomeModule)
-      }
+        loadChildren: () => import('./home.module').then(m => m.HomeModule),
+      },
     ]),
     SharedModule,
     BrowserAnimationsModule,
-    TranslateModule.forRoot({})
+    TranslateModule.forRoot({}),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(themeService: ThemeService, translationService: TranslationService) {
