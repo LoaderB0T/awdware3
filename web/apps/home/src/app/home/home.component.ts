@@ -20,19 +20,19 @@ export class HomeComponent implements OnInit {
   private readonly _translateService: TranslateService;
   private readonly _translationService: TranslationService;
   private readonly _router: Router;
-  public readonly langChanged = signal(false);
+  protected readonly langChanged = signal(false);
 
-  private readonly _typing1 = typedFac({ noSpecialCharErrors: true });
-  private readonly _typing2 = typedFac({ noSpecialCharErrors: true });
-  private readonly _typing3 = typedFac({ noSpecialCharErrors: true });
+  protected readonly _typing1 = typedFac({ noSpecialCharErrors: true });
+  protected readonly _typing2 = typedFac({ noSpecialCharErrors: true });
+  protected readonly _typing3 = typedFac({ noSpecialCharErrors: true });
 
-  public readonly typing1 = this._typing1.text;
-  public readonly typing2 = this._typing2.text;
-  public readonly typing3 = this._typing3.text;
+  protected readonly typing1 = this._typing1.text;
+  protected readonly typing2 = this._typing2.text;
+  protected readonly typing3 = this._typing3.text;
 
-  public skip = false;
-  public done = signal(false);
-  public readonly fillerLines = computed(() => new Array(3 - this.typing1().split('\n').length));
+  protected skip = false;
+  protected done = signal(false);
+  protected readonly fillerLines = computed(() => new Array(3 - this.typing1().split('\n').length));
 
   constructor(
     translateService: TranslateService,
