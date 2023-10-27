@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@awdware/shared';
@@ -14,6 +14,9 @@ const routes: Routes = [
     path: '',
     data: {
       module: 'timeline',
+    },
+    resolve: {
+      translation: () => inject(DynamicTranslationService).ensureTranslationSetIsLoaded('timeline'),
     },
     children: [
       {
