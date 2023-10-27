@@ -14,7 +14,7 @@
     "clean": "pnpm rimraf dist",
     "prepare-dist": "pnpm cpy ../web/dist/apps/host/** ./dist && pnpm cpy ../web/dist/apps/home ./dist/assets/modules && pnpm debug-paths",
     "debug-paths": "ls -R ./dist",
-    "copy-cfg": "pnpm cpy ./cfg/modules.json ./dist/modules --flat && pnpm cpy ./cfg/environment.json ./dist/environments --flat",
+    "copy-cfg": "pnpm cpy ./cfg/modules.json ./dist --flat && pnpm cpy ./cfg/environment.json ./dist --flat",
     "start": "pnpm http-server -p 4200 -c-1 ./dist",
     "test": "pnpm playwright test"
   },
