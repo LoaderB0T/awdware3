@@ -1,13 +1,16 @@
-[
-  {
-    "url": "/assets/modules/home/",
-    "name": "home",
-    "ngModuleName": "RemoteEntryModule"
-  },
-  {
-    "url": "/assets/modules/projects/",
-    "name": "projects",
-    "ngModuleName": "RemoteEntryModule",
-    "hasGlobalStyles": true
-  }
-]
+{
+  "$schema": "https://raw.githubusercontent.com/LoaderB0T/ng-dynamic-mf/main/schema.json",
+  "modules": [
+    {
+      "url": "/assets/modules/home/",
+      "name": "home",
+      "ngModuleName": "RemoteEntryModule"
+    },
+    {
+      "url": "/assets/modules/projects/",
+      "name": "projects",
+      "ngModuleName": "RemoteEntryModule",
+      "hasGlobalStyles": true
+    }
+  ]
+}

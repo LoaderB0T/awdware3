@@ -72,15 +72,8 @@
         "publicHost": "http://localhost:4201"
       }
     },
-    "extract-i18n": {
-      "executor": "ngx-build-plus:extract-i18n",
-      "options": {
-        "browserTarget": "home:build",
-        "extraWebpackConfig": "apps/home/webpack.config.js"
-      }
-    },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "lintFilePatterns": ["apps/home/src/**/*.ts", "apps/home/src/**/*.html"]
       }
