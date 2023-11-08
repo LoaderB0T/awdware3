@@ -60,10 +60,10 @@
       "executor": "@nx/angular:webpack-dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "home:build:production"
+          "buildTarget": "home:build:production"
         },
         "development": {
-          "browserTarget": "home:build:development"
+          "buildTarget": "home:build:development"
         }
       },
       "defaultConfiguration": "development",
@@ -82,8 +82,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/home"],
       "options": {
-        "jestConfig": "apps/home/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/home/jest.config.ts"
       }
     }
   },
