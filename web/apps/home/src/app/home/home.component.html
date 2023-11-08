@@ -1,47 +1,48 @@
 <div class="content">
   <div id="homeBox">
+    @if (!langChanged()) {
     <span class="typing"
-          *ngIf="!langChanged(); else staticText1"
           [innerHtml]="typing1()"></span>
+
     <span class="typing link highlight"
-          *ngIf="!langChanged(); else staticText2"
           (click)="learnMore()"
           [innerHtml]="typing2()"></span>
     <span class="typing"
-          *ngIf="!langChanged(); else staticText3"
           [innerHtml]="typing3()"></span>
+
+    } @else {
+
+    <span class="typing">{{'home.typing.hi' | translate}}
+      <br>{{'home.typing.iam' | translate}} <span class="highlight">Janik</span>.
+      <br>{{'home.typing.click' | translate}}
+    </span>
+
+    <span class="typing link highlight">{{'home.typing.here' | translate}}</span>
+    <span class="typing"> {{'home.typing.toLearnMore' | translate}}</span>
+    }
+
     <span class="textCursor">_</span>
 
-    <ng-container *ngIf="!langChanged()">
-      <div *ngFor="let a of fillerLines()">
-        &nbsp;
-      </div>
-    </ng-container>
-    <div *ngIf="!skip && !done()"
-         class="action-icon skip">
+    @if (!langChanged()) {
+    @for (a of fillerLines(); track a) {
+    <div>
+      &nbsp;
+    </div>
+    }
+    }
+    @if (!skip && !done()) {
+    <div class="action-icon skip">
       <i (click)="fastForward()"
          aria-hidden="true"
          class="fa-light fa-forward"></i>
     </div>
-    <div *ngIf="done()"
-         class="action-icon restart">
+    }
+    @if (done()) {
+    <div class="action-icon restart">
       <i (click)="restart()"
          aria-hidden="true"
          class="fa-light fa-arrow-rotate-right"></i>
     </div>
+    }
   </div>
 </div>
-<ng-template #staticText1>
-  <span class="typing">{{'home.typing.hi' | translate}}
-    <br>{{'home.typing.iam' | translate}} <span class="highlight">Janik</span>.
-    <br>{{'home.typing.click' | translate}}
-  </span>
-</ng-template>
-
-<ng-template #staticText2>
-  <span class="typing link highlight">{{'home.typing.here' | translate}}</span>
-</ng-template>
-
-<ng-template #staticText3>
-  <span class="typing"> {{'home.typing.toLearnMore' | translate}}</span>
-</ng-template>
