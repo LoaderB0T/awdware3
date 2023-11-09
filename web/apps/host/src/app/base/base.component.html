@@ -1,13 +1,13 @@
 <div id="app-main"
      (mousemove)="setMouseCoords($event)">
   <div class="bg">
-    <awd-bg></awd-bg>
+    <awd-bg />
   </div>
   <div class="menu-content-container">
-    <awd-menu [class.open]="menuOpen()"></awd-menu>
+    <awd-menu [class.open]="menuOpen()" />
     <div class="content"
          [@routeAnimations]="prepareRoute(outlet)">
-      <router-outlet #outlet="outlet"></router-outlet>
+      <router-outlet #outlet="outlet" />
     </div>
   </div>
 </div>
