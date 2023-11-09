@@ -1,24 +1,26 @@
 <div id="app-main"
      (mousemove)="setMouseCoords($event)">
   <div class="bg">
-    <awd-bg></awd-bg>
+    <awd-bg />
   </div>
   <div class="menu-content-container">
-    <awd-menu [class.open]="menuOpen()"></awd-menu>
+    <awd-menu [class.open]="menuOpen()" />
     <div class="content"
          [@routeAnimations]="prepareRoute(outlet)">
-      <router-outlet #outlet="outlet"></router-outlet>
+      <router-outlet #outlet="outlet" />
     </div>
   </div>
 </div>
 
 <div class="preload-container">
-  <i *ngFor="let icon of preloadIcons$ | async"
-     aria-hidden="true"
+  @for (icon of preloadIcons$ | async; track icon) {
+  <i aria-hidden="true"
      class="fa-light fa-{{icon}}">
   </i>
-  <img *ngFor="let img of preloadImgs$ | async"
-       alt=""
+  }
+  @for (img of preloadImgs$ | async; track img) {
+  <img alt=""
        aria-hidden="true"
        [src]="img">
+  }
 </div>

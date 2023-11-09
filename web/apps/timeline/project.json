@@ -60,10 +60,10 @@
       "executor": "@nx/angular:webpack-dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "timeline:build:production"
+          "buildTarget": "timeline:build:production"
         },
         "development": {
-          "browserTarget": "timeline:build:development"
+          "buildTarget": "timeline:build:development"
         }
       },
       "defaultConfiguration": "development",
@@ -82,8 +82,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/timeline"],
       "options": {
-        "jestConfig": "apps/timeline/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/timeline/jest.config.ts"
       }
     }
   },

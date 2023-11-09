@@ -3,16 +3,26 @@
     <img [src]="'assets/img/me.png' | resourceMap:'home'"
          alt="A picture of myself!">
     <div class="text-details">
-      <h1 *ngIf="!langChanged(); else staticText1">
-        <span [innerHtml]="typingHeading.text()"></span><span class="textCursor"
-              *ngIf="!headingDone()">_</span>
+      @if (!langChanged()) {
+      <h1>
+        <span [innerHtml]="typingHeading.text()"></span>@if (!headingDone()) {
+        <span class="textCursor">_</span>
+        }
       </h1>
+      } @else {
+      <h1>{{'about.thisIsMe' | translate}}</h1>
+      }
       <span class="details">
-        <span *ngIf="!langChanged(); else staticText2"
-              [innerHtml]="(typingDetails.text())">
+        @if (!langChanged()) {
+        <span [innerHtml]="(typingDetails.text())">
         </span>
-        <span class="textCursor"
-              *ngIf="headingDone()">_</span>
+        } @else {
+        <span><span class="comment">tl;dr:</span>
+          <br>{{'about.overview' | translate: {age} }}</span>
+        }
+        @if (headingDone()) {
+        <span class="textCursor">_</span>
+        }
       </span>
     </div>
   </div>
@@ -43,8 +53,8 @@
       <h2>{{'about.contactTitle' | translate}}</h2>
     </div>
     <div class="logos">
-      <a *ngFor="let contact of contacts"
-         target="_blank"
+      @for (contact of contacts; track contact) {
+      <a target="_blank"
          class="umami--click--external-link-social-{{contact.name}}"
          data-umami-event="external-link-social"
          [attr.data-umami-event-social]="contact.name"
@@ -52,15 +62,7 @@
         <img [alt]="contact.name"
              [src]="'assets/img/' + logoService.getIconName(contact)() + '.svg' | resourceMap:'home'">
       </a>
+      }
     </div>
   </div>
 </div>
-
-
-<ng-template #staticText1>
-  <h1>{{'about.thisIsMe' | translate}}</h1>
-</ng-template>
-<ng-template #staticText2>
-  <span><span class="comment">tl;dr:</span>
-    <br>{{'about.overview' | translate: {age} }}</span>
-</ng-template>

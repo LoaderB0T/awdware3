@@ -1,5 +1,5 @@
-<div class="project"
-     *ngIf="repoInfo() as repoInfo">
+@if (repoInfo(); as repoInfo) {
+<div class="project">
   <div class="header">
     <h3 class="title">
       <a href="https://github.com/{{repoInfo.username}}/{{repoInfo.name}}"
@@ -10,9 +10,11 @@
     </h3>
   </div>
   <hr>
-  <p *ngIf="lang() as lang">
+  @if (lang(); as lang) {
+  <p>
     {{project?.descriptions?.[lang] ?? repoInfo.description}}
   </p>
+  }
   <hr>
   <div class="info">
     <div class="icon-language">
@@ -39,3 +41,4 @@
     </button>
   </a>
 </div>
+}

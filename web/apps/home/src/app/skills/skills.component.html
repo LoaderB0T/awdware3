@@ -1,8 +1,8 @@
 <div class="skills-container">
   <h2>{{ 'about.workingWith' | translate }}</h2>
   <div class="logos">
-    <a *ngFor="let skill of skills"
-       data-umami-event="external-link-skills"
+    @for (skill of skills; track skill) {
+    <a data-umami-event="external-link-skills"
        [attr.data-umami-event-thing]="skill.name"
        target="_blank"
        [tooltip]="skill.name"
@@ -10,11 +10,12 @@
       <img [src]="'assets/img/' + logoService.getIconName(skill)() + '.svg' | resourceMap:'home'"
            [alt]="'Logo of ' + skill.name">
     </a>
+    }
   </div>
   <h2>{{ 'about.alsoKnowledgeableIn' | translate }}</h2>
   <div class="logos more">
-    <a *ngFor="let knownThing of knowledge"
-       class="umami--click--external-link-skills-{{knownThing.name}}"
+    @for (knownThing of knowledge; track knownThing) {
+    <a class="umami--click--external-link-skills-{{knownThing.name}}"
        data-umami-event="external-link-skills"
        [attr.data-umami-event-thing]="knownThing.name"
        target="_blank"
@@ -23,5 +24,6 @@
            [alt]="'Logo of ' + knownThing.name">
       {{knownThing.name}}
     </a>
+    }
   </div>
 </div>
