@@ -7,7 +7,7 @@
        target="_blank"
        [tooltip]="skill.name"
        [href]="skill.link">
-      <img [src]="'assets/img/' + logoService.getIconName(skill)() + '.svg' | resourceMap:'home'"
+      <img [src]="'assets/img/' + (skill.imageFilename ? skill.imageFilename : logoService.getIconName(skill)() + '.svg') | resourceMap:'home'"
            [alt]="'Logo of ' + skill.name">
     </a>
     }
