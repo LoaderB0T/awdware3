@@ -1,32 +1,24 @@
 @if (refinedTimeline$ | async; as refinedTimeline) {
-
-<div *awdLet="selectedSectionIndex$ | async as selectedSectionIndex"
-     [style.--selected-section-index]="selectedSectionIndex"
-     class="timeline-container">
-  @for (section of refinedTimeline.sections; track section; let i = $index) {
-  <div class="section-wrapper"
-       (click)="selectSection(i)"
-       [class.selected]="selectedSectionIndex === i">
-    <div class="dots"
-         [class.selected]="selectedSectionIndex === i">
-      <i aria-hidden="true"
-         class="fa-light fa-circle lvl1"></i>
-      <i aria-hidden="true"
-         class="fa-light fa-circle lvl2"></i>
-      <i aria-hidden="true"
-         class="fa-light fa-circle-right lvl3"></i>
-      <i aria-hidden="true"
-         class="fa-light fa-circle lvl2"></i>
-      <i aria-hidden="true"
-         class="fa-light fa-circle lvl1"></i>
-    </div>
-    <div class="section">
-      <div class="year-string">
-        <span class="year year-from">{{ section.name }}</span>
+  <div [style.--selected-section-index]="selectedSectionIndex()" class="timeline-container">
+    @for (section of refinedTimeline.sections; track section; let i = $index) {
+      <div
+        class="section-wrapper"
+        (click)="selectSection(i)"
+        [class.selected]="selectedSectionIndex() === i"
+      >
+        <div class="dots" [class.selected]="selectedSectionIndex() === i">
+          <i aria-hidden="true" class="fa-light fa-circle lvl1"></i>
+          <i aria-hidden="true" class="fa-light fa-circle lvl2"></i>
+          <i aria-hidden="true" class="fa-light fa-circle-right lvl3"></i>
+          <i aria-hidden="true" class="fa-light fa-circle lvl2"></i>
+          <i aria-hidden="true" class="fa-light fa-circle lvl1"></i>
+        </div>
+        <div class="section">
+          <div class="year-string">
+            <span class="year year-from">{{ section.name }}</span>
+          </div>
+        </div>
       </div>
-    </div>
+    }
   </div>
-  }
-</div>
-
 }

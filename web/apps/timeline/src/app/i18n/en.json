@@ -1,1 +1,12 @@
-{}
+{
+  "timeline": {
+    "title": "History of awdware",
+    "texts": {
+      "idea": {
+        "s1": "The primary idea behind awdware stays the same since 2014: To expand and deepen my knowledge in web development.",
+        "s2": "awdware is a project that is constantly evolving and with which I try out new technologies.",
+        "s3": "The content of the site has changed a lot over the years and so each version of awdware has a completely different function."
+      }
+    }
+  }
+}

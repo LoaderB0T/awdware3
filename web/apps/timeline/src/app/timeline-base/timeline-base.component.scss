@@ -12,17 +12,14 @@
     display: flex;
     align-items: center;
     gap: 40px;
-    min-height: 0;
+    min-height: 800px;
     @include phone {
       width: calc(100vw - $scollbarWidth);
       flex-direction: column;
     }
-    .timeline,
-    .timeline-content {
+    .timeline {
       display: flex;
       align-items: center;
-    }
-    .timeline {
       @include not-phone {
         width: 200px;
         height: 100%;
@@ -38,11 +35,19 @@
       }
     }
     .timeline-content {
+      display: flex;
+      flex-direction: column;
       width: 100%;
-      @include highlightable;
+      gap: 32px;
       @include not-phone {
-        padding: 20px;
         width: calc(100% - 200px);
+      }
+      .placeholder {
+        height: 500px;
+      }
+      .timeline-item {
+        padding: 20px;
+        @include highlightable;
       }
     }
   }
