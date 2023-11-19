@@ -28,6 +28,7 @@ $transition: $tranBezierMediumOvershoot;
     }
     .original-wrapper {
       position: absolute;
+      border-radius: $radiusDefault;
       inset: var(--inset);
       transition: inset $transition;
       overflow: hidden;

@@ -24,6 +24,10 @@ html {
   --tooltipPadding: 10px;
 }
 
+body:has(.modal-is-open) {
+  overflow: hidden;
+}
+
 :focus {
   outline-color: transparent;
   outline-style: none;
