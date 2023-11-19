@@ -1,14 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { ImageComponent } from '../../image/image.component';
 import { TranslationService } from '@awdware/shared';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, TranslateModule],
-  templateUrl: './timeline-item-idea.component.html',
-  styleUrls: ['./timeline-item-idea.component.scss'],
+  imports: [CommonModule, TranslateModule, ImageComponent],
+  templateUrl: './timeline-v0_2.component.html',
+  styleUrls: ['./timeline-v0_2.component.scss'],
 })
-export class TimelineItemIdeaComponent {
+export class TimelineItemV0_2Component {
   protected readonly len = inject(TranslationService).currentLang;
 }

@@ -1,0 +1,55 @@
+<h2>awdware 0.2</h2>
+
+<p>
+  @if (len() === 'de') {
+    Nachdem Version 0.1 recht schnell an architektonische Grenzen gestoßen ist, habe ich mich dazu
+    entschieden die Seite komplett neu zu schreiben. Die neue Seite basierte auch auf PHP und MySQL,
+    nutze aber das neuere mysqli anstatt mysql.
+  } @else {
+    After version 0.1 quickly reached architectural limits, I decided to rewrite the page
+    completely. The new page was also based on PHP and MySQL, but used the newer mysqli instead of
+    mysql.
+  }
+  <awd-image src="assets/0_2.png" alt="" center width="80" maxheight="650" />
+</p>
+<p>
+  @if (len() === 'de') {
+    Das einzige Feature, welches von der alten Seite übernommen wurde, war die Gallerie. Diese wurde
+    auch komplett überarbeitet. Als Admin der Seite konnte man in der Adminarea Bilder von seinem
+    Rechner hochladen, welche dann in der Galerie aufgetaucht sind. Dabei wurden automatisch
+    Vorschaubilder mit Wasserzeichen generiert und die Bilder mit voller Auflösung und ohne
+    Wasserzeichen konnte man erst nach Anmeldung herunterladen. Neu war hierbei auch, dass man seine
+    E-Mail Adresse bestätigen musste. Dafür wurde nach der Registrierung eine E-Mail mit einem Link
+    an die angegebene E-Mail Adresse verschickt.
+  } @else {
+    The only feature that was taken over from the old page was the gallery. It was, hovever, also
+    completely revised. Admins of the page could upload pictures from thwir computer in the
+    adminarea. The sictues then appeared in the gallery with automatically generated thumbnails and
+    a watermark. The pictures with full resolution and without watermark could only be downloaded
+    after registration. New was also that you had to confirm your email address. For this purpose,
+    an email with a link was sent to the specified email address after registration.
+  }
+</p>
+<p>
+  @if (len() === 'de') {
+    Neben der Galerie wurde noch ein URL shortener hinzugefügt. Dieser konnte genutzt werden um für
+    beliebige Urls einen kurzen Link zu erstellen. Ansonsten gab es eine Seite, auf der man
+    Abstimmungen erstellen konnte. Dabei konnte man wählen, ob man für nur eine Option, für mehrere
+    Optionen oder mehrfach für dieselbe Optionabstimmen darf und ob man dafür angemeldet sein muss.
+  } @else {
+    In addition to the gallery, a URL shortener was added, which could be used to create a short
+    link for any URL. Also there was a page where you could create polls. You could choose whether
+    you could vote for only one option, for multiple options or multiple times for the same option
+    and whether you had to be logged in to do so.
+  }
+  <awd-image src="assets/0_2votes.png" alt="" center width="80" maxheight="650" />
+</p>
+<p>
+  @if (len() === 'de') {
+    Version 0.2 war deutlich besser strukturiert und hatte deutlich weniger Redundanzen. Das
+    Farbschema der Version ist auch schon recht ähnlich zu heute.
+  } @else {
+    Version 0.2 version was much better structured and had much less redundancy. The color scheme of
+    the version is also quite similar to today.
+  }
+</p>

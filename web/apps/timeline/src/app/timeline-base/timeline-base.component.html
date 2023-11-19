@@ -2,19 +2,19 @@
   <h1>{{ 'timeline.title' | translate }}</h1>
   <div class="timeline-base">
     <div class="timeline">
-      <awd-timeline />
+      <awd-timeline [selectedId]="selectedId()" />
     </div>
     <div class="timeline-spacer"></div>
     <div class="timeline-content">
       @for (item of timeline; track item.id) {
         <!-- Defer is not quite that usefull here, still cool to see that it works as intended -->
-        @defer (on viewport; prefetch on idle) {
-          <div class="timeline-item">
+        <div class="timeline-item" [attr.data-id]="item.id" #timelineItem>
+          @defer (on viewport; prefetch on idle) {
             <ng-container *ngComponentOutlet="item.component" />
-          </div>
-        } @placeholder {
-          <div class="placeholder"></div>
-        }
+          } @placeholder {
+            <div class="placeholder"></div>
+          }
+        </div>
       }
     </div>
   </div>

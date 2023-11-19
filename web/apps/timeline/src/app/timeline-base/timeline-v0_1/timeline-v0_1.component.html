@@ -1,32 +1,64 @@
-<h1>awdware 0.1</h1>
+<h2>awdware 0.1</h2>
 
 <p>
-  awdware 0.1 ist die erste öffentlich erreichbare Version von awdware.de. Die Seite basiert auf
-  einem kostenlosen HTML template und ist mit Hilfe von PHP und MySQL um einige Funktionen
-  erweitert.
+  @if (len() === 'de') {
+    awdware 0.1 ist die erste öffentlich erreichbare Version von awdware.de. Die Seite basiert auf
+    einem kostenlosen HTML template und ist mit Hilfe von PHP und MySQL um einige Funktionen
+    erweitert.
+  } @else {
+    awdware 0.1 is the first publicly available version of awdware.de. The page is based on a free
+    HTML template and has been extended with some functions using PHP and MySQL.
+  }
 </p>
 <p>
-  Die Seite bot Downloads verschiedener von mit geschriebener Programme an. Neben verschiedenen
-  Windows Anwendungen auch einige Spiele (z.B. Snake) für den TI-nspire Taschenrechner, welchen wir
-  damals in der Schule genutzt haben. Außerdem gab es eine Gallerie mit Desktophintergründen, welche
-  ich mit Photoshop erstellt habe und ein rudimentäres Forum, welches allerdings in dieser Version
-  der Seite nie richtig funktioniert hat.
-  <awd-image src="assets/0_0.jpeg" alt="" center width="80" />
+  @if (len() === 'de') {
+    Die Seite bot Downloads verschiedener von mit geschriebener Programme an. Neben verschiedenen
+    Windows Anwendungen auch einige Spiele (z.B. Snake) für den TI-nspire Taschenrechner, welchen
+    wir damals in der Schule genutzt haben. Außerdem gab es eine Gallerie mit Desktophintergründen,
+    welche ich mit Photoshop erstellt habe, und ein rudimentäres Forum, welches allerdings in dieser
+    Version der Seite nie richtig funktioniert hat.
+  } @else {
+    The page offered downloads of various programs I wrote. In addition to various Windows
+    applications, there were also some games (e.g. Snake) for the TI-nspire calculator, which we
+    used in school at that time. There was also a gallery with desktop backgrounds, which I created
+    with Photoshop, and a rudimentary forum, which never really worked in this version of the page.
+  }
+  <awd-image src="assets/0_1.jpeg" alt="" center width="80" />
 </p>
 <p>
-  Die Prämisse war damals schon so viel wie möglich selbst zu machen und nicht auf fertige Lösungen
-  zurückzugreifen, um möglichst viel zu lernen. Dass es keinen Sinn ergibt ein Forum selbst zu
-  schreiben, spielt dabei keine Rolle.
+  @if (len() === 'de') {
+    Die Prämisse war damals schon so viel wie möglich selbst zu machen und nicht auf fertige
+    Lösungen zurückzugreifen, um möglichst viel zu lernen. Dass es keinen Sinn ergibt ein Forum
+    selbst zu schreiben, spielt dabei keine Rolle.
+  } @else {
+    The premise at that time was to do as much as possible myself and not to rely on ready-made
+    solutions in order to learn as much as possible. The fact that it doesn't make sense to write a
+    forum yourself doesn't matter in this case.
+  }
 </p>
 <p>
-  Die Seite hatte ein Login-System, welches mit PHP und MySQL umgesetzt wurde. Die Passwörter wurden
-  (relativ unsicher) gehashed und gespeichert. Außerdem gab es einige sehr offentlichliche
-  Sicherheitslücken, welche z.B. dazu führten, dass man sich ohne Passwort anmelden konnte.
+  @if (len() === 'de') {
+    Die Seite hatte ein Login-System, welches mit PHP und MySQL umgesetzt wurde. Die Passwörter
+    wurden (relativ unsicher) gehashed und gespeichert. Außerdem gab es einige sehr offensichtliche
+    Sicherheitslücken, welche z.B. dazu führten, dass man sich ohne Passwort anmelden konnte.
+  } @else {
+    The page had a login system, which was implemented with PHP and MySQL. The passwords were
+    (relatively insecurely) hashed and stored. There were also some very obvious security holes,
+    which for example led to the fact that you could log in without a password.
+  }
 </p>
 <p>
-  Insgesamt hatte die Seite viele "architektonische" Probleme, welche sich durch die fehlende
-  Erfahrung und das fehlende Wissen ergeben haben. Die Seite war sehr schlecht strukturiert und es
-  gab viele Redundanzen. Außerdem war die Seite sehr langsam, da die Datenbankabfragen sehr
-  ineffizient waren und die Seite bei jedem Aufruf komplett neu generiert wurde. Unterm Strich war
-  es aber ein guter Anfang und vor allem eine gute Übung.
+  @if (len() === 'de') {
+    Insgesamt hatte die Seite viele "architektonische" Probleme, welche sich durch die fehlende
+    Erfahrung und das fehlende Wissen ergeben haben. Die Seite war sehr schlecht strukturiert und es
+    gab viele Redundanzen. Außerdem war die Seite sehr langsam, da die Datenbankabfragen sehr
+    ineffizient waren und die Seite bei jedem Aufruf komplett neu generiert wurde. Unterm Strich war
+    es aber ein guter Anfang und vor allem eine gute Übung.
+  } @else {
+    Overall, the page had many "architectural" problems, which resulted from the lack of experience
+    and knowledge. The page was very poorly structured and there were many redundancies. In
+    addition, the page was very slow, since the database queries were very inefficient and the page
+    was completely regenerated with each call. All in all, however, it was a good start and above
+    all a good exercise.
+  }
 </p>
