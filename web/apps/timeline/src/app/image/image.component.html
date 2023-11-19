@@ -1,5 +1,8 @@
 <div class="image-container" (click)="openFullscreen()">
-  <img [src]="src | resourceMap: 'timeline'" [alt]="alt" />
+  <img class="vignette" [src]="src | resourceMap: 'timeline'" [alt]="alt" />
+  <div class="original-wrapper">
+    <img class="original" [src]="src | resourceMap: 'timeline'" [alt]="alt" />
+  </div>
   <div class="button-container">
     <button class="button force">
       {{ 'timeline.fullscreen' | translate }}

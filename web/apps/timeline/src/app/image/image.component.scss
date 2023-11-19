@@ -1,5 +1,7 @@
 @import 'vars';
 
+$transition: $tranBezierMediumOvershoot;
+
 :host {
   width: var(--width);
   display: inline-block;
@@ -13,14 +15,37 @@
   }
   .image-container {
     width: 100%;
+    border-radius: $radiusDefault;
+    --inset: 0px;
+
     position: relative;
     overflow: hidden;
     cursor: pointer;
     img {
+      display: block;
       width: 100%;
-      transition:
-        filter 0.15s ease-in-out,
-        transform 0.5s ease-in-out;
+      transition: filter $transition;
+    }
+    .original-wrapper {
+      position: absolute;
+      inset: var(--inset);
+      transition: inset $transition;
+      overflow: hidden;
+      img {
+        transition:
+          filter $transition,
+          top $transition,
+          left $transition,
+          width $transition;
+        object-fit: contain;
+        position: absolute;
+        top: calc(-1 * var(--inset));
+        left: calc(-1 * var(--inset));
+        width: calc(100% + 2 * var(--inset));
+      }
+    }
+    .vignette {
+      filter: blur(4px);
     }
     .button-container {
       position: absolute;
@@ -32,16 +57,18 @@
       justify-content: center;
       align-items: center;
       opacity: 0;
-      transition: all 0.3s linear;
+      transition: all 0.2s linear;
     }
     &:hover {
-      img {
-        filter: saturate(2) blur(2px) brightness(0.3);
-        transform: scale(1.1) rotate(1deg);
-      }
+      --inset: 30px;
       .button-container {
         opacity: 1;
         transition: all 0.3s ease-in;
+      }
+      .original-wrapper {
+        img {
+          filter: brightness(0.5);
+        }
       }
     }
   }
