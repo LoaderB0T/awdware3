@@ -1,9 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { timelime, TimelineEntryViewModel, TimelineViewModel } from '../timeline';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'awd-timeline',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss'],
 })

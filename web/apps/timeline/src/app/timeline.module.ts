@@ -1,11 +1,9 @@
 import { NgModule, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from '@awdware/shared';
-import { DynamicTranslationService, HtmlHeadService, ResourceMapModule } from 'ng-dynamic-mf';
+import { DynamicTranslationService, HtmlHeadService } from 'ng-dynamic-mf';
 import { devicons, fontawesome, font_montserrat } from '@awdware/externals';
 import { TimelineBaseComponent } from './timeline-base/timeline-base.component';
-import { TimelineComponent } from './timeline-base/timeline/timeline.component';
 import { de } from './i18n/de';
 import { en } from './i18n/en';
 
@@ -31,8 +29,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [TimelineBaseComponent, TimelineComponent],
-  imports: [CommonModule, SharedModule, ResourceMapModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, RouterModule.forChild(routes), TimelineBaseComponent],
 })
 export class TimelineModule {
   constructor(

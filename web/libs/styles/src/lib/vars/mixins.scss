@@ -6,7 +6,8 @@
   opacity: $opacityInactive;
   transition: opacity $tranNormalEased;
   &:hover,
-  &.active {
+  &.active,
+  &.force {
     opacity: 1;
   }
   &:active {
@@ -16,7 +17,9 @@
 
 @mixin highlightable {
   background-color: $colorBgHighlight_03;
-  transition: background-color $tranFastLinear, box-shadow $tranFastLinear;
+  transition:
+    background-color $tranFastLinear,
+    box-shadow $tranFastLinear;
   &:hover {
     background-color: $colorBgHighlight_05;
   }
@@ -25,7 +28,8 @@
 @mixin hover-scale {
   transform: scale(1);
   transition: transform $tranNormalLinear;
-  &:hover {
+  &:hover,
+  &.force {
     transform: scale(1.1);
   }
 }
@@ -33,5 +37,8 @@
 @mixin highlightable-scale {
   @include highlightable;
   @include hover-scale;
-  transition: background-color $tranFastLinear, box-shadow $tranFastLinear, transform $tranNormalLinear;
+  transition:
+    background-color $tranFastLinear,
+    box-shadow $tranFastLinear,
+    transform $tranNormalLinear;
 }

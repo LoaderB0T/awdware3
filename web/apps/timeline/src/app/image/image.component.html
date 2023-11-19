@@ -1,0 +1,19 @@
+<div class="image-container" (click)="openFullscreen()">
+  <img [src]="src | resourceMap: 'timeline'" [alt]="alt" />
+  <div class="button-container">
+    <button class="button force">
+      {{ 'timeline.fullscreen' | translate }}
+    </button>
+  </div>
+</div>
+
+@if (isFullscreen()) {
+  <div class="fullscreen" (click)="closeFullscreen()">
+    <img
+      [src]="src | resourceMap: 'timeline'"
+      [alt]="alt"
+      [class.isFull]="isZoom()"
+      (click)="toggleZoom($event)"
+    />
+  </div>
+}
