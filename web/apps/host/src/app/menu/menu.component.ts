@@ -61,9 +61,9 @@ export class MenuComponent {
 
   // @todo change to interactive ui
   public switchLanguage() {
-    const lid = this._translationService.lenID;
+    const lid = this._translationService.langId;
     this._translationService.setLanguage(lid === 'en' ? 'de' : 'en');
-    analytics.track('menu.switchLanguage', { from: lid, to: this._translationService.lenID });
+    analytics.track('menu.switchLanguage', { from: lid, to: this._translationService.langId });
   }
 
   public switchTheme() {

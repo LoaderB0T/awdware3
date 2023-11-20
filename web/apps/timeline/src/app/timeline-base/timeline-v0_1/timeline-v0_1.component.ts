@@ -11,5 +11,5 @@ import { TranslationService } from '@awdware/shared';
   styleUrls: ['./timeline-v0_1.component.scss'],
 })
 export class TimelineItemV0_1Component {
-  protected readonly len = inject(TranslationService).currentLang;
+  protected readonly lang = inject(TranslationService).currentLang;
 }

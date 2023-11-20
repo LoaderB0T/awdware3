@@ -1,6 +1,8 @@
 @import 'vars';
 
 $transition: $tranBezierMediumOvershoot;
+$blur: 5px;
+$brightness: 0.4;
 
 :host {
   width: var(--width);
@@ -46,7 +48,7 @@ $transition: $tranBezierMediumOvershoot;
       }
     }
     .vignette {
-      filter: blur(4px);
+      filter: blur($blur);
     }
     .button-container {
       position: absolute;
@@ -65,10 +67,14 @@ $transition: $tranBezierMediumOvershoot;
       .button-container {
         opacity: 1;
         transition: all 0.3s ease-in;
+        filter: drop-shadow(0 0 12px black);
+        .button {
+          filter: drop-shadow(0 0 12px black);
+        }
       }
       .original-wrapper {
         img {
-          filter: brightness(0.5);
+          filter: brightness($brightness);
         }
       }
     }
@@ -87,6 +93,7 @@ $transition: $tranBezierMediumOvershoot;
   backdrop-filter: blur(2px);
   background-color: rgba(0, 0, 0, 0.5);
   overflow: auto;
+  z-index: $zIndexModal;
   cursor: pointer;
   img {
     cursor: zoom-in;

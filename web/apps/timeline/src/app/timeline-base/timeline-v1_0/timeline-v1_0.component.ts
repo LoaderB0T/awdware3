@@ -7,9 +7,9 @@ import { TranslationService } from '@awdware/shared';
 @Component({
   standalone: true,
   imports: [CommonModule, TranslateModule, ImageComponent],
-  templateUrl: './timeline-v0_2.component.html',
-  styleUrls: ['./timeline-v0_2.component.scss'],
+  templateUrl: './timeline-v1_0.component.html',
+  styleUrls: ['./timeline-v1_0.component.scss'],
 })
-export class TimelineItemV0_2Component {
+export class TimelineItemV1_0Component {
   protected readonly lang = inject(TranslationService).currentLang;
 }
