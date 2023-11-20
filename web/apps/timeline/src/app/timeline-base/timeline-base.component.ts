@@ -44,7 +44,7 @@ export class TimelineBaseComponent implements AfterViewInit {
         );
         this.selectTimelineItemById(firstItemBasedOnTimeline?.id);
       },
-      { threshold: 0.5 }
+      { threshold: 0.2 }
     );
   }
 
