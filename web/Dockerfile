@@ -11,8 +11,8 @@ RUN pnpm install
 
 COPY . .
 
-RUN pnpm nx construct host --build -m build
-RUN pnpm nx hash
+RUN pnpm nx construct host --build -m build --verbose
+RUN pnpm nx hash --verbose
 
 # stage 2
 FROM nginx:alpine
