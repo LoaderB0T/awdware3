@@ -1,5 +1,8 @@
 import { Type } from '@angular/core';
 import { TimelineItemIdeaComponent } from './timeline-item-idea/timeline-item-idea.component';
+import { TimelineItemV0_1Component } from './timeline-v0_1/timeline-v0_1.component';
+import { TimelineItemV0_2Component } from './timeline-v0_2/timeline-v0_2.component';
+import { TimelineItemV1_0Component } from './timeline-v1_0/timeline-v1_0.component';
 
 export type TimelineEntry = {
   id: string;
@@ -31,31 +34,24 @@ export const timelime: TimelineEntry[] = [
     component: TimelineItemIdeaComponent,
   },
   {
-    id: 'awdware0',
-    name: '1.0',
+    id: 'awdware0_1',
+    name: '0.1',
     from: 2014,
-    to: 2016,
-    component: TimelineItemIdeaComponent,
+    to: 2015,
+    component: TimelineItemV0_1Component,
   },
   {
-    id: 'awdware1',
-    name: '1.1',
+    id: 'awdware0_2',
+    name: '0.2',
+    from: 2015,
+    to: 2016,
+    component: TimelineItemV0_2Component,
+  },
+  {
+    id: 'awdware1_0',
+    name: '1.0',
     from: 2016,
     to: 2019,
-    component: TimelineItemIdeaComponent,
-  },
-  {
-    id: 'awdware2',
-    name: '2.0',
-    from: 2019,
-    to: 2022,
-    component: TimelineItemIdeaComponent,
-  },
-  {
-    id: 'awdware3',
-    name: '3.0',
-    from: 2022,
-    to: 'today',
-    component: TimelineItemIdeaComponent,
+    component: TimelineItemV1_0Component,
   },
 ];

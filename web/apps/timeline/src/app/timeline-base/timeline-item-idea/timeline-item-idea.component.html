@@ -1,3 +1,43 @@
-<p>{{ 'timeline.texts.idea.s1' | translate }}</p>
-<p>{{ 'timeline.texts.idea.s2' | translate }}</p>
-<p>{{ 'timeline.texts.idea.s3' | translate }}</p>
+<h2>{{ lang() === 'de' ? 'Die Idee' : 'The Idea' }}</h2>
+
+<p>
+  @if (lang() === 'de') {
+    Die Hauptidee hinter awdware bleibt seit 2014 unverändert: Mein Ziel ist es, mein Wissen im
+    Bereich Webentwicklung zu erweitern und zu vertiefen. Der Ursprung dieser Idee liegt in meiner
+    Schulzeit, als ich noch keine Ahnung von Entwicklung hatte. Zuvor hatte ich Websites
+    ausschließlich mit statischem HTML und CSS erstellt. Mein Wunsch war es, die Erstellung
+    dynamischer Websites mit einer Datenbank und einem Backend zu erlernen. Daher beginne ich meine
+    Recherche, indem ich nach "wie erstelle ich eine Website mit einer Datenbank und einem Backend"
+    google... PHP.
+  } @else {
+    The main idea behind awdware has remained unchanged since 2014: to expand and deepen my
+    knowledge in web development. This concept originated during my school days when I had little to
+    no understanding of development. Previously, I had created websites using only static HTML and
+    CSS. My aspiration was to learn how to build dynamic websites with a database and a backend.
+    Thus, I embarked on my journey, starting with a Google search for "how to create a website with
+    a database and a backend"... PHP.
+  }
+</p>
+
+<p>
+  @if (lang() === 'de') {
+    awdware ist ein sich ständig weiterentwickelndes Projekt, bei dem ich kontinuierlich neue
+    Technologien ausprobiere. Im Laufe der Jahre hat sich der Tech-Stack erheblich verändert und
+    orientiert sich oft an den Technologien, die ich in der Schule oder bei der Arbeit verwende.
+  } @else {
+    awdware is an evolving project where I continually experiment with new technologies. Over the
+    years, the tech stack has undergone significant changes, often aligning with the technologies I
+    used in school or at work.
+  }
+</p>
+<p>
+  @if (lang() === 'de') {
+    Der Inhalt der Website hat sich ebenfalls stark gewandelt, wodurch jede Version von awdware eine
+    völlig andere Identität erhält. Um einen Überblick über die verschiedenen Versionen von awdware
+    zu erhalten, können Sie unten weiterlesen.
+  } @else {
+    The content of the website has also transformed significantly, giving each version of awdware a
+    distinct identity. To get an overview of the different versions of awdware, you can read on
+    below.
+  }
+</p>

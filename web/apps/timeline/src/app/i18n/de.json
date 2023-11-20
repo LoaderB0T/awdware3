@@ -1,12 +1,6 @@
 {
   "timeline": {
     "title": "Geschichte von awdware.de",
-    "texts": {
-      "idea": {
-        "s1": "Die primäre Idee hinter awdware ist es schon seit 2014 meine Kennnisse in der Webentwicklung zu erweitern und zu vertiefen",
-        "s2": "Dabei ist awdware ein Projekt, welches sich ständig weiterentwickelt und mit dem ich neue Technologien ausprobiere",
-        "s3": "Der Kontent der Seite hat sich im Laufe der Jahre dabei stark verändert und so hat jede Version von awdware eine völlig andere Funktion"
-      }
-    }
+    "fullscreen": "Vollbild"
   }
 }

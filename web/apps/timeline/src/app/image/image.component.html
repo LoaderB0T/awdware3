@@ -1,0 +1,22 @@
+<div class="image-container" (click)="openFullscreen()">
+  <img class="vignette" [src]="src | resourceMap: 'timeline'" [alt]="alt" />
+  <div class="original-wrapper">
+    <img class="original" [src]="src | resourceMap: 'timeline'" [alt]="alt" />
+  </div>
+  <div class="button-container">
+    <button class="button force">
+      {{ 'timeline.fullscreen' | translate }}
+    </button>
+  </div>
+</div>
+
+@if (isFullscreen()) {
+  <div class="fullscreen modal-is-open" (click)="closeFullscreen()">
+    <img
+      [src]="src | resourceMap: 'timeline'"
+      [alt]="alt"
+      [class.isFull]="isZoom()"
+      (click)="toggleZoom($event)"
+    />
+  </div>
+}
