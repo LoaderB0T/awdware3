@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 
 // Required for TS to compile the "unused" RemoteEntryModule
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// eslint-disable-next-line unused-imports/no-unused-imports
 import { RemoteEntryModule } from './home-remote.module';
 import { SharedModule, ThemeService, TranslationService } from '@awdware/shared';
 import { TranslateModule } from '@ngx-translate/core';

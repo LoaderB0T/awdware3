@@ -43,6 +43,7 @@ $sectionSize: 220px;
     }
     @include not-phone {
       height: $sectionSize;
+      width: fit-content;
     }
     flex-shrink: 0;
     display: flex;
@@ -68,7 +69,9 @@ $sectionSize: 220px;
       align-items: center;
       justify-content: space-around;
       i {
-        transition: font-size $tranSlowLinear, color $tranSlowLinear;
+        transition:
+          font-size $tranSlowLinear,
+          color $tranSlowLinear;
         font-size: 14px;
         &.lvl3 {
           font-size: 28px;

@@ -33,7 +33,7 @@
       flex-wrap: wrap;
       a {
         padding: 10px;
-        border-radius: 10px;
+        border-radius: $radiusDefault;
         display: flex;
         align-items: center;
         gap: 10px;

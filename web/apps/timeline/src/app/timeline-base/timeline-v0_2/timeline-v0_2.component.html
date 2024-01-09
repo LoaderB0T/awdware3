@@ -1,0 +1,54 @@
+<h2>awdware 0.2</h2>
+
+<p>
+  @if (lang() === 'de') {
+    After version 0.1 quickly encountered architectural limitations, I decided to rewrite the site
+    entirely. The new version also relies on PHP and MySQL but utilizes the newer mysqli instead of
+    mysql.
+  } @else {
+    After version 0.1 quickly reached architectural limits, I decided to rewrite the page
+    completely. The new page was also based on PHP and MySQL, but used the newer mysqli instead of
+    mysql.
+  }
+  <awd-image src="assets/0_2.png" alt="" center width="80" maxheight="650" />
+</p>
+<p>
+  @if (lang() === 'de') {
+    Das einzige Feature, das von der alten Seite übernommen wird, ist die Galerie, die ebenfalls
+    komplett überarbeitet wird. Als Admin der Seite kann man in der Adminarea Bilder von seinem
+    Rechner hochladen, die dann in der Galerie erscheinen. Dabei werden automatisch Vorschaubilder
+    mit Wasserzeichen generiert, und die Bilder mit voller Auflösung und ohne Wasserzeichen kann man
+    erst nach Anmeldung herunterladen. Neu ist auch, dass man seine E-Mail-Adresse bestätigen muss.
+    Dafür wird nach der Registrierung eine E-Mail mit einem Link an die angegebene E-Mail-Adresse
+    verschickt.
+  } @else {
+    The only feature carried over from the old site is the gallery, which is completely overhauled.
+    As an admin, one can upload images from their computer in the admin area, appearing in the
+    gallery. Thumbnails with watermarks are automatically generated, and full-resolution,
+    watermark-free downloads are available only after logging in. A new addition is the email
+    confirmation requirement; after registration, an email with a link is sent to the provided email
+    address.
+  }
+</p>
+<p>
+  @if (lang() === 'de') {
+    Neben der Galerie wird ein URL-Shortener hinzugefügt, der genutzt werden kann, um für beliebige
+    URLs einen kurzen Link zu erstellen. Des Weiteren gibt es eine Seite, auf der man Abstimmungen
+    erstellen kann. Dabei kann man wählen, ob man für nur eine Option, für mehrere Optionen oder
+    mehrfach für dieselbe Option abstimmen darf, und ob man dafür angemeldet sein muss.
+  } @else {
+    In addition to the gallery, a URL shortener is introduced, allowing the creation of short links
+    for any URLs. There is also a page for creating polls, with options to vote for a single option,
+    multiple options, or the same option multiple times, and the choice of requiring registration.
+  }
+  <awd-image src="assets/0_2votes.png" alt="" center width="80" maxheight="650" />
+</p>
+<p>
+  @if (lang() === 'de') {
+    Version 0.2 ist deutlich besser strukturiert und weist weniger Redundanzen auf. Das Farbschema
+    der Version ähnelt bereits dem heutigen.
+  } @else {
+    Version 0.2 is significantly better structured with fewer redundancies. The color scheme of this
+    version already resembles today's design.
+  }
+</p>

@@ -1,40 +1,21 @@
 <div class="timeline-base-container">
-  <h1>History of awdware</h1>
+  <h1>{{ 'timeline.title' | translate }}</h1>
   <div class="timeline-base">
     <div class="timeline">
-      <awd-timeline></awd-timeline>
+      <awd-timeline [selectedId]="selectedId()" />
     </div>
     <div class="timeline-spacer"></div>
     <div class="timeline-content">
-      <div>
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-        test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12 test12
-      </div>
+      @for (item of timeline; track item.id) {
+        <!-- Defer is not quite that usefull here, still cool to see that it works as intended -->
+        <div class="timeline-item" [attr.data-id]="item.id" #timelineItem>
+          @defer (on viewport; prefetch on idle) {
+            <ng-container *ngComponentOutlet="item.component" />
+          } @placeholder {
+            <div class="placeholder"></div>
+          }
+        </div>
+      }
     </div>
   </div>
 </div>

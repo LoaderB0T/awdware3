@@ -11,13 +11,13 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home.module').then(m => m.HomeModule),
-    data: { activePage: 'home' }
+    data: { activePage: 'home' },
   },
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/home'
-  }
+    redirectTo: '/home',
+  },
 ];
 
 const userIcons = [
@@ -28,22 +28,45 @@ const userIcons = [
   'user-secret',
   'user-robot',
   'user-cowboy',
-  'user-tie'
+  'user-tie',
 ];
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, RouterModule]
+  imports: [CommonModule, RouterModule],
 })
 export class HomeLazyModule {
   private _currentUserIcon = '';
 
-  constructor(routerEntryService: RouterEntryService, menuService: MenuService, router: Router, preloadService: PreloadService) {
+  constructor(
+    routerEntryService: RouterEntryService,
+    menuService: MenuService,
+    router: Router,
+    preloadService: PreloadService
+  ) {
     routerEntryService.registerRoutes(routes);
-    preloadService.addIcons([...userIcons, 'house-blank', 'house-user', 'user', 'list', 'list-check']);
-    preloadService.addImages(contacts.map(c => resourceMapper('home', `assets/img/logo_${c.image}.svg`)));
-    preloadService.addImages(skills.map(s => resourceMapper('home', `assets/img/logo_${s.image}.svg`)));
-    preloadService.addImages(knowledge.map(s => resourceMapper('home', `assets/img/logo_${s.image}.svg`)));
+    preloadService.addIcons([
+      ...userIcons,
+      'house-blank',
+      'house-user',
+      'user',
+      'list',
+      'list-check',
+    ]);
+    preloadService.addImages(
+      contacts.map(c => resourceMapper('home', `assets/img/logo_${c.image}.svg`))
+    );
+    preloadService.addImages(
+      skills.map(s =>
+        resourceMapper(
+          'home',
+          `assets/img/${s.imageFilename ? s.imageFilename : `logo_${s.image}.svg`}`
+        )
+      )
+    );
+    preloadService.addImages(
+      knowledge.map(s => resourceMapper('home', `assets/img/logo_${s.image}.svg`))
+    );
     preloadService.addImages([resourceMapper('home', `assets/img/me.png`)]);
 
     const menuItems: MenuItem[] = [
@@ -53,7 +76,7 @@ export class HomeLazyModule {
         iconActive: 'house-user',
         title: 'Home',
         action: () => router.navigate(['home'], { preserveFragment: true }),
-        order: 1
+        order: 1,
       },
       {
         id: 'about',
@@ -63,7 +86,7 @@ export class HomeLazyModule {
           router.navigate(['home/about'], { preserveFragment: true });
           menuService.editMenuItem('about', { icon: this.randomuserIcon() });
         },
-        order: 2
+        order: 2,
       },
       {
         id: 'skills',
@@ -71,8 +94,8 @@ export class HomeLazyModule {
         iconActive: 'list-check',
         title: 'Skills',
         action: () => router.navigate(['home/skills'], { preserveFragment: true }),
-        order: 3
-      }
+        order: 3,
+      },
     ];
     menuService.addMenuItems(...menuItems);
   }

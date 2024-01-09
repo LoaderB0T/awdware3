@@ -16,10 +16,16 @@ html {
   position: relative;
   background-color: $colorBg1;
   color: $colorContent1;
-  transition: background-color $tranNormalLinear, color $tranNormalLinear;
+  transition:
+    background-color $tranNormalLinear,
+    color $tranNormalLinear;
 
   --tooltipFontSize: 32px;
   --tooltipPadding: 10px;
+}
+
+body:has(.modal-is-open) {
+  overflow: hidden;
 }
 
 :focus {
@@ -110,12 +116,12 @@ $scollbarThumbHover: $colorContent1;
 }
 *::-webkit-scrollbar-track {
   background-color: $scrollbarBg;
-  border-radius: 10px;
+  border-radius: $radiusDefault;
   margin: 10px;
 }
 *::-webkit-scrollbar-thumb {
   background-color: $scrollbarThumb;
-  border-radius: 10px;
+  border-radius: $radiusDefault;
   border: 4px $scrollbarBg solid;
   &:hover {
     background-color: $scollbarThumbHover;
@@ -127,7 +133,9 @@ $scollbarThumbHover: $colorContent1;
 
 .appear {
   $animationDuration: 0.5s;
-  animation: appear-slide $animationDuration cubic-bezier(0, 0, 0, 1), appear-fade $animationDuration linear;
+  animation:
+    appear-slide $animationDuration cubic-bezier(0, 0, 0, 1),
+    appear-fade $animationDuration linear;
   animation-delay: var(--delay, 0.5s);
   animation-fill-mode: both;
 }
@@ -156,7 +164,7 @@ button {
     @include hover-scale;
     outline: 2px solid;
     padding: 10px 15px;
-    border-radius: 10px;
+    border-radius: $radiusDefault;
   }
 }
 

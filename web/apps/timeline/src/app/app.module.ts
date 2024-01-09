@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 
 // Required for TS to compile the "unused" RemoteEntryModule
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// eslint-disable-next-line unused-imports/no-unused-imports
 import { RemoteEntryModule } from './timeline-remote.module';
 import { SharedModule, ThemeService, TranslationService } from '@awdware/shared';
 import { TranslateModule } from '@ngx-translate/core';
@@ -17,14 +17,14 @@ import { TranslateModule } from '@ngx-translate/core';
     RouterModule.forRoot([
       {
         path: 'timeline',
-        loadChildren: () => import('./timeline.module').then(m => m.TimelineModule)
-      }
+        loadChildren: () => import('./timeline.module').then(m => m.TimelineModule),
+      },
     ]),
     SharedModule,
     BrowserAnimationsModule,
-    TranslateModule.forRoot({})
+    TranslateModule.forRoot({}),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(themeService: ThemeService, translationService: TranslationService) {
