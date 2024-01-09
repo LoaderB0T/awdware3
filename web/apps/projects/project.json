@@ -6,6 +6,21 @@
   "prefix": "awd",
   "targets": {
     "build": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "target": "projects:build-ng:production"
+      }
+    },
+    "serve": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "target": "projects:build-ng:development",
+        "rebuildDelay": 0,
+        "dev": true,
+        "port": 4202
+      }
+    },
+    "build-ng": {
       "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
@@ -16,19 +31,10 @@
         "tsConfig": "apps/projects/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/projects/src/favicon.ico", "apps/projects/src/assets"],
-        "styles": [
-          "apps/projects/src/styles.scss",
-          {
-            "input": "apps/projects/src/index.scss",
-            "bundleName": "global-styles"
-          }
-        ],
+        "styles": ["apps/projects/src/styles.scss"],
         "scripts": [],
         "stylePreprocessorOptions": {
           "includePaths": ["libs/styles/src/lib"]
-        },
-        "customWebpackConfig": {
-          "path": "apps/projects/webpack.config.js"
         },
         "commonChunk": false
       },
@@ -46,7 +52,7 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "none",
+          "outputHashing": "all",
           "customWebpackConfig": {
             "path": "apps/projects/webpack.prod.config.js"
           }
@@ -61,22 +67,6 @@
         }
       },
       "defaultConfiguration": "production"
-    },
-    "serve": {
-      "executor": "@nx/angular:dev-server",
-      "configurations": {
-        "production": {
-          "buildTarget": "projects:build:production"
-        },
-        "development": {
-          "buildTarget": "projects:build:development"
-        }
-      },
-      "defaultConfiguration": "development",
-      "options": {
-        "port": 4202,
-        "publicHost": "http://localhost:4202"
-      }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
