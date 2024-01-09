@@ -57,13 +57,13 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@nx/angular:webpack-dev-server",
+      "executor": "@nx/angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "timeline:build:production"
+          "buildTarget": "timeline:build:production"
         },
         "development": {
-          "browserTarget": "timeline:build:development"
+          "buildTarget": "timeline:build:development"
         }
       },
       "defaultConfiguration": "development",
@@ -73,17 +73,13 @@
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["apps/timeline/**/*.ts", "apps/timeline/**/*.html"]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/timeline"],
       "options": {
-        "jestConfig": "apps/timeline/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/timeline/jest.config.ts"
       }
     }
   },

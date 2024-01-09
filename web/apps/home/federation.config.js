@@ -13,12 +13,13 @@ module.exports = withNativeFederation({
       requiredVersion: 'auto',
     }),
   },
-
+  sharedMappings: ['@awdware/analytics', '@awdware/externals', '@awdware/shared'],
   skip: [
     'rxjs/ajax',
     'rxjs/fetch',
     'rxjs/testing',
     'rxjs/webSocket',
+    '@awdware/styles',
     // Add further packages you don't need at runtime
   ],
 });

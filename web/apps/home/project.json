@@ -69,17 +69,13 @@
       "defaultConfiguration": "production"
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["apps/home/src/**/*.ts", "apps/home/src/**/*.html"]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/home"],
       "options": {
-        "jestConfig": "apps/home/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/home/jest.config.ts"
       }
     }
   },

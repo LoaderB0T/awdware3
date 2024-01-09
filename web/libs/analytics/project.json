@@ -6,10 +6,7 @@
   "prefix": "awdware",
   "targets": {
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["libs/analytics/**/*.ts", "libs/analytics/**/*.html"]
-      }
+      "executor": "@nx/eslint:lint"
     }
   },
   "tags": []
