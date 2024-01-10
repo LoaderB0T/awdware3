@@ -31,7 +31,13 @@
         "tsConfig": "apps/projects/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/projects/src/favicon.ico", "apps/projects/src/assets"],
-        "styles": ["apps/projects/src/styles.scss"],
+        "styles": [
+          "apps/projects/src/styles.scss",
+          {
+            "input": "apps/projects/src/index.scss",
+            "bundleName": "global-styles"
+          }
+        ],
         "scripts": [],
         "stylePreprocessorOptions": {
           "includePaths": ["libs/styles/src/lib"]
