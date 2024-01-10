@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnInit, computed, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  NgZone,
+  OnInit,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 
 import { Router } from '@angular/router';
 import { PreloadService, TranslationService } from '@awdware/shared';
@@ -6,10 +14,6 @@ import { analytics } from '@awdware/analytics';
 import { TranslateService } from '@ngx-translate/core';
 import { Typed } from 'typed.ts';
 
-const typedFac = Typed.factory({
-  setUp: () => signal(''),
-  update: (signal, text) => signal.set(text),
-});
 @Component({
   selector: 'awd-home',
   templateUrl: './home.component.html',
@@ -17,22 +21,28 @@ const typedFac = Typed.factory({
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
+  private readonly _zone = inject(NgZone);
+  private readonly _typedFac = Typed.factory({
+    setUp: () => signal(''),
+    update: (sig, text) => this._zone.run(() => sig.set(text)),
+  });
+
   private readonly _translateService: TranslateService;
   private readonly _translationService: TranslationService;
   private readonly _router: Router;
-  public readonly langChanged = signal(false);
+  protected readonly langChanged = signal(false);
 
-  private readonly _typing1 = typedFac({ noSpecialCharErrors: true });
-  private readonly _typing2 = typedFac({ noSpecialCharErrors: true });
-  private readonly _typing3 = typedFac({ noSpecialCharErrors: true });
+  protected readonly _typing1 = this._typedFac({ noSpecialCharErrors: true });
+  protected readonly _typing2 = this._typedFac({ noSpecialCharErrors: true });
+  protected readonly _typing3 = this._typedFac({ noSpecialCharErrors: true });
 
-  public readonly typing1 = this._typing1.text;
-  public readonly typing2 = this._typing2.text;
-  public readonly typing3 = this._typing3.text;
+  protected readonly typing1 = this._typing1.text;
+  protected readonly typing2 = this._typing2.text;
+  protected readonly typing3 = this._typing3.text;
 
-  public skip = false;
-  public done = signal(false);
-  public readonly fillerLines = computed(() => new Array(3 - this.typing1().split('\n').length));
+  protected skip = false;
+  protected done = signal(false);
+  protected readonly fillerLines = computed(() => new Array(3 - this.typing1().split('\n').length));
 
   constructor(
     translateService: TranslateService,

@@ -6,7 +6,22 @@
   "prefix": "awd",
   "targets": {
     "build": {
-      "executor": "@nx/angular:webpack-browser",
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "target": "projects:build-ng:production"
+      }
+    },
+    "serve": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "target": "projects:build-ng:development",
+        "rebuildDelay": 0,
+        "dev": true,
+        "port": 4202
+      }
+    },
+    "build-ng": {
+      "executor": "@angular-devkit/build-angular:browser-esbuild",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/projects",
@@ -16,19 +31,10 @@
         "tsConfig": "apps/projects/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/projects/src/favicon.ico", "apps/projects/src/assets"],
-        "styles": [
-          "apps/projects/src/styles.scss",
-          {
-            "input": "apps/projects/src/index.scss",
-            "bundleName": "global-styles"
-          }
-        ],
+        "styles": ["apps/projects/src/styles.scss"],
         "scripts": [],
         "stylePreprocessorOptions": {
           "includePaths": ["libs/styles/src/lib"]
-        },
-        "customWebpackConfig": {
-          "path": "apps/projects/webpack.config.js"
         },
         "commonChunk": false
       },
@@ -46,10 +52,7 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "none",
-          "customWebpackConfig": {
-            "path": "apps/projects/webpack.prod.config.js"
-          }
+          "outputHashing": "all"
         },
         "development": {
           "buildOptimizer": false,
@@ -62,27 +65,8 @@
       },
       "defaultConfiguration": "production"
     },
-    "serve": {
-      "executor": "@nx/angular:webpack-dev-server",
-      "configurations": {
-        "production": {
-          "buildTarget": "projects:build:production"
-        },
-        "development": {
-          "buildTarget": "projects:build:development"
-        }
-      },
-      "defaultConfiguration": "development",
-      "options": {
-        "port": 4202,
-        "publicHost": "http://localhost:4202"
-      }
-    },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["apps/projects/src/**/*.ts", "apps/projects/src/**/*.html"]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",

@@ -50,3 +50,5 @@ import 'zone.js'; // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+import 'es-module-shims'; // To make native federation work

@@ -1,9 +1,12 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { initializeApp, environment } from 'ng-dynamic-mf';
+import { loadRemoteModule } from '@angular-architects/native-federation';
 
 (async () => {
-  await initializeApp();
+  await initializeApp(undefined, {
+    loadRemoteModule,
+  });
   if (environment.production) {
     enableProdMode();
   } else {

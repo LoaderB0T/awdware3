@@ -6,7 +6,22 @@
   "prefix": "awd",
   "targets": {
     "build": {
-      "executor": "@nx/angular:webpack-browser",
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "target": "home:build-ng:production"
+      }
+    },
+    "serve": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "target": "home:build-ng:development",
+        "rebuildDelay": 0,
+        "dev": true,
+        "port": 4201
+      }
+    },
+    "build-ng": {
+      "executor": "@angular-devkit/build-angular:browser-esbuild",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/home",
@@ -20,9 +35,6 @@
         "scripts": [],
         "stylePreprocessorOptions": {
           "includePaths": ["libs/styles/src/lib"]
-        },
-        "customWebpackConfig": {
-          "path": "apps/home/webpack.config.js"
         },
         "commonChunk": false
       },
@@ -40,10 +52,7 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all",
-          "customWebpackConfig": {
-            "path": "apps/home/webpack.prod.config.js"
-          }
+          "outputHashing": "all"
         },
         "development": {
           "buildOptimizer": false,
@@ -56,27 +65,8 @@
       },
       "defaultConfiguration": "production"
     },
-    "serve": {
-      "executor": "@nx/angular:webpack-dev-server",
-      "configurations": {
-        "production": {
-          "buildTarget": "home:build:production"
-        },
-        "development": {
-          "buildTarget": "home:build:development"
-        }
-      },
-      "defaultConfiguration": "development",
-      "options": {
-        "port": 4201,
-        "publicHost": "http://localhost:4201"
-      }
-    },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["apps/home/src/**/*.ts", "apps/home/src/**/*.html"]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",

@@ -6,7 +6,22 @@
   "prefix": "awd",
   "targets": {
     "build": {
-      "executor": "@nx/angular:webpack-browser",
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "target": "host:build-ng:production"
+      }
+    },
+    "serve": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "target": "host:build-ng:development",
+        "rebuildDelay": 0,
+        "dev": true,
+        "port": 4200
+      }
+    },
+    "build-ng": {
+      "executor": "@angular-devkit/build-angular:browser-esbuild",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/host",
@@ -26,9 +41,6 @@
         "stylePreprocessorOptions": {
           "includePaths": ["libs/styles/src/lib"]
         },
-        "customWebpackConfig": {
-          "path": "apps/host/webpack.config.js"
-        },
         "commonChunk": false
       },
       "configurations": {
@@ -45,10 +57,7 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all",
-          "customWebpackConfig": {
-            "path": "apps/host/webpack.prod.config.js"
-          }
+          "outputHashing": "all"
         },
         "development": {
           "buildOptimizer": false,
@@ -61,27 +70,8 @@
       },
       "defaultConfiguration": "production"
     },
-    "serve-ng": {
-      "executor": "@nx/angular:webpack-dev-server",
-      "configurations": {
-        "production": {
-          "buildTarget": "host:build:production"
-        },
-        "development": {
-          "buildTarget": "host:build:development"
-        }
-      },
-      "defaultConfiguration": "development",
-      "options": {
-        "port": 4200,
-        "publicHost": "http://localhost:4200"
-      }
-    },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["apps/host/src/**/*.ts", "apps/host/src/**/*.html"]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
@@ -101,9 +91,6 @@
       "options": {
         "modulesFolder": "modules"
       }
-    },
-    "serve": {
-      "executor": "nx-dynamic-mf:serve-remote"
     }
   },
   "tags": []
