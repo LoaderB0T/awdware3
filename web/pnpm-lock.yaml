@@ -164,8 +164,8 @@ devDependencies:
     specifier: 17.2.8
     version: 17.2.8
   nx-dynamic-mf:
-    specifier: ^3.0.7
-    version: 3.0.7(ng-dynamic-mf@3.0.0-pre4)(tslib@2.5.0)
+    specifier: 4.0.0-pre1
+    version: 4.0.0-pre1(ng-dynamic-mf@3.0.0-pre4)(tslib@2.5.0)
   prettier:
     specifier: ^3.1.0
     version: 3.1.1
@@ -9292,8 +9292,8 @@ packages:
     resolution: {integrity: sha512-90yv+6538zuvUMnN+zCr8LuV6bPFdq50304114vJYJ8RDyK8D5O9Phpbd6SZWgI7PwzmmfN1upeOJlvybDSgCw==}
     dev: true
 
-  /nx-dynamic-mf@3.0.7(ng-dynamic-mf@3.0.0-pre4)(tslib@2.5.0):
-    resolution: {integrity: sha512-gb5gJ4qzfXFHnQzL+5SQHokovfAOtihAxLAoN1tbVeCTE/PRWIu0ZzSwL4kMEkCJVypl9AOW9zVkQVEeW/NuQw==}
+  /nx-dynamic-mf@4.0.0-pre1(ng-dynamic-mf@3.0.0-pre4)(tslib@2.5.0):
+    resolution: {integrity: sha512-/qTYRXH7rCCapUvtch639oTqUmatByvObdaYROeQe3CZVslzI9DSqFJ0VEemukNLVcKq9rEaIKsfi/2JDZ2HRg==}
     peerDependencies:
       ng-dynamic-mf: '>=2.0.0pre5'
       tslib: ^2.3.0
