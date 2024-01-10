@@ -21,7 +21,7 @@
       }
     },
     "build-ng": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-devkit/build-angular:browser-esbuild",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/host",
@@ -57,10 +57,7 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all",
-          "customWebpackConfig": {
-            "path": "apps/host/webpack.prod.config.js"
-          }
+          "outputHashing": "all"
         },
         "development": {
           "buildOptimizer": false,

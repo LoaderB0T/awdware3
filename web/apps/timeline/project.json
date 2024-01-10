@@ -21,9 +21,6 @@
         "stylePreprocessorOptions": {
           "includePaths": ["libs/styles/src/lib"]
         },
-        "customWebpackConfig": {
-          "path": "apps/timeline/webpack.config.js"
-        },
         "commonChunk": false
       },
       "configurations": {
@@ -40,10 +37,7 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all",
-          "customWebpackConfig": {
-            "path": "apps/timeline/webpack.prod.config.js"
-          }
+          "outputHashing": "all"
         },
         "development": {
           "buildOptimizer": false,
