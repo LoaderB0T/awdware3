@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   private readonly _zone = inject(NgZone);
   private readonly _typedFac = Typed.factory({
     setUp: () => signal(''),
-    update: (signal, text) => this._zone.run(() => signal.set(text)),
+    update: (sig, text) => this._zone.run(() => sig.set(text)),
   });
 
   private readonly _translateService: TranslateService;
