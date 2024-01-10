@@ -45,8 +45,8 @@ dependencies:
     specifier: ^1.8.0
     version: 1.8.0
   ng-dynamic-mf:
-    specifier: 3.0.0-pre4
-    version: 3.0.0-pre4(@angular-architects/native-federation@17.0.7)(@angular/common@17.0.8)(@angular/core@17.0.8)(@ngx-translate/core@15.0.0)
+    specifier: 3.0.1
+    version: 3.0.1(@angular-architects/native-federation@17.0.7)(@angular/common@17.0.8)(@angular/core@17.0.8)(@ngx-translate/core@15.0.0)
   reflect-metadata:
     specifier: ^0.1.13
     version: 0.1.13
@@ -165,7 +165,7 @@ devDependencies:
     version: 17.2.8
   nx-dynamic-mf:
     specifier: 4.0.0-pre1
-    version: 4.0.0-pre1(ng-dynamic-mf@3.0.0-pre4)(tslib@2.5.0)
+    version: 4.0.0-pre1(ng-dynamic-mf@3.0.1)(tslib@2.5.0)
   prettier:
     specifier: ^3.1.0
     version: 3.1.1
@@ -3023,7 +3023,7 @@ packages:
     resolution: {integrity: sha512-hMTKcZDjsnyQojJ33IaCwoPVdFLqTLfCe/e52mn8ecELBSY3/ARZfmUpkSPSZ+261uEHjk0pTfQhu0CF7r2/HQ==}
     dependencies:
       '@nx/angular': 17.2.8(@angular-devkit/build-angular@17.0.9)(@angular-devkit/core@17.0.9)(@angular-devkit/schematics@17.0.9)(@schematics/angular@17.0.9)(@types/node@18.16.9)(eslint@8.48.0)(nx@17.2.8)(rxjs@7.8.1)(ts-node@10.9.1)(typescript@5.2.2)
-      tslib: 2.6.1
+      tslib: 2.6.2
     transitivePeerDependencies:
       - '@angular-devkit/build-angular'
       - '@angular-devkit/core'
@@ -3346,7 +3346,7 @@ packages:
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.2.2)
       detect-port: 1.5.1
       semver: 7.5.3
-      tslib: 2.6.1
+      tslib: 2.6.2
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -3373,7 +3373,7 @@ packages:
       nx: 16.5.1
       semver: 7.5.3
       tmp: 0.2.1
-      tslib: 2.6.1
+      tslib: 2.6.2
     dev: true
 
   /@nx/devkit@17.2.8(nx@17.2.8):
@@ -3388,7 +3388,7 @@ packages:
       nx: 17.2.8
       semver: 7.5.3
       tmp: 0.2.1
-      tslib: 2.6.1
+      tslib: 2.6.2
     dev: true
 
   /@nx/eslint-plugin@17.2.8(@types/node@18.16.9)(@typescript-eslint/parser@6.9.1)(eslint-config-prettier@9.0.0)(eslint@8.48.0)(nx@17.2.8)(typescript@5.2.2):
@@ -3524,7 +3524,7 @@ packages:
       source-map-support: 0.5.19
       ts-node: 10.9.1(@types/node@18.16.9)(typescript@5.2.2)
       tsconfig-paths: 4.1.2
-      tslib: 2.6.1
+      tslib: 2.6.2
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -3771,7 +3771,7 @@ packages:
       chalk: 4.1.2
       detect-port: 1.5.1
       http-server: 14.1.1
-      tslib: 2.6.1
+      tslib: 2.6.2
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -3819,7 +3819,7 @@ packages:
       terser-webpack-plugin: 5.3.7(webpack@5.88.2)
       ts-loader: 9.4.2(typescript@5.2.2)(webpack@5.88.2)
       tsconfig-paths-webpack-plugin: 4.0.0
-      tslib: 2.6.1
+      tslib: 2.6.2
       webpack: 5.88.2
       webpack-dev-server: 4.15.1(webpack@5.88.2)
       webpack-node-externals: 3.0.0
@@ -4670,7 +4670,7 @@ packages:
     engines: {node: '>=14.15.0'}
     dependencies:
       js-yaml: 3.14.1
-      tslib: 2.6.1
+      tslib: 2.6.2
     dev: true
 
   /@zkochan/js-yaml@0.0.6:
@@ -9099,8 +9099,8 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
-  /ng-dynamic-mf@3.0.0-pre4(@angular-architects/native-federation@17.0.7)(@angular/common@17.0.8)(@angular/core@17.0.8)(@ngx-translate/core@15.0.0):
-    resolution: {integrity: sha512-fLCdh+LP1pixc/j5Iyfv2pssrpVCaNY7/IVGVGkzyQ2fyDMYHL4dNUSJ9eUhevOeEoaSz9HHQiBRqsigU+at/A==}
+  /ng-dynamic-mf@3.0.1(@angular-architects/native-federation@17.0.7)(@angular/common@17.0.8)(@angular/core@17.0.8)(@ngx-translate/core@15.0.0):
+    resolution: {integrity: sha512-JJg3jc2qvSW4138LKUU2jhgIeC7Qa0ZA/OKmGgMVs1Bs9qC4yFvs0Q6CcsP54yXLyMQesWd2jVgOaI8P4lbnjw==}
     peerDependencies:
       '@angular-architects/native-federation': '>=16.0.0'
       '@angular/common': '>=16.0.0'
@@ -9292,13 +9292,13 @@ packages:
     resolution: {integrity: sha512-90yv+6538zuvUMnN+zCr8LuV6bPFdq50304114vJYJ8RDyK8D5O9Phpbd6SZWgI7PwzmmfN1upeOJlvybDSgCw==}
     dev: true
 
-  /nx-dynamic-mf@4.0.0-pre1(ng-dynamic-mf@3.0.0-pre4)(tslib@2.5.0):
+  /nx-dynamic-mf@4.0.0-pre1(ng-dynamic-mf@3.0.1)(tslib@2.5.0):
     resolution: {integrity: sha512-/qTYRXH7rCCapUvtch639oTqUmatByvObdaYROeQe3CZVslzI9DSqFJ0VEemukNLVcKq9rEaIKsfi/2JDZ2HRg==}
     peerDependencies:
       ng-dynamic-mf: '>=2.0.0pre5'
       tslib: ^2.3.0
     dependencies:
-      ng-dynamic-mf: 3.0.0-pre4(@angular-architects/native-federation@17.0.7)(@angular/common@17.0.8)(@angular/core@17.0.8)(@ngx-translate/core@15.0.0)
+      ng-dynamic-mf: 3.0.1(@angular-architects/native-federation@17.0.7)(@angular/common@17.0.8)(@angular/core@17.0.8)(@ngx-translate/core@15.0.0)
       tslib: 2.5.0
     dev: true
 
@@ -9345,7 +9345,7 @@ packages:
       tar-stream: 2.2.0
       tmp: 0.2.1
       tsconfig-paths: 4.1.2
-      tslib: 2.6.1
+      tslib: 2.6.2
       v8-compile-cache: 2.3.0
       yargs: 17.7.2
       yargs-parser: 21.1.1

@@ -4,7 +4,8 @@ import { initializeApp, environment } from 'ng-dynamic-mf';
 import { loadRemoteModule } from '@angular-architects/native-federation';
 
 (async () => {
-  await initializeApp(undefined, {
+  await initializeApp({
+    type: 'host',
     loadRemoteModule,
   });
   if (environment.production) {

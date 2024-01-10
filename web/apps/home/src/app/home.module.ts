@@ -8,8 +8,6 @@ import { DynamicTranslationService, HtmlHeadService, ResourceMapModule } from 'n
 import { SkillsComponent } from './skills/skills.component';
 import { analytics, fontawesome, font_montserrat } from '@awdware/externals';
 import { disableAnalytics } from '@awdware/analytics';
-import { de } from './i18n/de';
-import { en } from './i18n/en';
 
 const routes: Routes = [
   {
@@ -62,8 +60,8 @@ export class HomeModule {
       htmlHeadService.addElement(analytics);
     }
     dynamicTranslationService.registerTranslationSet('home', {
-      de: () => de,
-      en: () => en,
+      de: () => import('./i18n/de').then(m => m.de),
+      en: () => import('./i18n/en').then(m => m.en),
     });
   }
 }

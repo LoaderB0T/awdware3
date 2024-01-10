@@ -36,7 +36,7 @@
     "caniuse-lite": "^1.0.30001472",
     "confetti.ts": "^1.0.1",
     "es-module-shims": "^1.8.0",
-    "ng-dynamic-mf": "3.0.0-pre4",
+    "ng-dynamic-mf": "3.0.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "7.8.1",
     "tslib": "^2.5.0",

@@ -4,8 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { DynamicTranslationService, HtmlHeadService } from 'ng-dynamic-mf';
 import { devicons, fontawesome, font_montserrat } from '@awdware/externals';
 import { TimelineBaseComponent } from './timeline-base/timeline-base.component';
-import { de } from './i18n/de';
-import { en } from './i18n/en';
 
 const routes: Routes = [
   {
@@ -41,8 +39,8 @@ export class TimelineModule {
     htmlHeadService.addElement(devicons);
 
     dynamicTranslationService.registerTranslationSet('timeline', {
-      de: () => de,
-      en: () => en,
+      de: () => import('./i18n/de').then(m => m.de),
+      en: () => import('./i18n/en').then(m => m.en),
     });
   }
 }
