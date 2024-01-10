@@ -9,7 +9,7 @@ function getFederationConfig(projectName, sharedMappings, isHost = false) {
   const unusedMappings = pathNames.filter(pathName => !sharedMappings.includes(pathName));
 
   return withNativeFederation({
-    name: 'home',
+    name: projectName,
     exposes: isHost
       ? undefined
       : {
@@ -27,7 +27,6 @@ function getFederationConfig(projectName, sharedMappings, isHost = false) {
       ...unusedMappings,
       // Add further packages you don't need at runtime
     ],
-    name: projectName,
     sharedMappings,
   });
 }
