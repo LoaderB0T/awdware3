@@ -14,20 +14,19 @@
     "serve": {
       "executor": "@angular-architects/native-federation:build",
       "options": {
-        "target": "timeline:build-ng:development",
+        "target": "timeline:serve-ng:development",
         "rebuildDelay": 0,
-        "dev": true,
-        "port": 4203
+        "dev": true
       }
     },
     "build-ng": {
-      "executor": "@angular-devkit/build-angular:browser-esbuild",
+      "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/timeline",
         "index": "apps/timeline/src/index.html",
-        "main": "apps/timeline/src/main.ts",
-        "polyfills": "apps/timeline/src/polyfills.ts",
+        "browser": "apps/timeline/src/main.ts",
+        "polyfills": ["apps/timeline/src/polyfills.ts"],
         "tsConfig": "apps/timeline/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/timeline/src/favicon.ico", "apps/timeline/src/assets"],
@@ -35,8 +34,7 @@
         "scripts": [],
         "stylePreprocessorOptions": {
           "includePaths": ["libs/styles/src/lib"]
-        },
-        "commonChunk": false
+        }
       },
       "configurations": {
         "production": {
@@ -55,9 +53,7 @@
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
@@ -74,6 +70,21 @@
       "options": {
         "jestConfig": "apps/timeline/jest.config.ts"
       }
+    },
+    "serve-ng": {
+      "builder": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "timeline:build-ng:production"
+        },
+        "development": {
+          "buildTarget": "timeline:build-ng:development"
+        }
+      },
+      "options": {
+        "port": 4203
+      },
+      "defaultConfiguration": "development"
     }
   },
   "tags": []

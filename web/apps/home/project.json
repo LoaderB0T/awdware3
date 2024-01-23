@@ -14,20 +14,19 @@
     "serve": {
       "executor": "@angular-architects/native-federation:build",
       "options": {
-        "target": "home:build-ng:development",
+        "target": "home:serve-ng:development",
         "rebuildDelay": 0,
-        "dev": true,
-        "port": 4201
+        "dev": true
       }
     },
     "build-ng": {
-      "executor": "@angular-devkit/build-angular:browser-esbuild",
+      "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/home",
         "index": "apps/home/src/index.html",
-        "main": "apps/home/src/main.ts",
-        "polyfills": "apps/home/src/polyfills.ts",
+        "browser": "apps/home/src/main.ts",
+        "polyfills": ["apps/home/src/polyfills.ts"],
         "tsConfig": "apps/home/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/home/src/favicon.ico", "apps/home/src/assets"],
@@ -35,8 +34,7 @@
         "scripts": [],
         "stylePreprocessorOptions": {
           "includePaths": ["libs/styles/src/lib"]
-        },
-        "commonChunk": false
+        }
       },
       "configurations": {
         "production": {
@@ -55,9 +53,7 @@
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
@@ -74,6 +70,21 @@
       "options": {
         "jestConfig": "apps/home/jest.config.ts"
       }
+    },
+    "serve-ng": {
+      "builder": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "home:build-ng:production"
+        },
+        "development": {
+          "buildTarget": "home:build-ng:development"
+        }
+      },
+      "options": {
+        "port": 4201
+      },
+      "defaultConfiguration": "development"
     }
   },
   "tags": []

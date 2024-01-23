@@ -1,6 +1,5 @@
-import { Component, Input, signal } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { timelime, TimelineEntryViewModel, TimelineViewModel } from '../timeline';
+import { Component, computed, input } from '@angular/core';
+import { timelime, TimelineEntryViewModel } from '../timeline';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,30 +10,23 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./timeline.component.scss'],
 })
 export class TimelineComponent {
-  public refinedTimeline$ = new BehaviorSubject<TimelineViewModel | null>(null);
-  public selectedSectionIndex = signal(0);
+  public selectedId = input<string | undefined>();
 
-  @Input() public set selectedId(id: string | undefined) {
-    const index = timelime.findIndex(entry => entry.id === id);
-    this.selectedSectionIndex.set(index);
-  }
+  protected readonly refinedTimeline = timelime.map(entry => {
+    const from = entry.from;
+    const to = entry.to === 'today' ? new Date().getFullYear() : entry.to;
+    const res: TimelineEntryViewModel = {
+      ...entry,
+      from,
+      to,
+    };
+    return res;
+  });
 
-  constructor() {
-    const refinedEntries: TimelineEntryViewModel[] = timelime.map(entry => {
-      const from = entry.from;
-      const to = entry.to === 'today' ? new Date().getFullYear() : entry.to;
-      const res: TimelineEntryViewModel = {
-        ...entry,
-        from,
-        to,
-      };
-      return res;
-    });
-
-    this.refinedTimeline$.next({
-      sections: refinedEntries,
-    });
-  }
+  protected readonly selectedSectionIndex = computed(() => {
+    const index = timelime.findIndex(entry => entry.id === this.selectedId());
+    return index;
+  });
 
   public selectSection(index: number) {
     const timelineId = timelime[index].id;

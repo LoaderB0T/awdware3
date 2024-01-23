@@ -25,7 +25,7 @@ export class ProjectComponent implements OnInit {
   public readonly repoInfo = signal<RepoInfo | null>(null);
   public readonly lang: Signal<string | null>;
 
-  @Input() project?: Project;
+  @Input({required: true}) project!: Project;
 
   constructor(starsService: RepoInfoService, translateService: TranslateService) {
     this._repoInfoService = starsService;

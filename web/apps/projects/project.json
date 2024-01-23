@@ -14,20 +14,19 @@
     "serve": {
       "executor": "@angular-architects/native-federation:build",
       "options": {
-        "target": "projects:build-ng:development",
+        "target": "projects:serve-ng:development",
         "rebuildDelay": 0,
-        "dev": true,
-        "port": 4202
+        "dev": true
       }
     },
     "build-ng": {
-      "executor": "@angular-devkit/build-angular:browser-esbuild",
+      "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/projects",
         "index": "apps/projects/src/index.html",
-        "main": "apps/projects/src/main.ts",
-        "polyfills": "apps/projects/src/polyfills.ts",
+        "browser": "apps/projects/src/main.ts",
+        "polyfills": ["apps/projects/src/polyfills.ts"],
         "tsConfig": "apps/projects/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/projects/src/favicon.ico", "apps/projects/src/assets"],
@@ -41,8 +40,7 @@
         "scripts": [],
         "stylePreprocessorOptions": {
           "includePaths": ["libs/styles/src/lib"]
-        },
-        "commonChunk": false
+        }
       },
       "configurations": {
         "production": {
@@ -61,9 +59,7 @@
           "outputHashing": "none"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
@@ -80,6 +76,21 @@
       "options": {
         "jestConfig": "apps/projects/jest.config.ts"
       }
+    },
+    "serve-ng": {
+      "builder": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "projects:build-ng:production"
+        },
+        "development": {
+          "buildTarget": "projects:build-ng:development"
+        }
+      },
+      "options": {
+        "port": 4202
+      },
+      "defaultConfiguration": "development"
     }
   },
   "tags": []

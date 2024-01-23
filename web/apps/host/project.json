@@ -14,20 +14,19 @@
     "serve": {
       "executor": "@angular-architects/native-federation:build",
       "options": {
-        "target": "host:build-ng:development",
+        "target": "host:serve-ng:development",
         "rebuildDelay": 0,
-        "dev": true,
-        "port": 4200
+        "dev": true
       }
     },
     "build-ng": {
-      "executor": "@angular-devkit/build-angular:browser-esbuild",
+      "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/host",
         "index": "apps/host/src/index.html",
-        "main": "apps/host/src/main.ts",
-        "polyfills": "apps/host/src/polyfills.ts",
+        "browser": "apps/host/src/main.ts",
+        "polyfills": ["apps/host/src/polyfills.ts"],
         "tsConfig": "apps/host/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -40,8 +39,7 @@
         "scripts": [],
         "stylePreprocessorOptions": {
           "includePaths": ["libs/styles/src/lib"]
-        },
-        "commonChunk": false
+        }
       },
       "configurations": {
         "production": {
@@ -60,9 +58,7 @@
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
@@ -91,6 +87,18 @@
       "options": {
         "modulesFolder": "modules"
       }
+    },
+    "serve-ng": {
+      "builder": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "host:build-ng:production"
+        },
+        "development": {
+          "buildTarget": "host:build-ng:development"
+        }
+      },
+      "defaultConfiguration": "development"
     }
   },
   "tags": []

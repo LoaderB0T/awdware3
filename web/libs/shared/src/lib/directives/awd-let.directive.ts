@@ -10,7 +10,7 @@ export class AwdLetDirective<T> {
   public static awdLetUseIfTypeGuard: void;
   static ngTemplateGuard_awdLet: 'binding';
 
-  private context: AwdLetContext<T | null> = { awdLet: null, $implicit: null };
+  private readonly _context: AwdLetContext<T | null> = { awdLet: null, $implicit: null };
   private hasView = false;
   private readonly _viewContainer: ViewContainerRef;
   private readonly _templateRef: TemplateRef<AwdLetContext<T>>;
@@ -29,9 +29,9 @@ export class AwdLetDirective<T> {
 
   @Input()
   set awdLet(value: T) {
-    this.context.$implicit = this.context.awdLet = value;
+    this._context.$implicit = this._context.awdLet = value;
     if (!this.hasView) {
-      this._viewContainer.createEmbeddedView(this._templateRef, this.context);
+      this._viewContainer.createEmbeddedView(this._templateRef, this._context);
       this.hasView = true;
     }
   }
