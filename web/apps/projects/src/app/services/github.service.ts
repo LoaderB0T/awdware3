@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+
 import { FullRepository } from '../models/github-repo-info.model';
 
 @Injectable({

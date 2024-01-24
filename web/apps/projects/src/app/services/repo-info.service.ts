@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+
+import { GitHubService } from './github.service';
 import { RepoInfo } from '../models/compact-repo-info.model';
 import { InfoStorage } from '../models/info-storage.model';
-import { GitHubService } from './github.service';
 
 @Injectable({
   providedIn: 'root'

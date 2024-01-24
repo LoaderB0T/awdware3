@@ -1,13 +1,15 @@
-import { NgModule, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { SharedModule } from '@awdware/shared';
-import { AboutComponent } from './about/about.component';
-import { DynamicTranslationService, HtmlHeadService, ResourceMapModule } from 'ng-dynamic-mf';
-import { SkillsComponent } from './skills/skills.component';
-import { analytics, fontawesome, font_montserrat } from '@awdware/externals';
 import { disableAnalytics } from '@awdware/analytics';
+import { analytics, fontawesome, font_montserrat } from '@awdware/externals';
+import { SharedModule } from '@awdware/shared';
+import { DynamicTranslationService, HtmlHeadService, ResourceMapModule } from 'ng-dynamic-mf';
+
+import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './home/home.component';
+import { SkillsComponent } from './skills/skills.component';
+
 
 const routes: Routes = [
   {

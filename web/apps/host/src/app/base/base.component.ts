@@ -9,6 +9,7 @@ import { Title } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
 import { PreloadService, MenuService, randomInt } from '@awdware/shared';
 import { RectParticle } from 'confetti.ts';
+
 import { slideInAnimation } from './router-animation';
 
 const konamiCode = [

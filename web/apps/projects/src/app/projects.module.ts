@@ -1,11 +1,12 @@
-import { NgModule, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { devicons, fontawesome, font_montserrat } from '@awdware/externals';
 import { SharedModule } from '@awdware/shared';
 import { DynamicTranslationService, HtmlHeadService, ResourceMapModule } from 'ng-dynamic-mf';
-import { ProjectsBaseComponent } from './projects-base/projects-base.component';
+
 import { ProjectComponent } from './projects-base/project/project.component';
-import { devicons, fontawesome, font_montserrat } from '@awdware/externals';
+import { ProjectsBaseComponent } from './projects-base/projects-base.component';
 
 const routes: Routes = [
   {

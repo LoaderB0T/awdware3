@@ -1,11 +1,28 @@
 {
-  "extends": ["../.eslintrc.json"],
+  "extends": ["../../.eslintrc.json"],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
       "files": ["*.ts"],
-      "extends": ["plugin:@nrwl/nx/angular", "plugin:@angular-eslint/template/process-inline-templates"],
+      "extends": ["plugin:@nx/angular", "plugin:@angular-eslint/template/process-inline-templates"],
       "rules": {
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "warn",
+          {
+            "accessibility": "explicit",
+            "overrides": {
+              "accessors": "explicit",
+              "constructors": "off",
+              "methods": "explicit",
+              "properties": "explicit",
+              "parameterProperties": "off"
+            }
+          }
+        ],
+        "@typescript-eslint/parameter-properties": "warn",
+        "@typescript-eslint/no-non-null-assertion": "warn",
+        "@typescript-eslint/no-explicit-any": "warn",
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -22,7 +39,6 @@
             "style": "kebab-case"
           }
         ],
-        "@typescript-eslint/no-inferrable-types": "off",
         "no-restricted-syntax": "off"
       }
     },
@@ -37,7 +53,7 @@
     },
     {
       "files": ["*.html"],
-      "extends": ["plugin:@nrwl/nx/angular-template"],
+      "extends": ["plugin:@nx/angular-template"],
       "rules": {}
     }
   ]

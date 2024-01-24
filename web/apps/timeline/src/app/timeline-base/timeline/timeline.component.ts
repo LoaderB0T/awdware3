@@ -1,6 +1,7 @@
-import { Component, computed, input } from '@angular/core';
-import { timelime, TimelineEntryViewModel } from '../timeline';
 import { CommonModule } from '@angular/common';
+import { Component, computed, input } from '@angular/core';
+
+import { timelime, TimelineEntryViewModel } from '../timeline';
 
 @Component({
   selector: 'awd-timeline',
