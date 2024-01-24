@@ -21,13 +21,14 @@
   "prettier": "@awdware/prettier-config",
   "keywords": [],
   "devDependencies": {
-    "@awdware/prettier-config": "^0.0.2",
-    "@playwright/test": "^1.28.1",
-    "cpy-cli": "^4.2.0",
+    "@awdware/prettier-config": "^1.0.0",
+    "@playwright/test": "^1.41.1",
+    "@types/node": "20.11.6",
+    "cpy-cli": "^5.0.0",
     "http-server": "^14.1.1",
-    "rimraf": "^3.0.2"
+    "rimraf": "^5.0.5"
   },
   "dependencies": {
-    "prettier": "^2.8.4"
+    "prettier": "^3.2.4"
   }
 }

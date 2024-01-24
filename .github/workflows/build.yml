@@ -55,9 +55,6 @@ jobs:
       - name: Copy test config files
         run: pnpm run copy-cfg
         working-directory: tests
-      - name: Install playwright
-        run: pnpm playwright install
-        working-directory: tests
       - name: Run Playwright tests
         run: pnpm run test
         working-directory: tests
