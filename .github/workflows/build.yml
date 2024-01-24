@@ -40,7 +40,9 @@ jobs:
       - name: Install
         run: pnpm i
       - name: Build apps
-        run: pnpm nx run-many --target=build --projects=host,home
+        run: pnpm nx construct host --build -m build --verbose
+      - name: Hash apps
+        run: pnpm nx hash --verbose
       - name: Lint
         run: pnpm run lint
 
@@ -50,10 +52,7 @@ jobs:
         run: pnpm i
         working-directory: tests
       - name: Copy build into tests/dist folder
-        run: mkdir -p dist && cp -r ../web/dist/apps/host/browser/** ./dist && mkdir -p dist/assets/modules && cp -r ../web/dist/apps/home/browser ./dist/assets/modules && ls -R ./dist
-        working-directory: tests
-      - name: Copy test config files
-        run: pnpm run copy-cfg
+        run: mkdir -p dist && cp -r ../web/dist/apps/host/browser/** ./dist
         working-directory: tests
       - name: Run Playwright tests
         run: pnpm run test
