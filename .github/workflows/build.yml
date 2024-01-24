@@ -47,12 +47,16 @@ jobs:
         # Prepare the tests
       - name: Copy build into tests/dist folder
         run: mkdir -p dist && cp -r ../web/dist/apps/host/browser/** ./dist && mkdir -p dist/assets/modules && cp -r ../web/dist/apps/home/browser ./dist/assets/modules && ls -R ./dist
+        working-directory: tests
       - name: Copy test config files
         run: pnpm run copy-cfg
+        working-directory: tests
       - name: Install playwright
         run: pnpm playwright install
+        working-directory: tests
       - name: Run Playwright tests
         run: pnpm run test
+        working-directory: tests
 
       - name: Upload Test Results
         continue-on-error: true
