@@ -8,10 +8,11 @@ import {
   signal,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { Project } from '../projects';
 import { TranslateService } from '@ngx-translate/core';
-import { RepoInfoService } from '../../services/repo-info.service';
+
 import { RepoInfo } from '../../models/compact-repo-info.model';
+import { RepoInfoService } from '../../services/repo-info.service';
+import { Project } from '../projects';
 
 @Component({
   selector: 'awd-project',

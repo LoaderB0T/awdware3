@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { SharedModule, ThemeService, TranslationService } from '@awdware/shared';
+import { MissingTranslationHandler, TranslateModule } from '@ngx-translate/core';
+import { HtmlHeadService, loadedModules } from 'ng-dynamic-mf';
 
 import { AppComponent } from './app.component';
-import { SharedModule, ThemeService, TranslationService } from '@awdware/shared';
 import { BaseComponent } from './base/base.component';
 import { BgComponent } from './bg/bg.component';
-import { routes } from './routes';
-import { HtmlHeadService, loadedModules } from 'ng-dynamic-mf';
-import { MissingTranslationHandler, TranslateModule } from '@ngx-translate/core';
 import { MenuComponent } from './menu/menu.component';
+import { routes } from './routes';
 import { MyMissingTranslationHandler } from './services/my-missing-translation-handler';
 
 @NgModule({

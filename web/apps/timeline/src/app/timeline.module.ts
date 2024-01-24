@@ -1,8 +1,9 @@
-import { NgModule, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DynamicTranslationService, HtmlHeadService } from 'ng-dynamic-mf';
 import { devicons, fontawesome, font_montserrat } from '@awdware/externals';
+import { DynamicTranslationService, HtmlHeadService } from 'ng-dynamic-mf';
+
 import { TimelineBaseComponent } from './timeline-base/timeline-base.component';
 
 const routes: Routes = [

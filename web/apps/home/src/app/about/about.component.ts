@@ -2,8 +2,9 @@ import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/cor
 import { TranslationService } from '@awdware/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { Typed } from 'typed.ts';
-import { LogoService } from '../services/logo.service';
+
 import { contacts } from './contacts';
+import { LogoService } from '../services/logo.service';
 
 const typedFac = Typed.factory({
   setUp: () => signal(''),

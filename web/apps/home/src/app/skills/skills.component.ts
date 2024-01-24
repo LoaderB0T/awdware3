@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { skills } from './skills';
+
 import { knowledge } from './knowledge';
+import { skills } from './skills';
 import { LogoService } from '../services/logo.service';
 
 @Component({

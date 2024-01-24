@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -6,10 +7,11 @@ import {
   ViewChildren,
   signal,
 } from '@angular/core';
-import { timelime } from './timeline';
-import { CommonModule } from '@angular/common';
-import { TimelineComponent } from './timeline/timeline.component';
 import { TranslateModule } from '@ngx-translate/core';
+
+import { timelime } from './timeline';
+import { TimelineComponent } from './timeline/timeline.component';
+
 
 @Component({
   standalone: true,

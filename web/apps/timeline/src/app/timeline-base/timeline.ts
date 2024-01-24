@@ -1,4 +1,5 @@
 import { Type } from '@angular/core';
+
 import { TimelineItemIdeaComponent } from './timeline-item-idea/timeline-item-idea.component';
 import { TimelineItemV0_1Component } from './timeline-v0_1/timeline-v0_1.component';
 import { TimelineItemV0_2Component } from './timeline-v0_2/timeline-v0_2.component';

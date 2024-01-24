@@ -46,9 +46,8 @@
  * Zone JS is required by default for Angular itself.
  */
 import 'zone.js'; // Included with Angular CLI.
-
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
-
+// eslint-disable-next-line import/order
 import 'es-module-shims'; // To make native federation work

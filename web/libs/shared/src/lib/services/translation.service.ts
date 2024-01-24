@@ -1,5 +1,5 @@
-import { toSignal } from '@angular/core/rxjs-interop';
 import { Injectable, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslateService } from '@ngx-translate/core';
 import { DynamicTranslationService } from 'ng-dynamic-mf';
 import { Subject } from 'rxjs';

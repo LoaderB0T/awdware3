@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
-import { resourceMapper, RouterEntryService } from 'ng-dynamic-mf';
 import { PreloadService, MenuItem, MenuService, randomInt } from '@awdware/shared';
+import { resourceMapper, RouterEntryService } from 'ng-dynamic-mf';
+
 import { contacts } from './about/contacts';
-import { skills } from './skills/skills';
 import { knowledge } from './skills/knowledge';
+import { skills } from './skills/skills';
 
 const routes: Routes = [
   {

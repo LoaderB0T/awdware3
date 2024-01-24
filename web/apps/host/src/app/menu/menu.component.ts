@@ -1,6 +1,6 @@
 import { Component, Signal, effect, signal } from '@angular/core';
-import { MenuItem, MenuService, ThemeService, TranslationService } from '@awdware/shared';
 import { analytics } from '@awdware/analytics';
+import { MenuItem, MenuService, ThemeService, TranslationService } from '@awdware/shared';
 
 @Component({
   selector: 'awd-menu',

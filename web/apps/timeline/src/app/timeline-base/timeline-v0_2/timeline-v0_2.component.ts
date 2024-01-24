@@ -1,8 +1,10 @@
-import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
-import { ImageComponent } from '../../image/image.component';
+import { Component, inject } from '@angular/core';
 import { TranslationService } from '@awdware/shared';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { ImageComponent } from '../../image/image.component';
+
 
 @Component({
   standalone: true,

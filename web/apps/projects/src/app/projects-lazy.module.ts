@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
-import { RouterEntryService } from 'ng-dynamic-mf';
 import { MenuItem, MenuService } from '@awdware/shared';
 import { CircleParticle } from 'confetti.ts';
+import { RouterEntryService } from 'ng-dynamic-mf';
 
 const routes: Routes = [
   {
