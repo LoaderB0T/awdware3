@@ -45,6 +45,10 @@ jobs:
         run: pnpm run lint
 
         # Prepare the tests
+        
+      - name: Install
+        run: pnpm i
+        working-directory: tests
       - name: Copy build into tests/dist folder
         run: mkdir -p dist && cp -r ../web/dist/apps/host/browser/** ./dist && mkdir -p dist/assets/modules && cp -r ../web/dist/apps/home/browser ./dist/assets/modules && ls -R ./dist
         working-directory: tests
