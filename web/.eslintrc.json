@@ -1,52 +1,76 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nx"],
+  "plugins": ["@nx", "import", "unused-imports", "rxjs"],
   "overrides": [
-    {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {
-        "@nx/enforce-module-boundaries": [
-          "error",
-          {
-            "enforceBuildableLibDependency": true,
-            "allow": [],
-            "depConstraints": [
-              {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
-              }
-            ]
-          }
-        ],
-        "@typescript-eslint/no-inferrable-types": "off"
-      }
-    },
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nx/typescript"],
-      "rules": {
-        "@typescript-eslint/no-inferrable-types": "off",
-        "no-restricted-syntax": "off"
-      }
+      "rules": {}
     },
     {
       "files": ["*.ts"],
-      "extends": ["@awdware/eslint-config-base"],
-      "parserOptions": {
-        "project": ["./tsconfig.base.json"]
-      },
+      "extends": ["plugin:import/typescript"],
       "rules": {
-        "@typescript-eslint/no-inferrable-types": "off",
-        "no-restricted-syntax": "off"
+        "rxjs/no-sharereplay": "error",
+        "rxjs/no-ignored-replay-buffer": "error",
+        "rxjs/no-ignored-takewhile-value": "error",
+        "rxjs/no-index": "error",
+        "rxjs/no-internal": "error",
+        "@typescript-eslint/no-non-null-assertion": "warn",
+        "@typescript-eslint/no-unused-vars": "off",
+        "import/no-unresolved": "off",
+        "import/order": [
+          "error",
+          {
+            "groups": [
+              "builtin",
+              "external",
+              "internal",
+              ["parent", "sibling", "index"],
+              "object",
+              "type"
+            ],
+            "newlines-between": "always",
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            },
+            "warnOnUnassignedImports": true
+          }
+        ],
+        "import/no-duplicates": "error",
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": [
+          "warn",
+          {
+            "argsIgnorePattern": "^_",
+            "varsIgnorePattern": "^_",
+            "caughtErrorsIgnorePattern": "^_"
+          }
+        ]
+      },
+      "settings": {
+        "import/internal-regex": "@swpe/"
       }
     },
     {
       "files": ["*.js", "*.jsx"],
       "extends": ["plugin:@nx/javascript"],
+      "rules": {}
+    },
+    {
+      "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+      "env": {
+        "jest": true
+      },
+      "rules": {}
+    },
+    {
+      "files": ["**/lib/generated/**/*.ts"],
       "rules": {
-        "@typescript-eslint/no-inferrable-types": "off",
-        "no-restricted-syntax": "off"
+        "unused-imports/no-unused-imports": "off",
+        "@typescript-eslint/no-explicit-any": "off"
       }
     }
   ]
