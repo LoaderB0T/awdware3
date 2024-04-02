@@ -78,7 +78,7 @@
       }
     },
     "serve-ng": {
-      "builder": "@angular-devkit/build-angular:dev-server",
+      "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
           "buildTarget": "projects:build-ng:production"

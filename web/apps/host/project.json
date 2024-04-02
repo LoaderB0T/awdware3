@@ -89,7 +89,7 @@
       }
     },
     "serve-ng": {
-      "builder": "@angular-devkit/build-angular:dev-server",
+      "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
           "buildTarget": "host:build-ng:production"
