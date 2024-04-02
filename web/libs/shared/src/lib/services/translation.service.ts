@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslateService } from '@ngx-translate/core';
-import { DynamicTranslationService } from 'ng-dynamic-mf';
 import { Subject } from 'rxjs';
 
 const internalLangId = {
@@ -14,7 +13,6 @@ export declare type LangId = keyof typeof internalLangId;
   providedIn: 'root',
 })
 export class TranslationService {
-  private readonly _dynamicTranslationService = inject(DynamicTranslationService);
   private readonly _translateService = inject(TranslateService);
   private readonly _languageChanged = new Subject<LangId>();
   public readonly languageChanged$ = this._languageChanged.asObservable();
@@ -25,7 +23,6 @@ export class TranslationService {
   public init() {
     this._translateService.setDefaultLang('en');
     this.setLanguage(this.getLanguageId());
-    this._dynamicTranslationService.setTranslateService(this._translateService);
   }
 
   public setLanguage(langId: LangId) {

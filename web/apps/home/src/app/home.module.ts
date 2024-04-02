@@ -4,12 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { disableAnalytics } from '@awdware/analytics';
 import { analytics, fontawesome, font_montserrat } from '@awdware/externals';
 import { SharedModule } from '@awdware/shared';
-import { DynamicTranslationService, HtmlHeadService, ResourceMapModule } from 'ng-dynamic-mf';
+import { HtmlHeadService, ResourceMapModule } from 'ng-dynamic-mf';
+import { DynamicTranslationService } from 'ng-dynamic-mf/translate';
 
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { SkillsComponent } from './skills/skills.component';
-
 
 const routes: Routes = [
   {

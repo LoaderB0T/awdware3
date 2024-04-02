@@ -13,6 +13,7 @@
     },
     "serve": {
       "executor": "@angular-architects/native-federation:build",
+      "dependsOn": [{ "target": "_pick-environment", "params": "forward" }],
       "options": {
         "target": "home:serve-ng:development",
         "rebuildDelay": 0,
@@ -29,7 +30,11 @@
         "polyfills": ["apps/home/src/polyfills.ts"],
         "tsConfig": "apps/home/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/home/src/favicon.ico", "apps/home/src/assets"],
+        "assets": [
+          "apps/home/src/favicon.ico",
+          "apps/home/src/assets",
+          "apps/home/src/environment.json"
+        ],
         "styles": ["apps/home/src/styles.scss"],
         "scripts": [],
         "stylePreprocessorOptions": {
@@ -85,6 +90,19 @@
         "port": 4201
       },
       "defaultConfiguration": "development"
+    },
+    "_pick-environment": {
+      "executor": "nx-dynamic-mf:pick-cfg",
+      "options": {
+        "envSrcFolder": "config/env",
+        "e": "local"
+      },
+      "configurations": {
+        "local": {
+          "e": "local"
+        }
+      },
+      "defaultConfiguration": "local"
     }
   },
   "tags": []

@@ -18,6 +18,7 @@
     "baseUrl": ".",
     "paths": {
       "@awdware/analytics": ["libs/analytics/src/index.ts"],
+      "@awdware/bootstrap": ["libs/bootstrap/src/index.ts"],
       "@awdware/externals": ["libs/externals/src/index.ts"],
       "@awdware/shared": ["libs/shared/src/index.ts"],
       "@awdware/styles": ["libs/styles/src/index.ts"]

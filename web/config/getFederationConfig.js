@@ -24,6 +24,7 @@ function getFederationConfig(projectName, sharedMappings, isHost = false) {
       'rxjs/fetch',
       'rxjs/testing',
       'rxjs/webSocket',
+      'ng-dynamic-mf/mf',
       ...unusedMappings,
       // Add further packages you don't need at runtime
     ],

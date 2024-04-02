@@ -18,29 +18,29 @@ function toNumber(value: string | number): number {
   styleUrls: ['./image.component.scss'],
 })
 export class ImageComponent {
-  @Input({ required: true }) src!: string;
-  @Input({ required: true }) alt!: string;
+  @Input({ required: true }) public src!: string;
+  @Input({ required: true }) public alt!: string;
 
   /**
    * Set the image to be centered in the container
    */
   @HostBinding('class.center')
   @Input({ transform: toBoolean })
-  center: boolean = false;
+  public center: boolean = false;
 
   /**
    * Set the width of the image in %
    */
   @HostBinding('style.--width.%')
   @Input({ transform: toNumber })
-  width: number = 100;
+  public width: number = 100;
 
   /**
    * Set the max height of the image in px
    */
   @HostBinding('style.max-height.px')
   @Input({ transform: toNumber })
-  maxheight: number | undefined = undefined;
+  public maxheight: number | undefined = undefined;
 
   public readonly isFullscreen = signal(false);
   public readonly isZoom = signal(false);

@@ -13,6 +13,7 @@
     },
     "serve": {
       "executor": "@angular-architects/native-federation:build",
+      "dependsOn": [{ "target": "_pick-environment", "params": "forward" }],
       "options": {
         "target": "timeline:serve-ng:development",
         "rebuildDelay": 0,
@@ -85,6 +86,19 @@
         "port": 4203
       },
       "defaultConfiguration": "development"
+    },
+    "_pick-environment": {
+      "executor": "nx-dynamic-mf:pick-cfg",
+      "options": {
+        "envSrcFolder": "config/env",
+        "e": "local"
+      },
+      "configurations": {
+        "local": {
+          "e": "local"
+        }
+      },
+      "defaultConfiguration": "local"
     }
   },
   "tags": []

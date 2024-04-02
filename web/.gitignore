@@ -48,3 +48,6 @@ apps/host/src/environment/environment.*.json
 tools/**/*.js.map
 
 .nx/cache
+
+**/tsconfig.federation.json
+**/environment.json

@@ -1,4 +1,4 @@
-import { environment } from 'ng-dynamic-mf';
+import { environment } from 'ng-dynamic-mf/environment';
 
 type TrackType = (() => void) | ((eventName: string, data?: any) => void);
 
@@ -8,7 +8,8 @@ type Umami = {
 
 const umamiWindow = window as typeof window & { umami?: Umami };
 
-export const disableAnalytics = localStorage.getItem('disableAnalytics') === 'true' || environment['appUrl'] === 'localhost';
+export const disableAnalytics =
+  localStorage.getItem('disableAnalytics') === 'true' || environment['appUrl'] === 'localhost';
 
 export const analytics: Umami = {
   track: (name: string, data?: object) => {
@@ -20,5 +21,5 @@ export const analytics: Umami = {
     } catch (error) {
       console.debug('Error while tracking event', error);
     }
-  }
+  },
 };
