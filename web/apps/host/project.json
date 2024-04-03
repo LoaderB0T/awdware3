@@ -80,7 +80,7 @@
     "construct": {
       "executor": "nx-dynamic-mf:construct",
       "options": {
-        "modulesFolder": "src/modules"
+        "envSrcFolder": "config/env"
       }
     },
     "hash": {

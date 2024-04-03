@@ -40,14 +40,14 @@ jobs:
       - name: Install
         run: pnpm i
       - name: Build apps
-        run: pnpm nx construct host --build -m build --verbose
+        run: pnpm nx construct host --build -m build -e local --verbose
       - name: Hash apps
         run: pnpm nx hash --verbose
       - name: Lint
         run: pnpm run lint
 
         # Prepare the tests
-        
+
       - name: Install
         run: pnpm i
         working-directory: tests
