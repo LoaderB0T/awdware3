@@ -11,7 +11,7 @@ RUN pnpm install
 
 COPY . .
 
-RUN pnpm nx construct host --build -m build --verbose
+RUN pnpm nx construct host --build -m build -e build --verbose
 RUN pnpm nx hash --verbose
 
 # stage 2
