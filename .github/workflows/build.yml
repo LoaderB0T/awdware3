@@ -40,7 +40,7 @@ jobs:
       - name: Install
         run: pnpm i
       - name: Build apps
-        run: pnpm nx construct host --build -m build -e build --verbose
+        run: pnpm nx construct host --build -m build -e github --verbose
       - name: Hash apps
         run: pnpm nx hash --verbose
       - name: Lint
