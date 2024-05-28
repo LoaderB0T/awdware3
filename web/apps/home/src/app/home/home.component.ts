@@ -26,9 +26,9 @@ export class HomeComponent implements OnInit {
     update: (sig, text) => this._zone.run(() => sig.set(text)),
   });
 
-  private readonly _translateService: TranslateService;
-  private readonly _translationService: TranslationService;
-  private readonly _router: Router;
+  private readonly _translateService = inject(TranslateService);
+  private readonly _translationService = inject(TranslationService);
+  private readonly _router = inject(Router);
   protected readonly langChanged = signal(false);
 
   protected readonly _typing1 = this._typedFac({ noSpecialCharErrors: true });
@@ -43,17 +43,16 @@ export class HomeComponent implements OnInit {
   protected done = signal(false);
   protected readonly fillerLines = computed(() => new Array(3 - this.typing1().split('\n').length));
 
-  constructor(
-    translateService: TranslateService,
-    translationService: TranslationService,
-    router: Router,
-    preloadService: PreloadService
-  ) {
-    this._translateService = translateService;
-    this._translationService = translationService;
-    this._router = router;
+  constructor(preloadService: PreloadService) {
     preloadService.addIcons(['forward', 'rotate-right']);
+  }
 
+  private async prepareTyping() {
+    await Promise.all([
+      this._typing1.reset(true),
+      this._typing2.reset(true),
+      this._typing3.reset(true),
+    ]);
     const hi = this._translateService.instant('home.typing.hi');
     const iam = this._translateService.instant('home.typing.iam');
     const click = this._translateService.instant('home.typing.click');
@@ -78,7 +77,9 @@ export class HomeComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.typeIntro();
+    this.prepareTyping().then(() => {
+      this.typeIntro();
+    });
     this._translationService.languageChanged$.subscribe(() => {
       this.langChanged.set(true);
       if (!this.skip) {
@@ -115,7 +116,12 @@ export class HomeComponent implements OnInit {
   public async restart() {
     analytics.track('home.restart');
     this.skip = false;
-    await Promise.all([this._typing1.reset(), this._typing2.reset(), this._typing3.reset()]);
+    await Promise.all([
+      this._typing1.reset(true),
+      this._typing2.reset(true),
+      this._typing3.reset(true),
+    ]);
+    await this.prepareTyping();
     this.langChanged.set(false);
     this.typeIntro();
   }
