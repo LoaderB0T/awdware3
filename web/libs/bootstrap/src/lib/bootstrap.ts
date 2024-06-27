@@ -17,17 +17,10 @@ export async function doBootstrap<T>(ngModule: () => Promise<Type<T>>, isHost = 
 
     if (environment.production) {
       enableProdMode();
-    } else {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      await import('zone.js');
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      await import('zone.js/plugins/zone-error');
     }
     const module = await ngModule();
     platformBrowserDynamic()
-      .bootstrapModule(module)
+      .bootstrapModule(module, { ngZone: 'noop' })
       .catch(err => console.error(err));
   })();
 }

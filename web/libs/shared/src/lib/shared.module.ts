@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -8,7 +8,8 @@ import { TooltipDirective } from './directives/tooltip.directive';
 
 @NgModule({
   declarations: [AwdLetDirective, TooltipDirective],
-  imports: [CommonModule, HttpClientModule, TranslateModule],
-  exports: [TranslateModule, AwdLetDirective, TooltipDirective]
+  exports: [TranslateModule, AwdLetDirective, TooltipDirective],
+  imports: [CommonModule, TranslateModule],
+  providers: [provideHttpClient()],
 })
 export class SharedModule {}

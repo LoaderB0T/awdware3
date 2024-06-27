@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, debounceTime } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PreloadService {
   private readonly _icons = new BehaviorSubject<string[]>([]);
@@ -14,13 +14,13 @@ export class PreloadService {
     const newIcons: string[] = [];
     newIcons.push(...this._icons.getValue());
     newIcons.push(...icons);
-    this._icons.next(newIcons);
+    this._icons.next(Array.from(new Set(newIcons)));
   }
 
   public addImages(images: string[]) {
     const newImgs: string[] = [];
     newImgs.push(...this._imgs.getValue());
     newImgs.push(...images);
-    this._imgs.next(newImgs);
+    this._imgs.next(Array.from(new Set(newImgs)));
   }
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -23,28 +23,32 @@ import { MyMissingTranslationHandler } from './services/my-missing-translation-h
     TranslateModule.forRoot({
       missingTranslationHandler: {
         provide: MissingTranslationHandler,
-        useClass: MyMissingTranslationHandler
-      }
+        useClass: MyMissingTranslationHandler,
+      },
     }),
-    loadedModules
+    loadedModules,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [provideExperimentalZonelessChangeDetection()],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(themeService: ThemeService, translationService: TranslationService, htmlHeadService: HtmlHeadService) {
+  constructor(
+    themeService: ThemeService,
+    translationService: TranslationService,
+    htmlHeadService: HtmlHeadService
+  ) {
     themeService.init();
     translationService.init();
 
     htmlHeadService.addElement({
       type: 'link',
       rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css?family=Montserrat:400,700'
+      href: 'https://fonts.googleapis.com/css?family=Montserrat:400,700',
     });
     htmlHeadService.addElement({
       type: 'script',
       src: 'https://kit.fontawesome.com/8552b95824.js',
-      crossorigin: 'anonymous'
+      crossorigin: 'anonymous',
     });
   }
 }
