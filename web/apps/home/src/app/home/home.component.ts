@@ -41,9 +41,11 @@ export class HomeComponent implements OnInit {
 
   protected skip = false;
   protected done = signal(false);
-  protected readonly fillerLines = computed(() => {
-    return [...new Array(3 - this.typing1().split('\n').length)].map((_, i) => i);
-  });
+  protected readonly fillerLines = computed(() =>
+    // Return an array with the number of missing lines to fill the typing area
+    // needs to have unique values, to track in the template
+    [...new Array(3 - this.typing1().split('\n').length)].map((_, i) => i)
+  );
 
   constructor(preloadService: PreloadService) {
     preloadService.addIcons(['forward', 'rotate-right']);
