@@ -8,7 +8,7 @@ import { LogoService } from '../services/logo.service';
 
 const typedFac = Typed.factory({
   setUp: () => signal(''),
-  update: (signal, text) => signal.set(text),
+  update: (sig, text) => sig.set(text),
 });
 @Component({
   selector: 'awd-about',

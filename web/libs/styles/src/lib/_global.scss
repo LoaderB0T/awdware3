@@ -72,7 +72,7 @@ a {
   color: $colorContent1;
 }
 
-p > a {
+.fancy-link {
   text-decoration: none;
   position: relative;
   color: $colorAccent1;
@@ -91,12 +91,15 @@ p > a {
     transform: skewX(-40deg);
   }
 
-  &:hover::after {
+  &:hover::after,&:focus-visible::after {
     left: 0;
     bottom: -2px;
     width: 100%;
     height: 100%;
     transform: skewX(0);
+  }
+  &:focus-visible {
+    color: $colorAccent2;
   }
 }
 

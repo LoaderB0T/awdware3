@@ -21,12 +21,14 @@
     @include phone {
       gap: 10px;
     }
-    img {
-      height: 60px;
-      @include phone {
-        height: 32px;
-      }
+    a {
       @include hover-scale;
+      img {
+        height: 60px;
+        @include phone {
+          height: 32px;
+        }
+      }
     }
     &.more {
       max-width: 70%;

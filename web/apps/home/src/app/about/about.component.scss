@@ -99,9 +99,12 @@
     .logos {
       display: flex;
       gap: 20px;
-      img {
-        height: 60px;
+      a {
         @include hover-scale;
+        img {
+          height: 60px;
+        }
+        
       }
     }
   }

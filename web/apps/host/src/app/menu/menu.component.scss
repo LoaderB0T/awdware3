@@ -52,6 +52,9 @@ $activeItemMarkerHeight: $itemHeight + 16px;
       @include not-phone {
         width: 100%;
       }
+      &:focus-visible {
+        color: $colorAccent1;
+      }
       span {
         @include not-phone {
           display: none;
