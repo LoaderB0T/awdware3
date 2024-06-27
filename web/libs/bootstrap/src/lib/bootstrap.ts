@@ -1,4 +1,4 @@
-import { Type, enableProdMode, provideExperimentalZonelessChangeDetection } from '@angular/core';
+import { Type, enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { loadRemoteModule } from '@angular-architects/native-federation';
 import { environment } from 'ng-dynamic-mf/environment';
