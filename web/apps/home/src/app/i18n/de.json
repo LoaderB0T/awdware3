@@ -11,7 +11,7 @@
   },
   "about": {
     "thisIsMe": "Das bin ich!",
-    "overview": "Janik Schumacher\nSoftwareentwichkler\n{{age}} Jahre alt\nSesshaft im Kölner Raum.",
+    "overview": "Janik Schumacher\nSoftwareentwickler\n{{age}} Jahre alt\nIst zu Hause in Köln.",
     "description": {
       "title": "Wer ist Janik?",
       "intro": "Ich bin ein Full-Stack Software Entwickler und fokussiere mich aktuell auf Frontend Entwicklung. Ich begeistere mich für Frontend Architektur und das Bauen von Enterprise-Level Web Anwendungen. Ich strebe stets danach neue Technologien zu lernen und mit den neusten Trends mitzuhalten.",
