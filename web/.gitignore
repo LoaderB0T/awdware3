@@ -47,7 +47,7 @@ apps/host/src/environment/environment.*.json
 !apps/host/src/environment/environment.default.json
 tools/**/*.js.map
 
-.nx/cache
+.nx
 
 **/tsconfig.federation.json
 **/environment.json
