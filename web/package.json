@@ -42,8 +42,7 @@
     "reflect-metadata": "^0.2.2",
     "rxjs": "7.8.1",
     "tslib": "^2.6.3",
-    "typed.ts": "3.0.2",
-    "zone.js": "0.14.7"
+    "typed.ts": "3.0.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "18.0.6",

@@ -1,4 +1,4 @@
-import { Type, enableProdMode } from '@angular/core';
+import { Type, enableProdMode, provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { loadRemoteModule } from '@angular-architects/native-federation';
 import { environment } from 'ng-dynamic-mf/environment';
@@ -17,17 +17,10 @@ export async function doBootstrap<T>(ngModule: () => Promise<Type<T>>, isHost = 
 
     if (environment.production) {
       enableProdMode();
-    } else {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      await import('zone.js');
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      await import('zone.js/plugins/zone-error');
     }
     const module = await ngModule();
     platformBrowserDynamic()
-      .bootstrapModule(module)
+      .bootstrapModule(module, { ngZone: 'noop' })
       .catch(err => console.error(err));
   })();
 }

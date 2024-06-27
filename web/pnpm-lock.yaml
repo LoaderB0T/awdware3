@@ -59,9 +59,6 @@ dependencies:
   typed.ts:
     specifier: 3.0.2
     version: 3.0.2
-  zone.js:
-    specifier: 0.14.7
-    version: 0.14.7
 
 devDependencies:
   '@angular-devkit/build-angular':

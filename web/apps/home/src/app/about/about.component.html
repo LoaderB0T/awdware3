@@ -53,7 +53,7 @@
       <h2>{{'about.contactTitle' | translate}}</h2>
     </div>
     <div class="logos">
-      @for (contact of contacts; track contact) {
+      @for (contact of contacts; track contact.link) {
       <a target="_blank"
          class="umami--click--external-link-social-{{contact.name}}"
          data-umami-event="external-link-social"
