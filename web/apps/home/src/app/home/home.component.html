@@ -24,14 +24,14 @@
       }
     }
     @if (!skip && !done()) {
-      <div class="action-icon skip">
-        <i (click)="fastForward()" aria-hidden="true" class="fa-light fa-forward"></i>
-      </div>
+      <button class="action-icon skip" (click)="fastForward()">
+        <i aria-hidden="true" class="fa-light fa-forward"></i>
+      </button>
     }
     @if (done()) {
-      <div class="action-icon restart">
-        <i (click)="restart()" aria-hidden="true" class="fa-light fa-arrow-rotate-right"></i>
-      </div>
+      <button class="action-icon restart" (click)="restart()">
+        <i aria-hidden="true" class="fa-light fa-arrow-rotate-right"></i>
+      </button>
     }
   </div>
 </div>

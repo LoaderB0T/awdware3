@@ -49,6 +49,9 @@
       }
       font-size: 28px;
       @include clickable;
+      &:focus-visible {
+        color: $colorAccent2;
+      }
     }
   }
 }
