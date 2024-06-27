@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  NgZone,
   OnInit,
   computed,
   inject,
@@ -20,10 +19,9 @@ import { Typed } from 'typed.ts';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
-  private readonly _zone = inject(NgZone);
   private readonly _typedFac = Typed.factory({
     setUp: () => signal(''),
-    update: (sig, text) => this._zone.run(() => sig.set(text)),
+    update: (sig, text) => sig.set(text),
   });
 
   private readonly _translateService = inject(TranslateService);

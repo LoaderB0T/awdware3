@@ -33,6 +33,9 @@
       cursor: pointer;
       text-decoration: underline;
       text-decoration-style: dotted;
+      &:focus-visible {
+        color: $colorAccent2;
+      }
     }
 
     .action-icon {

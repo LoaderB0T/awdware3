@@ -2,7 +2,7 @@
   <div id="homeBox">
     @if (!langChanged()) {
       <span class="typing" [innerHtml]="typing1()"></span>
-      <span class="typing link highlight" (click)="learnMore()" [innerHtml]="typing2()"></span>
+      <button class="typing link highlight" (click)="learnMore()" [innerHtml]="typing2()"></button>
       <span class="typing" [innerHtml]="typing3()"></span>
     } @else {
       <span class="typing"

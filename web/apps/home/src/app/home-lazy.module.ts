@@ -61,7 +61,7 @@ export class HomeLazyModule {
       skills.map(s =>
         resourceMapper(
           'home',
-          `assets/img/${s.imageFilename ? s.imageFilename : `logo_${s.image}.svg`}`
+          'assets/img/' + (s.imageFilename ? s.imageFilename : `logo_${s.image}.svg`)
         )
       )
     );
