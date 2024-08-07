@@ -37,8 +37,8 @@ export class HomeComponent implements OnInit {
   protected readonly typing2 = this._typing2.text;
   protected readonly typing3 = this._typing3.text;
 
-  protected skip = false;
-  protected done = signal(false);
+  protected readonly skip = signal(false);
+  protected readonly done = signal(false);
   protected readonly fillerLines = computed(() =>
     // Return an array with the number of missing lines to fill the typing area
     // needs to have unique values, to track in the template
@@ -84,7 +84,7 @@ export class HomeComponent implements OnInit {
     });
     this._translationService.languageChanged$.subscribe(() => {
       this.langChanged.set(true);
-      if (!this.skip) {
+      if (!this.skip()) {
         this.fastForward();
       }
     });
@@ -101,7 +101,7 @@ export class HomeComponent implements OnInit {
   private async typeLikes() {
     const ilike = this._translateService.instant('home.typing.ilike');
 
-    if (!this.skip) {
+    if (!this.skip()) {
       this._typing1.type(`${ilike} `);
       const likes = ['Web Development', 'TypeScript', 'Angular', 'C# & .NET', 'Automation (CI/CD)'];
       for (const like of likes) {
@@ -117,7 +117,7 @@ export class HomeComponent implements OnInit {
 
   public async restart() {
     analytics.track('home.restart');
-    this.skip = false;
+    this.skip.set(false);
     await Promise.all([
       this._typing1.reset(true),
       this._typing2.reset(true),
@@ -130,7 +130,7 @@ export class HomeComponent implements OnInit {
 
   public fastForward() {
     analytics.track('home.fastForward');
-    this.skip = true;
+    this.skip.set(true);
     this._typing1.fastForward();
     this._typing2.fastForward();
     this._typing3.fastForward();
