@@ -60,8 +60,8 @@ importers:
         specifier: ^2.6.3
         version: 2.6.3
       typed.ts:
-        specifier: 3.1.0-beta.0
-        version: 3.1.0-beta.0
+        specifier: 3.1.0-beta.1
+        version: 3.1.0-beta.1
     devDependencies:
       '@angular-devkit/build-angular':
         specifier: 18.1.4
@@ -6969,8 +6969,8 @@ packages:
   typed-assert@1.0.9:
     resolution: {integrity: sha512-KNNZtayBCtmnNmbo5mG47p1XsCyrx6iVqomjcZnec/1Y5GGARaxPs6r49RnSPeUP3YjNYiU9sQHAtY4BBvnZwg==}
 
-  typed.ts@3.1.0-beta.0:
-    resolution: {integrity: sha512-PXth2Y7XLZokGbFkyhQHK1dnu8IPdDC4wP0FodiOLhpasdrU8VJPPMfoiGTyJY5Cs8hEvQ7ZvY8qFljxeQ2Qyw==}
+  typed.ts@3.1.0-beta.1:
+    resolution: {integrity: sha512-ca95wt0Wmz9T/TO/Ou/BD1E5uizhvLW3MxQ8Hv8D44qwnKkisao7CSkaKs0Ymna+/Miw6HuBVVDQgvpXJ0c0Fw==}
 
   typescript@5.4.3:
     resolution: {integrity: sha512-KrPd3PKaCLr78MalgiwJnA25Nm8HAmdwN3mYUYZgG/wizIo9EainNVQI9/yDavtVFRN2h3k8uf3GLHuhDMgEHg==}
@@ -16479,7 +16479,7 @@ snapshots:
 
   typed-assert@1.0.9: {}
 
-  typed.ts@3.1.0-beta.0: {}
+  typed.ts@3.1.0-beta.1: {}
 
   typescript@5.4.3: {}
 
