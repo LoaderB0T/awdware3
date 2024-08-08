@@ -1,6 +1,6 @@
 <div [style.--selected-section-index]="selectedSectionIndex()" class="timeline-container">
   @for (section of refinedTimeline; track section; let i = $index) {
-    <div
+    <button
       class="section-wrapper"
       (click)="selectSection(i)"
       [class.selected]="selectedSectionIndex() === i"
@@ -17,6 +17,6 @@
           <span class="year year-from">{{ section.name }}</span>
         </div>
       </div>
-    </div>
+    </button>
   }
 </div>

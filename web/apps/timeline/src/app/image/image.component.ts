@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostBinding, Input, signal } from '@angular/core';
+import { Component, HostBinding, HostListener, Input, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ResourceMapModule } from 'ng-dynamic-mf';
 
@@ -40,20 +40,26 @@ export class ImageComponent {
    */
   @HostBinding('style.max-height.px')
   @Input({ transform: toNumber })
-  public maxheight: number | undefined = undefined;
+  protected maxheight: number | undefined = undefined;
 
-  public readonly isFullscreen = signal(false);
-  public readonly isZoom = signal(false);
+  protected readonly isFullscreen = signal(false);
+  protected readonly isZoom = signal(false);
 
-  public openFullscreen() {
+  protected openFullscreen() {
     this.isFullscreen.set(true);
   }
-  public toggleZoom(event: Event) {
+  protected toggleZoom(event: Event) {
     this.isZoom.update(f => !f);
     return event.stopPropagation();
   }
-  public closeFullscreen() {
+  protected closeFullscreen() {
     this.isFullscreen.set(false);
     this.isZoom.set(false);
+  }
+  @HostListener('document:keydown', ['$event'])
+  public keypress(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      this.closeFullscreen();
+    }
   }
 }

@@ -10,9 +10,9 @@
         <span class="highlight">Janik</span>. <br />{{ 'home.typing.click' | translate }}
       </span>
 
-      <span class="typing link highlight" (click)="learnMore()">{{
+      <button class="typing link highlight" (click)="learnMore()">{{
         'home.typing.here' | translate
-      }}</span>
+      }}</button>
       <span class="typing"> {{ 'home.typing.toLearnMore' | translate }}</span>
     }
 
@@ -23,7 +23,7 @@
         <div>&nbsp;</div>
       }
     }
-    @if (!skip && !done()) {
+    @if (!skip() && !done()) {
       <button class="action-icon skip" (click)="fastForward()">
         <i aria-hidden="true" class="fa-light fa-forward"></i>
       </button>
