@@ -10,7 +10,6 @@
     "ng": "nx",
     "nx": "nx",
     "preinstall": "npx only-allow pnpm",
-    "postinstall": "node node_modules/@angular-architects/native-federation/src/patch-angular-build.js",
     "start": "nx serve",
     "build": "nx build",
     "lint": "nx run-many --target=lint",
