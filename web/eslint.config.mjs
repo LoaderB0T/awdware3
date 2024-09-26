@@ -5,11 +5,20 @@ export default [
   {
     ignores: ['**/node_modules', '**/assets/modules'],
   },
-  nx.configs['flat/base'],
-  nx.configs['flat/typescript'],
-  nx.configs['flat/javascript'],
-  nx.configs['flat/angular'],
-  nx.configs['flat/angular-template'],
+  {
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.name,
+        allowDefaultProject: true,
+      },
+    },
+  },
+  ...nx.configs['flat/base'],
+  ...nx.configs['flat/typescript'],
+  ...nx.configs['flat/javascript'],
+  ...nx.configs['flat/angular'],
+  ...nx.configs['flat/angular-template'],
   ...awdwareAngular,
   {
     files: ['**/*.ts', '**/*.tsx'],
@@ -17,8 +26,7 @@ export default [
       'import/internal-regex': '@swpe/',
     },
     rules: {
-      '@typescript-eslint/no-extra-semi': 'error',
-      'no-extra-semi': 'off',
+      'no-extra-semi': 'error',
       // "rxjs/no-sharereplay": "error",
       // "rxjs/no-ignored-replay-buffer": "error",
       // "rxjs/no-ignored-takewhile-value": "error",
@@ -27,7 +35,6 @@ export default [
       '@typescript-eslint/no-non-null-assertion': 'warn',
       '@typescript-eslint/no-unused-vars': 'off',
       'import/no-unresolved': 'off',
-
       'import/order': [
         'error',
         {
