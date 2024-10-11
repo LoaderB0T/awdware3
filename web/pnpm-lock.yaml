@@ -5394,6 +5394,10 @@ packages:
     resolution: {integrity: sha512-+yQl7SX3bIT83Lhb4BVorMAHVuqsskxRdlmO9kTpyukp8vsm2Sn/fUOV9xlnG8/a5JsypJzap21lz/y3FBMJ8Q==}
     engines: {node: '>=8'}
 
+  minipass@5.0.0:
+    resolution: {integrity: sha512-3FnjYuehv9k6ovOEbyOswadCDPX1piCfhV8ncmYtHOjuPwylVWsghTLo7rabjC3Rx5xD4HDx8Wm1xnMF7S5qFQ==}
+    engines: {node: '>=8'}
+
   minipass@7.0.4:
     resolution: {integrity: sha512-jYofLM5Dam9279rdkWzqHozUo4ybjdZmCsDHePy5V/PbBcVMiSZR97gmAy45aqi8CK1lG2ECd356FU86avfwUQ==}
     engines: {node: '>=16 || 14 >=14.17'}
@@ -6797,8 +6801,8 @@ packages:
     resolution: {integrity: sha512-ujeqbceABgwMZxEJnk2HDY2DlnUZ+9oEcb1KzTVfYHio0UE6dG71n60d8D2I4qNvleWrrXpmjpt7vZeF1LnMZQ==}
     engines: {node: '>=6'}
 
-  tar@6.1.13:
-    resolution: {integrity: sha512-jdIBIN6LTIe2jqzay/2vtYLlBHa3JF42ot3h1dW8Q0PaAG4v8rm0cvpVePtau5C6OKXGGcgO9q2AMNSWxiLqKw==}
+  tar@6.2.1:
+    resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
 
   terser-webpack-plugin@5.3.10:
@@ -9838,6 +9842,21 @@ snapshots:
       - typescript
       - verdaccio
 
+  '@nrwl/js@19.8.2(@babel/traverse@7.25.6)(@types/node@22.7.2)(nx@19.8.2)(typescript@5.4.3)':
+    dependencies:
+      '@nx/js': 19.8.2(@babel/traverse@7.25.6)(@types/node@22.7.2)(nx@19.8.2)(typescript@5.4.3)
+    transitivePeerDependencies:
+      - '@babel/traverse'
+      - '@swc-node/register'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - debug
+      - nx
+      - supports-color
+      - typescript
+      - verdaccio
+
   '@nrwl/js@19.8.2(@babel/traverse@7.25.6)(@types/node@22.7.2)(nx@19.8.2)(typescript@5.5.4)':
     dependencies:
       '@nx/js': 19.8.2(@babel/traverse@7.25.6)(@types/node@22.7.2)(nx@19.8.2)(typescript@5.5.4)
@@ -10105,7 +10124,7 @@ snapshots:
       '@babel/preset-env': 7.24.7(@babel/core@7.25.2)
       '@babel/preset-typescript': 7.23.2(@babel/core@7.25.2)
       '@babel/runtime': 7.24.7
-      '@nrwl/js': 19.8.2(@babel/traverse@7.25.6)(@types/node@22.7.2)(nx@19.8.2)(typescript@5.5.4)
+      '@nrwl/js': 19.8.2(@babel/traverse@7.25.6)(@types/node@22.7.2)(nx@19.8.2)(typescript@5.4.3)
       '@nx/devkit': 19.8.2(nx@19.8.2)
       '@nx/workspace': 19.8.2
       babel-plugin-const-enum: 1.2.0(@babel/core@7.25.2)
@@ -11498,7 +11517,7 @@ snapshots:
       minipass-pipeline: 1.2.4
       p-map: 4.0.0
       ssri: 10.0.1
-      tar: 6.1.13
+      tar: 6.2.1
       unique-filename: 3.0.0
 
   cache-content-type@1.0.1:
@@ -14236,6 +14255,8 @@ snapshots:
 
   minipass@4.2.5: {}
 
+  minipass@5.0.0: {}
+
   minipass@7.0.4: {}
 
   minizlib@2.1.2:
@@ -14342,7 +14363,7 @@ snapshots:
       nopt: 7.2.0
       proc-log: 3.0.0
       semver: 7.6.3
-      tar: 6.1.13
+      tar: 6.2.1
       which: 4.0.0
     transitivePeerDependencies:
       - supports-color
@@ -14670,7 +14691,7 @@ snapshots:
       promise-retry: 2.0.1
       sigstore: 2.2.2
       ssri: 10.0.1
-      tar: 6.1.13
+      tar: 6.2.1
     transitivePeerDependencies:
       - bluebird
       - supports-color
@@ -15803,11 +15824,11 @@ snapshots:
       inherits: 2.0.4
       readable-stream: 3.6.2
 
-  tar@6.1.13:
+  tar@6.2.1:
     dependencies:
       chownr: 2.0.0
       fs-minipass: 2.1.0
-      minipass: 4.2.5
+      minipass: 5.0.0
       minizlib: 2.1.2
       mkdirp: 1.0.4
       yallist: 4.0.0
