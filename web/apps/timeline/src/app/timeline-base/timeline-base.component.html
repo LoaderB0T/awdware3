@@ -9,7 +9,7 @@
       @for (item of timeline; track item.id) {
         <!-- Defer is not quite that usefull here, still cool to see that it works as intended -->
         <div class="timeline-item" [attr.data-id]="item.id" #timelineItem>
-          @defer (on viewport; prefetch on idle) {
+          @defer (on viewport; on idle) {
             <!-- Defer is special here as we are using dynamically created components. Works with an extra loading step though! -->
             @let component = timelineComponentCache[item.id] | async;
             @if (component) {

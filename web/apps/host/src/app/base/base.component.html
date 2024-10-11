@@ -1,12 +1,10 @@
-<div id="app-main"
-     (mousemove)="setMouseCoords($event)">
+<div id="app-main" (mousemove)="setMouseCoords($event)">
   <div class="bg">
     <awd-bg />
   </div>
   <div class="menu-content-container">
     <awd-menu [class.open]="menuOpen()" />
-    <div class="content"
-         [@routeAnimations]="prepareRoute(outlet)">
+    <div class="content" [@routeAnimations]="prepareRoute(outlet)">
       <router-outlet #outlet="outlet" />
     </div>
   </div>
@@ -14,13 +12,9 @@
 
 <div class="preload-container">
   @for (icon of preloadIcons$ | async; track icon) {
-  <i aria-hidden="true"
-     class="fa-light fa-{{icon}}">
-  </i>
+    <i aria-hidden="true" class="fa-light fa-{{ icon }}"> </i>
   }
   @for (img of preloadImgs$ | async; track img) {
-  <img alt=""
-       aria-hidden="true"
-       [src]="img">
+    <img alt="" aria-hidden="true" [src]="img" />
   }
 </div>
