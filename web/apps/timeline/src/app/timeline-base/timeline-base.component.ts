@@ -1,23 +1,24 @@
 import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
-  QueryList,
-  ViewChildren,
+  Type,
   signal,
+  viewChildren,
 } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { timelime } from './timeline';
+import { timelime, TimelineEntry } from './timeline';
 import { TimelineComponent } from './timeline/timeline.component';
-
 
 @Component({
   standalone: true,
   imports: [CommonModule, TranslateModule, TimelineComponent],
   templateUrl: './timeline-base.component.html',
   styleUrls: ['./timeline-base.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimelineBaseComponent implements AfterViewInit {
   protected readonly timeline = timelime;
@@ -26,7 +27,9 @@ export class TimelineBaseComponent implements AfterViewInit {
 
   private readonly _intersectingIds = new Set<string>();
 
-  @ViewChildren('timelineItem') timelineItems!: QueryList<ElementRef<HTMLDivElement>>;
+  protected readonly timelineItems = viewChildren<ElementRef<HTMLDivElement>>('timelineItem');
+
+  protected readonly timelineComponentCache: Record<string, Promise<Type<unknown>>> = {};
 
   constructor() {
     this._observer = new IntersectionObserver(
@@ -51,7 +54,7 @@ export class TimelineBaseComponent implements AfterViewInit {
   }
 
   public ngAfterViewInit(): void {
-    this.timelineItems.forEach(item => {
+    this.timelineItems().forEach(item => {
       this._observer.observe(item.nativeElement);
     });
   }
@@ -61,5 +64,11 @@ export class TimelineBaseComponent implements AfterViewInit {
       return;
     }
     this.selectedId.set(id);
+  }
+
+  protected async getComponent(timelineEntry: TimelineEntry): Promise<Type<unknown>> {
+    this.timelineComponentCache[timelineEntry.id] ??= timelineEntry.component();
+    const res = await this.timelineComponentCache[timelineEntry.id];
+    return res;
   }
 }

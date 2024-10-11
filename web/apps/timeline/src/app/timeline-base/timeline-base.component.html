@@ -10,9 +10,19 @@
         <!-- Defer is not quite that usefull here, still cool to see that it works as intended -->
         <div class="timeline-item" [attr.data-id]="item.id" #timelineItem>
           @defer (on viewport; prefetch on idle) {
-            <ng-container *ngComponentOutlet="item.component" />
+            <!-- Defer is special here as we are using dynamically created components. Works with an extra loading step though! -->
+            @let component = timelineComponentCache[item.id] | async;
+            @if (component) {
+              <ng-container *ngComponentOutlet="component" />
+            } @else {
+              <div class="placeholder"></div>
+              <!-- This method will trigger the loading of the lazy component, its output is not required here -->
+              {{ (getComponent(item) | async) && '' }};
+            }
           } @placeholder {
-            <div class="placeholder"></div>
+            <div class="placeholder">
+              {{ '&nbsp; '.repeat(1000) }}
+            </div>
           }
         </div>
       }

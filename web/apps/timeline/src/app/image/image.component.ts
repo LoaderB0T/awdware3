@@ -1,5 +1,13 @@
-import { CommonModule } from '@angular/common';
-import { Component, HostBinding, HostListener, Input, signal } from '@angular/core';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  HostListener,
+  input,
+  Input,
+  signal,
+} from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ResourceMapModule } from 'ng-dynamic-mf';
 
@@ -12,14 +20,15 @@ function toNumber(value: string | number): number {
 
 @Component({
   standalone: true,
-  imports: [CommonModule, TranslateModule, ResourceMapModule],
+  imports: [CommonModule, TranslateModule, ResourceMapModule, NgOptimizedImage],
   selector: 'awd-image',
   templateUrl: './image.component.html',
   styleUrls: ['./image.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImageComponent {
-  @Input({ required: true }) public src!: string;
-  @Input({ required: true }) public alt!: string;
+  public readonly src = input.required<string>();
+  public readonly alt = input.required<string>();
 
   /**
    * Set the image to be centered in the container

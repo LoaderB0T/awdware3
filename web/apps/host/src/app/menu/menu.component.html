@@ -1,42 +1,38 @@
-<div class="main-container"
-     [class.open]="menuOpen()">
+<div class="main-container" [class.open]="menuOpen()">
   <div>
     <!-- empty for flexbox -->
   </div>
   <div class="items">
     @for (item of menuItems(); track item.id) {
-    <button *awdLet="item.id === (activeMenuItemId()) as activeItem"
-         class="item"
-         (click)="clickedItem($event, item)"
-         [class.active]="activeItem"
-         [id]="'menu-item-' + item.id">
-      <i class="fa-light fa-{{activeItem ? (item.iconActive ?? item.icon) : item.icon}}"
-         aria-hidden="true"></i>
-      <span class="title">{{item.title}}</span>
-      <span class="spacing">{{item.title}}</span>
-    </button>
+      @let activeItem = item.id === activeMenuItemId();
+      <button
+        class="item"
+        (click)="clickedItem($event, item)"
+        [class.active]="activeItem"
+        [id]="'menu-item-' + item.id"
+      >
+        <i
+          class="fa-light fa-{{ activeItem ? (item.iconActive ?? item.icon) : item.icon }}"
+          aria-hidden="true"
+        ></i>
+        <span class="title">{{ item.title }}</span>
+        <span class="spacing">{{ item.title }}</span>
+      </button>
     }
-    <div class="active-item"
-         [style.top.px]="activeMenuItemY()"></div>
+    <div class="active-item" [style.top.px]="activeMenuItemY()"></div>
   </div>
   <div class="items end-items">
-    <button class="item"
-         (click)="switchLanguage()">
-      <i class="fa-light fa-language"
-         aria-hidden="true"></i>
+    <button class="item" (click)="switchLanguage()">
+      <i class="fa-light fa-language" aria-hidden="true"></i>
     </button>
-    <button    class="item"
-         (click)="switchTheme()">
-      <i class="fa-light fa-lightbulb"
-         aria-hidden="true"></i>
+    <button class="item" (click)="switchTheme()">
+      <i class="fa-light fa-lightbulb" aria-hidden="true"></i>
     </button>
   </div>
 </div>
 
 @if (!menuOpen()) {
-<button class="menu-button"
-     (click)="openMenu()">
-  <i class="fa-light fa-bars"
-     aria-hidden="true"></i>
-</button>
+  <button class="menu-button" (click)="openMenu()">
+    <i class="fa-light fa-bars" aria-hidden="true"></i>
+  </button>
 }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
 import { timelime, TimelineEntryViewModel } from '../timeline';
 
@@ -9,6 +9,7 @@ import { timelime, TimelineEntryViewModel } from '../timeline';
   imports: [CommonModule],
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimelineComponent {
   public selectedId = input<string | undefined>();
