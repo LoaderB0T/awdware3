@@ -1,4 +1,5 @@
 import { Component, Signal, effect, signal } from '@angular/core';
+
 import { analytics } from '@awdware/analytics';
 import { MenuItem, MenuService, ThemeService, TranslationService } from '@awdware/shared';
 

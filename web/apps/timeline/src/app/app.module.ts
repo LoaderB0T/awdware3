@@ -2,8 +2,9 @@ import { NgModule, provideExperimentalZonelessChangeDetection } from '@angular/c
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { SharedModule, ThemeService, TranslationService } from '@awdware/shared';
 import { TranslateModule } from '@ngx-translate/core';
+
+import { SharedModule, ThemeService, TranslationService } from '@awdware/shared';
 
 import { AppComponent } from './app.component';
 // Required for TS to compile the "unused" RemoteEntryModule

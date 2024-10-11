@@ -1,4 +1,5 @@
 import { Injectable, Signal, computed } from '@angular/core';
+
 import { ThemeService } from '@awdware/shared';
 
 type IconMetadata = {

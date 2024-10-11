@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
-import { TranslationService } from '@awdware/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { Typed } from 'typed.ts';
+
+import { TranslationService } from '@awdware/shared';
 
 import { contacts } from './contacts';
 import { LogoService } from '../services/logo.service';

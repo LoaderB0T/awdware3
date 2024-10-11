@@ -7,10 +7,11 @@ import {
   signal,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { analytics } from '@awdware/analytics';
-import { PreloadService, TranslationService } from '@awdware/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { Typed } from 'typed.ts';
+
+import { analytics } from '@awdware/analytics';
+import { PreloadService, TranslationService } from '@awdware/shared';
 
 @Component({
   selector: 'awd-home',

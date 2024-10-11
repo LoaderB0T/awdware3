@@ -2,9 +2,10 @@ import { NgModule, provideExperimentalZonelessChangeDetection } from '@angular/c
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { SharedModule, ThemeService, TranslationService } from '@awdware/shared';
 import { MissingTranslationHandler, TranslateModule } from '@ngx-translate/core';
 import { HtmlHeadService, loadedModules } from 'ng-dynamic-mf';
+
+import { SharedModule, ThemeService, TranslationService } from '@awdware/shared';
 
 import { AppComponent } from './app.component';
 import { BaseComponent } from './base/base.component';

@@ -15,7 +15,7 @@
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["eslint libs/shared"]
+        "commands": ["eslint {projectRoot}"]
       }
     }
   },

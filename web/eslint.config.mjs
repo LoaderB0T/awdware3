@@ -3,7 +3,12 @@ import awdwareAngular from '@awdware/eslint-config-angular';
 
 export default [
   {
-    ignores: ['**/node_modules', '**/assets/modules'],
+    ignores: [
+      '**/node_modules',
+      '**/assets/modules',
+      '**/federation.config.js',
+      '**/jest.config.ts',
+    ],
   },
   {
     languageOptions: {
@@ -23,7 +28,7 @@ export default [
   {
     files: ['**/*.ts', '**/*.tsx'],
     settings: {
-      'import/internal-regex': '@swpe/',
+      'import/internal-regex': '@awdware/',
     },
     rules: {
       'no-extra-semi': 'error',
@@ -33,32 +38,6 @@ export default [
       // "rxjs/no-index": "error",
       // "rxjs/no-internal": "error",
       '@typescript-eslint/no-non-null-assertion': 'warn',
-      '@typescript-eslint/no-unused-vars': 'off',
-      'import/no-unresolved': 'off',
-      'import/order': [
-        'error',
-        {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            ['parent', 'sibling', 'index'],
-            'object',
-            'type',
-          ],
-
-          'newlines-between': 'always',
-
-          alphabetize: {
-            order: 'asc',
-            caseInsensitive: true,
-          },
-
-          warnOnUnassignedImports: true,
-        },
-      ],
-
-      'import/no-duplicates': 'error',
       'unused-imports/no-unused-imports': 'error',
 
       'unused-imports/no-unused-vars': [
@@ -73,7 +52,6 @@ export default [
   },
   {
     files: ['**/lib/generated/**/*.ts'],
-
     rules: {
       'unused-imports/no-unused-imports': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
