@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { TranslationService } from '@awdware/shared';
 import { TranslateModule } from '@ngx-translate/core';
+
+import { TranslationService } from '@awdware/shared';
 
 @Component({
   standalone: true,

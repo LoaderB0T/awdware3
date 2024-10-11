@@ -63,7 +63,10 @@
       "defaultConfiguration": "production"
     },
     "lint": {
-      "executor": "@nx/eslint:lint"
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["eslint {projectRoot}"]
+      }
     },
     "test": {
       "executor": "@nx/jest:jest",

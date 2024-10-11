@@ -1,26 +1,35 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
-import { MenuItem, MenuService } from '@awdware/shared';
 import { CircleParticle } from 'confetti.ts';
 import { RouterEntryService } from 'ng-dynamic-mf';
+
+import { MenuItem, MenuService } from '@awdware/shared';
 
 const routes: Routes = [
   {
     path: 'projects',
     loadChildren: () => import('./projects.module').then(m => m.ProjectsModule),
-    data: { activePage: 'projects' }
-  }
+    data: { activePage: 'projects' },
+  },
 ];
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, RouterModule]
+  imports: [CommonModule, RouterModule],
 })
 export class ProjectsLazyModule {
   private _lastIconTime: number = Date.now();
   private _iconBoost: number = 0;
-  private readonly _rndmColors = ['#eb4034', '#65eb34', '#34ebcd', '#1c61d9', '#7a1cd9', '#ed09d3', '#ed093e'];
+  private readonly _rndmColors = [
+    '#eb4034',
+    '#65eb34',
+    '#34ebcd',
+    '#1c61d9',
+    '#7a1cd9',
+    '#ed09d3',
+    '#ed093e',
+  ];
   constructor(routerEntryService: RouterEntryService, menuService: MenuService, router: Router) {
     routerEntryService.registerRoutes(routes);
     const menuItems: MenuItem[] = [
@@ -35,8 +44,8 @@ export class ProjectsLazyModule {
             this.doCoinAnimation(target);
           }
         },
-        order: 4
-      }
+        order: 4,
+      },
     ];
     menuService.addMenuItems(...menuItems);
   }
@@ -80,29 +89,31 @@ export class ProjectsLazyModule {
   }
 
   private drawParticle(x: number, y: number, power: number, colorful: boolean) {
-    const color = colorful ? this._rndmColors[Math.floor(Math.random() * this._rndmColors.length)] : '#ffd500';
+    const color = colorful
+      ? this._rndmColors[Math.floor(Math.random() * this._rndmColors.length)]
+      : '#ffd500';
     CircleParticle.draw({
       position: {
         x,
-        y
+        y,
       },
       movementXY: {
         velocity: {
           x: Math.random() - 0.5,
-          y: -8 - (power / 75) * 6
+          y: -8 - (power / 75) * 6,
         },
         acceleration: {
-          y: 0.35
-        }
+          y: 0.35,
+        },
       },
       color,
       rotation: {
         velocity: {
-          y: 4 + Math.random() * 2
-        }
+          y: 4 + Math.random() * 2,
+        },
       },
       radius: 8,
-      borderColor: color === '#ffd500' ? '#d99400' : color
+      borderColor: color === '#ffd500' ? '#d99400' : color,
     });
   }
 }

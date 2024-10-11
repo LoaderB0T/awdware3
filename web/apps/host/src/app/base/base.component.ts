@@ -7,8 +7,9 @@ import {
 } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
-import { PreloadService, MenuService, randomInt } from '@awdware/shared';
 import { RectParticle } from 'confetti.ts';
+
+import { PreloadService, MenuService, randomInt } from '@awdware/shared';
 
 import { slideInAnimation } from './router-animation';
 

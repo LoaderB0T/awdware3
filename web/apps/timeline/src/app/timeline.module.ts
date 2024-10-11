@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { devicons, fontawesome, font_montserrat } from '@awdware/externals';
 import { HtmlHeadService } from 'ng-dynamic-mf';
 import { DynamicTranslationService } from 'ng-dynamic-mf/translate';
+
+import { devicons, fontawesome, font_montserrat } from '@awdware/externals';
 
 import { TimelineBaseComponent } from './timeline-base/timeline-base.component';
 

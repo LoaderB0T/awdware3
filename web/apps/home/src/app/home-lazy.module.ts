@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
-import { PreloadService, MenuItem, MenuService, randomInt } from '@awdware/shared';
 import { resourceMapper, RouterEntryService } from 'ng-dynamic-mf';
+
+import { PreloadService, MenuItem, MenuService, randomInt } from '@awdware/shared';
 
 import { contacts } from './about/contacts';
 import { knowledge } from './skills/knowledge';
@@ -61,7 +62,7 @@ export class HomeLazyModule {
       skills.map(s =>
         resourceMapper(
           'home',
-          'assets/img/' + (s.imageFilename ? s.imageFilename : `logo_${s.image}.svg`)
+          `assets/img/${  s.imageFilename ? s.imageFilename : `logo_${s.image}.svg`}`
         )
       )
     );

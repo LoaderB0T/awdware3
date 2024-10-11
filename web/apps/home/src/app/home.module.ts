@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HtmlHeadService, ResourceMapModule } from 'ng-dynamic-mf';
+import { DynamicTranslationService } from 'ng-dynamic-mf/translate';
+
 import { disableAnalytics } from '@awdware/analytics';
 import { analytics, fontawesome, font_montserrat } from '@awdware/externals';
 import { SharedModule } from '@awdware/shared';
-import { HtmlHeadService, ResourceMapModule } from 'ng-dynamic-mf';
-import { DynamicTranslationService } from 'ng-dynamic-mf/translate';
 
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
