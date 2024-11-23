@@ -2,12 +2,6 @@
   "cli": {
     "packageManager": "pnpm"
   },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "@nx/workspace/tasks-runners/default",
-      "options": {}
-    }
-  },
   "generators": {
     "@nx/angular:application": {
       "style": "scss",
