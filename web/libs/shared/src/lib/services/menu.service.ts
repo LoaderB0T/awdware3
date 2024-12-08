@@ -32,6 +32,9 @@ export class MenuService {
     if (!menuItems.some(x => x.id === id)) {
       throw new Error(`Menu item with id ${id} does not exist`);
     }
-    this.activeMenuItem.set(id);
+    // This will be called from a computed context, so we need to defer the update to the next tick
+    setTimeout(() => {
+      this.activeMenuItem.set(id);
+    });
   }
 }
