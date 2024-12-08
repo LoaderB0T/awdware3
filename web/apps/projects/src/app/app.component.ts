@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'awd-root',
   template: '<router-outlet />',
-  changeDetection: 
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {}

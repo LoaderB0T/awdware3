@@ -1,31 +1,31 @@
-@import 'vars';
+@use 'vars';
 
 .skills-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 40px;
-  @include phone {
+  @include vars.phone {
     padding: 12px;
   }
   h2 {
     text-align: center;
-    @include phone {
-      font-size: $fontSizeNormal;
+    @include vars.phone {
+      font-size: vars.$fontSizeNormal;
     }
   }
   .logos {
     display: flex;
     justify-content: center;
     gap: 20px;
-    @include phone {
+    @include vars.phone {
       gap: 10px;
     }
     a {
-      @include hover-scale;
+      @include vars.hover-scale;
       img {
         height: 60px;
-        @include phone {
+        @include vars.phone {
           height: 32px;
         }
       }
@@ -35,13 +35,13 @@
       flex-wrap: wrap;
       a {
         padding: 10px;
-        border-radius: $radiusDefault;
+        border-radius: vars.$radiusDefault;
         display: flex;
         align-items: center;
         gap: 10px;
-        @include highlightable-scale;
-        @include phone {
-          font-size: $fontSizeSmallPhone;
+        @include vars.highlightable-scale;
+        @include vars.phone {
+          font-size: vars.$fontSizeSmallPhone;
           gap: 5px;
         }
       }

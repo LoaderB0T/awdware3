@@ -1,6 +1,6 @@
-@import 'vars';
+@use 'vars';
 
-$transition: $tranBezierMediumOvershoot;
+$transition: vars.$tranBezierMediumOvershoot;
 $blur: 5px;
 $brightness: 0.4;
 
@@ -17,7 +17,7 @@ $brightness: 0.4;
   }
   .image-container {
     width: 100%;
-    border-radius: $radiusDefault;
+    border-radius: vars.$radiusDefault;
     --inset: 0px;
 
     position: relative;
@@ -31,7 +31,7 @@ $brightness: 0.4;
     }
     .original-wrapper {
       position: absolute;
-      border-radius: $radiusDefault;
+      border-radius: vars.$radiusDefault;
       inset: var(--inset);
       transition: inset $transition;
       overflow: hidden;
@@ -94,7 +94,7 @@ $brightness: 0.4;
   backdrop-filter: blur(2px);
   background-color: rgba(0, 0, 0, 0.5);
   overflow: auto;
-  z-index: $zIndexModal;
+  z-index: vars.$zIndexModal;
   cursor: pointer;
   img {
     cursor: zoom-in;

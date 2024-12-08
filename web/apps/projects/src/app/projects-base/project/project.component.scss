@@ -1,4 +1,4 @@
-@import 'vars';
+@use 'vars';
 
 .project {
   $padding: 30px;
@@ -10,7 +10,7 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  @include highlightable;
+  @include vars.highlightable;
   p {
     margin: 0;
     text-align: center;
@@ -23,7 +23,7 @@
       &.title {
         &:hover {
           a {
-            color: $colorContent2;
+            color: vars.$colorContent2;
           }
         }
       }
@@ -39,7 +39,7 @@
     }
     .stars {
       .filled {
-        color: $colorAccent2;
+        color: vars.$colorAccent2;
       }
     }
   }

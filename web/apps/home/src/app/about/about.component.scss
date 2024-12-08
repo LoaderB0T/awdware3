@@ -1,4 +1,4 @@
-@import 'vars';
+@use 'vars';
 
 .main-container {
   display: flex;
@@ -6,11 +6,11 @@
   justify-content: center;
   align-items: center;
   gap: 50px;
-  @include not-phone {
+  @include vars.not-phone {
     margin: 40px;
     width: calc(100% - 80px);
   }
-  @include phone {
+  @include vars.phone {
     margin: 20px;
     width: calc(100% - 40px);
   }
@@ -21,34 +21,34 @@
     display: flex;
     margin-bottom: 1em;
     border-radius: 0 40px 40px 40px;
-    @include not-phone {
+    @include vars.not-phone {
       width: 800px;
     }
-    @include phone {
+    @include vars.phone {
       width: 100%;
       max-width: max-content;
       flex-direction: column;
       align-items: center;
     }
-    @include highlightable;
+    @include vars.highlightable;
     &:hover {
       img {
         transform: scale(1.1);
       }
     }
     img {
-      @include not-phone {
+      transition: vars.$tranNormalLinear;
+      background-color: rgb(241 241 241);
+      border-radius: 0 40px 0 40px;
+      @include vars.not-phone {
         min-width: 300px; // Image smaller during load without this...
         width: 300px;
         height: 300px;
       }
-      @include phone {
+      @include vars.phone {
         min-width: min(300px, 100%); // Image smaller during load without this...
         width: min(300px, 100%);
       }
-      transition: $tranNormalLinear;
-      background-color: rgb(241 241 241);
-      border-radius: 0 40px 0 40px;
     }
     .text-details {
       padding-left: 30px;
@@ -57,7 +57,7 @@
       flex-direction: column;
       white-space: pre-wrap;
       h1 {
-        @include phone {
+        @include vars.phone {
           ::ng-deep {
             .arrow {
               display: none;
@@ -100,7 +100,7 @@
       display: flex;
       gap: 20px;
       a {
-        @include hover-scale;
+        @include vars.hover-scale;
         img {
           height: 60px;
         }

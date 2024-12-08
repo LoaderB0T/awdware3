@@ -1,4 +1,4 @@
-@import 'vars';
+@use 'vars';
 
 .content {
   width: 100%;
@@ -13,12 +13,12 @@
     overflow: visible;
     white-space: pre-wrap;
     word-break: break-all;
-    @include not-phone {
+    @include vars.not-phone {
       width: calc(50% + 282px);
       max-width: 95%;
       font-size: min(50px, (100vw - 160px) * 0.075);
     }
-    @include phone {
+    @include vars.phone {
       width: calc(100% - 20px);
       font-size: calc((100vw - 20px) * 0.06);
       padding: 0 10px;
@@ -26,7 +26,7 @@
 
     ::ng-deep {
       .highlight {
-        color: $colorAccent1;
+        color: vars.$colorAccent1;
       }
     }
     .link {
@@ -34,23 +34,23 @@
       text-decoration: underline;
       text-decoration-style: dotted;
       &:focus-visible {
-        color: $colorAccent2;
+        color: vars.$colorAccent2;
       }
     }
 
     .action-icon {
       position: absolute;
       bottom: -40px;
-      @include not-phone {
+      font-size: 28px;
+      @include vars.not-phone {
         left: 0;
       }
-      @include phone {
+      @include vars.phone {
         left: 10px;
       }
-      font-size: 28px;
-      @include clickable;
+      @include vars.clickable;
       &:focus-visible {
-        color: $colorAccent2;
+        color: vars.$colorAccent2;
       }
     }
   }
