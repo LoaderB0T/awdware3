@@ -1,4 +1,4 @@
-@import 'vars';
+@use 'vars';
 
 $menuWidth: 100px;
 $phoneMenuButtonHeight: 60px;
@@ -19,12 +19,12 @@ $phoneMenuButtonHeight: 60px;
       right: 0;
       z-index: 2;
       overflow: scroll;
-      @include not-phone {
+      @include vars.not-phone {
         height: 100%;
         width: calc(100vw - $menuWidth);
         left: $menuWidth;
       }
-      @include phone {
+      @include vars.phone {
         height: calc(100% - $phoneMenuButtonHeight);
         top: $phoneMenuButtonHeight;
         width: 100vw;
@@ -37,23 +37,23 @@ $phoneMenuButtonHeight: 60px;
         justify-content: center;
         align-items: center;
         min-width: min-content;
-        @include not-phone {
-          min-height: calc(100vh - $safeScrollbarWidth);
-          max-width: calc(100vw - $menuWidth - $safeScrollbarWidth);
+        @include vars.not-phone {
+          min-height: calc(100vh - vars.$safeScrollbarWidth);
+          max-width: calc(100vw - $menuWidth - vars.$safeScrollbarWidth);
         }
-        @include phone {
-          max-width: calc(100vw - $safeScrollbarWidth);
-          min-height: calc(100vh - $safeScrollbarWidth - $phoneMenuButtonHeight);
+        @include vars.phone {
+          max-width: calc(100vw - vars.$safeScrollbarWidth);
+          min-height: calc(100vh - vars.$safeScrollbarWidth - $phoneMenuButtonHeight);
         }
       }
     }
     awd-menu {
       height: 100%;
-      @include not-phone {
+      @include vars.not-phone {
         z-index: 1;
         width: $menuWidth;
       }
-      @include phone {
+      @include vars.phone {
         z-index: 3;
         width: 100vw;
         &:not(.open) {
@@ -70,12 +70,12 @@ $phoneMenuButtonHeight: 60px;
     bottom: 0;
     margin: auto;
     z-index: 0;
-    @include not-phone {
+    @include vars.not-phone {
       width: 90%;
       max-width: calc(100% - $menuWidth);
       left: $menuWidth;
     }
-    @include phone {
+    @include vars.phone {
       left: 20px;
       width: calc(100% - 20px);
       max-width: unset;

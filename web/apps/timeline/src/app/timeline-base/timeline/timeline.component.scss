@@ -1,15 +1,15 @@
-@import 'vars';
+@use 'vars';
 
 :host {
-  @include not-phone {
-    top: 0;
-    position: fixed;
-  }
   height: 100vh;
   width: 210px;
   overflow: hidden;
   mask-image: linear-gradient(to bottom, transparent 15%, black, transparent 85%);
-  @include phone {
+  @include vars.not-phone {
+    top: 0;
+    position: fixed;
+  }
+  @include vars.phone {
     width: 100%;
     height: 200px;
     mask-image: linear-gradient(to right, transparent 0%, black, transparent 100%);
@@ -22,56 +22,56 @@ $sectionSize: 220px;
   width: 100%;
   display: flex;
   position: relative;
-  @include phone {
+  user-select: none;
+  @include vars.phone {
     height: 100%;
     flex-direction: row;
     left: calc(100% / 2 - $sectionSize / 2 - $sectionSize * var(--selected-section-index));
-    transition: left $tranBezierMediumOvershoot;
+    transition: left vars.$tranBezierMediumOvershoot;
   }
-  @include not-phone {
+  @include vars.not-phone {
     height: 100vh;
     flex-direction: column;
     top: calc(50vh - $sectionSize / 2 - $sectionSize * var(--selected-section-index));
-    transition: top $tranBezierMediumOvershoot;
+    transition: top vars.$tranBezierMediumOvershoot;
     position: fixed;
   }
-  user-select: none;
   .section-wrapper {
-    @include phone {
-      width: $sectionSize;
-      flex-direction: column;
-    }
-    @include not-phone {
-      height: $sectionSize;
-      width: fit-content;
-    }
     flex-shrink: 0;
     display: flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    @include vars.phone {
+      width: $sectionSize;
+      flex-direction: column;
+    }
+    @include vars.not-phone {
+      height: $sectionSize;
+      width: fit-content;
+    }
     &.selected {
       cursor: unset;
     }
     .dots {
       display: flex;
-      @include phone {
+      align-items: center;
+      justify-content: space-around;
+      @include vars.phone {
         flex-direction: row;
         width: 100%;
         height: 40px;
         flex-shrink: 0;
       }
-      @include not-phone {
+      @include vars.not-phone {
         flex-direction: column;
         height: 100%;
         width: 40px;
       }
-      align-items: center;
-      justify-content: space-around;
       i {
         transition:
-          font-size $tranSlowLinear,
-          color $tranSlowLinear;
+          font-size vars.$tranSlowLinear,
+          color vars.$tranSlowLinear;
         font-size: 14px;
         &.lvl3 {
           font-size: 28px;
@@ -86,7 +86,7 @@ $sectionSize: 220px;
         }
         i.lvl3 {
           font-size: 34px;
-          color: $colorAccent2;
+          color: vars.$colorAccent2;
         }
       }
     }
@@ -94,10 +94,10 @@ $sectionSize: 220px;
       display: flex;
       align-items: center;
       gap: 10px;
-      transition: font-size $tranBezierMediumOvershoot;
+      transition: font-size vars.$tranBezierMediumOvershoot;
       padding: 20px;
       .year-string {
-        font-size: $fontSizeGiant;
+        font-size: vars.$fontSizeGiant;
         display: flex;
         flex-direction: column;
         justify-content: center;

@@ -5,7 +5,7 @@ interface AwdLetContext<T> {
   $implicit: T;
 }
 
-@Directive({ selector: '[awdLet]' })
+@Directive({ standalone: false, selector: '[awdLet]' })
 export class AwdLetDirective<T> {
   public static awdLetUseIfTypeGuard: void;
   static ngTemplateGuard_awdLet: 'binding';

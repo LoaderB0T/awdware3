@@ -5,7 +5,6 @@ import { timelime, TimelineEntryViewModel } from '../timeline';
 
 @Component({
   selector: 'awd-timeline',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss'],

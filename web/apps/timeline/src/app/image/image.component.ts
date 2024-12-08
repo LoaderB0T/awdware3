@@ -1,4 +1,4 @@
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -19,8 +19,7 @@ function toNumber(value: string | number): number {
 }
 
 @Component({
-  standalone: true,
-  imports: [CommonModule, TranslateModule, ResourceMapModule, NgOptimizedImage],
+  imports: [CommonModule, TranslateModule, ResourceMapModule],
   selector: 'awd-image',
   templateUrl: './image.component.html',
   styleUrls: ['./image.component.scss'],
