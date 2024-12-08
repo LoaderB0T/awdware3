@@ -1,6 +1,11 @@
 @import 'vars';
 
 .main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
   @include not-phone {
     margin: 40px;
     width: calc(100% - 80px);
@@ -9,11 +14,6 @@
     margin: 20px;
     width: calc(100% - 40px);
   }
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
   @media (max-height: 1020px) {
     gap: 0;
   }

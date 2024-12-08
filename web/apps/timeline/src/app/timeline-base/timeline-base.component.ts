@@ -14,7 +14,6 @@ import { timelime, TimelineEntry } from './timeline';
 import { TimelineComponent } from './timeline/timeline.component';
 
 @Component({
-  standalone: true,
   imports: [CommonModule, TranslateModule, TimelineComponent],
   templateUrl: './timeline-base.component.html',
   styleUrls: ['./timeline-base.component.scss'],

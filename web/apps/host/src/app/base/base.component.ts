@@ -27,6 +27,7 @@ const konamiCode = [
 ];
 
 @Component({
+  standalone: false,
   selector: 'awd-base',
   templateUrl: './base.component.html',
   styleUrls: ['./base.component.scss'],

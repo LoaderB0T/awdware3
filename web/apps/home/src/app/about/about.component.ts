@@ -12,6 +12,7 @@ const typedFac = Typed.factory({
   update: (sig, text) => sig.set(text),
 });
 @Component({
+  standalone: false,
   selector: 'awd-about',
   templateUrl: 'about.component.html',
   styleUrls: ['about.component.scss'],

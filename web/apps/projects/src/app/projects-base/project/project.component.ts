@@ -15,6 +15,7 @@ import { RepoInfoService } from '../../services/repo-info.service';
 import { Project } from '../projects';
 
 @Component({
+  standalone: false,
   selector: 'awd-project',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.scss'],
@@ -26,7 +27,7 @@ export class ProjectComponent implements OnInit {
   public readonly repoInfo = signal<RepoInfo | null>(null);
   public readonly lang: Signal<string | null>;
 
-  @Input({required: true}) project!: Project;
+  @Input({ required: true }) project!: Project;
 
   constructor(starsService: RepoInfoService, translateService: TranslateService) {
     this._repoInfoService = starsService;

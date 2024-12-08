@@ -18,6 +18,7 @@ import { PreloadService, TranslationService } from '@awdware/shared';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class HomeComponent implements OnInit {
   private readonly _typedFac = Typed.factory({

@@ -29,17 +29,14 @@ export class MenuComponent {
 
     this.menuItems = this._menuService.menuItems;
     this.menuOpen = this._menuService.menuOpen;
-    effect(
-      () => {
-        const activeItem = this._menuService.activeMenuItem();
-        const el = document.getElementById(`menu-item-${activeItem}`);
-        if (el) {
-          this.activeMenuItemY.set(el.offsetTop - 8); // 16px is the additional height of the line
-          this.activeMenuItemId.set(activeItem);
-        }
-      },
-      { allowSignalWrites: true }
-    );
+    effect(() => {
+      const activeItem = this._menuService.activeMenuItem();
+      const el = document.getElementById(`menu-item-${activeItem}`);
+      if (el) {
+        this.activeMenuItemY.set(el.offsetTop - 8); // 16px is the additional height of the line
+        this.activeMenuItemId.set(activeItem);
+      }
+    });
   }
 
   public clickedItem(event: MouseEvent | null, menuItem: MenuItem) {

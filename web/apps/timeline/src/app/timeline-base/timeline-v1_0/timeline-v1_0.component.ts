@@ -7,7 +7,6 @@ import { TranslationService } from '@awdware/shared';
 import { ImageComponent } from '../../image/image.component';
 
 @Component({
-  standalone: true,
   imports: [CommonModule, TranslateModule, ImageComponent],
   templateUrl: './timeline-v1_0.component.html',
   styleUrls: ['./timeline-v1_0.component.scss'],

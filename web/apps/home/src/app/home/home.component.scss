@@ -10,6 +10,9 @@
 
   #homeBox {
     position: relative;
+    overflow: visible;
+    white-space: pre-wrap;
+    word-break: break-all;
     @include not-phone {
       width: calc(50% + 282px);
       max-width: 95%;
@@ -20,9 +23,6 @@
       font-size: calc((100vw - 20px) * 0.06);
       padding: 0 10px;
     }
-    overflow: visible;
-    white-space: pre-wrap;
-    word-break: break-all;
 
     ::ng-deep {
       .highlight {

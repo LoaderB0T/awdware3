@@ -32,9 +32,6 @@ export class MenuService {
     if (!menuItems.some(x => x.id === id)) {
       throw new Error(`Menu item with id ${id} does not exist`);
     }
-    // Workaround for ERROR Error: NG0600: Writing to signals is not allowed in a `computed` or an `effect` by default.
-    setTimeout(() => {
-      this.activeMenuItem.set(id);
-    });
+    this.activeMenuItem.set(id);
   }
 }
