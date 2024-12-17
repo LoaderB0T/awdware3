@@ -5,7 +5,7 @@ const config: PlaywrightTestConfig = {
   testDir: './tests',
   timeout: 30 * 1000,
   expect: {
-    timeout: 5000
+    timeout: 5000,
   },
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
@@ -15,29 +15,28 @@ const config: PlaywrightTestConfig = {
   use: {
     actionTimeout: 0,
     baseURL: 'http://localhost:4200',
-    trace: 'on-first-retry'
+    trace: 'on-first-retry',
   },
   projects: [
     {
       name: 'chromium',
       use: {
-        ...devices['Desktop Chrome']
-      }
+        ...devices['Desktop Chrome'],
+      },
     },
     {
       name: 'firefox',
       use: {
-        ...devices['Desktop Firefox']
-      }
-    }
+        ...devices['Desktop Firefox'],
+      },
+    },
   ],
   outputDir: 'test-results/',
-  webServer: process.env.CI
-    ? {
-        command: 'pnpm run start',
-        port: 4200
-      }
-    : undefined
+  webServer: {
+    reuseExistingServer: true,
+    command: 'pnpm run start',
+    port: 4200,
+  },
 };
 
 export default config;

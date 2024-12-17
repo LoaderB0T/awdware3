@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { Router, RouterModule, Routes } from '@angular/router';
+import { Router, Routes } from '@angular/router';
 import { resourceMapper, RouterEntryService } from 'ng-dynamic-mf';
 
 import { PreloadService, MenuItem, MenuService, randomInt } from '@awdware/shared';
@@ -35,7 +35,7 @@ const userIcons = [
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule],
 })
 export class HomeLazyModule {
   private _currentUserIcon = '';
@@ -62,7 +62,7 @@ export class HomeLazyModule {
       skills.map(s =>
         resourceMapper(
           'home',
-          `assets/img/${  s.imageFilename ? s.imageFilename : `logo_${s.image}.svg`}`
+          `assets/img/${s.imageFilename ? s.imageFilename : `logo_${s.image}.svg`}`
         )
       )
     );

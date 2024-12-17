@@ -9,7 +9,7 @@ import {
   signal,
 } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { ResourceMapModule } from 'ng-dynamic-mf';
+import { ResourceMapPipe } from 'ng-dynamic-mf';
 
 function toBoolean(value: string | boolean): boolean {
   return value !== null && `${value}` !== 'false';
@@ -19,7 +19,7 @@ function toNumber(value: string | number): number {
 }
 
 @Component({
-  imports: [CommonModule, TranslateModule, ResourceMapModule],
+  imports: [CommonModule, TranslateModule, ResourceMapPipe],
   selector: 'awd-image',
   templateUrl: './image.component.html',
   styleUrls: ['./image.component.scss'],

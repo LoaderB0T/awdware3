@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HtmlHeadService, ResourceMapModule } from 'ng-dynamic-mf';
+import { HtmlHeadService, ResourceMapPipe } from 'ng-dynamic-mf';
 import { DynamicTranslationService } from 'ng-dynamic-mf/translate';
 
 import { devicons, fontawesome, font_montserrat } from '@awdware/externals';
@@ -33,7 +33,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [ProjectsBaseComponent, ProjectComponent],
-  imports: [CommonModule, SharedModule, ResourceMapModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, SharedModule, ResourceMapPipe, RouterModule.forChild(routes)],
 })
 export class ProjectsModule {
   constructor(

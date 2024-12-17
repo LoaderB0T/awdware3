@@ -7,9 +7,15 @@
   "targets": {
     "build": {
       "executor": "@angular-architects/native-federation:build",
-      "options": {
-        "target": "host:build-ng:production"
-      }
+      "configurations": {
+        "production": {
+          "target": "host:build-ng:production"
+        },
+        "development": {
+          "target": "host:build-ng:development"
+        }
+      },
+      "defaultConfiguration": "production"
     },
     "serve": {
       "executor": "@angular-architects/native-federation:build",

@@ -1,8 +1,8 @@
 import { NgModule, provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
-import { MissingTranslationHandler, TranslateModule } from '@ngx-translate/core';
+import { provideRouter, RouterModule, withEnabledBlockingInitialNavigation } from '@angular/router';
+import { MissingTranslationHandler, provideTranslateService } from '@ngx-translate/core';
 import { HtmlHeadService, loadedModules } from 'ng-dynamic-mf';
 
 import { SharedModule, ThemeService, TranslationService } from '@awdware/shared';
@@ -16,20 +16,17 @@ import { MyMissingTranslationHandler } from './services/my-missing-translation-h
 
 @NgModule({
   declarations: [AppComponent, BaseComponent, BgComponent, MenuComponent],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
-    SharedModule,
-    BrowserAnimationsModule,
-    TranslateModule.forRoot({
+  imports: [BrowserModule, SharedModule, BrowserAnimationsModule, loadedModules, RouterModule],
+  providers: [
+    provideExperimentalZonelessChangeDetection(),
+    provideRouter(routes, withEnabledBlockingInitialNavigation()),
+    provideTranslateService({
       missingTranslationHandler: {
         provide: MissingTranslationHandler,
         useClass: MyMissingTranslationHandler,
       },
     }),
-    loadedModules,
   ],
-  providers: [provideExperimentalZonelessChangeDetection()],
   bootstrap: [AppComponent],
 })
 export class AppModule {

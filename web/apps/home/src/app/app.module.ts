@@ -1,7 +1,7 @@
 import { NgModule, provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
+import { provideRouter, RouterModule, withEnabledBlockingInitialNavigation } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { SharedModule, ThemeService, TranslationService } from '@awdware/shared';
@@ -15,17 +15,20 @@ import { RemoteEntryModule } from './home-remote.module';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
+    RouterModule,
+    SharedModule,
+    BrowserAnimationsModule,
+    TranslateModule.forRoot({}),
+  ],
+  providers: [
+    provideExperimentalZonelessChangeDetection(),
+    provideRouter([
       {
         path: 'home',
         loadChildren: () => import('./home.module').then(m => m.HomeModule),
       },
     ]),
-    SharedModule,
-    BrowserAnimationsModule,
-    TranslateModule.forRoot({}),
   ],
-  providers: [provideExperimentalZonelessChangeDetection()],
   bootstrap: [AppComponent],
 })
 export class AppModule {
