@@ -22,12 +22,15 @@ import { RemoteEntryModule } from './home-remote.module';
   ],
   providers: [
     provideExperimentalZonelessChangeDetection(),
-    provideRouter([
-      {
-        path: 'home',
-        loadChildren: () => import('./home.module').then(m => m.HomeModule),
-      },
-    ]),
+    provideRouter(
+      [
+        {
+          path: 'home',
+          loadChildren: () => import('./home.module').then(m => m.HomeModule),
+        },
+      ],
+      withEnabledBlockingInitialNavigation()
+    ),
   ],
   bootstrap: [AppComponent],
 })
