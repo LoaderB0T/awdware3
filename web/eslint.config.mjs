@@ -3,12 +3,7 @@ import awdwareAngular from '@awdware/eslint-config-angular';
 
 export default [
   {
-    ignores: [
-      '**/node_modules',
-      '**/assets/modules',
-      '**/federation.config.js',
-      '**/jest.config.ts',
-    ],
+    ignores: ['**/node_modules', '**/assets/modules', '**/jest.config.ts', '**/index.html'],
   },
   {
     languageOptions: {
@@ -22,8 +17,6 @@ export default [
   ...nx.configs['flat/base'],
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],
-  ...nx.configs['flat/angular'],
-  ...nx.configs['flat/angular-template'],
   ...awdwareAngular,
   {
     files: ['**/*.ts', '**/*.tsx'],

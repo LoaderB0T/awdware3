@@ -16,15 +16,11 @@ And it is live: [awdware.de](https://awdware.de)!
 
 ## Tech-Stack 🔥
 
-✅ Angular 16
+✅ Angular 19
 
 ✅ Nx Monorepo
 
-✅ Module Federation
-
-✅ [ng-dynamic-mf](https://github.com/LoaderB0T/ng-dynamic-mf) for fully dynamic modules
-
-✅ [nx-dynamic-mf](https://github.com/LoaderB0T/nx-dynamic-mf) helper for ng-dynamic-mf & Nx
+✅ Standalone API
 
 ## Contributing 🧑🏻‍💻
 

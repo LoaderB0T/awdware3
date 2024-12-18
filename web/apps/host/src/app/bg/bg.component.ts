@@ -1,12 +1,15 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, OnInit, HostListener, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({
+  standalone: true,
+  imports: [AsyncPipe],
   selector: 'awd-bg',
   templateUrl: './bg.component.html',
   styleUrls: ['./bg.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BgComponent implements OnInit {
   public key_a$ = new BehaviorSubject(false);

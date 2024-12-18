@@ -1,0 +1,54 @@
+@use 'vars';
+
+.timeline-base-container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: safe center;
+  @include vars.not-phone {
+    max-width: 80%;
+  }
+  .timeline-base {
+    display: flex;
+    align-items: safe center;
+    gap: 40px;
+    min-height: 800px;
+    @include vars.phone {
+      width: calc(100vw - vars.$scollbarWidth);
+      flex-direction: column;
+    }
+    .timeline {
+      display: flex;
+      align-items: center;
+      @include vars.not-phone {
+        width: 200px;
+        height: 100%;
+        position: fixed;
+      }
+      @include vars.phone {
+        width: 100%;
+      }
+    }
+    .timeline-spacer {
+      @include vars.not-phone {
+        width: 200px;
+      }
+    }
+    .timeline-content {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 32px;
+      @include vars.not-phone {
+        width: calc(100% - 200px);
+      }
+      .placeholder {
+        height: 500px;
+      }
+      .timeline-item {
+        padding: 20px;
+        @include vars.highlightable;
+      }
+    }
+  }
+}

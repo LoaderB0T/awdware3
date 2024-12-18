@@ -1,12 +1,12 @@
-@import 'vars';
+@use 'vars';
 
 .cls-1 {
-  fill: $colorBg2;
+  fill: vars.$colorBg2;
 }
 
 .cls-2 {
-  fill: $colorBg3;
-  transition: fill $tranNormalEased;
+  fill: vars.$colorBg3;
+  transition: fill vars.$tranNormalEased;
 }
 
 .logo-container {
@@ -23,5 +23,5 @@
 }
 
 .active {
-  fill: $colorAccent1;
+  fill: vars.$colorAccent1;
 }

@@ -6,35 +6,24 @@
   "prefix": "awd",
   "targets": {
     "build": {
-      "executor": "@angular-architects/native-federation:build",
-      "options": {
-        "target": "host:build-ng:production"
-      }
-    },
-    "serve": {
-      "executor": "@angular-architects/native-federation:build",
-      "dependsOn": [{ "target": "_pick-environment", "params": "forward" }],
-      "options": {
-        "target": "host:serve-ng:development",
-        "rebuildDelay": 0,
-        "dev": true
-      }
-    },
-    "build-ng": {
       "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/host",
         "index": "apps/host/src/index.html",
         "browser": "apps/host/src/main.ts",
-        "polyfills": ["apps/host/src/polyfills.ts"],
+        "polyfills": [],
         "tsConfig": "apps/host/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/host/src/favicon.ico",
           "apps/host/src/assets",
           "apps/host/src/environment.json",
-          "apps/host/src/modules.json"
+          {
+            "glob": "**/*",
+            "input": "libs/modules/home/src/assets",
+            "output": "/assets/home"
+          }
         ],
         "styles": ["apps/host/src/styles.scss"],
         "scripts": [],
@@ -80,42 +69,17 @@
         "jestConfig": "apps/host/jest.config.ts"
       }
     },
-    "construct": {
-      "executor": "nx-dynamic-mf:construct",
-      "options": {
-        "envSrcFolder": "config/env"
-      }
-    },
-    "hash": {
-      "executor": "nx-dynamic-mf:hash",
-      "options": {
-        "modulesFolder": "modules"
-      }
-    },
-    "serve-ng": {
+    "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "host:build-ng:production"
+          "buildTarget": "host:build:production"
         },
         "development": {
-          "buildTarget": "host:build-ng:development"
+          "buildTarget": "host:build:development"
         }
       },
       "defaultConfiguration": "development"
-    },
-    "_pick-environment": {
-      "executor": "nx-dynamic-mf:pick-cfg",
-      "options": {
-        "envSrcFolder": "config/env"
-      },
-      "configurations": {
-        "local": {
-          "e": "local",
-          "m": "local"
-        }
-      },
-      "defaultConfiguration": "local"
     }
   },
   "tags": []

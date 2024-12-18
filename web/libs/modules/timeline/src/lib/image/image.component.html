@@ -1,0 +1,24 @@
+<button class="image-container" (click)="openFullscreen()">
+  <img class="vignette" [src]="src()" [alt]="alt()" />
+  <div class="original-wrapper">
+    <img class="original" [src]="src()" [alt]="alt()" />
+  </div>
+  <div class="button-container">
+    <span class="button force">
+      {{ 'timeline.fullscreen' | translate }}
+    </span>
+  </div>
+</button>
+
+@if (isFullscreen()) {
+  <button class="fullscreen modal-is-open" (click)="closeFullscreen()">
+    <img
+      [src]="src()"
+      [alt]="alt()"
+      [class.isFull]="isZoom()"
+      (click)="toggleZoom($event)"
+      role="presentation"
+      (keypress)="(false)"
+    />
+  </button>
+}

@@ -15,7 +15,7 @@
     "prepare-dist": "pnpm cpy ../web/dist/apps/host/** ./dist && pnpm cpy ../web/dist/apps/home ./dist/assets/modules && pnpm debug-paths",
     "debug-paths": "ls -R ./dist",
     "start": "pnpm http-server -p 4200 -c-1 ./dist",
-    "test": "pnpm playwright test"
+    "test": "playwright test"
   },
   "prettier": "@awdware/prettier-config",
   "keywords": [],

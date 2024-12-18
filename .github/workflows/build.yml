@@ -40,9 +40,7 @@ jobs:
       - name: Install
         run: pnpm i
       - name: Build apps
-        run: pnpm nx construct host --build -m build -e github --verbose
-      - name: Hash apps
-        run: pnpm nx hash --verbose
+        run: pnpm nx build host
       - name: Lint
         run: pnpm run lint
 
@@ -54,6 +52,9 @@ jobs:
       - name: Copy build into tests/dist folder
         run: mkdir -p dist && cp -r ../web/dist/apps/host/browser/** ./dist
         working-directory: tests
+      # - name: Prepare Playwright
+      #   run: pnpm exec playwright install-deps
+      #   working-directory: tests
       - name: Run Playwright tests
         run: pnpm run test
         working-directory: tests
