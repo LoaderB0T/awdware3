@@ -21,7 +21,7 @@ COPY config/angular.conf /etc/nginx/angular.conf
 COPY config/nginx.conf /etc/nginx/nginx.conf
 COPY config/security-headers.conf /etc/nginx/security-headers.conf
 
-COPY --from=builder /app/dist/apps/host/browser ./
+COPY --from=builder /app/dist/apps/host ./
 ENV PORT 80
 CMD node server/server.mjs
 
