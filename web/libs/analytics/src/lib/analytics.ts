@@ -1,3 +1,5 @@
+import { DOCUMENT } from '@angular/common';
+import { inject, Injectable } from '@angular/core';
 import { environment } from 'ng-dynamic-mf/environment';
 
 type TrackType = (() => void) | ((eventName: string, data?: any) => void);
@@ -6,20 +8,26 @@ type Umami = {
   track: TrackType;
 };
 
-const umamiWindow = window as typeof window & { umami?: Umami };
+@Injectable({ providedIn: 'root' })
+export class AnalyticsService {
+  private readonly _window = inject(DOCUMENT).defaultView;
 
-export const disableAnalytics =
-  localStorage.getItem('disableAnalytics') === 'true' || environment['appUrl'] === 'localhost';
+  private readonly _umamiWindow = this._window as (typeof window & { umami?: Umami }) | null;
 
-export const analytics: Umami = {
-  track: (name: string, data?: object) => {
-    if (disableAnalytics) {
-      return;
-    }
-    try {
-      umamiWindow.umami?.track(name, data);
-    } catch (error) {
-      console.debug('Error while tracking event', error);
-    }
-  },
-};
+  public readonly disableAnalytics =
+    this._umamiWindow?.localStorage?.getItem('disableAnalytics') === 'true' ||
+    environment['appUrl'] === 'localhost';
+
+  public readonly analytics: Umami = {
+    track: (name: string, data?: object) => {
+      if (this.disableAnalytics) {
+        return;
+      }
+      try {
+        this._umamiWindow?.umami?.track(name, data);
+      } catch (error) {
+        console.debug('Error while tracking event', error);
+      }
+    },
+  };
+}

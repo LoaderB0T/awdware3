@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/common';
 import { provideHttpClient } from '@angular/common/http';
 import {
   ApplicationConfig,
@@ -5,10 +6,11 @@ import {
   provideAppInitializer,
   provideExperimentalZonelessChangeDetection,
 } from '@angular/core';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { MissingTranslationHandler, provideTranslateService } from '@ngx-translate/core';
-import { ɵinitializeEnvironment } from 'ng-dynamic-mf/environment';
+import { ɵinitializeEnvironment, setWindow } from 'ng-dynamic-mf/environment';
 
 import { ThemeService, TranslationService } from '@awdware/shared';
 
@@ -29,9 +31,14 @@ export const appConfig: ApplicationConfig = {
     provideAppInitializer(async () => {
       inject(ThemeService).init();
       inject(TranslationService).init();
-      const env = await fetch('environment.json').then(r => r.json());
+      const win = inject(DOCUMENT).defaultView;
+      const env = await fetch(`${win?.location.origin}/environment.json`).then(r => r.json());
+      if (win) {
+        setWindow(win);
+      }
       ɵinitializeEnvironment(env);
     }),
     provideHttpClient(),
+    provideClientHydration(withEventReplay()),
   ],
 };

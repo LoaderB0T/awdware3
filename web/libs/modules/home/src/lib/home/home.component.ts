@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Typed } from 'typed.ts';
 
-import { analytics } from '@awdware/analytics';
+import { AnalyticsService } from '@awdware/analytics';
 import { PreloadService, TranslationService } from '@awdware/shared';
 
 @Component({
@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
   private readonly _translateService = inject(TranslateService);
   private readonly _translationService = inject(TranslationService);
   private readonly _router = inject(Router);
+  private readonly _analyticsService = inject(AnalyticsService);
   protected readonly langChanged = signal(false);
 
   protected readonly _typing1 = this._typedFac({ noSpecialCharErrors: true });
@@ -118,7 +119,7 @@ export class HomeComponent implements OnInit {
   }
 
   public async restart() {
-    analytics.track('home.restart');
+    this._analyticsService.analytics.track('home.restart');
     this.skip.set(false);
     await Promise.all([
       this._typing1.reset(true),
@@ -131,7 +132,7 @@ export class HomeComponent implements OnInit {
   }
 
   public fastForward() {
-    analytics.track('home.fastForward');
+    this._analyticsService.analytics.track('home.fastForward');
     this.skip.set(true);
     this._typing1.fastForward();
     this._typing2.fastForward();
@@ -139,7 +140,7 @@ export class HomeComponent implements OnInit {
   }
 
   public learnMore() {
-    analytics.track('home.learnMore');
+    this._analyticsService.analytics.track('home.learnMore');
     this._router.navigate(['home', 'about'], { preserveFragment: true });
   }
 }

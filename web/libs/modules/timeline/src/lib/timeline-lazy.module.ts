@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { inject, NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { RouterEntryService } from 'ng-dynamic-mf';
 
-import { MenuItem, MenuService } from '@awdware/shared';
+import { IsProdService, MenuItem, MenuService } from '@awdware/shared';
 
 const routes: Routes = [
   {
@@ -18,8 +18,8 @@ const routes: Routes = [
   imports: [CommonModule, RouterModule],
 })
 export class TimelineLazyModule {
-  constructor(routerEntryService: RouterEntryService, menuService: MenuService, router: Router) {
-    routerEntryService.registerRoutes(routes);
+  constructor() {
+    inject(RouterEntryService).registerRoutes(routes);
     const menuItems: MenuItem[] = [
       {
         id: 'timeline',
@@ -27,11 +27,13 @@ export class TimelineLazyModule {
         iconActive: 'timeline-arrow',
         title: 'Timeline',
         action: () => {
-          router.navigate(['timeline'], { preserveFragment: true });
+          inject(Router).navigate(['timeline'], { preserveFragment: true });
         },
         order: 5,
       },
     ];
-    menuService.addMenuItems(...menuItems);
+    if (!inject(IsProdService).isProd) {
+      inject(MenuService).addMenuItems(...menuItems);
+    }
   }
 }

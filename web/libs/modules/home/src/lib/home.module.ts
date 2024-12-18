@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
+import { inject, NgModule } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { HtmlHeadService } from 'ng-dynamic-mf';
 import { DynamicTranslationService } from 'ng-dynamic-mf/translate';
 
-import { disableAnalytics } from '@awdware/analytics';
+import { AnalyticsService } from '@awdware/analytics';
 import { analytics, fontawesome, font_montserrat } from '@awdware/externals';
 
 import { routes } from './routes';
@@ -19,7 +19,7 @@ export class HomeModule {
   ) {
     htmlHeadService.addElement(font_montserrat);
     htmlHeadService.addElement(fontawesome);
-    if (!disableAnalytics) {
+    if (!inject(AnalyticsService).disableAnalytics) {
       htmlHeadService.addElement(analytics);
     }
     dynamicTranslationService.registerTranslationSet('home', {

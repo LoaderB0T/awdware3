@@ -1,26 +1,28 @@
-import { Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { inject, Injectable } from '@angular/core';
 
 import { GitHubService } from './github.service';
 import { RepoInfo } from '../models/compact-repo-info.model';
 import { InfoStorage } from '../models/info-storage.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RepoInfoService {
   private readonly _gitHubService: GitHubService;
+  private readonly _localStorage = inject(DOCUMENT).defaultView?.localStorage;
 
   constructor(gitHubService: GitHubService) {
     this._gitHubService = gitHubService;
   }
 
   private getSavedRepos(): InfoStorage {
-    const existingRepoInfoValue = localStorage.getItem('repoinfo');
+    const existingRepoInfoValue = this._localStorage?.getItem('repoinfo');
     return existingRepoInfoValue ? JSON.parse(existingRepoInfoValue) : {};
   }
 
   private setSavedRepos(stars: InfoStorage) {
-    localStorage.setItem('repoinfo', JSON.stringify(stars));
+    this._localStorage?.setItem('repoinfo', JSON.stringify(stars));
   }
 
   // GitHub API has a limit of 60 requests per hour, so we need to cache the results for an hour
@@ -40,7 +42,7 @@ export class RepoInfoService {
         username: repoInfo.owner.login,
         description: repoInfo.description ?? '',
         language: repoInfo.language ?? '',
-        timeStamp: Date.now()
+        timeStamp: Date.now(),
       };
       this.setSavedRepos(existingRepos);
       return existingRepos[repoKey];

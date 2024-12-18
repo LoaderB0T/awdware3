@@ -1,29 +1,30 @@
-import { Injectable, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { inject, Injectable, signal } from '@angular/core';
 
+import { StorageService } from './storage.service';
 import { Theme } from '../models/theme.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeService {
-  private _globalStyleSheet?: CSSStyleSheet;
-
+  private readonly _document = inject(DOCUMENT);
+  private _globalStyleSheet?: HTMLStyleElement;
+  private readonly _storage = inject(StorageService).init('theme', 'dark');
   private readonly themes: Theme[] = [this.darkTheme, this.lightTheme];
-  public selectedTheme = signal<Theme>(this.themes[0]);
+  public readonly selectedTheme = signal<Theme>(this.themes[0]);
 
   public init() {
     if (this._globalStyleSheet) {
       return;
     }
-    const styleSheet = document.createElement('style');
+    const styleSheet = this._document.createElement('style');
     styleSheet.id = 'global-stylesheet';
-    document.head.appendChild(styleSheet);
-    if (!styleSheet.sheet) {
-      throw new Error('Could not create global stylesheet');
-    }
-    this._globalStyleSheet = styleSheet.sheet;
+    this._document.head.appendChild(styleSheet);
 
-    const savedThemeName = localStorage.getItem('theme');
+    this._globalStyleSheet = styleSheet;
+
+    const savedThemeName = this._storage.value;
     if (savedThemeName) {
       const savedTheme = this.themes.find(x => x.name === savedThemeName);
       if (savedTheme) {
@@ -56,11 +57,12 @@ export class ThemeService {
       );
     }
 
-    if (this._globalStyleSheet.cssRules.length > 0) {
-      this._globalStyleSheet.deleteRule(0);
-    }
-    this._globalStyleSheet.insertRule(this.getRuleString(theme), 0);
-    localStorage.setItem('theme', theme.name);
+    const styleElement = this._document.createElement('style');
+    styleElement.textContent = this.getRuleString(theme);
+    this._globalStyleSheet.replaceWith(styleElement);
+    this._globalStyleSheet = styleElement;
+
+    this._storage.value = theme.name;
     this.selectedTheme.set(theme);
   }
 

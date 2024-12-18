@@ -1,7 +1,10 @@
+import { DOCUMENT } from '@angular/common';
 import { Injectable, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
+
+import { StorageService } from './storage.service';
 
 const internalLangId = {
   en: '',
@@ -14,6 +17,8 @@ export declare type LangId = keyof typeof internalLangId;
 })
 export class TranslationService {
   private readonly _translateService = inject(TranslateService);
+  private readonly _storage = inject(StorageService).init('language', 'en');
+  private readonly _document = inject(DOCUMENT);
   private readonly _languageChanged = new Subject<LangId>();
   public readonly languageChanged$ = this._languageChanged.asObservable();
   public readonly currentLang = toSignal(this._languageChanged, {
@@ -26,14 +31,14 @@ export class TranslationService {
   }
 
   public setLanguage(langId: LangId) {
-    localStorage.setItem('language', langId);
-    document.getElementsByTagName('html')[0]?.setAttribute('lang', langId);
+    this._storage.value = langId;
+    this._document.getElementsByTagName('html')[0]?.setAttribute('lang', langId);
     this._translateService.use(langId);
     this._languageChanged.next(langId);
   }
 
   private getLanguageId(): LangId {
-    const langId = localStorage.getItem('language');
+    const langId = this._storage.value;
     if (langId && this.isSupportedLanguage(langId)) {
       return langId as LangId;
     } else {

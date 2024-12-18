@@ -1,29 +1,25 @@
+import { DOCUMENT } from '@angular/common';
 import {
   Directive,
   ElementRef,
   HostListener,
+  inject,
   Input,
   type OnDestroy,
   Renderer2,
 } from '@angular/core';
 
 @Directive({
-  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[tooltip]',
 })
 export class TooltipDirective implements OnDestroy {
   public shown: boolean = false;
-  private readonly _renderer: Renderer2;
-  private readonly _el: ElementRef<HTMLElement>;
-  private _tooltip: HTMLSpanElement;
+  private readonly _renderer = inject(Renderer2);
+  private readonly _el = inject(ElementRef<HTMLElement>);
+  private _tooltip?: HTMLSpanElement;
+  private readonly _window = inject(DOCUMENT).defaultView;
 
   @Input('tooltip') tooltipTitle: string = '';
-
-  constructor(el: ElementRef, renderer: Renderer2) {
-    this._el = el;
-    this._renderer = renderer;
-    this._tooltip = this._renderer.createElement('span');
-  }
 
   @HostListener('mouseenter') onMouseEnter() {
     if (!this.shown) {
@@ -44,21 +40,23 @@ export class TooltipDirective implements OnDestroy {
 
     this.shown = true;
 
-    this._tooltip = this._renderer.createElement('span');
-    this._tooltip.classList.add('tooltip');
+    const tooltip = this._renderer.createElement('span');
+    this._tooltip = tooltip;
 
-    this._tooltip.innerText = this.tooltipTitle;
+    tooltip.classList.add('tooltip');
+
+    tooltip.innerText = this.tooltipTitle;
     setTimeout(() => {
-      this._tooltip.classList.add('visible');
+      tooltip.classList.add('visible');
     }, 1);
-    this._renderer.appendChild(document.body, this._tooltip);
+    this._renderer.appendChild(document.body, tooltip);
 
     const hostPos = this._el.nativeElement.getBoundingClientRect();
 
-    const tooltipPos = this._tooltip.getBoundingClientRect();
+    const tooltipPos = tooltip.getBoundingClientRect();
 
     const scrollPos =
-      window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      this._window?.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
     let top = hostPos.top - tooltipPos.height - 10;
 
@@ -68,7 +66,7 @@ export class TooltipDirective implements OnDestroy {
 
     let left = hostPos.left + (hostPos.width - tooltipPos.width) / 2;
 
-    const tooRight = this._tooltip.clientWidth + padding + left - document.body.clientWidth;
+    const tooRight = tooltip.clientWidth + padding + left - document.body.clientWidth;
     if (tooRight > 0) {
       left -= tooRight;
     }
@@ -77,8 +75,8 @@ export class TooltipDirective implements OnDestroy {
       left = padding;
     }
 
-    this._renderer.setStyle(this._tooltip, 'top', `${top + scrollPos}px`);
-    this._renderer.setStyle(this._tooltip, 'left', `${left}px`);
+    this._renderer.setStyle(tooltip, 'top', `${top + scrollPos}px`);
+    this._renderer.setStyle(tooltip, 'left', `${left}px`);
   }
 
   private hide() {
