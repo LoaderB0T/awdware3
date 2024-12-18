@@ -1,3 +1,4 @@
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -26,6 +27,56 @@ const angularApp = new AngularNodeAppEngine();
  * });
  * ```
  */
+
+type CacheEntry = {
+  user: string;
+  repo: string;
+  data: any;
+  timestamp: number;
+};
+
+const githubCache: CacheEntry[] = [];
+
+if (existsSync('.github-cache.json')) {
+  const cacheStr = readFileSync('github-cache.json', 'utf-8');
+  const cache = JSON.parse(cacheStr) as CacheEntry[];
+  githubCache.push(...cache);
+}
+
+app.get('/api/github/:user/:repo', async (req, res) => {
+  const { user, repo } = req.params;
+
+  // GitHub API has a limit of 60 requests per hour, so we need to cache the results for an hour
+  const cacheEntry = githubCache.find(entry => entry.user === user && entry.repo === repo);
+  if (cacheEntry) {
+    if (Date.now() - cacheEntry.timestamp < 1000 * 60 * 60) {
+      return res.json(cacheEntry.data);
+    } else {
+      githubCache.splice(githubCache.indexOf(cacheEntry), 1);
+    }
+  }
+
+  const url = `https://api.github.com/repos/${user}/${repo}`;
+
+  let response: Response;
+  try {
+    response = await fetch(url);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to fetch data from GitHub' });
+    return null;
+  }
+
+  if (!response || !response.ok) {
+    res.status(500).json({ error: 'Failed to fetch data from GitHub' });
+    return;
+  }
+  const json = await response.json();
+  githubCache.push({ user, repo, data: json, timestamp: Date.now() });
+  writeFileSync('.github-cache.json', JSON.stringify(githubCache, null, 2));
+  res.json(json);
+  return;
+});
 
 /**
  * Serve static files from /browser

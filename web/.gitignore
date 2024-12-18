@@ -42,3 +42,4 @@ Thumbs.db
 
 tools/**/*.js.map
 .nx
+.github-cache.json
