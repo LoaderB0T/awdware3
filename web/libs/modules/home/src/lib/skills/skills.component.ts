@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
+
+import { TooltipDirective } from '@awdware/shared';
 
 import { knowledge } from './knowledge';
 import { skills } from './skills';
 import { LogoService } from '../services/logo.service';
-import { TranslatePipe } from '@ngx-translate/core';
-import { TooltipDirective } from '@awdware/shared';
 
 @Component({
   imports: [TranslatePipe, TooltipDirective],

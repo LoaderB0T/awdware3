@@ -1,8 +1,9 @@
 import { inject } from '@angular/core';
 import { Routes } from '@angular/router';
 import { DynamicTranslationService } from 'ng-dynamic-mf/translate';
-import { HomeComponent } from './home/home.component';
+
 import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './home/home.component';
 import { SkillsComponent } from './skills/skills.component';
 
 export const routes: Routes = [

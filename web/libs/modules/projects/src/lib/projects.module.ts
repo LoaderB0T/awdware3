@@ -1,12 +1,11 @@
-import { CommonModule } from '@angular/common';
-import { NgModule, inject } from '@angular/core';
-import { provideRouter, RouterModule, Routes } from '@angular/router';
-import { HtmlHeadService, ResourceMapPipe } from 'ng-dynamic-mf';
+import { NgModule } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { HtmlHeadService } from 'ng-dynamic-mf';
 import { DynamicTranslationService } from 'ng-dynamic-mf/translate';
 
 import { devicons, fontawesome, font_montserrat } from '@awdware/externals';
+
 import { routes } from './routes';
-import { provideTranslateService } from '@ngx-translate/core';
 
 @NgModule({
   providers: [provideRouter(routes)],

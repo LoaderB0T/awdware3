@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-
-import { projects } from './projects';
-import { ProjectComponent } from './project/project.component';
 import { TranslatePipe } from '@ngx-translate/core';
+
+import { ProjectComponent } from './project/project.component';
+import { projects } from './projects';
 
 @Component({
   imports: [ProjectComponent, TranslatePipe],
