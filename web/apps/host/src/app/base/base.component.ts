@@ -1,9 +1,11 @@
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, isPlatformServer } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   HostListener,
+  inject,
+  PLATFORM_ID,
   Signal,
 } from '@angular/core';
 import { Title } from '@angular/platform-browser';
@@ -81,8 +83,10 @@ export class BaseComponent implements AfterViewInit {
     ];
 
     const rndmTitleEmoji = rndmTitleEmojis[randomInt(0, rndmTitleEmojis.length - 1)];
-    // eslint-disable-next-line no-irregular-whitespace
-    title.setTitle(`awdware     ${rndmTitleEmoji}`);
+
+    if (isPlatformServer(inject(PLATFORM_ID))) {
+      title.setTitle(`awdware     ${rndmTitleEmoji}`);
+    }
   }
 
   public ngAfterViewInit(): void {
