@@ -15,12 +15,14 @@ COPY . .
 RUN pnpm nx build host
 
 # stage 2
-FROM nginx:alpine
+FROM node:22-alpine
 
 COPY config/angular.conf /etc/nginx/angular.conf
 COPY config/nginx.conf /etc/nginx/nginx.conf
 COPY config/security-headers.conf /etc/nginx/security-headers.conf
 
-COPY --from=builder /app/dist/apps/host/browser /usr/share/nginx/html
+COPY --from=builder /app/dist/apps/host/browser ./
+ENV PORT 80
+CMD node server/server.mjs
 
 EXPOSE 80

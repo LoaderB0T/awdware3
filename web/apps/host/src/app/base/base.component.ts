@@ -85,6 +85,7 @@ export class BaseComponent implements AfterViewInit {
     const rndmTitleEmoji = rndmTitleEmojis[randomInt(0, rndmTitleEmojis.length - 1)];
 
     if (isPlatformServer(inject(PLATFORM_ID))) {
+      // eslint-disable-next-line no-irregular-whitespace
       title.setTitle(`awdware     ${rndmTitleEmoji}`);
     }
   }
