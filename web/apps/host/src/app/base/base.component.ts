@@ -1,3 +1,4 @@
+import { AsyncPipe } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -12,6 +13,8 @@ import { RectParticle } from 'confetti.ts';
 import { PreloadService, MenuService, randomInt } from '@awdware/shared';
 
 import { slideInAnimation } from './router-animation';
+import { BgComponent } from '../bg/bg.component';
+import { MenuComponent } from '../menu/menu.component';
 
 const konamiCode = [
   'ArrowUp',
@@ -27,7 +30,8 @@ const konamiCode = [
 ];
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [BgComponent, MenuComponent, RouterOutlet, AsyncPipe],
   selector: 'awd-base',
   templateUrl: './base.component.html',
   styleUrls: ['./base.component.scss'],

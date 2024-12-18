@@ -4,7 +4,7 @@ import { analytics } from '@awdware/analytics';
 import { MenuItem, MenuService, ThemeService, TranslationService } from '@awdware/shared';
 
 @Component({
-  standalone: false,
+  standalone: true,
   selector: 'awd-menu',
   templateUrl: 'menu.component.html',
   styleUrls: ['menu.component.scss'],

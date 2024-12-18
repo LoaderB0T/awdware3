@@ -1,9 +1,11 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, OnInit, HostListener, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [AsyncPipe],
   selector: 'awd-bg',
   templateUrl: './bg.component.html',
   styleUrls: ['./bg.component.scss'],

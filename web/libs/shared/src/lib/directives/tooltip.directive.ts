@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 
 @Directive({
-  standalone: false,
   // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[tooltip]',
 })
