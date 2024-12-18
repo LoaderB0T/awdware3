@@ -18,6 +18,7 @@
         "assets": [
           "apps/host/src/favicon.ico",
           "apps/host/src/assets",
+          "apps/host/src/environment.json",
           {
             "glob": "**/*",
             "input": "libs/modules/home/src/assets",

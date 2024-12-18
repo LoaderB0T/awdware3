@@ -40,14 +40,5 @@ Thumbs.db
 
 .angular
 
-apps/host/src/environment.json
-apps/host/src/modules.json
-
-apps/host/src/environment/environment.*.json
-!apps/host/src/environment/environment.default.json
 tools/**/*.js.map
-
 .nx
-
-**/tsconfig.federation.json
-**/environment.json
