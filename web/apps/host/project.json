@@ -7,9 +7,7 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/host",
         "index": "apps/host/src/index.html",
@@ -25,16 +23,22 @@
             "glob": "**/*",
             "input": "libs/modules/home/src/assets",
             "output": "/assets/home"
+          },
+          {
+            "glob": "**/*",
+            "input": "libs/modules/projects/src/assets",
+            "output": "/assets/projects"
+          },
+          {
+            "glob": "**/*",
+            "input": "libs/modules/timeline/src/assets",
+            "output": "/assets/timeline"
           }
         ],
-        "styles": [
-          "apps/host/src/styles.scss"
-        ],
+        "styles": ["apps/host/src/styles.scss"],
         "scripts": [],
         "stylePreprocessorOptions": {
-          "includePaths": [
-            "libs/styles/src/lib"
-          ]
+          "includePaths": ["libs/styles/src/lib"]
         },
         "server": "apps/host/src/main.server.ts",
         "outputMode": "server",
@@ -70,16 +74,12 @@
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": [
-          "eslint {projectRoot}"
-        ]
+        "commands": ["eslint {projectRoot}"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/apps/host"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/apps/host"],
       "options": {
         "jestConfig": "apps/host/jest.config.ts"
       }

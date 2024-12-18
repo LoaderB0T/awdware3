@@ -1,10 +1,12 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  PLATFORM_ID,
   Type,
+  inject,
   signal,
   viewChildren,
 } from '@angular/core';
@@ -21,7 +23,7 @@ import { TimelineComponent } from './timeline/timeline.component';
 })
 export class TimelineBaseComponent implements AfterViewInit {
   protected readonly timeline = timelime;
-  private readonly _observer: IntersectionObserver;
+  private readonly _observer?: IntersectionObserver;
   protected readonly selectedId = signal<string | undefined>(undefined);
 
   private readonly _intersectingIds = new Set<string>();
@@ -31,6 +33,9 @@ export class TimelineBaseComponent implements AfterViewInit {
   protected readonly timelineComponentCache: Record<string, Promise<Type<unknown>>> = {};
 
   constructor() {
+    if (!isPlatformBrowser(inject(PLATFORM_ID))) {
+      return;
+    }
     this._observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
@@ -54,7 +59,7 @@ export class TimelineBaseComponent implements AfterViewInit {
 
   public ngAfterViewInit(): void {
     this.timelineItems().forEach(item => {
-      this._observer.observe(item.nativeElement);
+      this._observer?.observe(item.nativeElement);
     });
   }
 

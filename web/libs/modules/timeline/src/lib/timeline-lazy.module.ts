@@ -20,6 +20,7 @@ const routes: Routes = [
 export class TimelineLazyModule {
   constructor() {
     inject(RouterEntryService).registerRoutes(routes);
+    const router = inject(Router);
     const menuItems: MenuItem[] = [
       {
         id: 'timeline',
@@ -27,7 +28,7 @@ export class TimelineLazyModule {
         iconActive: 'timeline-arrow',
         title: 'Timeline',
         action: () => {
-          inject(Router).navigate(['timeline'], { preserveFragment: true });
+          router.navigate(['timeline'], { preserveFragment: true });
         },
         order: 5,
       },

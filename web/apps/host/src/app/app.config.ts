@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import {
   ApplicationConfig,
   inject,
@@ -38,7 +38,7 @@ export const appConfig: ApplicationConfig = {
       }
       ɵinitializeEnvironment(env);
     }),
-    provideHttpClient(),
+    provideHttpClient(withFetch()),
     provideClientHydration(withEventReplay()),
   ],
 };
