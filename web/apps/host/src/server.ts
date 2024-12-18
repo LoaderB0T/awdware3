@@ -38,7 +38,7 @@ type CacheEntry = {
 const githubCache: CacheEntry[] = [];
 
 if (existsSync('.github-cache.json')) {
-  const cacheStr = readFileSync('github-cache.json', 'utf-8');
+  const cacheStr = readFileSync('.github-cache.json', 'utf-8');
   const cache = JSON.parse(cacheStr) as CacheEntry[];
   githubCache.push(...cache);
 }
