@@ -19,7 +19,7 @@
         <span class="spacing">{{ item.title }}</span>
       </button>
     }
-    <div class="active-item" [style.top.px]="activeMenuItemY()"></div>
+    <div class="active-item" [style.--active-menu-item-y]="activeMenuItemY() + 'px'"></div>
   </div>
   <div class="items end-items">
     <button class="item" (click)="switchLanguage()">

@@ -1,36 +1,29 @@
-@import './colors.scss';
-@import './shadows.scss';
+@use 'colors';
+@use 'timings';
 
 @mixin clickable {
   cursor: pointer;
-  opacity: $opacityInactive;
-  transition: opacity $tranNormalEased;
-  &:hover,
-  &.active,
-  &.force {
-    opacity: 1;
-  }
-  &:active {
-    opacity: 0.7;
-  }
+  @include hover-scale;
 }
 
 @mixin highlightable {
-  background-color: $colorBgHighlight_03;
+  backdrop-filter: blur(5px);
+  background-color: colors.$colorBgHighlight_03;
   transition:
-    background-color $tranFastLinear,
-    box-shadow $tranFastLinear;
+    background-color timings.$tranFastLinear,
+    box-shadow timings.$tranFastLinear;
   &:hover {
-    background-color: $colorBgHighlight_05;
+    background-color: colors.$colorBgHighlight_05;
   }
 }
 
 @mixin hover-scale {
   transform: scale(1);
-  transition: transform $tranNormalLinear;
+  transition: transform timings.$tranNormalLinear;
   &:hover,
-  &.force, &:focus-visible  {
-    transform: scale(1.1);
+  &.force,
+  &:focus-visible {
+    transform: scale(var(--scale, 1.1));
   }
 }
 
@@ -38,7 +31,33 @@
   @include highlightable;
   @include hover-scale;
   transition:
-    background-color $tranFastLinear,
-    box-shadow $tranFastLinear,
-    transform $tranNormalLinear;
+    background-color timings.$tranFastLinear,
+    box-shadow timings.$tranFastLinear,
+    transform timings.$tranNormalLinear;
+}
+
+@property --rotation {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 130deg;
+}
+@mixin gradient-text {
+  background: linear-gradient(var(--rotation), colors.$colorAccent1, colors.$colorAccent2);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: --rotation timings.$tranNormalEased;
+  &:hover,
+  &:active,
+  &:focus {
+    --rotation: 200deg;
+  }
+}
+@mixin gradient-bg {
+  background: linear-gradient(var(--rotation), colors.$colorAccent1, colors.$colorAccent2);
+  transition: --rotation timings.$tranNormalEased;
+  &:hover,
+  &:active,
+  &:focus {
+    --rotation: 200deg;
+  }
 }

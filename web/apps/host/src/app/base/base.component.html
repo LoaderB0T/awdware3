@@ -4,7 +4,7 @@
   </div>
   <div class="menu-content-container">
     <awd-menu [class.open]="menuOpen()" />
-    <div class="content" [@routeAnimations]="prepareRoute(outlet)">
+    <div class="content appear" [@routeAnimations]="prepareRoute(outlet)">
       <router-outlet #outlet="outlet" />
     </div>
   </div>

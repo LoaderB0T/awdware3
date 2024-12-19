@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/cor
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Typed } from 'typed.ts';
 
-import { TranslationService } from '@awdware/shared';
+import { CardComponent, TranslationService } from '@awdware/shared';
 
 import { contacts } from './contacts';
 import { LogoService } from '../services/logo.service';
@@ -12,7 +12,7 @@ const typedFac = Typed.factory({
   update: (sig, text) => sig.set(text),
 });
 @Component({
-  imports: [TranslatePipe],
+  imports: [TranslatePipe, CardComponent],
   selector: 'awd-about',
   templateUrl: 'about.component.html',
   styleUrls: ['about.component.scss'],

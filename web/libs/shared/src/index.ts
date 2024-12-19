@@ -1,3 +1,5 @@
+export * from './lib/components/card/card.component';
+
 export * from './lib/directives/tooltip.directive';
 
 export * from './lib/models/theme.model';

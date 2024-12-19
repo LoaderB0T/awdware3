@@ -26,7 +26,10 @@
 
     ::ng-deep {
       .highlight {
-        color: vars.$colorAccent1;
+        @include vars.gradient-text;
+      }
+      &.fancy-link {
+        font-weight: bold;
       }
     }
     .link {
@@ -42,6 +45,7 @@
       position: absolute;
       bottom: -40px;
       font-size: 28px;
+      @include vars.gradient-text;
       @include vars.not-phone {
         left: 0;
       }

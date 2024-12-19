@@ -1,10 +1,10 @@
 @if (repoInfo(); as repoInfo) {
-  <div class="project">
+  <awd-card class="project">
     <div class="header">
-      <h3 class="title">
+      <h3 class="title gradientText">
         <a
           href="https://github.com/{{ repoInfo.username }}/{{ repoInfo.name }}"
-          class="stars"
+          class="fancy-link"
           data-umami-event="external-link-github-project"
           [attr.data-umami-event-project]="repoInfo.username + '/' + repoInfo.name"
           target="blank"
@@ -43,9 +43,9 @@
       [attr.data-umami-event-project]="repoInfo.username + '/' + repoInfo.name"
       target="blank"
     >
-      <button class="button">
+      <button class="button fancy-button">
         {{ 'viewProject' | translate }}
       </button>
     </a>
-  </div>
+  </awd-card>
 }

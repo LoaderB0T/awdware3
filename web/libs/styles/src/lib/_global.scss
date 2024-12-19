@@ -1,24 +1,24 @@
-@import 'vars';
+@use 'vars';
 
 * {
-  font-family: $fontFamily;
+  font-family: vars.$fontFamily;
 }
 
 body,
 html {
-  font-weight: $fontWeightNormal;
-  font-size: $fontSizeNormal;
+  font-weight: vars.$fontWeightNormal;
+  font-size: vars.$fontSizeNormal;
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
   box-sizing: border-box;
   position: relative;
-  background-color: $colorBg1;
-  color: $colorContent1;
+  background-color: vars.$colorBg1;
+  color: vars.$colorContent1;
   transition:
-    background-color $tranNormalLinear,
-    color $tranNormalLinear;
+    background-color vars.$tranNormalLinear,
+    color vars.$tranNormalLinear;
 
   --tooltipFontSize: 32px;
   --tooltipPadding: 10px;
@@ -44,7 +44,7 @@ body:has(.modal-is-open) {
     width: 100%;
   }
   .window {
-    @include highlightable;
+    @include vars.highlightable;
     overflow: auto;
   }
 }
@@ -61,70 +61,84 @@ body:has(.modal-is-open) {
   }
 }
 
-.comment {
-  font-style: italic;
-  font-size: $fontSizeSmall;
-  color: $colorContent3;
-}
-
 a {
   text-decoration: none;
-  color: $colorContent1;
+  color: vars.$colorContent1;
 }
 
-.fancy-link {
-  text-decoration: none;
+@mixin blurOver {
   position: relative;
-  color: $colorAccent1;
-  white-space: nowrap;
-  font-weight: bold;
+  @keyframes blurOver {
+    0% {
+      width: 0;
+      left: 0;
+    }
+    50% {
+      width: 100%;
+      left: 0;
+    }
+    100% {
+      width: 0;
+      left: 100%;
+    }
+  }
+
   &::after {
     content: '';
     position: absolute;
-    background: $colorAccent1;
-    opacity: 0.25;
-    left: 12px;
-    bottom: -6px;
-    width: calc(100% - 8px);
-    height: calc(100% - 8px);
-    transition: $tranBezierMassiveOvershoot;
-    transform: skewX(-40deg);
+    backdrop-filter: blur(3px);
+    transform: scale(1.25);
+    left: 0;
+    top: 0;
+    height: 100%;
+    mask-image: linear-gradient(180deg, transparent 0%, black 10%, black 80%, transparent 100%),
+      linear-gradient(90deg, transparent 0%, black 30%, black 90%, transparent 100%);
+    mask-composite: intersect;
   }
 
-  &:hover::after,&:focus-visible::after {
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 100%;
-    transform: skewX(0);
+  &:hover::after,
+  &:focus-visible::after {
+    animation: blurOver 0.3s ease-in-out;
   }
+}
+
+.fancy-link {
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  @include vars.gradient-text;
+  white-space: nowrap;
+  font-weight: bold;
+
+  @include blurOver;
+
   &:focus-visible {
-    color: $colorAccent2;
+    border-bottom: 1px dotted vars.$colorContent2;
   }
 }
 
 /*
   Scrollbar styles
 */
-$scrollbarBg: $colorBg1;
-$scrollbarThumb: $colorContent2;
-$scollbarThumbHover: $colorContent1;
+$scrollbarBg: vars.$colorBg1;
+$scrollbarThumb: vars.$colorContent2;
+$scollbarThumbHover: vars.$colorContent1;
 :root * {
   scrollbar-width: auto;
   scrollbar-color: $scrollbarThumb $scrollbarBg;
 }
 *::-webkit-scrollbar {
-  width: $scollbarWidth;
-  height: $scollbarWidth;
+  width: vars.$scollbarWidth;
+  height: vars.$scollbarWidth;
 }
 *::-webkit-scrollbar-track {
   background-color: $scrollbarBg;
-  border-radius: $radiusDefault;
+  border-radius: vars.$radiusDefault;
   margin: 10px;
 }
 *::-webkit-scrollbar-thumb {
   background-color: $scrollbarThumb;
-  border-radius: $radiusDefault;
+  border-radius: vars.$radiusDefault;
   border: 4px $scrollbarBg solid;
   &:hover {
     background-color: $scollbarThumbHover;
@@ -136,55 +150,54 @@ $scollbarThumbHover: $colorContent1;
 
 .appear {
   $animationDuration: 0.5s;
-  animation:
-    appear-slide $animationDuration cubic-bezier(0, 0, 0, 1),
-    appear-fade $animationDuration linear;
+  animation: appear-blur $animationDuration cubic-bezier(0, 0, 0, 1);
   animation-delay: var(--delay, 0.5s);
-  animation-fill-mode: both;
+  animation-fill-mode: backwards;
 }
 
-@keyframes appear-slide {
-  from {
-    transform: translateX(-100px);
+@keyframes appear-blur {
+  0% {
+    filter: blur(10000px);
   }
-  to {
-    transform: translateX(0);
+  10% {
+    filter: blur(1000px);
   }
-}
-@keyframes appear-fade {
-  from {
-    opacity: 0;
+  30% {
+    filter: blur(100px);
   }
-  to {
-    opacity: 1;
+  100% {
+    filter: unset;
   }
 }
 
 button {
   all: unset;
   &.button {
-    @include clickable;
-    @include hover-scale;
-    outline: 2px solid;
+    @include vars.gradient-bg;
     padding: 10px 15px;
-    border-radius: $radiusDefault;
+    border-radius: 2px;
+    color: vars.$colorBg1;
+    font-weight: bold;
+  }
+  &.fancy-button {
+    @include blurOver;
   }
 }
 
 hr {
   width: 100%;
   border: none;
-  border-top: 1px solid $colorBg3;
+  border-top: 1px solid vars.$colorBg3;
 }
 
 $tooltipBorderSize: 5px;
-$tooltipBorder: $tooltipBorderSize $colorContent1 solid;
+$tooltipBorder: $tooltipBorderSize vars.$colorContent1 solid;
 
 .tooltip,
 .tooltip::before,
 .tooltip::after {
   position: absolute;
-  background-color: $colorBg1;
+  background-color: vars.$colorBg1;
   font-size: var(--tooltipFontSize);
   padding: var(--tooltipPadding);
   border-top: $tooltipBorder;
@@ -192,12 +205,12 @@ $tooltipBorder: $tooltipBorderSize $colorContent1 solid;
 }
 
 .tooltip {
-  background-color: $colorBg1;
-  color: $colorContent1;
+  background-color: vars.$colorBg1;
+  color: vars.$colorContent1;
   opacity: 0;
   pointer-events: none;
   user-select: none;
-  transition: opacity $tranNormalLinear;
+  transition: opacity vars.$tranNormalLinear;
   z-index: 3;
   &.visible {
     opacity: 1;
@@ -205,7 +218,7 @@ $tooltipBorder: $tooltipBorderSize $colorContent1 solid;
   &::before,
   &::after {
     content: '!';
-    color: $colorBg1;
+    color: vars.$colorBg1;
     top: -$tooltipBorderSize;
     transform: skewX(-12deg) translateZ(-1px);
     z-index: -1;

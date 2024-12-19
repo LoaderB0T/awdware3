@@ -13,11 +13,11 @@ export const projects: Project[] = [
       en:
         'awdware3 is this very website you are looking at right now. ' +
         'It is the third iteration of the awdware website. ' +
-        'It is built using Angular and Module Federation.',
+        'It is built using modern Angular with SSR.',
       de:
         'awdware3 ist die aktuelle Version dieser Website. ' +
         'Es ist die dritte Iteration der awdware Website, ' +
-        'welche mit Angular und Module Federation gebaut ist.',
+        'welche mit modernem Angular und SSR gebaut ist.',
     },
     gitHubUser: 'LoaderB0T',
   },

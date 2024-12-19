@@ -17,10 +17,8 @@
   @media (max-height: 1020px) {
     gap: 0;
   }
-  .me-details {
+  awd-card {
     display: flex;
-    margin-bottom: 1em;
-    border-radius: 0 40px 40px 40px;
     @include vars.not-phone {
       width: 800px;
     }
@@ -30,16 +28,9 @@
       flex-direction: column;
       align-items: center;
     }
-    @include vars.highlightable;
-    &:hover {
-      img {
-        transform: scale(1.1);
-      }
-    }
     img {
       transition: vars.$tranNormalLinear;
       background-color: rgb(241 241 241);
-      border-radius: 0 40px 0 40px;
       @include vars.not-phone {
         min-width: 300px; // Image smaller during load without this...
         width: 300px;
@@ -72,7 +63,11 @@
         &::ng-deep {
           .comment {
             margin-bottom: 10px;
+            padding-right: 2px; // Prevents italic text from clipping
             display: inline-block;
+            font-style: italic;
+            font-size: vars.$fontSizeSmall;
+            @include vars.gradient-text;
           }
         }
       }

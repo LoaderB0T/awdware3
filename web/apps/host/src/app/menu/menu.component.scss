@@ -2,7 +2,8 @@
 
 $itemHeight: 72px;
 $borderWidth: 2px;
-$activeItemMarkerHeight: $itemHeight + 16px;
+$itemGap: 25px;
+$activeItemMarkerHeight: $itemHeight + $itemGap;
 
 .main-container {
   display: flex;
@@ -31,7 +32,7 @@ $activeItemMarkerHeight: $itemHeight + 16px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 25px;
+    gap: $itemGap;
     &.end-items {
       padding-bottom: 40px;
     }
@@ -47,7 +48,6 @@ $activeItemMarkerHeight: $itemHeight + 16px;
       justify-content: center;
       height: $itemHeight;
       @include vars.clickable;
-      @include vars.hover-scale;
       font-size: 54px;
       @include vars.not-phone {
         width: 100%;
@@ -75,7 +75,14 @@ $activeItemMarkerHeight: $itemHeight + 16px;
     height: $activeItemMarkerHeight;
     width: $borderWidth;
     position: absolute;
-    background: vars.$colorAccent2;
+    top: calc(var(--active-menu-item-y) - $itemGap / 2);
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0) 0%,
+      vars.$colorAccent2 20%,
+      vars.$colorAccent2 80%,
+      rgba(0, 0, 0, 0) 100%
+    );
     right: -$borderWidth;
     transition: top vars.$tranBezierMinimalOvershoot;
     @include vars.phone {

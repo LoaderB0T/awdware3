@@ -2,7 +2,7 @@
   <div id="homeBox">
     @if (!langChanged()) {
       <span class="typing" [innerHtml]="typing1()"></span>
-      <button class="typing link highlight" (click)="learnMore()" [innerHtml]="typing2()"></button>
+      <button class="typing fancy-link" (click)="learnMore()" [innerHtml]="typing2()"></button>
       <span class="typing" [innerHtml]="typing3()"></span>
     } @else {
       <span class="typing"
@@ -10,9 +10,9 @@
         <span class="highlight">Janik</span>. <br />{{ 'home.typing.click' | translate }}
       </span>
 
-      <button class="typing link highlight" (click)="learnMore()">{{
-        'home.typing.here' | translate
-      }}</button>
+      <button class="typing fancy-link" (click)="learnMore()">
+        {{ 'home.typing.here' | translate }}
+      </button>
       <span class="typing"> {{ 'home.typing.toLearnMore' | translate }}</span>
     }
 

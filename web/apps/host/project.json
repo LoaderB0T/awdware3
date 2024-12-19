@@ -35,7 +35,7 @@
             "output": "/assets/timeline"
           }
         ],
-        "styles": ["apps/host/src/styles.scss"],
+        "styles": ["apps/host/src/styles.scss", "libs/modules/projects/src/public.scss"],
         "scripts": [],
         "stylePreprocessorOptions": {
           "includePaths": ["libs/styles/src/lib"]

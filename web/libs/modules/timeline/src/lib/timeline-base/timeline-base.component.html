@@ -8,7 +8,7 @@
     <div class="timeline-content">
       @for (item of timeline; track item.id) {
         <!-- Defer is not quite that usefull here, still cool to see that it works as intended -->
-        <div class="timeline-item" [attr.data-id]="item.id" #timelineItem>
+        <awd-card class="timeline-item" [attr.data-id]="item.id" #timelineItem>
           @defer (on viewport; on idle) {
             <!-- Defer is special here as we are using dynamically created components. Works with an extra loading step though! -->
             @let component = timelineComponentCache[item.id] | async;
@@ -24,7 +24,7 @@
               {{ '&nbsp; '.repeat(1000) }}
             </div>
           }
-        </div>
+        </awd-card>
       }
     </div>
   </div>
