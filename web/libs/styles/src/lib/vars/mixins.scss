@@ -32,7 +32,7 @@
   &:hover,
   &.force,
   &:focus-visible {
-    transform: scale(1.1);
+    transform: scale(var(--scale, 1.1));
   }
 }
 

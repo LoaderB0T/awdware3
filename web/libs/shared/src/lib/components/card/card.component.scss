@@ -1,3 +1,5 @@
+@use 'vars';
+
 $width: 0.3rem;
 
 :host {
@@ -5,7 +7,7 @@ $width: 0.3rem;
   padding: $width - 0.01;
   &::before {
     content: '';
-    z-index: 99999;
+    z-index: 1;
     background-color: rgba(255, 255, 255, 0.01);
     position: absolute;
     height: 100%;

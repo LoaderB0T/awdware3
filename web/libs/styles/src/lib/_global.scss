@@ -1,24 +1,24 @@
-@import 'vars';
+@use 'vars';
 
 * {
-  font-family: $fontFamily;
+  font-family: vars.$fontFamily;
 }
 
 body,
 html {
-  font-weight: $fontWeightNormal;
-  font-size: $fontSizeNormal;
+  font-weight: vars.$fontWeightNormal;
+  font-size: vars.$fontSizeNormal;
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
   box-sizing: border-box;
   position: relative;
-  background-color: $colorBg1;
-  color: $colorContent1;
+  background-color: vars.$colorBg1;
+  color: vars.$colorContent1;
   transition:
-    background-color $tranNormalLinear,
-    color $tranNormalLinear;
+    background-color vars.$tranNormalLinear,
+    color vars.$tranNormalLinear;
 
   --tooltipFontSize: 32px;
   --tooltipPadding: 10px;
@@ -44,7 +44,7 @@ body:has(.modal-is-open) {
     width: 100%;
   }
   .window {
-    @include highlightable;
+    @include vars.highlightable;
     overflow: auto;
   }
 }
@@ -63,31 +63,31 @@ body:has(.modal-is-open) {
 
 .comment {
   font-style: italic;
-  font-size: $fontSizeSmall;
-  color: $colorContent3;
+  font-size: vars.$fontSizeSmall;
+  color: vars.$colorContent3;
 }
 
 a {
   text-decoration: none;
-  color: $colorContent1;
+  color: vars.$colorContent1;
 }
 
 .fancy-link {
   text-decoration: none;
   position: relative;
-  color: $colorAccent1;
+  color: vars.$colorAccent1;
   white-space: nowrap;
   font-weight: bold;
   &::after {
     content: '';
     position: absolute;
-    background: $colorAccent1;
+    background: vars.$colorAccent1;
     opacity: 0.25;
     left: 12px;
     bottom: -6px;
     width: calc(100% - 8px);
     height: calc(100% - 8px);
-    transition: $tranBezierMassiveOvershoot;
+    transition: vars.$tranBezierMassiveOvershoot;
     transform: skewX(-40deg);
   }
 
@@ -100,32 +100,32 @@ a {
     transform: skewX(0);
   }
   &:focus-visible {
-    color: $colorAccent2;
+    color: vars.$colorAccent2;
   }
 }
 
 /*
   Scrollbar styles
 */
-$scrollbarBg: $colorBg1;
-$scrollbarThumb: $colorContent2;
-$scollbarThumbHover: $colorContent1;
+$scrollbarBg: vars.$colorBg1;
+$scrollbarThumb: vars.$colorContent2;
+$scollbarThumbHover: vars.$colorContent1;
 :root * {
   scrollbar-width: auto;
   scrollbar-color: $scrollbarThumb $scrollbarBg;
 }
 *::-webkit-scrollbar {
-  width: $scollbarWidth;
-  height: $scollbarWidth;
+  width: vars.$scollbarWidth;
+  height: vars.$scollbarWidth;
 }
 *::-webkit-scrollbar-track {
   background-color: $scrollbarBg;
-  border-radius: $radiusDefault;
+  border-radius: vars.$radiusDefault;
   margin: 10px;
 }
 *::-webkit-scrollbar-thumb {
   background-color: $scrollbarThumb;
-  border-radius: $radiusDefault;
+  border-radius: vars.$radiusDefault;
   border: 4px $scrollbarBg solid;
   &:hover {
     background-color: $scollbarThumbHover;
@@ -160,28 +160,31 @@ $scollbarThumbHover: $colorContent1;
 button {
   all: unset;
   &.button {
-    @include clickable;
-    @include hover-scale;
+    @include vars.clickable;
+    @include vars.hover-scale;
     outline: 2px solid;
     padding: 10px 15px;
-    border-radius: $radiusDefault;
+    border-radius: vars.$radiusDefault;
+    &:hover {
+      color: vars.$colorAccent2;
+    }
   }
 }
 
 hr {
   width: 100%;
   border: none;
-  border-top: 1px solid $colorBg3;
+  border-top: 1px solid vars.$colorBg3;
 }
 
 $tooltipBorderSize: 5px;
-$tooltipBorder: $tooltipBorderSize $colorContent1 solid;
+$tooltipBorder: $tooltipBorderSize vars.$colorContent1 solid;
 
 .tooltip,
 .tooltip::before,
 .tooltip::after {
   position: absolute;
-  background-color: $colorBg1;
+  background-color: vars.$colorBg1;
   font-size: var(--tooltipFontSize);
   padding: var(--tooltipPadding);
   border-top: $tooltipBorder;
@@ -189,12 +192,12 @@ $tooltipBorder: $tooltipBorderSize $colorContent1 solid;
 }
 
 .tooltip {
-  background-color: $colorBg1;
-  color: $colorContent1;
+  background-color: vars.$colorBg1;
+  color: vars.$colorContent1;
   opacity: 0;
   pointer-events: none;
   user-select: none;
-  transition: opacity $tranNormalLinear;
+  transition: opacity vars.$tranNormalLinear;
   z-index: 3;
   &.visible {
     opacity: 1;
@@ -202,7 +205,7 @@ $tooltipBorder: $tooltipBorderSize $colorContent1 solid;
   &::before,
   &::after {
     content: '!';
-    color: $colorBg1;
+    color: vars.$colorBg1;
     top: -$tooltipBorderSize;
     transform: skewX(-12deg) translateZ(-1px);
     z-index: -1;

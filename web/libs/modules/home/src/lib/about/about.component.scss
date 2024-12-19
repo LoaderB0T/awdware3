@@ -91,6 +91,7 @@
       display: flex;
       gap: 20px;
       a {
+        @include vars.hover-scale;
         img {
           height: 60px;
         }
