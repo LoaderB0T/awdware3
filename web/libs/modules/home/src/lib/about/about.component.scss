@@ -20,7 +20,7 @@
   awd-card {
     display: flex;
     @include vars.not-phone {
-      width: 800px;
+      width: 725px;
     }
     @include vars.phone {
       width: 100%;
