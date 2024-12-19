@@ -54,10 +54,8 @@ export class BaseComponent implements AfterViewInit {
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     const focusedElem = document.activeElement;
-    if (focusedElem) {
-      if ((focusedElem as HTMLInputElement).type === 'password') {
-        return;
-      }
+    if (focusedElem && focusedElem instanceof HTMLInputElement && focusedElem.type === 'password') {
+      return;
     }
     const key = event.key;
     this.globalKeyPressed(key);

@@ -12,11 +12,13 @@ import {
 } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { CardComponent } from '@awdware/shared';
+
 import { timelime, TimelineEntry } from './timeline';
 import { TimelineComponent } from './timeline/timeline.component';
 
 @Component({
-  imports: [CommonModule, TranslateModule, TimelineComponent],
+  imports: [CommonModule, TranslateModule, TimelineComponent, CardComponent],
   templateUrl: './timeline-base.component.html',
   styleUrls: ['./timeline-base.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,7 +30,9 @@ export class TimelineBaseComponent implements AfterViewInit {
 
   private readonly _intersectingIds = new Set<string>();
 
-  protected readonly timelineItems = viewChildren<ElementRef<HTMLDivElement>>('timelineItem');
+  protected readonly timelineItems = viewChildren('timelineItem', {
+    read: ElementRef<HTMLElement>,
+  });
 
   protected readonly timelineComponentCache: Record<string, Promise<Type<unknown>>> = {};
 
