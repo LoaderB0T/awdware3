@@ -83,7 +83,6 @@ $activeItemMarkerHeight: $itemHeight + $itemGap;
       vars.$colorAccent2 80%,
       rgba(0, 0, 0, 0) 100%
     );
-    // background: white;
     right: -$borderWidth;
     transition: top vars.$tranBezierMinimalOvershoot;
     @include vars.phone {
