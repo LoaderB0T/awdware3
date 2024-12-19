@@ -91,7 +91,8 @@ a {
     transform: skewX(-40deg);
   }
 
-  &:hover::after,&:focus-visible::after {
+  &:hover::after,
+  &:focus-visible::after {
     left: 0;
     bottom: -2px;
     width: 100%;

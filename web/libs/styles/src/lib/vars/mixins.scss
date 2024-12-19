@@ -16,6 +16,7 @@
 }
 
 @mixin highlightable {
+  backdrop-filter: blur(5px);
   background-color: $colorBgHighlight_03;
   transition:
     background-color $tranFastLinear,
@@ -29,7 +30,8 @@
   transform: scale(1);
   transition: transform $tranNormalLinear;
   &:hover,
-  &.force, &:focus-visible  {
+  &.force,
+  &:focus-visible {
     transform: scale(1.1);
   }
 }
