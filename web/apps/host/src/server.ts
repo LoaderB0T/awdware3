@@ -1,3 +1,4 @@
+import * as crypto from 'crypto';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -9,11 +10,23 @@ import {
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
 import express from 'express';
+import helmet from 'helmet';
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
 
 const app = express();
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        'script-src': ["'unsafe-inline' 'self' *.fontawesome.com"],
+        'default-src': ["'self' *.fontawesome.com"],
+      },
+    },
+  })
+);
+
 const angularApp = new AngularNodeAppEngine();
 
 /**
@@ -42,6 +55,20 @@ if (existsSync('.github-cache.json')) {
   const cache = JSON.parse(cacheStr) as CacheEntry[];
   githubCache.push(...cache);
 }
+
+app.use((_req, res, next) => {
+  // Asynchronously generate a unique nonce for each request.
+  crypto.randomBytes(32, (err, randomBytes) => {
+    if (err) {
+      // If there was a problem, bail.
+      next(err);
+    } else {
+      // Save the nonce, as a hex string, to `res.locals` for later.
+      res.locals['cspNonce'] = randomBytes.toString('hex');
+      next();
+    }
+  });
+});
 
 app.get('/api/github/:user/:repo', async (req, res) => {
   const { user, repo } = req.params;
