@@ -21,7 +21,7 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         'script-src': ["'unsafe-inline' 'self' *.fontawesome.com *.awdware.de *.awdtest.de"],
-        'default-src': ["'self' *.fontawesome.com"],
+        'default-src': ["'self' *.fontawesome.com *.awdware.de *.awdtest.de"],
       },
     },
   })
