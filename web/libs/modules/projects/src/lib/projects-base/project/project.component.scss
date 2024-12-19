@@ -21,6 +21,9 @@
     h3 {
       margin: 0;
       @include vars.gradient-text;
+      a {
+        text-wrap: auto;
+      }
     }
   }
   .info {
