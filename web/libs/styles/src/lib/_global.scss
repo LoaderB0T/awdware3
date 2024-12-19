@@ -68,6 +68,8 @@ a {
 
 @mixin blurOver {
   position: relative;
+  display: inline-block;
+  text-align: center;
   @keyframes blurOver {
     0% {
       width: 0;
