@@ -74,6 +74,7 @@ export class ThemeService {
         colorBg2: 'rgb(25, 25, 25)',
         colorBg3: 'rgb(35, 35, 35)',
         colorBgHighlight: 'rgb(0, 1, 20)',
+        colorBgHighlight_001: 'rgba(255, 255, 255, 0.03)',
         colorBgHighlight_03: 'rgba(0, 0, 0, 0.2)',
         colorBgHighlight_05: 'rgba(0, 0, 0, 0.4)',
         colorContent1: 'rgb(242, 239, 234)',
@@ -82,6 +83,7 @@ export class ThemeService {
         colorAccent1: 'rgb(255, 0, 82)',
         colorAccent2: 'rgb(255, 190, 48)',
         colorError: 'rgb(238, 31, 16)',
+        lightnessContrastFactor: '1.1',
       },
     };
   }
@@ -94,6 +96,7 @@ export class ThemeService {
         colorBg2: 'rgb(215, 218, 222)',
         colorBg3: 'rgb(200, 205, 210)',
         colorBgHighlight: 'rgb(255 255 255)',
+        colorBgHighlight_001: 'rgba(0, 0, 0, 0.01)',
         colorBgHighlight_03: 'rgba(255, 255, 255, 0.35)',
         colorBgHighlight_05: 'rgba(255, 255, 255, 0.6)',
         colorContent1: 'rgb(13, 13, 18)',
@@ -102,6 +105,7 @@ export class ThemeService {
         colorAccent1: 'rgb(255, 0, 82)',
         colorAccent2: 'rgb(255, 160, 30)',
         colorError: 'rgb(238, 31, 16)',
+        lightnessContrastFactor: '0.9',
       },
     };
   }
