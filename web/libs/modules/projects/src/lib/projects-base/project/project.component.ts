@@ -10,12 +10,14 @@ import {
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
+import { CardComponent } from '@awdware/shared';
+
 import { RepoInfo } from '../../models/compact-repo-info.model';
 import { RepoInfoService } from '../../services/repo-info.service';
 import { Project } from '../projects';
 
 @Component({
-  imports: [TranslatePipe],
+  imports: [TranslatePipe, CardComponent],
   selector: 'awd-project',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.scss'],

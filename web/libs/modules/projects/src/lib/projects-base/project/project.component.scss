@@ -10,7 +10,6 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  @include vars.highlightable;
   p {
     margin: 0;
     text-align: center;

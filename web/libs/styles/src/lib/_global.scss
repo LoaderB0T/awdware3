@@ -137,27 +137,23 @@ $scollbarThumbHover: $colorContent1;
 
 .appear {
   $animationDuration: 0.5s;
-  animation:
-    appear-slide $animationDuration cubic-bezier(0, 0, 0, 1),
-    appear-fade $animationDuration linear;
+  animation: appear-blur $animationDuration cubic-bezier(0, 0, 0, 1);
   animation-delay: var(--delay, 0.5s);
-  animation-fill-mode: both;
+  animation-fill-mode: backwards;
 }
 
-@keyframes appear-slide {
-  from {
-    transform: translateX(-100px);
+@keyframes appear-blur {
+  0% {
+    filter: blur(10000px);
   }
-  to {
-    transform: translateX(0);
+  10% {
+    filter: blur(1000px);
   }
-}
-@keyframes appear-fade {
-  from {
-    opacity: 0;
+  30% {
+    filter: blur(100px);
   }
-  to {
-    opacity: 1;
+  100% {
+    filter: unset;
   }
 }
 
