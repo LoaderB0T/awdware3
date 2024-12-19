@@ -20,7 +20,7 @@ app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
-        'script-src': ["'unsafe-inline' 'self' *.fontawesome.com"],
+        'script-src': ["'unsafe-inline' 'self' *.fontawesome.com *.awdware.de *.awdtest.de"],
         'default-src': ["'self' *.fontawesome.com"],
       },
     },
