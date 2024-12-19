@@ -20,13 +20,7 @@
     justify-content: space-between;
     h3 {
       margin: 0;
-      &.title {
-        &:hover {
-          a {
-            color: vars.$colorAccent2;
-          }
-        }
-      }
+      @include vars.gradient-text;
     }
   }
   .info {

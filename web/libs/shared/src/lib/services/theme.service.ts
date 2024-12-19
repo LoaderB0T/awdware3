@@ -82,7 +82,6 @@ export class ThemeService {
         colorAccent1: 'rgb(255, 0, 82)',
         colorAccent2: 'rgb(255, 190, 48)',
         colorError: 'rgb(238, 31, 16)',
-        opacityInactive: '0.4',
       },
     };
   }
@@ -101,9 +100,8 @@ export class ThemeService {
         colorContent2: 'rgb(34, 34, 48)',
         colorContent3: 'rgb(67, 67, 108)',
         colorAccent1: 'rgb(255, 0, 82)',
-        colorAccent2: 'rgb(255, 190, 48)',
+        colorAccent2: 'rgb(255, 160, 30)',
         colorError: 'rgb(238, 31, 16)',
-        opacityInactive: '0.6',
       },
     };
   }

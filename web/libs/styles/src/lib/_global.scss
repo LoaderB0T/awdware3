@@ -61,46 +61,59 @@ body:has(.modal-is-open) {
   }
 }
 
-.comment {
-  font-style: italic;
-  font-size: vars.$fontSizeSmall;
-  color: vars.$colorContent3;
-}
-
 a {
   text-decoration: none;
   color: vars.$colorContent1;
 }
 
-.fancy-link {
-  text-decoration: none;
+@mixin blurOver {
   position: relative;
-  color: vars.$colorAccent1;
-  white-space: nowrap;
-  font-weight: bold;
+  @keyframes blurOver {
+    0% {
+      width: 0;
+      left: 0;
+    }
+    50% {
+      width: 100%;
+      left: 0;
+    }
+    100% {
+      width: 0;
+      left: 100%;
+    }
+  }
+
   &::after {
     content: '';
     position: absolute;
-    background: vars.$colorAccent1;
-    opacity: 0.25;
-    left: 12px;
-    bottom: -6px;
-    width: calc(100% - 8px);
-    height: calc(100% - 8px);
-    transition: vars.$tranBezierMassiveOvershoot;
-    transform: skewX(-40deg);
+    backdrop-filter: blur(3px);
+    transform: scale(1.25);
+    left: 0;
+    top: 0;
+    height: 100%;
+    mask-image: linear-gradient(180deg, transparent 0%, black 10%, black 80%, transparent 100%),
+      linear-gradient(90deg, transparent 0%, black 30%, black 90%, transparent 100%);
+    mask-composite: intersect;
   }
 
   &:hover::after,
   &:focus-visible::after {
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 100%;
-    transform: skewX(0);
+    animation: blurOver 0.3s ease-in-out;
   }
+}
+
+.fancy-link {
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  @include vars.gradient-text;
+  white-space: nowrap;
+  font-weight: bold;
+
+  @include blurOver;
+
   &:focus-visible {
-    color: vars.$colorAccent2;
+    border-bottom: 1px dotted vars.$colorContent2;
   }
 }
 
@@ -160,14 +173,14 @@ $scollbarThumbHover: vars.$colorContent1;
 button {
   all: unset;
   &.button {
-    @include vars.clickable;
-    @include vars.hover-scale;
-    outline: 2px solid;
+    @include vars.gradient-bg;
     padding: 10px 15px;
-    border-radius: vars.$radiusDefault;
-    &:hover {
-      color: vars.$colorAccent2;
-    }
+    border-radius: 2px;
+    color: vars.$colorBg1;
+    font-weight: bold;
+  }
+  &.fancy-button {
+    @include blurOver;
   }
 }
 

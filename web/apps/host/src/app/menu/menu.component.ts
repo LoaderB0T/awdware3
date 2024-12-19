@@ -28,7 +28,7 @@ export class MenuComponent {
       const activeItem = this._menuService.activeMenuItem();
       const el = this._document.getElementById(`menu-item-${activeItem}`);
       if (el) {
-        this.activeMenuItemY.set(el.offsetTop - 8); // 16px is the additional height of the line
+        this.activeMenuItemY.set(el.offsetTop); // 16px is the additional height of the line
         this.activeMenuItemId.set(activeItem);
       }
     });

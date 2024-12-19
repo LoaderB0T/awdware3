@@ -63,7 +63,11 @@
         &::ng-deep {
           .comment {
             margin-bottom: 10px;
+            padding-right: 2px; // Prevents italic text from clipping
             display: inline-block;
+            font-style: italic;
+            font-size: vars.$fontSizeSmall;
+            @include vars.gradient-text;
           }
         }
       }
