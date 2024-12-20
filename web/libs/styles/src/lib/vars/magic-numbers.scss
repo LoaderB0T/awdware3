@@ -1,2 +1,1 @@
-$scollbarWidth: 15px;
-$safeScrollbarWidth: $scollbarWidth + 5px;
+$scrollbarWidth: var(--scrollbar-width);

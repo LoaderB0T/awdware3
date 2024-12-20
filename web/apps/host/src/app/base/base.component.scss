@@ -38,12 +38,12 @@ $phoneMenuButtonHeight: 60px;
         align-items: center;
         min-width: min-content;
         @include vars.not-phone {
-          min-height: calc(100vh - vars.$safeScrollbarWidth);
-          max-width: calc(100vw - $menuWidth - vars.$safeScrollbarWidth);
+          min-height: calc(100vh - vars.$scrollbarWidth);
+          max-width: calc(100vw - $menuWidth - vars.$scrollbarWidth);
         }
         @include vars.phone {
-          max-width: calc(100vw - vars.$safeScrollbarWidth);
-          min-height: calc(100vh - vars.$safeScrollbarWidth - $phoneMenuButtonHeight);
+          max-width: calc(100vw - vars.$scrollbarWidth);
+          min-height: calc(100vh - vars.$scrollbarWidth - $phoneMenuButtonHeight);
         }
       }
     }
@@ -87,4 +87,35 @@ $phoneMenuButtonHeight: 60px;
   position: fixed;
   top: 99999px;
   left: 99999px;
+}
+
+.scroll-blur {
+  position: fixed;
+  right: vars.$scrollbarWidth;
+  @include vars.not-phone {
+    left: $menuWidth;
+  }
+  @include vars.phone {
+    left: 0;
+  }
+  height: 60px;
+  mask-image: linear-gradient(
+    var(--dir),
+    rgba(0, 0, 0, 1) 2%,
+    rgba(0, 0, 0, 0.25) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  backdrop-filter: blur(30px);
+  pointer-events: none;
+  z-index: 2;
+  &.top {
+    top: 0;
+    height: var(--top, 0);
+    --dir: 180deg;
+  }
+  &.bot {
+    bottom: vars.$scrollbarWidth;
+    height: var(--bot, 0);
+    --dir: 0deg;
+  }
 }

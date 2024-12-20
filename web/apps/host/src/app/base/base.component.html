@@ -4,7 +4,12 @@
   </div>
   <div class="menu-content-container">
     <awd-menu [class.open]="menuOpen()" />
-    <div class="content appear" [@routeAnimations]="prepareRoute(outlet)">
+    <div
+      #content
+      (scroll)="contentScrolled(content)"
+      class="content appear"
+      [@routeAnimations]="prepareRoute(outlet)"
+    >
       <router-outlet #outlet="outlet" />
     </div>
   </div>
@@ -18,3 +23,6 @@
     <img alt="" aria-hidden="true" [src]="img" />
   }
 </div>
+
+<div class="scroll-blur top" [style.--top]="scrollInfo().top"></div>
+<div class="scroll-blur bot" [style.--bot]="scrollInfo().bot"></div>

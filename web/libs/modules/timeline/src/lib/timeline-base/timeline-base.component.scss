@@ -14,7 +14,7 @@
     gap: 40px;
     min-height: 800px;
     @include vars.phone {
-      width: calc(100vw - vars.$scollbarWidth);
+      width: calc(100vw - vars.$scrollbarWidth);
       flex-direction: column;
     }
     .timeline {

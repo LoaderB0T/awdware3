@@ -130,8 +130,8 @@ $scollbarThumbHover: vars.$colorContent1;
   scrollbar-color: $scrollbarThumb $scrollbarBg;
 }
 *::-webkit-scrollbar {
-  width: vars.$scollbarWidth;
-  height: vars.$scollbarWidth;
+  width: vars.$scrollbarWidth;
+  height: vars.$scrollbarWidth;
 }
 *::-webkit-scrollbar-track {
   background-color: $scrollbarBg;

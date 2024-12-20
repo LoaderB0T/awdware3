@@ -6,6 +6,7 @@ import {
   HostListener,
   inject,
   PLATFORM_ID,
+  signal,
   Signal,
 } from '@angular/core';
 import { Title } from '@angular/platform-browser';
@@ -45,7 +46,8 @@ export class BaseComponent implements AfterViewInit {
   private readonly _preloadService: PreloadService;
   private _prevActiveRoute = '';
   private _loaded = false;
-  public readonly menuOpen: Signal<boolean>;
+  protected readonly menuOpen: Signal<boolean>;
+  protected readonly scrollInfo = signal({ top: '0px', bot: '0px' });
   private _currrentCode: string[] = [...konamiCode];
   private _confettiInterval: any = null;
   private _mouseX: number = 0;
@@ -85,6 +87,19 @@ export class BaseComponent implements AfterViewInit {
     if (isPlatformServer(inject(PLATFORM_ID))) {
       // eslint-disable-next-line no-irregular-whitespace
       title.setTitle(`awdware     ${rndmTitleEmoji}`);
+    } else {
+      function getScrollBarWidth() {
+        const el = document.createElement('div');
+        el.style.cssText = 'overflow:scroll; visibility:hidden; position:absolute;';
+        document.body.appendChild(el);
+        const width = el.offsetWidth - el.clientWidth;
+        el.remove();
+        return width;
+      }
+      document.body.parentElement?.style.setProperty(
+        '--scrollbar-width',
+        `${getScrollBarWidth()}px`
+      );
     }
   }
 
@@ -92,14 +107,14 @@ export class BaseComponent implements AfterViewInit {
     this._loaded = true;
   }
 
-  public get preloadIcons$() {
+  protected get preloadIcons$() {
     return this._preloadService.icons$;
   }
-  public get preloadImgs$() {
+  protected get preloadImgs$() {
     return this._preloadService.imgs$;
   }
 
-  public prepareRoute(outlet: RouterOutlet) {
+  protected prepareRoute(outlet: RouterOutlet) {
     const activePage = outlet?.activatedRouteData?.['activePage'] as string | undefined;
     if (activePage) {
       this._menuService.setActiveMenuItem(activePage);
@@ -135,9 +150,23 @@ export class BaseComponent implements AfterViewInit {
     }
   }
 
-  public setMouseCoords(event: MouseEvent) {
+  protected setMouseCoords(event: MouseEvent) {
     this._mouseX = event.clientX;
     this._mouseY = event.clientY;
+  }
+
+  protected contentScrolled(el: HTMLElement) {
+    const MOVE_AMOUNT = 60;
+
+    const scroll = el.scrollTop;
+    const maxScroll = el.scrollHeight - el.clientHeight;
+
+    const scrolledDownAmoun = Math.min(scroll, MOVE_AMOUNT);
+    const scrolledUpAmount = Math.min(maxScroll - scroll, MOVE_AMOUNT);
+    this.scrollInfo.set({
+      top: `${scrolledDownAmoun}px`,
+      bot: `${scrolledUpAmount}px`,
+    });
   }
 
   private konami() {
