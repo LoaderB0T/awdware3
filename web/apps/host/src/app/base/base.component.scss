@@ -92,12 +92,6 @@ $phoneMenuButtonHeight: 60px;
 .scroll-blur {
   position: fixed;
   right: vars.$scrollbarWidth;
-  @include vars.not-phone {
-    left: $menuWidth;
-  }
-  @include vars.phone {
-    left: 0;
-  }
   height: 60px;
   mask-image: linear-gradient(
     var(--dir),
@@ -108,6 +102,12 @@ $phoneMenuButtonHeight: 60px;
   backdrop-filter: blur(30px);
   pointer-events: none;
   z-index: 2;
+  @include vars.not-phone {
+    left: $menuWidth;
+  }
+  @include vars.phone {
+    left: 0;
+  }
   &.top {
     top: 0;
     height: var(--top, 0);

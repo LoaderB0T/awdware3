@@ -10,7 +10,7 @@
       class="content appear"
       [@routeAnimations]="prepareRoute(outlet)"
     >
-      <router-outlet #outlet="outlet" />
+      <router-outlet #outlet="outlet" (activate)="contentScrolled(content)" />
     </div>
   </div>
 </div>
