@@ -7,6 +7,19 @@ $phoneMenuButtonHeight: 60px;
   flex-direction: column;
   width: 100%;
   height: 100%;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    filter: url(#noiseFilter);
+    mix-blend-mode: multiply;
+    opacity: 1;
+    z-index: 999999;
+    pointer-events: none;
+  }
 
   .menu-content-container {
     display: flex;

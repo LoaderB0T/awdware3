@@ -180,6 +180,10 @@ button {
   }
   &.fancy-button {
     @include blurOver;
+    transition: transform vars.$tranNormalLinear;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
 

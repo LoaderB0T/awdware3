@@ -22,6 +22,17 @@
   @for (img of preloadImgs$ | async; track img) {
     <img alt="" aria-hidden="true" [src]="img" />
   }
+  @if (!themeChanged()) {
+    <svg style="width: 0; height: 0">
+      <filter id="noiseFilter">
+        <feTurbulence type="fractalNoise" baseFrequency="0.04" result="noise" numOctaves="5" />
+
+        <feDiffuseLighting in="noise" lighting-color="#fff" surfaceScale="2">
+          <feDistantLight azimuth="45" [attr.elevation]="isLightTheme() ? 65 : 40" />
+        </feDiffuseLighting>
+      </filter>
+    </svg>
+  }
 </div>
 
 <div class="scroll-blur top" [style.--top]="scrollInfo().top"></div>

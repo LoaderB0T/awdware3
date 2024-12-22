@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 
 import { StorageService } from './storage.service';
 import { Theme } from '../models/theme.model';
@@ -13,6 +13,7 @@ export class ThemeService {
   private readonly _storage = inject(StorageService).init('theme', 'dark');
   private readonly themes: Theme[] = [this.darkTheme, this.lightTheme];
   public readonly selectedTheme = signal<Theme>(this.themes[0]);
+  public readonly isLightTheme = computed(() => this.selectedTheme().name === 'light');
 
   public init() {
     if (this._globalStyleSheet) {
@@ -62,6 +63,8 @@ export class ThemeService {
     this._globalStyleSheet.replaceWith(styleElement);
     this._globalStyleSheet = styleElement;
 
+    this._document.body.classList.remove('theme-dark', 'theme-light');
+    this._document.body.classList.add(`theme-${theme.name}`);
     this._storage.value = theme.name;
     this.selectedTheme.set(theme);
   }
