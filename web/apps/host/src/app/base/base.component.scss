@@ -70,6 +70,7 @@ $phoneMenuButtonHeight: 60px;
         width: 100vw;
         &:not(.open) {
           height: $phoneMenuButtonHeight;
+          border-bottom: 2px solid vars.$colorAccent1;
         }
       }
     }
@@ -113,6 +114,9 @@ $phoneMenuButtonHeight: 60px;
   }
   &.top {
     top: 0;
+    @include vars.phone {
+      top: $phoneMenuButtonHeight;
+    }
     height: var(--top, 0);
     --dir: 180deg;
   }
