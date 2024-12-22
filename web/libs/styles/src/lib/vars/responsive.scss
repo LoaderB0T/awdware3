@@ -8,3 +8,14 @@
     @content;
   }
 }
+
+@mixin dark {
+  :host-context(.theme-dark) & {
+    @content;
+  }
+}
+@mixin light {
+  :host-context(.theme-light) & {
+    @content;
+  }
+}

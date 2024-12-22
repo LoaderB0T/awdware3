@@ -14,11 +14,8 @@ html {
   width: 100%;
   box-sizing: border-box;
   position: relative;
-  background-color: vars.$colorBg1;
   color: vars.$colorContent1;
-  transition:
-    background-color vars.$tranNormalLinear,
-    color vars.$tranNormalLinear;
+  transition: color vars.$tranNormalLinear;
 
   --tooltipFontSize: 32px;
   --tooltipPadding: 10px;
@@ -183,6 +180,10 @@ button {
   }
   &.fancy-button {
     @include blurOver;
+    transition: transform vars.$tranNormalLinear;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
 

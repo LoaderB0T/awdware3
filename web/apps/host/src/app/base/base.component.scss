@@ -1,6 +1,5 @@
 @use 'vars';
 
-$menuWidth: 100px;
 $phoneMenuButtonHeight: 60px;
 
 #app-main {
@@ -8,6 +7,19 @@ $phoneMenuButtonHeight: 60px;
   flex-direction: column;
   width: 100%;
   height: 100%;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    filter: url(#noiseFilter);
+    mix-blend-mode: multiply;
+    opacity: 1;
+    z-index: 999999;
+    pointer-events: none;
+  }
 
   .menu-content-container {
     display: flex;
@@ -21,8 +33,8 @@ $phoneMenuButtonHeight: 60px;
       overflow: scroll;
       @include vars.not-phone {
         height: 100%;
-        width: calc(100vw - $menuWidth);
-        left: $menuWidth;
+        width: calc(100vw - vars.$menuWidth);
+        left: vars.$menuWidth;
       }
       @include vars.phone {
         height: calc(100% - $phoneMenuButtonHeight);
@@ -39,7 +51,7 @@ $phoneMenuButtonHeight: 60px;
         min-width: min-content;
         @include vars.not-phone {
           min-height: calc(100vh - vars.$scrollbarWidth);
-          max-width: calc(100vw - $menuWidth - vars.$scrollbarWidth);
+          max-width: calc(100vw - vars.$menuWidth - vars.$scrollbarWidth);
         }
         @include vars.phone {
           max-width: calc(100vw - vars.$scrollbarWidth);
@@ -51,7 +63,7 @@ $phoneMenuButtonHeight: 60px;
       height: 100%;
       @include vars.not-phone {
         z-index: 1;
-        width: $menuWidth;
+        width: vars.$menuWidth;
       }
       @include vars.phone {
         z-index: 3;
@@ -67,19 +79,10 @@ $phoneMenuButtonHeight: 60px;
     position: absolute;
     top: 0;
     right: 0;
+    left: 0;
     bottom: 0;
     margin: auto;
     z-index: 0;
-    @include vars.not-phone {
-      width: 90%;
-      max-width: calc(100% - $menuWidth);
-      left: $menuWidth;
-    }
-    @include vars.phone {
-      left: 20px;
-      width: calc(100% - 20px);
-      max-width: unset;
-    }
   }
 }
 
@@ -103,7 +106,7 @@ $phoneMenuButtonHeight: 60px;
   pointer-events: none;
   z-index: 2;
   @include vars.not-phone {
-    left: $menuWidth;
+    left: vars.$menuWidth;
   }
   @include vars.phone {
     left: 0;

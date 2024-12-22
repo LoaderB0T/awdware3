@@ -19,6 +19,12 @@
   }
   awd-card {
     display: flex;
+    overflow: hidden;
+    &:hover {
+      img {
+        transform: scale(1.1) rotate(2deg) translateY(5px);
+      }
+    }
     @include vars.not-phone {
       width: 725px;
     }

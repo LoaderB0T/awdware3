@@ -3,6 +3,7 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  effect,
   HostListener,
   inject,
   PLATFORM_ID,
@@ -13,7 +14,7 @@ import { Title } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
 import { RectParticle } from 'confetti.ts';
 
-import { PreloadService, MenuService, randomInt } from '@awdware/shared';
+import { PreloadService, MenuService, randomInt, ThemeService } from '@awdware/shared';
 
 import { slideInAnimation } from './router-animation';
 import { BgComponent } from '../bg/bg.component';
@@ -48,6 +49,8 @@ export class BaseComponent implements AfterViewInit {
   private _loaded = false;
   protected readonly menuOpen: Signal<boolean>;
   protected readonly scrollInfo = signal({ top: '0px', bot: '0px' });
+  protected readonly isLightTheme = inject(ThemeService).isLightTheme;
+  protected readonly themeChanged = signal(false);
   private _currrentCode: string[] = [...konamiCode];
   private _confettiInterval: any = null;
   private _mouseX: number = 0;
@@ -101,6 +104,15 @@ export class BaseComponent implements AfterViewInit {
         `${getScrollBarWidth()}px`
       );
     }
+
+    effect(() => {
+      // Required to retrigger the css filter property to load the new filter styles
+      this.isLightTheme(); // trigger
+      this.themeChanged.set(true);
+      setTimeout(() => {
+        this.themeChanged.set(false);
+      });
+    });
   }
 
   public ngAfterViewInit(): void {
