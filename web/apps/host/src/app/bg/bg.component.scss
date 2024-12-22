@@ -9,16 +9,35 @@
   transition: fill vars.$tranNormalEased;
 }
 
-.logo-container {
-  height: 100%;
+$marginLeft: 20px;
+
+.bg {
   width: 100%;
-  overflow: hidden;
-  svg {
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    min-width: 1500px;
-    margin-top: 15vh;
+  height: 100%;
+  background-color: vars.$colorBg1;
+  transition: background-color vars.$tranNormalLinear;
+  .logo-container {
+    height: 100%;
+    position: absolute;
+    @include vars.not-phone {
+      width: 90%;
+      max-width: calc(100% - vars.$menuWidth - $marginLeft);
+      left: vars.$menuWidth + $marginLeft;
+    }
+    @include vars.phone {
+      left: $marginLeft;
+      width: calc(100% - $marginLeft);
+      max-width: unset;
+    }
+
+    overflow: hidden;
+    svg {
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      min-width: 1500px;
+      margin-top: 15vh;
+    }
   }
 }
 
