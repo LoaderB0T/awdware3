@@ -18,6 +18,7 @@ $marginLeft: 20px;
   .logo-container {
     height: 100%;
     position: absolute;
+    overflow: hidden;
     @include vars.not-phone {
       width: 90%;
       max-width: calc(100% - vars.$menuWidth - $marginLeft);
@@ -28,8 +29,6 @@ $marginLeft: 20px;
       width: calc(100% - $marginLeft);
       max-width: unset;
     }
-
-    overflow: hidden;
     svg {
       margin: auto;
       top: 0;

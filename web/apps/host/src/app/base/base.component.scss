@@ -104,11 +104,11 @@ $phoneMenuButtonHeight: 60px;
   }
   &.top {
     top: 0;
+    height: var(--top, 0);
+    --dir: 180deg;
     @include vars.phone {
       top: $phoneMenuButtonHeight;
     }
-    height: var(--top, 0);
-    --dir: 180deg;
   }
   &.bot {
     bottom: vars.$scrollbarWidth;
