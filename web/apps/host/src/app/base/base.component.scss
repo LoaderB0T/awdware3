@@ -66,17 +66,20 @@ $phoneMenuButtonHeight: 60px;
         }
       }
 
-      ::view-transition-old(root) {
-        animation: slideOut 300ms ease;
-      }
+      // Only animate if --anim-dir is not 0 (initial load)
+      &:not([style*="--anim-dir: 0"]) {
+        ::view-transition-old(root) {
+          animation: slideOut 300ms ease;
+        }
 
-      ::view-transition-new(root) {
-        animation: slideIn 300ms ease;
+        ::view-transition-new(root) {
+          animation: slideIn 300ms ease;
+        }
       }
 
       @keyframes slideIn {
         from {
-          transform: translateY(calc(var(--anim-dir, 1) * var(--slide-amount))) scale(var(--scale-amount));
+          transform: translateY(calc(var(--anim-dir, -1) * var(--slide-amount))) scale(var(--scale-amount));
           filter: blur(var(--blur-amount));
         }
         to {
@@ -91,7 +94,7 @@ $phoneMenuButtonHeight: 60px;
           filter: blur(0);
         }
         to {
-          transform: translateY(calc(var(--anim-dir, 1) * -1 * var(--slide-amount))) scale(var(--scale-amount));
+          transform: translateY(calc(var(--anim-dir, -1) * -1 * var(--slide-amount))) scale(var(--scale-amount));
           filter: blur(var(--blur-amount));
         }
       }

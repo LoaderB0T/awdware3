@@ -127,6 +127,9 @@ export class BaseComponent implements AfterViewInit {
     if (activePage) {
       this._menuService.setActiveMenuItem(activePage);
     }
+    if (!this._loaded) {
+      return '0'; // No animation on initial load
+    }
     let dir = -1;
     if (activePage !== this._prevActiveRoute) {
       const prevIndex =
