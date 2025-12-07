@@ -43,8 +43,8 @@ const konamiCode = [
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BaseComponent implements AfterViewInit {
-  private readonly _menuService: MenuService;
-  private readonly _preloadService: PreloadService;
+  private readonly _menuService = inject(MenuService);
+  private readonly _preloadService = inject(PreloadService);
   private _prevActiveRoute = '';
   private _loaded = false;
   protected readonly menuOpen: Signal<boolean>;
@@ -66,10 +66,8 @@ export class BaseComponent implements AfterViewInit {
     this.globalKeyPressed(key);
   }
 
-  constructor(title: Title, menuService: MenuService, preloadService: PreloadService) {
-    this._menuService = menuService;
-    this._preloadService = preloadService;
-    this.menuOpen = menuService.menuOpen;
+  constructor() {
+    this.menuOpen = this._menuService.menuOpen;
     const rndmTitleEmojis = [
       '*^____^*',
       '（*＾-＾*）',
@@ -89,7 +87,7 @@ export class BaseComponent implements AfterViewInit {
 
     if (isPlatformServer(inject(PLATFORM_ID))) {
       // eslint-disable-next-line no-irregular-whitespace
-      title.setTitle(`awdware     ${rndmTitleEmoji}`);
+      inject(Title).setTitle(`awdware     ${rndmTitleEmoji}`);
     } else {
       function getScrollBarWidth() {
         const el = document.createElement('div');

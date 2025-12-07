@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Typed } from 'typed.ts';
 
@@ -19,9 +19,9 @@ const typedFac = Typed.factory({
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AboutComponent implements OnInit {
-  private readonly _translateService: TranslateService;
-  private readonly _translationService: TranslationService;
-  public readonly logoService: LogoService;
+  private readonly _translateService = inject(TranslateService);
+  private readonly _translationService = inject(TranslationService);
+  public readonly logoService = inject(LogoService);
 
   public readonly headingDone = signal(false);
   public readonly langChanged = signal(false);
@@ -35,15 +35,7 @@ export class AboutComponent implements OnInit {
 
   public contacts = contacts;
 
-  constructor(
-    translateService: TranslateService,
-    translationService: TranslationService,
-    logoService: LogoService
-  ) {
-    this._translateService = translateService;
-    this._translationService = translationService;
-    this.logoService = logoService;
-
+  constructor() {
     const today = new Date();
     const birthday = new Date('1999-06-09');
     let age = today.getFullYear() - birthday.getFullYear();

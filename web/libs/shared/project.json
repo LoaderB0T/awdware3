@@ -4,12 +4,14 @@
   "projectType": "library",
   "sourceRoot": "libs/shared/src",
   "prefix": "awd",
+  "tags": [],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/shared"],
       "options": {
-        "jestConfig": "libs/shared/jest.config.ts"
+        "jestConfig": "libs/shared/jest.config.ts",
+        "tsConfig": "libs/shared/tsconfig.spec.json"
       }
     },
     "lint": {
@@ -18,6 +20,5 @@
         "commands": ["eslint {projectRoot}"]
       }
     }
-  },
-  "tags": []
+  }
 }

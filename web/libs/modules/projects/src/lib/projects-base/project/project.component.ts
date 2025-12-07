@@ -5,6 +5,7 @@ import {
   OnInit,
   Signal,
   computed,
+  inject,
   signal,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -24,16 +25,14 @@ import { Project } from '../projects';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectComponent implements OnInit {
-  private readonly _repoInfoService: RepoInfoService;
-  private readonly _translateService: TranslateService;
+  private readonly _repoInfoService = inject(RepoInfoService);
+  private readonly _translateService = inject(TranslateService);
   public readonly repoInfo = signal<RepoInfo | null>(null);
   public readonly lang: Signal<string | null>;
 
   @Input({ required: true }) project!: Project;
 
-  constructor(starsService: RepoInfoService, translateService: TranslateService) {
-    this._repoInfoService = starsService;
-    this._translateService = translateService;
+  constructor() {
     const langChange = toSignal(this._translateService.onLangChange);
     this.lang = computed<string | null>(
       () => langChange()?.lang ?? this._translateService.currentLang

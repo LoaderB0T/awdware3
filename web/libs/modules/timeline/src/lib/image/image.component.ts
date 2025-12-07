@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -18,7 +17,7 @@ function toNumber(value: string | number): number {
 }
 
 @Component({
-  imports: [CommonModule, TranslateModule],
+  imports: [TranslateModule],
   selector: 'awd-image',
   templateUrl: './image.component.html',
   styleUrls: ['./image.component.scss'],

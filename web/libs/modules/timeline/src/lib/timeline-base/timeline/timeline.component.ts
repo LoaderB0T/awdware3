@@ -1,11 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
 import { timelime, TimelineEntryViewModel } from '../timeline';
 
 @Component({
   selector: 'awd-timeline',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

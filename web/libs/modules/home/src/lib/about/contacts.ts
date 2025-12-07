@@ -10,21 +10,21 @@ export const contacts: Contact[] = [
     image: 'github',
     name: 'GitHub',
     link: 'https://github.com/LoaderB0T/',
-    darkLightIcon: true
+    darkLightIcon: true,
   },
   {
     image: 'xing',
     name: 'Xing',
-    link: 'https://www.xing.com/profile/Janik_Schumacher'
+    link: 'https://www.xing.com/profile/Janik_Schumacher',
   },
   {
     image: 'twitter',
     name: 'Twitter',
-    link: 'https://twitter.com/LoaderB0T'
+    link: 'https://twitter.com/LoaderB0T',
   },
   {
     image: 'linkedin',
     name: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/janikschumacher/'
-  }
+    link: 'https://www.linkedin.com/in/janikschumacher/',
+  },
 ];

@@ -4,6 +4,7 @@
   "projectType": "application",
   "sourceRoot": "apps/host/src",
   "prefix": "awd",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
@@ -81,7 +82,8 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/host"],
       "options": {
-        "jestConfig": "apps/host/jest.config.ts"
+        "jestConfig": "apps/host/jest.config.ts",
+        "tsConfig": "apps/host/tsconfig.spec.json"
       }
     },
     "serve": {
@@ -94,8 +96,8 @@
           "buildTarget": "host:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "continuous": true
     }
-  },
-  "tags": []
+  }
 }

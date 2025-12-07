@@ -1,4 +1,4 @@
-import { Injectable, Signal, computed } from '@angular/core';
+import { Injectable, Signal, computed, inject } from '@angular/core';
 
 import { ThemeService } from '@awdware/shared';
 
@@ -11,8 +11,8 @@ type IconMetadata = {
 export class LogoService {
   private readonly _isLightTheme: Signal<boolean>;
 
-  constructor(themeService: ThemeService) {
-    this._isLightTheme = computed(() => themeService.selectedTheme().name === 'light');
+  constructor() {
+    this._isLightTheme = computed(() => inject(ThemeService).selectedTheme().name === 'light');
   }
 
   public getIconName(icon: IconMetadata): Signal<string> {

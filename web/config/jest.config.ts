@@ -7,7 +7,7 @@ export interface ConfigOptions {
 
 const defaultOptions: ConfigOptions = {
   pathToRoot: '../../',
-  roots: ['src/lib']
+  roots: ['src/lib'],
 };
 
 export const getConfig = (moduleName: string, options?: Partial<ConfigOptions>) => {
@@ -24,21 +24,21 @@ export const getConfig = (moduleName: string, options?: Partial<ConfigOptions>) 
     globals: {
       'ts-jest': {
         tsconfig: '<rootDir>/tsconfig.spec.json',
-        stringifyContentPathRegex: '\\.(html|svg)$'
-      }
+        stringifyContentPathRegex: '\\.(html|svg)$',
+      },
     },
     transform: {
-      '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular'
+      '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
     },
     snapshotSerializers: [
       'jest-preset-angular/build/serializers/no-ng-attributes',
       'jest-preset-angular/build/serializers/ng-snapshot',
-      'jest-preset-angular/build/serializers/html-comment'
+      'jest-preset-angular/build/serializers/html-comment',
     ],
     moduleNameMapper: {
-      '#(.*)': `${options.pathToRoot}node_modules/$1`
+      '#(.*)': `${options.pathToRoot}node_modules/$1`,
     },
     roots: options.roots,
-    maxWorkers: '75%'
+    maxWorkers: '75%',
   };
 };

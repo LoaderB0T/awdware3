@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { catchError, firstValueFrom, of } from 'rxjs';
 
 import { FullRepository } from '../models/github-repo-info.model';
@@ -8,10 +8,7 @@ import { FullRepository } from '../models/github-repo-info.model';
   providedIn: 'root',
 })
 export class GitHubService {
-  private readonly _http: HttpClient;
-  constructor(http: HttpClient) {
-    this._http = http;
-  }
+  private readonly _http = inject(HttpClient);
 
   public async getRepoInfo(username: string, reponame: string): Promise<FullRepository> {
     return firstValueFrom(
