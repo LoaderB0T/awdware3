@@ -15,11 +15,11 @@ const routes: Routes = [
     loadChildren: () => import('./home.module').then(m => m.HomeModule),
     data: { activePage: 'home' },
   },
-  // {
-  //   path: '',
-  //   pathMatch: 'full',
-  //   redirectTo: '/home',
-  // },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/home',
+  },
 ];
 
 const userIcons = [
