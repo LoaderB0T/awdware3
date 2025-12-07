@@ -31,7 +31,6 @@ $phoneMenuButtonHeight: 60px;
       right: 0;
       z-index: 2;
       overflow: scroll;
-      view-transition-name: content-area;
       @include vars.not-phone {
         height: 100%;
         width: calc(100vw - vars.$menuWidth);
