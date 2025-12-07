@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { inject, Injectable } from '@angular/core';
+
+import { inject, Injectable, DOCUMENT } from '@angular/core';
 import { environment } from 'ng-dynamic-mf/environment';
 
 type TrackType = (() => void) | ((eventName: string, data?: any) => void);

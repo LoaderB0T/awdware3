@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, effect, inject, signal } from '@angular/core';
+
+import { Component, effect, inject, signal, DOCUMENT } from '@angular/core';
 
 import { AnalyticsService } from '@awdware/analytics';
 import { MenuItem, MenuService, ThemeService, TranslationService } from '@awdware/shared';

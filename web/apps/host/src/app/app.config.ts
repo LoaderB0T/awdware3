@@ -1,10 +1,11 @@
-import { DOCUMENT } from '@angular/common';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import {
   ApplicationConfig,
   inject,
   provideAppInitializer,
-  provideExperimentalZonelessChangeDetection,
+  provideZonelessChangeDetection,
+  DOCUMENT,
+  importProvidersFrom,
 } from '@angular/core';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -16,10 +17,16 @@ import { ThemeService, TranslationService } from '@awdware/shared';
 
 import { routes } from './routes';
 import { MyMissingTranslationHandler } from './services/my-missing-translation-handler';
+import { HomeLazyModule } from '@awdware/home';
+import { ProjectsLazyModule } from '@awdware/projects';
+import { TimelineLazyModule } from '@awdware/timeline';
+
+const appModules = [HomeLazyModule, ProjectsLazyModule, TimelineLazyModule];
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideExperimentalZonelessChangeDetection(),
+    importProvidersFrom(...appModules),
+    provideZonelessChangeDetection(),
     provideRouter(routes),
     provideAnimations(),
     provideTranslateService({

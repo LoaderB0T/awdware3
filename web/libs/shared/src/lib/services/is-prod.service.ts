@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { inject, Injectable } from '@angular/core';
+
+import { inject, Injectable, DOCUMENT } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class IsProdService {

@@ -6,12 +6,8 @@ export const routes: Routes = [
     children: [
       {
         path: '#module-entry-point#',
-        redirectTo: '/',
+        redirectTo: '/bla',
       },
     ],
-  },
-  {
-    path: '**',
-    redirectTo: '',
   },
 ];

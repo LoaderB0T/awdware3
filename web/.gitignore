@@ -43,3 +43,5 @@ Thumbs.db
 tools/**/*.js.map
 .nx
 .github-cache.json
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md
