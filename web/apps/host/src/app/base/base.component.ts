@@ -13,7 +13,14 @@ import {
   Signal,
 } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
+import {
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+  RouterOutlet,
+} from '@angular/router';
 import { RectParticle } from 'confetti.ts';
 import { Subscription } from 'rxjs';
 
@@ -126,7 +133,11 @@ export class BaseComponent implements AfterViewInit, OnInit, OnDestroy {
       this._routerSubscription = this._router.events.subscribe(event => {
         if (event instanceof NavigationStart) {
           this._viewTransitionName.set('content-area');
-        } else if (event instanceof NavigationEnd) {
+        } else if (
+          event instanceof NavigationEnd ||
+          event instanceof NavigationCancel ||
+          event instanceof NavigationError
+        ) {
           // Remove the view-transition-name after a short delay to allow the transition to complete
           setTimeout(() => {
             this._viewTransitionName.set(null);
