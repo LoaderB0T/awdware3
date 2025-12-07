@@ -122,7 +122,12 @@ export class BaseComponent implements AfterViewInit {
     return this._preloadService.imgs$;
   }
 
-  protected updateAnimationDirection(outlet: RouterOutlet): void {
+  protected onRouteActivate(outlet: RouterOutlet, content: HTMLElement): void {
+    this.contentScrolled(content);
+    this.updateAnimationDirection(outlet);
+  }
+
+  private updateAnimationDirection(outlet: RouterOutlet): void {
     const activePage = outlet?.activatedRouteData?.['activePage'] as string | undefined;
     if (activePage) {
       this._menuService.setActiveMenuItem(activePage);

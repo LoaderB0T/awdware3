@@ -9,7 +9,7 @@
       (scroll)="contentScrolled(content)"
       class="content appear"
     >
-      <router-outlet #outlet="outlet" (activate)="contentScrolled(content); updateAnimationDirection(outlet)" />
+      <router-outlet #outlet="outlet" (activate)="onRouteActivate(outlet, content)" />
     </div>
   </div>
 </div>
