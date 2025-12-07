@@ -26,7 +26,12 @@ export const appConfig: ApplicationConfig = {
   providers: [
     importProvidersFrom(...appModules),
     provideZonelessChangeDetection(),
-    provideRouter(routes, withViewTransitions()),
+    provideRouter(
+      routes,
+      withViewTransitions({
+        skipInitialTransition: true,
+      })
+    ),
     provideTranslateService({
       missingTranslationHandler: {
         provide: MissingTranslationHandler,
