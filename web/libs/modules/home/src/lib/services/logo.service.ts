@@ -12,7 +12,8 @@ export class LogoService {
   private readonly _isLightTheme: Signal<boolean>;
 
   constructor() {
-    this._isLightTheme = computed(() => inject(ThemeService).selectedTheme().name === 'light');
+    const themeService = inject(ThemeService);
+    this._isLightTheme = computed(() => themeService.selectedTheme().name === 'light');
   }
 
   public getIconName(icon: IconMetadata): Signal<string> {

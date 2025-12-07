@@ -8,9 +8,9 @@
       #content
       (scroll)="contentScrolled(content)"
       class="content appear"
-      [@routeAnimations]="prepareRoute(outlet)"
+      [style.view-transition-name]="viewTransitionName()"
     >
-      <router-outlet #outlet="outlet" (activate)="contentScrolled(content)" />
+      <router-outlet #outlet="outlet" (activate)="onRouteActivate(outlet, content)" />
     </div>
   </div>
 </div>

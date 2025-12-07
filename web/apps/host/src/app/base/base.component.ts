@@ -6,17 +6,26 @@ import {
   effect,
   HostListener,
   inject,
+  OnDestroy,
+  OnInit,
   PLATFORM_ID,
   signal,
   Signal,
 } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { RouterOutlet } from '@angular/router';
+import {
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+  RouterOutlet,
+} from '@angular/router';
 import { RectParticle } from 'confetti.ts';
+import { Subscription } from 'rxjs';
 
 import { PreloadService, MenuService, randomInt, ThemeService } from '@awdware/shared';
 
-import { slideInAnimation } from './router-animation';
 import { BgComponent } from '../bg/bg.component';
 import { MenuComponent } from '../menu/menu.component';
 
@@ -39,12 +48,14 @@ const konamiCode = [
   selector: 'awd-base',
   templateUrl: './base.component.html',
   styleUrls: ['./base.component.scss'],
-  animations: [slideInAnimation],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BaseComponent implements AfterViewInit {
+export class BaseComponent implements AfterViewInit, OnInit, OnDestroy {
+  private static readonly VIEW_TRANSITION_CLEANUP_DELAY_MS = 300;
+
   private readonly _menuService = inject(MenuService);
   private readonly _preloadService = inject(PreloadService);
+  private readonly _router = inject(Router);
   private _prevActiveRoute = '';
   private _loaded = false;
   protected readonly menuOpen: Signal<boolean>;
@@ -55,6 +66,9 @@ export class BaseComponent implements AfterViewInit {
   private _confettiInterval: any = null;
   private _mouseX: number = 0;
   private _mouseY: number = 0;
+  private readonly _isServer = isPlatformServer(inject(PLATFORM_ID));
+  private readonly _viewTransitionName = signal<string | null>(null);
+  private _routerSubscription?: Subscription;
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -85,7 +99,7 @@ export class BaseComponent implements AfterViewInit {
 
     const rndmTitleEmoji = rndmTitleEmojis[randomInt(0, rndmTitleEmojis.length - 1)];
 
-    if (isPlatformServer(inject(PLATFORM_ID))) {
+    if (this._isServer) {
       // eslint-disable-next-line no-irregular-whitespace
       inject(Title).setTitle(`awdware     ${rndmTitleEmoji}`);
     } else {
@@ -113,8 +127,32 @@ export class BaseComponent implements AfterViewInit {
     });
   }
 
+  public ngOnInit(): void {
+    if (!this._isServer) {
+      // Apply view-transition-name only during navigation to avoid stacking context issues
+      this._routerSubscription = this._router.events.subscribe(event => {
+        if (event instanceof NavigationStart) {
+          this._viewTransitionName.set('content-area');
+        } else if (
+          event instanceof NavigationEnd ||
+          event instanceof NavigationCancel ||
+          event instanceof NavigationError
+        ) {
+          // Remove the view-transition-name after a short delay to allow the transition to complete
+          setTimeout(() => {
+            this._viewTransitionName.set(null);
+          }, BaseComponent.VIEW_TRANSITION_CLEANUP_DELAY_MS);
+        }
+      });
+    }
+  }
+
   public ngAfterViewInit(): void {
     this._loaded = true;
+  }
+
+  public ngOnDestroy(): void {
+    this._routerSubscription?.unsubscribe();
   }
 
   protected get preloadIcons$() {
@@ -124,13 +162,25 @@ export class BaseComponent implements AfterViewInit {
     return this._preloadService.imgs$;
   }
 
-  protected prepareRoute(outlet: RouterOutlet) {
+  protected viewTransitionName(): string | null {
+    return this._viewTransitionName();
+  }
+
+  protected onRouteActivate(outlet: RouterOutlet, content: HTMLElement): void {
+    this.contentScrolled(content);
+    this.updateAnimationDirection(outlet);
+  }
+
+  private updateAnimationDirection(outlet: RouterOutlet): void {
     const activePage = outlet?.activatedRouteData?.['activePage'] as string | undefined;
     if (activePage) {
       this._menuService.setActiveMenuItem(activePage);
     }
+
     let dir = -1;
-    if (activePage !== this._prevActiveRoute) {
+    if (!this._loaded) {
+      dir = 0; // No animation on initial load
+    } else if (activePage !== this._prevActiveRoute) {
       const prevIndex =
         this._menuService.menuItems().find(x => x.id === this._prevActiveRoute)?.order ?? 0;
       const activeIndex = this._menuService.menuItems().find(x => x.id === activePage)?.order ?? 0;
@@ -139,13 +189,11 @@ export class BaseComponent implements AfterViewInit {
       }
       this._prevActiveRoute = activePage ?? '';
     }
-    if (!this._loaded) {
-      return { value: 'initial' };
+
+    // Set CSS variable on document root for View Transitions API (skip during SSR)
+    if (!this._isServer) {
+      document.documentElement.style.setProperty('--anim-dir', dir.toString());
     }
-    if (activePage) {
-      return { value: activePage, params: { dir } };
-    }
-    return undefined;
   }
 
   private globalKeyPressed(key: string) {
