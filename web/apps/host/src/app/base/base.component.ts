@@ -6,6 +6,7 @@ import {
   effect,
   HostListener,
   inject,
+  OnDestroy,
   OnInit,
   PLATFORM_ID,
   signal,
@@ -14,6 +15,7 @@ import {
 import { Title } from '@angular/platform-browser';
 import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { RectParticle } from 'confetti.ts';
+import { Subscription } from 'rxjs';
 
 import { PreloadService, MenuService, randomInt, ThemeService } from '@awdware/shared';
 
@@ -41,7 +43,9 @@ const konamiCode = [
   styleUrls: ['./base.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BaseComponent implements AfterViewInit, OnInit {
+export class BaseComponent implements AfterViewInit, OnInit, OnDestroy {
+  private static readonly VIEW_TRANSITION_CLEANUP_DELAY_MS = 500;
+
   private readonly _menuService = inject(MenuService);
   private readonly _preloadService = inject(PreloadService);
   private readonly _router = inject(Router);
@@ -57,6 +61,7 @@ export class BaseComponent implements AfterViewInit, OnInit {
   private _mouseY: number = 0;
   private readonly _isServer = isPlatformServer(inject(PLATFORM_ID));
   private readonly _viewTransitionName = signal<string | null>(null);
+  private _routerSubscription?: Subscription;
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -118,14 +123,14 @@ export class BaseComponent implements AfterViewInit, OnInit {
   public ngOnInit(): void {
     if (!this._isServer) {
       // Apply view-transition-name only during navigation to avoid stacking context issues
-      this._router.events.subscribe(event => {
+      this._routerSubscription = this._router.events.subscribe(event => {
         if (event instanceof NavigationStart) {
           this._viewTransitionName.set('content-area');
         } else if (event instanceof NavigationEnd) {
           // Remove the view-transition-name after a short delay to allow the transition to complete
           setTimeout(() => {
             this._viewTransitionName.set(null);
-          }, 500);
+          }, BaseComponent.VIEW_TRANSITION_CLEANUP_DELAY_MS);
         }
       });
     }
@@ -133,6 +138,10 @@ export class BaseComponent implements AfterViewInit, OnInit {
 
   public ngAfterViewInit(): void {
     this._loaded = true;
+  }
+
+  public ngOnDestroy(): void {
+    this._routerSubscription?.unsubscribe();
   }
 
   protected get preloadIcons$() {
