@@ -151,7 +151,7 @@ export class BaseComponent implements AfterViewInit, OnInit, OnDestroy {
     return this._preloadService.imgs$;
   }
 
-  protected viewTransitionName() {
+  protected viewTransitionName(): string | null {
     return this._viewTransitionName();
   }
 
