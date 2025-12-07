@@ -1,4 +1,3 @@
-
 import { Component, effect, inject, signal, DOCUMENT } from '@angular/core';
 
 import { AnalyticsService } from '@awdware/analytics';

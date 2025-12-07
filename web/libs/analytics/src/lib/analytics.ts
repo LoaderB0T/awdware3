@@ -1,4 +1,3 @@
-
 import { inject, Injectable, DOCUMENT } from '@angular/core';
 import { environment } from 'ng-dynamic-mf/environment';
 

@@ -1,4 +1,3 @@
-
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
 import { timelime, TimelineEntryViewModel } from '../timeline';

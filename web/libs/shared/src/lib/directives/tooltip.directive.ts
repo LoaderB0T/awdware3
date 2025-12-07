@@ -1,4 +1,3 @@
-
 import {
   Directive,
   ElementRef,
@@ -7,7 +6,7 @@ import {
   Input,
   type OnDestroy,
   Renderer2,
-  DOCUMENT
+  DOCUMENT,
 } from '@angular/core';
 
 @Directive({
