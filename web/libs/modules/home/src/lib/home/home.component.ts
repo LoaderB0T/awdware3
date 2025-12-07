@@ -48,8 +48,8 @@ export class HomeComponent implements OnInit {
     [...new Array(3 - this.typing1().split('\n').length)].map((_, i) => i)
   );
 
-  constructor(preloadService: PreloadService) {
-    preloadService.addIcons(['forward', 'rotate-right']);
+  constructor() {
+    inject(PreloadService).addIcons(['forward', 'rotate-right']);
   }
 
   private async prepareTyping() {

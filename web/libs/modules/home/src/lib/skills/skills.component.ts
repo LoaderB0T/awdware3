@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 
 import { TooltipDirective } from '@awdware/shared';
@@ -15,12 +15,11 @@ import { LogoService } from '../services/logo.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SkillsComponent {
-  public readonly logoService: LogoService;
+  public readonly logoService = inject(LogoService);
   public skills = skills;
   public knowledge = knowledge;
 
-  constructor(logoService: LogoService) {
-    this.logoService = logoService;
+  constructor() {
     this.knowledge.sort(() => Math.random() - 0.5);
   }
 }

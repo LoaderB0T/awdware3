@@ -13,13 +13,13 @@ import { provideRouter } from '@angular/router';
 import { MissingTranslationHandler, provideTranslateService } from '@ngx-translate/core';
 import { ɵinitializeEnvironment, setWindow } from 'ng-dynamic-mf/environment';
 
+import { HomeLazyModule } from '@awdware/home';
+import { ProjectsLazyModule } from '@awdware/projects';
 import { ThemeService, TranslationService } from '@awdware/shared';
+import { TimelineLazyModule } from '@awdware/timeline';
 
 import { routes } from './routes';
 import { MyMissingTranslationHandler } from './services/my-missing-translation-handler';
-import { HomeLazyModule } from '@awdware/home';
-import { ProjectsLazyModule } from '@awdware/projects';
-import { TimelineLazyModule } from '@awdware/timeline';
 
 const appModules = [HomeLazyModule, ProjectsLazyModule, TimelineLazyModule];
 

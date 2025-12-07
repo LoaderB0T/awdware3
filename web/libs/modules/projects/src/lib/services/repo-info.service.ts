@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 
 import { GitHubService } from './github.service';
 import { RepoInfo } from '../models/compact-repo-info.model';
@@ -7,11 +7,7 @@ import { RepoInfo } from '../models/compact-repo-info.model';
   providedIn: 'root',
 })
 export class RepoInfoService {
-  private readonly _gitHubService: GitHubService;
-
-  constructor(gitHubService: GitHubService) {
-    this._gitHubService = gitHubService;
-  }
+  private readonly _gitHubService = inject(GitHubService);
 
   // GitHub API has a limit of 60 requests per hour, so we need to cache the results for an hour
   public async getRepoInfo(username: string, reponame: string): Promise<RepoInfo> {
