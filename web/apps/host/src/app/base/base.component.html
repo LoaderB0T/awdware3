@@ -8,7 +8,7 @@
       #content
       (scroll)="contentScrolled(content)"
       class="content appear"
-      [@routeAnimations]="prepareRoute(outlet)"
+      [style.--anim-dir]="getAnimationDirection(outlet)"
     >
       <router-outlet #outlet="outlet" (activate)="contentScrolled(content)" />
     </div>

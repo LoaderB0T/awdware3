@@ -16,7 +16,6 @@ import { RectParticle } from 'confetti.ts';
 
 import { PreloadService, MenuService, randomInt, ThemeService } from '@awdware/shared';
 
-import { slideInAnimation } from './router-animation';
 import { BgComponent } from '../bg/bg.component';
 import { MenuComponent } from '../menu/menu.component';
 
@@ -39,7 +38,6 @@ const konamiCode = [
   selector: 'awd-base',
   templateUrl: './base.component.html',
   styleUrls: ['./base.component.scss'],
-  animations: [slideInAnimation],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BaseComponent implements AfterViewInit {
@@ -124,7 +122,7 @@ export class BaseComponent implements AfterViewInit {
     return this._preloadService.imgs$;
   }
 
-  protected prepareRoute(outlet: RouterOutlet) {
+  protected getAnimationDirection(outlet: RouterOutlet): string {
     const activePage = outlet?.activatedRouteData?.['activePage'] as string | undefined;
     if (activePage) {
       this._menuService.setActiveMenuItem(activePage);
@@ -139,13 +137,7 @@ export class BaseComponent implements AfterViewInit {
       }
       this._prevActiveRoute = activePage ?? '';
     }
-    if (!this._loaded) {
-      return { value: 'initial' };
-    }
-    if (activePage) {
-      return { value: activePage, params: { dir } };
-    }
-    return undefined;
+    return dir.toString();
   }
 
   private globalKeyPressed(key: string) {

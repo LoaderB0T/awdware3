@@ -8,8 +8,7 @@ import {
   importProvidersFrom,
 } from '@angular/core';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withViewTransitions } from '@angular/router';
 import { MissingTranslationHandler, provideTranslateService } from '@ngx-translate/core';
 import { ɵinitializeEnvironment, setWindow } from 'ng-dynamic-mf/environment';
 
@@ -27,8 +26,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     importProvidersFrom(...appModules),
     provideZonelessChangeDetection(),
-    provideRouter(routes),
-    provideAnimations(),
+    provideRouter(routes, withViewTransitions()),
     provideTranslateService({
       missingTranslationHandler: {
         provide: MissingTranslationHandler,

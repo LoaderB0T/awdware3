@@ -42,6 +42,13 @@ $phoneMenuButtonHeight: 60px;
         width: 100vw;
         left: 0;
       }
+      // View Transitions API animations using CSS variables
+      & {
+        --slide-amount: 150%;
+        --scale-amount: 0.1;
+        --blur-amount: 500px;
+      }
+
       ::ng-deep > *:not(router-outlet) {
         width: 100%;
         display: flex;
@@ -56,6 +63,36 @@ $phoneMenuButtonHeight: 60px;
         @include vars.phone {
           max-width: calc(100vw - vars.$scrollbarWidth);
           min-height: calc(100vh - vars.$scrollbarWidth - $phoneMenuButtonHeight);
+        }
+      }
+
+      ::view-transition-old(root) {
+        animation: slideOut 300ms ease;
+      }
+
+      ::view-transition-new(root) {
+        animation: slideIn 300ms ease;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(calc(var(--anim-dir, 1) * var(--slide-amount))) scale(var(--scale-amount));
+          filter: blur(var(--blur-amount));
+        }
+        to {
+          transform: translateY(0) scale(1);
+          filter: blur(0);
+        }
+      }
+
+      @keyframes slideOut {
+        from {
+          transform: translateY(0) scale(1);
+          filter: blur(0);
+        }
+        to {
+          transform: translateY(calc(var(--anim-dir, 1) * -1 * var(--slide-amount))) scale(var(--scale-amount));
+          filter: blur(var(--blur-amount));
         }
       }
     }
