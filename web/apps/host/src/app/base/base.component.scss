@@ -2,37 +2,6 @@
 
 $phoneMenuButtonHeight: 60px;
 
-// View Transitions API animations - must be at root level
-::view-transition-old(root) {
-  animation: slideOut 300ms ease;
-}
-
-::view-transition-new(root) {
-  animation: slideIn 300ms ease;
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateY(calc(var(--anim-dir, -1) * var(--slide-amount, 150%))) scale(var(--scale-amount, 0.1));
-    filter: blur(var(--blur-amount, 500px));
-  }
-  to {
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-}
-
-@keyframes slideOut {
-  from {
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-  to {
-    transform: translateY(calc(var(--anim-dir, -1) * -1 * var(--slide-amount, 150%))) scale(var(--scale-amount, 0.1));
-    filter: blur(var(--blur-amount, 500px));
-  }
-}
-
 #app-main {
   display: flex;
   flex-direction: column;
