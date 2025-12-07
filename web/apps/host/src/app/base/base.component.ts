@@ -122,16 +122,16 @@ export class BaseComponent implements AfterViewInit {
     return this._preloadService.imgs$;
   }
 
-  protected getAnimationDirection(outlet: RouterOutlet): string {
+  protected updateAnimationDirection(outlet: RouterOutlet): void {
     const activePage = outlet?.activatedRouteData?.['activePage'] as string | undefined;
     if (activePage) {
       this._menuService.setActiveMenuItem(activePage);
     }
-    if (!this._loaded) {
-      return '0'; // No animation on initial load
-    }
+    
     let dir = -1;
-    if (activePage !== this._prevActiveRoute) {
+    if (!this._loaded) {
+      dir = 0; // No animation on initial load
+    } else if (activePage !== this._prevActiveRoute) {
       const prevIndex =
         this._menuService.menuItems().find(x => x.id === this._prevActiveRoute)?.order ?? 0;
       const activeIndex = this._menuService.menuItems().find(x => x.id === activePage)?.order ?? 0;
@@ -140,7 +140,9 @@ export class BaseComponent implements AfterViewInit {
       }
       this._prevActiveRoute = activePage ?? '';
     }
-    return dir.toString();
+    
+    // Set CSS variable on document root for View Transitions API
+    document.documentElement.style.setProperty('--anim-dir', dir.toString());
   }
 
   private globalKeyPressed(key: string) {
