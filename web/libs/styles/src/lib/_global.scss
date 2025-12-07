@@ -237,11 +237,12 @@ $tooltipBorder: $tooltipBorderSize vars.$colorContent1 solid;
 }
 
 // View Transitions API animations for router navigation
-::view-transition-old(root) {
+// Target only the content-area, not the entire page
+::view-transition-old(content-area) {
   animation: slideOut 300ms ease;
 }
 
-::view-transition-new(root) {
+::view-transition-new(content-area) {
   animation: slideIn 300ms ease;
 }
 

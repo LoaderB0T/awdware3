@@ -146,8 +146,10 @@ export class BaseComponent implements AfterViewInit {
       this._prevActiveRoute = activePage ?? '';
     }
     
-    // Set CSS variable on document root for View Transitions API
-    document.documentElement.style.setProperty('--anim-dir', dir.toString());
+    // Set CSS variable on document root for View Transitions API (skip during SSR)
+    if (!isPlatformServer(inject(PLATFORM_ID))) {
+      document.documentElement.style.setProperty('--anim-dir', dir.toString());
+    }
   }
 
   private globalKeyPressed(key: string) {
