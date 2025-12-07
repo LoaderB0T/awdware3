@@ -51,7 +51,7 @@ const konamiCode = [
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BaseComponent implements AfterViewInit, OnInit, OnDestroy {
-  private static readonly VIEW_TRANSITION_CLEANUP_DELAY_MS = 500;
+  private static readonly VIEW_TRANSITION_CLEANUP_DELAY_MS = 300;
 
   private readonly _menuService = inject(MenuService);
   private readonly _preloadService = inject(PreloadService);
