@@ -53,6 +53,7 @@ export class BaseComponent implements AfterViewInit {
   private _confettiInterval: any = null;
   private _mouseX: number = 0;
   private _mouseY: number = 0;
+  private readonly _isServer = isPlatformServer(inject(PLATFORM_ID));
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -83,7 +84,7 @@ export class BaseComponent implements AfterViewInit {
 
     const rndmTitleEmoji = rndmTitleEmojis[randomInt(0, rndmTitleEmojis.length - 1)];
 
-    if (isPlatformServer(inject(PLATFORM_ID))) {
+    if (this._isServer) {
       // eslint-disable-next-line no-irregular-whitespace
       inject(Title).setTitle(`awdware     ${rndmTitleEmoji}`);
     } else {
@@ -132,7 +133,7 @@ export class BaseComponent implements AfterViewInit {
     if (activePage) {
       this._menuService.setActiveMenuItem(activePage);
     }
-    
+
     let dir = -1;
     if (!this._loaded) {
       dir = 0; // No animation on initial load
@@ -145,9 +146,9 @@ export class BaseComponent implements AfterViewInit {
       }
       this._prevActiveRoute = activePage ?? '';
     }
-    
+
     // Set CSS variable on document root for View Transitions API (skip during SSR)
-    if (!isPlatformServer(inject(PLATFORM_ID))) {
+    if (!this._isServer) {
       document.documentElement.style.setProperty('--anim-dir', dir.toString());
     }
   }
