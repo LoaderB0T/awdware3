@@ -239,16 +239,17 @@ $tooltipBorder: $tooltipBorderSize vars.$colorContent1 solid;
 // View Transitions API animations for router navigation
 // Target only the content-area, not the entire page
 ::view-transition-old(content-area) {
-  animation: slideOut 300ms ease;
+  animation: slideOut 300ms ease forwards;
 }
 
 ::view-transition-new(content-area) {
-  animation: slideIn 300ms ease;
+  animation: slideIn 300ms ease forwards;
 }
 
 @keyframes slideIn {
   from {
-    transform: translateY(calc(var(--anim-dir, -1) * var(--slide-amount, 150%))) scale(var(--scale-amount, 0.1));
+    transform: translateY(calc(var(--anim-dir, -1) * var(--slide-amount, 150%)))
+      scale(var(--scale-amount, 0.1));
     filter: blur(var(--blur-amount, 500px));
   }
   to {
@@ -263,7 +264,8 @@ $tooltipBorder: $tooltipBorderSize vars.$colorContent1 solid;
     filter: blur(0);
   }
   to {
-    transform: translateY(calc(var(--anim-dir, -1) * -1 * var(--slide-amount, 150%))) scale(var(--scale-amount, 0.1));
+    transform: translateY(calc(var(--anim-dir, -1) * -1 * var(--slide-amount, 150%)))
+      scale(var(--scale-amount, 0.1));
     filter: blur(var(--blur-amount, 500px));
   }
 }
