@@ -11,23 +11,19 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "pnpm playwright install",
-    "clean": "pnpm rimraf dist",
-    "prepare-dist": "pnpm cpy ../web/dist/apps/host/** ./dist && pnpm cpy ../web/dist/apps/home ./dist/assets/modules && pnpm debug-paths",
-    "debug-paths": "ls -R ./dist",
-    "start": "pnpm http-server -p 4200 -c-1 ./dist",
     "test": "playwright test"
   },
   "prettier": "@awdware/prettier-config",
   "keywords": [],
   "devDependencies": {
     "@awdware/prettier-config": "^1.0.0",
-    "@playwright/test": "^1.57.0",
-    "@types/node": "24.10.1",
+    "@playwright/test": "^1.58.0",
+    "@types/node": "25.0.10",
     "cpy-cli": "^6.0.0",
     "http-server": "^14.1.1",
     "rimraf": "^6.1.2"
   },
   "dependencies": {
-    "prettier": "^3.7.4"
+    "prettier": "^3.8.1"
   }
 }
