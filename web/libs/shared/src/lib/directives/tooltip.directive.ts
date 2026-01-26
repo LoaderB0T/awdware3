@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 
 @Directive({
-  selector: '[tooltip]',
+  selector: '[awdTooltip]',
 })
 export class TooltipDirective implements OnDestroy {
   public shown: boolean = false;
@@ -19,7 +19,7 @@ export class TooltipDirective implements OnDestroy {
   private _tooltip?: HTMLSpanElement;
   private readonly _window = inject(DOCUMENT).defaultView;
 
-  @Input('tooltip') tooltipTitle: string = '';
+  @Input('awdTooltip') tooltipTitle: string = '';
 
   @HostListener('mouseenter') onMouseEnter() {
     if (!this.shown) {

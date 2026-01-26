@@ -31,6 +31,22 @@ export default [
       // "rxjs/no-index": "error",
       // "rxjs/no-internal": "error",
       '@typescript-eslint/no-non-null-assertion': 'warn',
+      '@angular-eslint/component-selector': [
+        'error',
+        {
+          type: 'element',
+          prefix: 'awd',
+          style: 'kebab-case',
+        },
+      ],
+      '@angular-eslint/directive-selector': [
+        'error',
+        {
+          type: 'attribute',
+          prefix: ['awd'],
+          style: 'camelCase',
+        },
+      ],
       'unused-imports/no-unused-imports': 'error',
 
       'unused-imports/no-unused-vars': [
