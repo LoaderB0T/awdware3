@@ -1,10 +1,15 @@
 {
   "extends": "../../config/tsconfig/app/tsconfig.app.json",
-  "files": ["src/main.ts", "src/main.server.ts", "src/server.ts"],
-  "include": ["src/**/*.d.ts"],
-  "exclude": ["**/*.test.ts", "**/*.spec.ts"],
-  "compilerOptions": {
-    "types": ["node"],
-    "moduleResolution": "bundler"
-  }
+  "files": [
+    "src/main.ts",
+    "src/main.server.ts",
+    "src/server.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ],
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ]
 }
