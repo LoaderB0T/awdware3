@@ -7,12 +7,6 @@ export const font_montserrat: AddHtmlHeadElementType = {
   href: 'https://fonts.googleapis.com/css?family=Montserrat:400,700',
 };
 
-export const fontawesome: AddHtmlHeadElementType = {
-  type: 'script',
-  src: 'https://kit.fontawesome.com/8552b95824.js',
-  crossorigin: 'anonymous',
-};
-
 export const devicons: AddHtmlHeadElementType = {
   type: 'link',
   rel: 'stylesheet',

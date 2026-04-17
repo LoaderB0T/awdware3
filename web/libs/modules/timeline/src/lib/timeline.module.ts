@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HtmlHeadService } from 'ng-dynamic-mf';
 import { DynamicTranslationService } from 'ng-dynamic-mf/translate';
 
-import { devicons, fontawesome, font_montserrat } from '@awdware/externals';
+import { devicons, font_montserrat } from '@awdware/externals';
 
 import { TimelineBaseComponent } from './timeline-base/timeline-base.component';
 
@@ -35,7 +35,6 @@ export class TimelineModule {
     dynamicTranslationService: DynamicTranslationService
   ) {
     htmlHeadService.addElement(font_montserrat);
-    htmlHeadService.addElement(fontawesome);
     htmlHeadService.addElement(devicons);
 
     dynamicTranslationService.registerTranslationSet('timeline', {

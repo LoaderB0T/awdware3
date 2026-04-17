@@ -4,7 +4,7 @@ import { HtmlHeadService } from 'ng-dynamic-mf';
 import { DynamicTranslationService } from 'ng-dynamic-mf/translate';
 
 import { AnalyticsService } from '@awdware/analytics';
-import { analytics, fontawesome, font_montserrat } from '@awdware/externals';
+import { analytics, font_montserrat } from '@awdware/externals';
 
 import { routes } from './routes';
 
@@ -18,7 +18,6 @@ export class HomeModule {
     dynamicTranslationService: DynamicTranslationService
   ) {
     htmlHeadService.addElement(font_montserrat);
-    htmlHeadService.addElement(fontawesome);
     if (!inject(AnalyticsService).disableAnalytics) {
       htmlHeadService.addElement(analytics);
     }

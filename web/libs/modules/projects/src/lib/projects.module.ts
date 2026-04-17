@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 import { HtmlHeadService } from 'ng-dynamic-mf';
 import { DynamicTranslationService } from 'ng-dynamic-mf/translate';
 
-import { devicons, fontawesome, font_montserrat } from '@awdware/externals';
+import { devicons, font_montserrat } from '@awdware/externals';
 
 import { routes } from './routes';
 
@@ -16,7 +16,6 @@ export class ProjectsModule {
     dynamicTranslationService: DynamicTranslationService
   ) {
     htmlHeadService.addElement(font_montserrat);
-    htmlHeadService.addElement(fontawesome);
     htmlHeadService.addElement(devicons);
 
     dynamicTranslationService.registerTranslationSet('projects', {

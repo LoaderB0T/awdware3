@@ -36,7 +36,12 @@
             "output": "/assets/timeline"
           }
         ],
-        "styles": ["apps/host/src/styles.scss", "libs/modules/projects/src/public.scss"],
+        "styles": [
+          "apps/host/src/styles.scss",
+          "libs/modules/projects/src/public.scss",
+          "libs/styles/src/lib/fa/css/fontawesome.min.css",
+          "libs/styles/src/lib/fa/css/light.min.css"
+        ],
         "scripts": [],
         "stylePreprocessorOptions": {
           "includePaths": ["libs/styles/src/lib"]
