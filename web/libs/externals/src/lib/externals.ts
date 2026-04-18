@@ -20,3 +20,14 @@ export const analytics: AddHtmlHeadElementType = {
   },
   src: `https://analytics.${environment['appUrl']}/script.js`,
 };
+
+export const analyticsReplay: AddHtmlHeadElementType = {
+  type: 'script',
+  data: {
+    'website-id': environment['analyticsId'],
+    'sample-rate': '1',
+    'mask-level': 'moderate',
+    'max-duration': '300000',
+  },
+  src: `https://analytics.${environment['appUrl']}/recorder.js`,
+};
