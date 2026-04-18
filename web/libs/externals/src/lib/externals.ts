@@ -17,6 +17,7 @@ export const analytics: AddHtmlHeadElementType = {
   type: 'script',
   data: {
     'website-id': environment['analyticsId'],
+    performance: 'true',
   },
   src: `https://analytics.${environment['appUrl']}/script.js`,
 };
