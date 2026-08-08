@@ -62,7 +62,7 @@ export class HomeLazyModule {
       )
     );
     preloadService.addImages(knowledge.map(s => `assets/home/img/logo_${s.image}.svg`));
-    preloadService.addImages([`assets/home/img/me.png`]);
+    preloadService.addImages([`assets/home/img/me.jpg`]);
 
     const menuItems: MenuItem[] = [
       {
