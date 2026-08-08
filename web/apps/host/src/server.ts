@@ -20,9 +20,9 @@ app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
-        'script-src': ["'unsafe-inline' 'self' *.awdware.de *.awdtest.de"],
+        'script-src': ["'unsafe-inline' 'self' *.awdlab.dev *.awdtest.de"],
         'script-src-attr': ["'unsafe-inline'"],
-        'default-src': ["'self' *.awdware.de *.awdtest.de"],
+        'default-src': ["'self' *.awdlab.dev *.awdtest.de"],
       },
     },
   })

@@ -6,7 +6,7 @@
   "main": "index.js",
   "author": {
     "name": "Janik Schumacher (LoaderB0T)",
-    "url": "https://awdware.de"
+    "url": "https://awdlab.dev"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",

@@ -1,8 +1,8 @@
 [![Build Status](https://img.shields.io/github/actions/workflow/status/LoaderB0T/awdware3/build.yml?branch=main&style=for-the-badge)](https://github.com/LoaderB0T/awdware3/actions/workflows/build.yml)
 [![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/LoaderB0T_awdware3?server=https%3A%2F%2Fsonarcloud.io&style=for-the-badge)](https://sonarcloud.io/summary/new_code?id=LoaderB0T_awdware3)
-[![Status](https://status.awdware.de/api/badge/1/status?style=for-the-badge)](https://status.awdtest.de/status/main)
-[![Uptime](https://status.awdware.de/api/badge/1/uptime?style=for-the-badge)](https://status.awdtest.de/status/main)
-[![Ping](https://status.awdware.de/api/badge/1/ping?style=for-the-badge)](https://status.awdtest.de/status/main)
+[![Status](https://status.awdlab.dev/api/badge/1/status?style=for-the-badge)](https://status.awdtest.de/status/main)
+[![Uptime](https://status.awdlab.dev/api/badge/1/uptime?style=for-the-badge)](https://status.awdtest.de/status/main)
+[![Ping](https://status.awdlab.dev/api/badge/1/ping?style=for-the-badge)](https://status.awdtest.de/status/main)
 
 # awdware3
 
@@ -12,7 +12,7 @@ awdware3 is the third iteration of my personal website (work in progress). This 
 
 **awdware3** is both a portfolio to show the world what I am doing and a playground for myself to learn new technologies like Module Federation.
 
-And it is live: [awdware.de](https://awdware.de)!
+And it is live: [awdlab.dev](https://awdlab.dev)!
 
 ## Tech-Stack 🔥
 
