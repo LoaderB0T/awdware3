@@ -24,7 +24,7 @@ import {
 import { RectParticle } from 'confetti.ts';
 import { Subscription } from 'rxjs';
 
-import { PreloadService, MenuService, randomInt, ThemeService } from '@awdware/shared';
+import { PreloadService, MenuService, randomInt, ThemeService } from '@awdlab/shared';
 
 import { BgComponent } from '../bg/bg.component';
 import { MenuComponent } from '../menu/menu.component';
@@ -101,7 +101,7 @@ export class BaseComponent implements AfterViewInit, OnInit, OnDestroy {
 
     if (this._isServer) {
       // eslint-disable-next-line no-irregular-whitespace
-      inject(Title).setTitle(`awdware     ${rndmTitleEmoji}`);
+      inject(Title).setTitle(`awdlab     ${rndmTitleEmoji}`);
     } else {
       function getScrollBarWidth() {
         const el = document.createElement('div');

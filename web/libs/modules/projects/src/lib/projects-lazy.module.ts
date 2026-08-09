@@ -4,7 +4,7 @@ import { Router, RouterModule, Routes } from '@angular/router';
 import { CircleParticle } from 'confetti.ts';
 import { RouterEntryService } from 'ng-dynamic-mf';
 
-import { MenuItem, MenuService } from '@awdware/shared';
+import { MenuItem, MenuService } from '@awdlab/shared';
 
 const routes: Routes = [
   {

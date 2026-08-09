@@ -12,20 +12,42 @@
     "importHelpers": true,
     "target": "es2020",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@awdware/analytics": ["libs/analytics/src/index.ts"],
-      "@awdware/bootstrap": ["libs/bootstrap/src/index.ts"],
-      "@awdware/externals": ["libs/externals/src/index.ts"],
-      "@awdware/home": ["libs/modules/home/src/index.ts"],
-      "@awdware/projects": ["libs/modules/projects/src/index.ts"],
-      "@awdware/shared": ["libs/shared/src/index.ts"],
-      "@awdware/styles": ["libs/styles/src/index.ts"],
-      "@awdware/timeline": ["libs/modules/timeline/src/index.ts"]
+      "@awdlab/analytics": [
+        "libs/analytics/src/index.ts"
+      ],
+      "@awdlab/bootstrap": [
+        "libs/bootstrap/src/index.ts"
+      ],
+      "@awdlab/externals": [
+        "libs/externals/src/index.ts"
+      ],
+      "@awdlab/home": [
+        "libs/modules/home/src/index.ts"
+      ],
+      "@awdlab/projects": [
+        "libs/modules/projects/src/index.ts"
+      ],
+      "@awdlab/shared": [
+        "libs/shared/src/index.ts"
+      ],
+      "@awdlab/styles": [
+        "libs/styles/src/index.ts"
+      ],
+      "@awdlab/timeline": [
+        "libs/modules/timeline/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

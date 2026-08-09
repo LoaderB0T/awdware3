@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { TranslationService } from '@awdware/shared';
+import { TranslationService } from '@awdlab/shared';
 
 import { ImageComponent } from '../../image/image.component';
 

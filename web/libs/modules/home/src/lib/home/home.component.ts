@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Typed } from 'typed.ts';
 
-import { AnalyticsService } from '@awdware/analytics';
-import { PreloadService, TranslationService } from '@awdware/shared';
+import { AnalyticsService } from '@awdlab/analytics';
+import { PreloadService, TranslationService } from '@awdlab/shared';
 
 @Component({
   imports: [TranslatePipe],

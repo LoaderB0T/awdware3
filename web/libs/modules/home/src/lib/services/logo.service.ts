@@ -1,6 +1,6 @@
 import { Injectable, Signal, computed, inject } from '@angular/core';
 
-import { ThemeService } from '@awdware/shared';
+import { ThemeService } from '@awdlab/shared';
 
 type IconMetadata = {
   image: string;

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 
-import { TooltipDirective } from '@awdware/shared';
+import { TooltipDirective } from '@awdlab/shared';
 
 import { knowledge } from './knowledge';
 import { skills } from './skills';

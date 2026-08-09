@@ -1,5 +1,5 @@
 {
-  "name": "awdware",
+  "name": "awdlab",
   "version": "0.0.0",
   "license": "MIT",
   "author": {
@@ -14,11 +14,11 @@
     "build": "nx build",
     "lint": "nx run-many --target=lint",
     "test": "nx test",
-    "docker-build": "docker build -t awdware .",
-    "docker-build-dev": "docker build -t awdware . -f dev.Dockerfile",
+    "docker-build": "docker build -t awdlab .",
+    "docker-build-dev": "docker build -t awdlab . -f dev.Dockerfile",
     "docker-build-dev-prepare": "nx construct host -m build --build",
     "local-docker": "pnpm docker-build-dev-prepare && pnpm docker-build-dev && pnpm docker-run",
-    "docker-run": "docker run -it --rm -p 9000:80 awdware",
+    "docker-run": "docker run -it --rm -p 9000:80 awdlab",
     "construct": "pnpm nx construct host -m jasc",
     "construct-mobile": "pnpm nx construct host -m host --host --watch",
     "serve:ssr:host": "node dist/apps/host/server/server.mjs"

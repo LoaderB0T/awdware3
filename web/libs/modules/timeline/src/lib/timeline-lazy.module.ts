@@ -3,7 +3,7 @@ import { inject, NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { RouterEntryService } from 'ng-dynamic-mf';
 
-import { IsProdService, MenuItem, MenuService } from '@awdware/shared';
+import { IsProdService, MenuItem, MenuService } from '@awdlab/shared';
 
 const routes: Routes = [
   {

@@ -21,7 +21,7 @@ export default [
   {
     files: ['**/*.ts', '**/*.tsx'],
     settings: {
-      'import/internal-regex': '@awdware/',
+      'import/internal-regex': '@awdlab/',
     },
     rules: {
       'no-extra-semi': 'error',

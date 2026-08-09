@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { Router, Routes } from '@angular/router';
 import { RouterEntryService } from 'ng-dynamic-mf';
 
-import { PreloadService, MenuItem, MenuService, randomInt } from '@awdware/shared';
+import { PreloadService, MenuItem, MenuService, randomInt } from '@awdlab/shared';
 
 import { contacts } from './about/contacts';
 import { knowledge } from './skills/knowledge';

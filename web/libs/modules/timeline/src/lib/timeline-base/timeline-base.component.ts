@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { CardComponent } from '@awdware/shared';
+import { CardComponent } from '@awdlab/shared';
 
 import { timelime, TimelineEntry } from './timeline';
 import { TimelineComponent } from './timeline/timeline.component';

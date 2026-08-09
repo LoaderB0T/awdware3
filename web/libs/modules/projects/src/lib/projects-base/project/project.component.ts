@@ -11,7 +11,7 @@ import {
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
-import { CardComponent } from '@awdware/shared';
+import { CardComponent } from '@awdlab/shared';
 
 import { RepoInfo } from '../../models/compact-repo-info.model';
 import { RepoInfoService } from '../../services/repo-info.service';

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@ang
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Typed } from 'typed.ts';
 
-import { CardComponent, TranslationService } from '@awdware/shared';
+import { CardComponent, TranslationService } from '@awdlab/shared';
 
 import { contacts } from './contacts';
 import { LogoService } from '../services/logo.service';

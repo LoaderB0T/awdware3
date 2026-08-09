@@ -3,8 +3,8 @@ import { provideRouter } from '@angular/router';
 import { HtmlHeadService } from 'ng-dynamic-mf';
 import { DynamicTranslationService } from 'ng-dynamic-mf/translate';
 
-import { AnalyticsService } from '@awdware/analytics';
-import { analytics, analyticsReplay, font_montserrat } from '@awdware/externals';
+import { AnalyticsService } from '@awdlab/analytics';
+import { analytics, analyticsReplay, font_montserrat } from '@awdlab/externals';
 
 import { routes } from './routes';
 

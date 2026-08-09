@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { NavHelper, HomeHelper } from '@awdware/test/helper';
+import { NavHelper, HomeHelper } from '@awdlab/test/helper';
 
 let nav: NavHelper;
 let home: HomeHelper;

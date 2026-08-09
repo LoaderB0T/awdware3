@@ -1,7 +1,7 @@
 import { Component, effect, inject, signal, DOCUMENT } from '@angular/core';
 
-import { AnalyticsService } from '@awdware/analytics';
-import { MenuItem, MenuService, ThemeService, TranslationService } from '@awdware/shared';
+import { AnalyticsService } from '@awdlab/analytics';
+import { MenuItem, MenuService, ThemeService, TranslationService } from '@awdlab/shared';
 
 @Component({
   standalone: true,
