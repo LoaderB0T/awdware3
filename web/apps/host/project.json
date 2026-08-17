@@ -18,6 +18,8 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/host/src/favicon.ico",
+          "apps/host/src/sitemap.xml",
+          "apps/host/src/robots.txt",
           "apps/host/src/assets",
           "apps/host/src/environment.json",
           {
